@@ -11,8 +11,8 @@ global.frontend_url = base_url + '/src/pages';
 global.NOT_FOUND_ERROR = 405;
 global.SUCCESS_CODE = 200;
 
-global.home_url = frontend_url + '/home';
-
+global.home_url = frontend_url + '/index';
+global.home_path = base_path + '/app/src/pages/index'
 
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database')
@@ -90,17 +90,13 @@ app.use(function (req, res, next) {
 global.userModel = require(base_path + '/app/src/models/User');
 
 var router = express.Router();
-// test route
-router.get('/hello', function (req, res) {
-    console.log(req.body);
-    res.end('Hello world');
-    // res.json({ message: 'welcome to our upload module apis' });
-});
 
 app.use('', router);
 
 /* Include moduler functionality */
 app.use('/api', require('./app/src/routes/api'));
+app.use('/', require('./app/src/routes/pages'));
+
 
 /* Set static links to use assets */
 app.use('/assets', express.static(__dirname + '/app/assets'));
@@ -109,8 +105,7 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
 app.get('/', function (req, res) {
-    res.render(`
-    <html> This a text HTML </html>`);
+    res.render(home_path);
     return;
 });
 
