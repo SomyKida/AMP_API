@@ -7,9 +7,12 @@ global.uploads_path = __dirname + "/app/uploads";
 global.base_url = config.BASE_URL;
 global.assets_url = base_url + 'app/assets';
 global.uploads_url = base_url + '/uploads';
-global.frontend_url = base_url + '/web/frontend';
+global.frontend_url = base_url + '/src/pages';
 global.NOT_FOUND_ERROR = 405;
 global.SUCCESS_CODE = 200;
+
+global.home_url = frontend_url + '/home';
+
 
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database')
@@ -106,7 +109,8 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
 app.get('/', function (req, res) {
-    res.redirect(home_url);
+    res.render(`
+    <html> This a text HTML </html>`);
     return;
 });
 
