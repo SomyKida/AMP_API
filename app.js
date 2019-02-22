@@ -94,7 +94,7 @@ var router = express.Router();
 app.use('', router);
 
 /* Include moduler functionality */
-app.use('/api', require('./app/src/routes/api'));
+app.use('api', require('./app/src/routes/api'));
 app.use('/', require('./app/src/routes/pages'));
 
 

@@ -13,4 +13,8 @@ router.post('/', (req, res, next) => {
     res.send('Success')
 })
 
+router.get('/', (req, res, next) => {
+    res.send('Success')
+})
+
 module.exports = router
