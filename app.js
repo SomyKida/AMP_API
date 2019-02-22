@@ -94,7 +94,7 @@ var router = express.Router();
 app.use('', router);
 
 /* Include moduler functionality */
-app.use('api', require('./app/src/routes/api'));
+app.use('/api', require('./app/src/routes/api'));
 app.use('/', require('./app/src/routes/pages'));
 
 
@@ -104,7 +104,7 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 /* Set static links to use uploads */
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
-app.get('/', function (req, res) {
+app.post('/', function (req, res) {
     res.render(home_path);
     return;
 });
