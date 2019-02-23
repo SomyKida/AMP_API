@@ -10,7 +10,21 @@ var fs = require('fs');
 var controller_name = 'default';
 
 router.get('/', (req, res, next) => {
-    res.send('Success')
+    res.render('index', {
+        title: 'Test Home'
+      });
+})
+
+router.get('/login', (req, res, next) => {
+    res.render('login', {
+        title: 'Login'
+      });
+})
+
+router.get('/signup', (req, res, next) => {
+    res.render('signup', {
+        title: 'Signup'
+      });
 })
 
 module.exports = router
