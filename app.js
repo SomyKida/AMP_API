@@ -16,7 +16,16 @@ global.home_path = base_path + '/app/src/pages/index'
 
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database')
-global.connection = database.connect_database();
+
+/* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
+//STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
+database.connect_database((err, connection) => {
+    if (connection) {
+        global.connection = connection
+    } else {
+        global.connection = null
+    }
+});
 global.httpRequest = require('request');
 global.AuthValidator = require(base_path + '/app/helper/AuthValidator');
 global.striptags = require('striptags');

@@ -1,30 +1,66 @@
 <!doctype html>
 <html>
+
 <head>
     <title>API Authentication Test</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
-        body         { padding-top:80px; }
+        body {
+            padding-top: 80px;
+        }
     </style>
 </head>
+
 <body>
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
+    <div class="container">
+        <div class="col-sm-6 col-sm-offset-3">
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+            <h1><span class="fa fa-sign-in"></span> Signup</h1>
 
-<div><p>THIS IS FOR TESTING PURPOSES AND IS NOT THE FINAL DESIGN</p></div>
-    <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
+            <div>
+                <p>THIS IS FOR TESTING PURPOSES AND IS NOT THE FINAL DESIGN</p>
+            </div>
+
+            <div>
+                <%if(locals.errors) { %>
+                <% for(let i = 0; i<errors.length; i++) {%>
+                <p><%=locals.errors[i]%></p>
+                <%}%>
+                <%}%>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form action="/signup" method="post">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="pwd">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" name="conf_pwd">
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" class="form-control" name="dob">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="phone" class="form-control" name="phone">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="address" class="form-control" name="address">
+                </div>
+                <select id="volume" name="user_type">
+                    <% for(let i = 0; i < locals.data.user_types.length; i++) { %>
+                    <option value='<%=locals.data.user_types[i]%>'><%=locals.data.user_types[i]%></option>
+                    <%}%>
+            </select>
 
         <button type="submit" class="btn btn-warning btn-lg">Signup</button>
     </form>
