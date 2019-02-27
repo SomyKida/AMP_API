@@ -5,7 +5,7 @@ const assert = require('assert');
 var express = require('express');
 var router = express.Router();
 var helper = require(helper_path + '/helper');
-// var bcrypt  = require('bcrypt');
+var bcrypt  = require('bcrypt');
 var fs = require('fs');
 
 var controller_name = 'auth';
@@ -57,7 +57,7 @@ router.post('/signup', (req, res, next) => {
     user['user_type'] = post_data.user_type
 
     // Need to hash it using bcrypt + validation  #TODO
-    user['pwd'] = post_data.pwd
+    user['pwd'] = bcrypt.hashSync(post_data.pwd, 10)
 
 
     user['access_token'] = helper.generateRandomString('15')
@@ -111,14 +111,16 @@ router.post('/signin', (req, res, next) => {
             helper.sendErrorWCode(res, err, 500)
             return
         } else {
-            console.log(users)
+            // console.log(users)
             if (users.length == 0) {
                 helper.sendError(res, 'Wrong/ Unknown Email or Password')
                 return
             } else {
                 user = users[0]
+                const match = bcrypt.compareSync(post_data.pwd, user.pwd);
+                console.log(match)
                 //Hashed check here #TODO
-                if (user.pwd == post_data.pwd) {
+                if (match) {
                     new_token = helper.generateRandomString(15)
                     user_collection.updateOne({ id: user.id }, { $set: { access_token: new_token } }, (err, result) => {
                         if (err) {

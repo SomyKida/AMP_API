@@ -26,6 +26,7 @@ database.connect_database((err, connection) => {
         global.connection = null
     }
 });
+
 global.httpRequest = require('request');
 global.AuthValidator = require(base_path + '/app/helper/AuthValidator');
 global.striptags = require('striptags');
