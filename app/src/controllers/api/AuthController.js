@@ -1,24 +1,17 @@
 /* Dependencies */
 var http = require('http');
 const assert = require('assert');
-
 var express = require('express');
 var router = express.Router();
 var helper = require(helper_path + '/helper');
-// var bcrypt  = require('bcrypt');
+var bcrypt = require('bcrypt');
 var fs = require('fs');
 
+/* Custom Imports */
+var User = require('../../models/User')
+
+/* File Consts */
 var controller_name = 'auth';
-
-router.post('/', (req, res, next) => {
-    res.send('Success')
-})
-
-router.get('/', (req, res, next) => {
-    res.send('Success')
-})
-
-
 
 /** Needs Some Additional Validations, Almost no need to clean */
 router.post('/signup', (req, res, next) => {
@@ -47,25 +40,19 @@ router.post('/signup', (req, res, next) => {
 
 
 
-    // will create models later on  #TODO
+    user = new User({
+        email: post_data.email,
+        dob: post_data.dob,
+        phone: post_data.phone,
+        address: post_data.address,
+        user_type: post_data.user_type,
+        pwd: bcrypt.hashSync(post_data.pwd, 10),
+        access_token: helper.generateRandomString('15')
+    })
 
-    user = {}
-    user['email'] = post_data.email
-    user['dob'] = post_data.dob
-    user['phone'] = post_data.phone
-    user['address'] = post_data.address
-    user['user_type'] = post_data.user_type
-
-    // Need to hash it using bcrypt + validation  #TODO
-    user['pwd'] = post_data.pwd
-
-
-    user['access_token'] = helper.generateRandomString('15')
 
     //Better to get every collection in each function, globals will stay in memory - Don't globalize 
-    user_collection = connection.collection('users')
-
-    user_collection.find({ 'email': user['email'] }).toArray((err, users) => {
+    User.find({ 'email': post_data.email }, (err, users) => {
         if (err) {
             console.log(err)
             helper.sendErrorWCode(res, err, 500)
@@ -76,13 +63,13 @@ router.post('/signup', (req, res, next) => {
                 helper.sendError(res, 'This email is already taken')
                 return
             } else {
-                user_collection.insertOne(user, (err, result) => {
+                user.save((err, result) => {
                     if (err) {
                         console.log(err)
                         helper.sendErrorWCode(res, err, 500)
                         return
                     } else {
-                        user['pwd'] = null
+                        user.pwd = null
                         helper.sendSuccess(res, user)
                         return
                     }
@@ -102,32 +89,31 @@ router.post('/signin', (req, res, next) => {
         return
     }
 
-    //Better to get every collection in each function, globals will stay in memory - Don't globalize 
-    user_collection = connection.collection('users')
-
-    user_collection.find({ 'email': post_data['email'] }).toArray((err, users) => {
+    User.find({ 'email': post_data['email'] }, (err, users) => {
         if (err) {
             console.log(err)
             helper.sendErrorWCode(res, err, 500)
             return
         } else {
-            console.log(users)
+            // console.log(users)
             if (users.length == 0) {
                 helper.sendError(res, 'Wrong/ Unknown Email or Password')
                 return
             } else {
                 user = users[0]
+                const match = bcrypt.compareSync(post_data.pwd, user.pwd);
+                console.log(match)
                 //Hashed check here #TODO
-                if (user.pwd == post_data.pwd) {
+                if (match) {
                     new_token = helper.generateRandomString(15)
-                    user_collection.updateOne({ id: user.id }, { $set: { access_token: new_token } }, (err, result) => {
+                    user.access_token = new_token
+                    user.save((err, result) => {
                         if (err) {
                             console.log(err)
                             helper.sendErrorWCode(res, err, 500)
                             return
                         } else {
-                            user['access_token'] = new_token
-                            user['pwd'] = null
+                            user.pwd = null
                             helper.sendSuccess(res, user)
                             return
                         }
