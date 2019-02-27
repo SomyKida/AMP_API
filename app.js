@@ -15,7 +15,7 @@ global.home_url = frontend_url + '/index';
 global.home_path = base_path + '/app/src/pages/index'
 
 /* GET DATABASE ACCESS */
-var database = require(base_path + '/app/config/database')
+var database = require(base_path + '/app/config/database_mongoose')
 
 /* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
 //STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
