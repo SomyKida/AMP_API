@@ -8,12 +8,14 @@ var bcrypt = require('bcrypt');
 var fs = require('fs');
 
 /* Custom Imports */
-var User = require('../../models/User')
+var User = require('../../../models/Dentist')
 
 /* File Consts */
 var controller_name = 'auth';
 
 /** Needs Some Additional Validations, Almost no need to clean */
+
+/**OBSOLETE */
 router.post('/signup', (req, res, next) => {
 
     var post_data = req.body;
@@ -80,6 +82,8 @@ router.post('/signup', (req, res, next) => {
 })
 
 
+/**OBSOLETE */
+
 router.post('/signin', (req, res, next) => {
 
     var post_data = req.body;
@@ -128,5 +132,7 @@ router.post('/signin', (req, res, next) => {
         }
     })
 })
+
+
 
 module.exports = router

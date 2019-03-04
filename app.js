@@ -28,7 +28,7 @@ database.connect_database((err, connection) => {
 });
 
 global.httpRequest = require('request');
-global.AuthValidator = require(base_path + '/app/helper/AuthValidator');
+global.AuthValidator = require(helper_path + '/auth');
 global.striptags = require('striptags');
 global.emailValidator = require("email-validator");
 
@@ -97,7 +97,7 @@ app.use(function (req, res, next) {
 });
 
 /* INCLUDE MODELS AFTER THIS */
-global.userModel = require(base_path + '/app/src/models/User');
+global.dentistModel = require(base_path + '/app/src/models/Dentist');
 
 var router = express.Router();
 

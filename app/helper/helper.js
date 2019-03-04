@@ -1,3 +1,5 @@
+var mongoose = require('mongoose');
+
 module.exports = {
     sendError: function (res, text) {
         res.status(405);
@@ -47,5 +49,35 @@ module.exports = {
             }
             return true;
         }
+    },
+    postQueryDefault: function (err, res, msg, errMsg = null) {
+
+        if (err) {
+            console.log(err)
+            if (errMsg != null)
+                helper.sendErrorWCode(res, err, 500)
+            else
+                helper.sendErrorWCode(res, errMsg, 500)
+            return
+        } else {
+            helper.sendSuccess(res, msg)
+            return
+        }
+    },
+    postQueryErrorOnly: function (err, res, errMsg = null) {
+
+        if (err) {
+            console.log(err)
+            if (errMsg != null)
+                helper.sendErrorWCode(res, err, 500)
+            else
+                helper.sendErrorWCode(res, errMsg, 500)
+            return true
+        } else {
+            return false
+        }
+    },
+    getMongoId: function (id) {
+        return mongoose.Types.ObjectId(id)
     }
 }
