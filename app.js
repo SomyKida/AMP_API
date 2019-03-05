@@ -16,7 +16,7 @@ global.home_path = base_path + '/app/src/pages/index'
 
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database_mongoose')
-
+var stripe = require(base_path + '/app/config/stripe')
 /* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
 //STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
 database.connect_database((err, connection) => {
@@ -75,7 +75,8 @@ var bodyParser = require('body-parser');
 var fileUpload = require('express-fileupload');
 var helper = require(helper_path + '/helper');
 global.helper = helper;
-
+var email = require(helper_path + '/email');
+global.email = email;
 // default options
 app.use(fileUpload());
 

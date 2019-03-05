@@ -6,15 +6,16 @@ var router = express.Router();
 var helper = require(helper_path + '/helper');
 var bcrypt = require('bcrypt');
 var fs = require('fs');
+var mongoose = require('mongoose')
 /* Custom Imports */
-var Dentist = require('../../../models/Dentist')
-var PendingDenntist = require('../../../models/PendingDentist')
-var Package = require('../../../models/Package')
+var Package = require(base_path + '/app/src/models/Package')
+var Admin = require(base_path + '/app/src/models/Admin')
+var PendingDentist = require(base_path + '/app/src/models/PendingDentist')
 
 /* File Consts */
 var controller_name = 'auth';
 
-router.post('/register', (req, res) => {
+router.post('/add', (req, res) => {
     post_data = req.body
 
     if (!helper.validateField(res, post_data, 'email', 'Email')) {
@@ -23,9 +24,9 @@ router.post('/register', (req, res) => {
         return
     }
 
-    Dentist.findOne({ 'email': post_data.email }, (err, dentist) => {
+    Admin.findOne({ 'email': post_data.email }, (err, admin) => {
         if (!helper.postQueryErrorOnly(err, res)) {
-            if (dentist != null) {
+            if (admin != null) {
                 helper.sendError(res, "An account with this email already exists.")
                 return
             } else {
@@ -57,30 +58,30 @@ router.post('/login', (req, res) => {
         return
     }
 
-    Dentist.findOne({ 'email': post_data['email'] }, (err, dentist) => {
+    admin.findOne({ 'email': post_data['email'] }, (err, admin) => {
         if (err) {
             console.log(err)
             helper.sendErrorWCode(res, err, 500)
             return
         } else {
-            if (dentist == null) {
+            if (admin == null) {
                 helper.sendError(res, 'Wrong/ Unknown Email or Password')
                 return
             } else {
-                const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
+                const match = bcrypt.compareSync(post_data.pwd, admin.pwd);
                 console.log(match)
                 //Hashed check here #TODO
                 if (match) {
                     new_token = helper.generateRandomString(15)
-                    dentist.access_token = new_token
-                    dentist.save((err, result) => {
+                    admin.access_token = new_token
+                    admin.save((err, result) => {
                         if (err) {
                             console.log(err)
                             helper.sendErrorWCode(res, err, 500)
                             return
                         } else {
-                            dentist.pwd = null
-                            helper.sendSuccess(res, dentist)
+                            admin.pwd = null
+                            helper.sendSuccess(res, admin)
                             return
                         }
                     })
