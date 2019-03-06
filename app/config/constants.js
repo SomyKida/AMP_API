@@ -6,6 +6,7 @@ module.exports = {
     test_gmail: 'email.amp.bot@gmail.com',
     test_gmail_pass: 'amp123!@#',
     test_gmail_name: 'No Reply - AMP',
-    redirection_link_pre_reg: base_url + '/dentist/auth/pay/',
+    dentist_pay_link: '/dentist/auth/pay/',
+    patient_activation_link: '/api/patient/auth/activate/',
     stripe_default_currency: 'usd'
 }

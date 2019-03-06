@@ -13,11 +13,11 @@ module.exports = {
     validate: function (email) {
         return validator.validate(email); // true
     },
-    getHtmlDynamicLinkForPayment: function (pDentist) {
+    getHtmlDynamicLinkForPayment: function (link) {
         html = `
             <html>
-                <h3>In order to complete registeration, please go to the following to complete the payment proccess</h3>
-                <a href=`+ consts.redirection_link_pre_reg + pDentist.id + `>Go to Payment!</a>
+                <h3>In order to complete registeration, please go to the following to complete the  proccess</h3>
+                <a href=`+ link + `>Go!</a>
             </html>
         `
         return html

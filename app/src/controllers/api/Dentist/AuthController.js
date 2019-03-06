@@ -6,7 +6,9 @@ var router = express.Router();
 var bcrypt = require('bcrypt');
 var fs = require('fs');
 /* Custom Imports */
+var consts = require(base_path + '/app/config/constants')
 var Dentist = require(base_path + '/app/src/models/Dentist')
+var Admin = require(base_path + '/app/src/models/Admin')
 var PendingDentist = require(base_path + '/app/src/models/PendingDentist')
 var Package = require(base_path + '/app/src/models/Package')
 var stripe = require(base_path + '/app/config/stripe')
@@ -49,7 +51,7 @@ router.post('/pre-register', (req, res) => {
                                         })
                                         pDentist.save((err) => {
                                             if (!helper.postQueryErrorOnly(err, res, "This email was successfully added to database but there was an error in dispatching the email.")) {
-                                                email.sendDefaultEmail(post_data.email, 'Payment Link', email.getHtmlDynamicLinkForPayment(pDentist), (err, info) => {
+                                                email.sendDefaultEmail(post_data.email, 'Payment Link', email.getHtmlDynamicLinkForPayment(base_url + consts.dentist_pay_link + pDentist), (err, info) => {
                                                     if (!helper.postQueryErrorOnly(err, res)) {
                                                         helper.sendSuccess(res, "An email with payment details has been sent to the provided email.")
                                                         return
@@ -95,7 +97,7 @@ router.post('/pay/:pId', (req, res) => {
                         } else {
                             stripe.generateToken(post_data.card_number, post_data.card_expiry_month, post_data.card_expiry_year, post_data.cvc, (err, token) => {
                                 if (!helper.postQueryErrorOnly(err, res, "Unsuccessful payment - STRIPE: " + err)) {
-                                    console.log(package)
+                                    //console.log(package)
                                     stripe.createCharge(token.id, package.price * 100, 'Registeration Payment for ' + pDentist.email + ' and package ' + package.name, (err, charge) => {
                                         if (!helper.postQueryErrorOnly(err, res, "Unsuccessful payment - STRIPE: " + err)) {
 
@@ -105,7 +107,8 @@ router.post('/pay/:pId', (req, res) => {
                                             dentist = new Dentist({
                                                 'email': pDentist.email,
                                                 'pwd': pwd,
-                                                'first_ready': false
+                                                'first_ready': false,
+                                                'package': pDentist.package
                                             })
 
                                             dentist.save((err) => {
@@ -142,14 +145,14 @@ router.post('/login', (req, res) => {
 
     Dentist.find({ 'email': post_data['email'] }, (err, dentists) => {
         if (!helper.postQueryErrorOnly(err, res)) {
-            // console.log(dentistss)
+            //console.log(dentists)
             if (dentists.length == 0) {
                 helper.sendError(res, 'Wrong/ Unknown Email or Password')
                 return
             } else {
                 dentist = dentists[0]
-                const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
-                console.log(match)
+                const match = bcrypt.compare(post_data.pwd, dentist.pwd);
+                //console.log(match)
                 //Hashed check here #TODO
                 if (match) {
                     new_token = helper.generateRandomString(15)
@@ -205,8 +208,8 @@ router.post('/reset-password', (req, res) => {
 
 })
 
+//legacy
 router.post('/setup', (req, res) => {
-
     if (!req.headers.hasOwnProperty('authorization') || req.headers.authorization == '') {
         helper.sendErrorWCode(res, "No authorization found", 401)
         return
@@ -239,6 +242,10 @@ router.post('/setup', (req, res) => {
                         return
                     } if (!helper.validateField(res, post_data, 'conf_pwd', 'Confirm Password')) {
                         return
+                    } if (!helper.validateField(res, post_data, 'first_name', 'First Name')) {
+                        return
+                    } if (!helper.validateField(res, post_data, 'last_name', 'Last Name')) {
+                        return
                     }
 
                     if (post_data.pwd != post_data.conf_pwd && post_data.pwd.length < 8) {
@@ -250,16 +257,18 @@ router.post('/setup', (req, res) => {
                     dentist.company_name = post_data.company_name
                     dentist.company_phone = post_data.company_phone
                     dentist.office_address = post_data.office_address
-                    dentist.hours = post_data.hours
+                    dentist.hours = JSON.stringify(post_data.hours)
                     dentist.pwd = bcrypt.hashSync(post_data.pwd, 10)
                     dentist.first_ready = true
                     dentist.access_token = null
+                    dentist.first_name = post_data.first_name
+                    dentist.last_name = post_data.last_name
 
 
-                    if (!helper.validateFieldWOError(post_data, 'rcry_email')) {
+                    if (helper.validateFieldWOError(post_data, 'rcry_email')) {
                         dentist.rcry_email = post_data.rcry_email
                     }
-                    if (!helper.validateFieldWOError(post_data, 'other_email')) {
+                    if (helper.validateFieldWOError(post_data, 'other_email')) {
                         dentist.other_email = post_data.other_email
                     }
 
@@ -274,5 +283,176 @@ router.post('/setup', (req, res) => {
         }
     })
 })
+
+router.post('/update', (req, res) => {
+    post_data = req.body
+    dentist_middlewareware(req, res, (err, dentist) => {
+        if (!err) {
+            var flag = false
+            if (helper.validateFieldWOError(res, post_data, 'company_name')) {
+                flag = true
+                dentist.company_name = post_data.company_name
+            } if (!helper.validateField(res, post_data, 'company_phone')) {
+                flag = true
+                dentist.company_phone = post_data.company_phone
+            } if (!helper.validateField(res, post_data, 'office_address')) {
+                flag = true
+                dentist.office_address = post_data.office_address
+            } if (!helper.validateField(res, post_data, 'hours')) {
+                flag = true
+                dentist.hours = post_data.hours
+            } if (helper.validateFieldWOError(post_data, 'rcry_email')) {
+                flag = true
+                dentist.rcry_email = post_data.rcry_email
+            } if (helper.validateFieldWOError(post_data, 'other_email')) {
+                flag = true
+                dentist.other_email = post_data.other_email
+            } if (helper.validateFieldWOError(post_data, 'template')) {
+                flag = true
+                dentist.template = post_data.template
+            } if (helper.validateFieldWOError(post_data, 'first_name')) {
+                flag = true
+                dentist.first_name = post_data.first_name
+            } if (helper.validateFieldWOError(post_data, 'last_name')) {
+                flag = true
+                dentist.last_name = post_data.last_name
+            }
+
+
+
+            if (flag == false) {
+                helper.sendError(res, "Nothing to update");
+                return
+            } else {
+                dentist.save((err) => {
+                    if (!helper.postQueryErrorOnly(err, res)) {
+                        helper.sendSuccess(res, "Updated details")
+                        return
+                    }
+                })
+            }
+
+        }
+    })
+})
+
+router.post('/change-password', (req, res) => {
+    post_data = req.body
+    dentist_middlewareware(req, res, (err, dentist) => {
+        if (!helper.validateField(res, post_data, 'old_pwd', 'Old Password')) {
+            return
+        } if (!helper.validateField(res, post_data, 'new_pwd', 'New Password')) {
+            return
+        } if (!helper.validateField(res, post_data, 'conf_pwd', 'Confirm Password')) {
+            return
+        }
+
+        if (post_data.new_pwd != post_data.conf_pwd) {
+            helper.sendError(res, "New and Confirm Password fields do not match.")
+            return
+        }
+
+        const match = bcrypt.compare(dentist.pwd, post_data.old_pwd)
+        if (!match) {
+            helper.sendError(res, "Old password doesnot match.")
+            return
+        } else {
+            pwd = bcrypt.hashSync(post_data.new_pwd, 10)
+            dentist.pwd = pwd
+            dentist.access_token = ''
+            dentist.save((err) => {
+                if (!helper.postQueryErrorOnly(err, res)) {
+                    helper.sendSuccess(res, "Password Updated. Please log in again.")
+                    return
+                }
+
+            })
+        }
+
+    })
+})
+
+router.post('/add-admins', (req, res) => {
+    post_data = req.body
+    dentist_middlewareware(req, res, (err, dentist) => {
+        if (!helper.validateField(res, post_data, 'admins', 'Admins')) {
+            return
+        }
+
+        var response = []
+        var admin_ids = []
+        var sync = post_data.admins.length
+
+        post_data.admins.forEach(new_admin => {
+            Admin.findOne({ 'email': new_admin.email }, (err, result) => {
+                if (err) {
+                    response.push({ 'email': new_admin.email, 'error': err })
+                    sync--
+                    isAllDone()
+                } else {
+                    if (result != null) {
+                        response.push({ 'email': new_admin.email, 'error': "Already exists!" })
+                        sync--
+                        isAllDone()
+                    } else {
+
+                        pwd = helper.generateRandomString(8);
+                        admin = new Admin({
+                            pwd: bcrypt.hashSync(pwd, 10),
+                            designation: new_admin.designation,
+                            email: new_admin.email
+                        })
+
+                        admin.save((err, info) => {
+                            if (err) {
+                                response.push({ 'email': new_admin.email, 'error': err })
+                                sync--
+                                isAllDone()
+                            } else {
+                                admin_ids.push(info.id)
+                                console.log(info.id)
+                                email.sendDefaultEmail(new_admin.email, 'Your Admin Account was created by ' + dentist.first_name + ' ' + dentist.last_name + ' successfully', 'email : ' + new_admin.email + ' password : ' + pwd, (err, info) => {
+                                    if (err) {
+                                        response.push({ 'email': new_admin.email, 'error': err })
+                                    } else {
+                                        response.push({ 'email': new_admin.email, 'success': "Admin can log in. Password sent to the provided email." })
+                                    }
+                                    sync--
+                                    isAllDone()
+                                })
+                            }
+                        })
+
+                    }
+                }
+            })
+
+        })
+
+        function isAllDone() {
+            //console.log(response)
+            if (sync == 0) {
+                if (admin_ids.length == 0)
+                    helper.sendError(res, response)
+                else {
+                    admin_ids.forEach(id => {
+                        dentist.admins.push(id)
+                    })
+                    dentist.save((err) => {
+                        if (err) {
+                            helper.sendError(res, "Unable to update dentist details : " + err + " but" + response)
+                            return
+                        } else {
+                            helper.sendSuccess(res, response)
+                            return
+                        }
+                    })
+                }
+            }
+        }
+    })
+})
+
+
 
 module.exports = router
