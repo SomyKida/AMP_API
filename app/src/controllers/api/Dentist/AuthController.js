@@ -73,6 +73,7 @@ router.post('/pre-register', (req, res) => {
 
 router.post('/pay/:pId', (req, res) => {
     var post_data = req.body;
+
     if (!helper.validateField(res, post_data, 'card_number', 'Card Number')) {
         return
     } if (!helper.validateField(res, post_data, 'card_expiry_month', 'Card Expiry Month')) {
@@ -207,7 +208,6 @@ router.post('/reset-password', (req, res) => {
     })
 
 })
-
 //legacy
 router.post('/setup', (req, res) => {
     if (!req.headers.hasOwnProperty('authorization') || req.headers.authorization == '') {
@@ -332,6 +332,33 @@ router.post('/update', (req, res) => {
                 })
             }
 
+        }
+    })
+})
+
+router.post('/incrementVersion', (req, res) => {
+    post_data = req.body
+    dentist_middlewareware(req, res, (err, dentist) => {
+        if (!err) {
+
+            dentist.version = dentist.version + 1
+            dentist.save((err) => {
+                if (!helper.postQueryErrorOnly(err, res)) {
+                    helper.sendSuccess(res, "Updated details")
+                    return
+                }
+            })
+
+
+        }
+    })
+})
+
+router.post('/getVersion', (req, res) => {
+    post_data = req.body
+    dentist_middlewareware(req, res, (err, dentist) => {
+        if (!err) {
+            helper.sendSuccess(res, { 'version': dentist.version })
         }
     })
 })

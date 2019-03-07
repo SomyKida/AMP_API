@@ -12,6 +12,7 @@ let DentistSchema = new Schema({
 	company_phone: { type: String, required: false, max: 100 },
 	office_address: { type: String, required: false, max: 150 },
 	hours: { type: String, required: false, max: 250 },
+	version: { type: Number, required: false, default: 0 },
 	access_token: { type: String, required: false, max: 30 },
 	first_ready: { type: Boolean, required: true, default: false },
 	package: { type: Schema.Types.ObjectId, ref: 'Package' },
