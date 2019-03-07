@@ -341,6 +341,8 @@ router.post('/incrementVersion', (req, res) => {
     dentist_middlewareware(req, res, (err, dentist) => {
         if (!err) {
 
+            if (dentist.version == undefined || dentist.version == null)
+                dentist.version = 0
             dentist.version = dentist.version + 1
             dentist.save((err) => {
                 if (!helper.postQueryErrorOnly(err, res)) {
@@ -354,9 +356,11 @@ router.post('/incrementVersion', (req, res) => {
     })
 })
 
-router.post('/getVersion', (req, res) => {
+router.get('/getVersion', (req, res) => {
     post_data = req.body
     dentist_middlewareware(req, res, (err, dentist) => {
+        if (dentist.version == null || dentist.version == undefined)
+            dentist.version = 0
         if (!err) {
             helper.sendSuccess(res, { 'version': dentist.version })
         }
