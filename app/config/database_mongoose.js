@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
+var constants = require('./constants')
 
-const db_user = 'enigcreator'
-const db_pass = 'ABC123456'
 
 // Connection URL
-const url = 'mongodb://' + db_user + ':' + db_pass + '@ds039037.mlab.com:39037/user_db';
+const url = 'mongodb://' + constants.db_user + ':' + constants.db_pass + '@ds039037.mlab.com:39037/user_db';
 
 module.exports = {
     connect_database: function () {

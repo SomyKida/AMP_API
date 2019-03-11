@@ -1,3 +1,5 @@
+var mongoose = require('mongoose');
+
 module.exports = {
     sendError: function (res, text) {
         res.status(405);
@@ -11,8 +13,8 @@ module.exports = {
         res.status(code);
         res.send({
             status: 'error',
-            errorMessage: text
-            // code 	: NOT_FOUND_ERROR
+            errorMessage: text,
+            code: code
         });
     },
     sendSuccess: function (res, text) {
@@ -47,5 +49,41 @@ module.exports = {
             }
             return true;
         }
+    },
+    validateFieldWOError: function (post_data, field) {
+        if (!post_data.hasOwnProperty(field) || post_data[field] == '')
+            return false
+        else
+            return true
+    },
+    postQueryDefault: function (err, res, msg, errMsg = null) {
+
+        if (err) {
+            console.log(err)
+            if (errMsg != null)
+                helper.sendErrorWCode(res, err, 500)
+            else
+                helper.sendErrorWCode(res, errMsg, 500)
+            return
+        } else {
+            helper.sendSuccess(res, msg)
+            return
+        }
+    },
+    postQueryErrorOnly: function (err, res, errMsg = null) {
+
+        if (err) {
+            console.log(err)
+            if (errMsg != null)
+                helper.sendErrorWCode(res, errMsg, 500)
+            else
+                helper.sendErrorWCode(res, err, 500)
+            return true
+        } else {
+            return false
+        }
+    },
+    getMongoId: function (id) {
+        return mongoose.Types.ObjectId(id)
     }
 }
