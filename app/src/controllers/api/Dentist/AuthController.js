@@ -579,6 +579,10 @@ router.post(v2 + '/pay-init', (req, res) => {
                         helper.sendErrorWCode(res, "Email not found", 440)
                         return
                     } else {
+                        if (dentist.init_payment) {
+                            helper.sendError(res, "Your initial payment has been already made. If renewing your monthy package then this is the wrong endpoint")
+                            return
+                        }
                         Package.findById(dentist.package, (err, package) => {
                             if (!helper.postQueryErrorOnly(err, res)) {
                                 if (package == null) {
