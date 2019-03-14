@@ -6,7 +6,7 @@ var apiControllerPath = base_path + '/src/controllers/api';
 var typeAuth = '/auth'
 var typeDashboard = '/dashboard'
 var typeSetup = '/system'
-var typeDentist = '/dentist'
+var typeDentist = '/Dentist'
 var typePatient = '/patient'
 var typeAdmin = '/admin'
 
