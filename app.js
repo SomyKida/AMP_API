@@ -106,7 +106,7 @@ app.use('', router);
 
 /* Include moduler functionality */
 app.use('/api', require(base_path + '/app/src/routes/api'));
-app.use('/', require('./app/src/routes/pages'));
+// app.use('/', require(base_path + '/app/src/routes/pages'));
 
 
 /* Set static links to use assets */
