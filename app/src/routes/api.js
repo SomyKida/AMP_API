@@ -12,7 +12,7 @@ var typeAdmin = '/admin'
 
 var Admin = require('../models/Admin')
 var Dentist = require('../models/Dentist')
-
+console.log(base_path)
 /* Api Routes Start */
 router.use(apiRoute + typeDentist + typeAuth, require(apiControllerPath + typeDentist + '/AuthController'))
 router.use(apiRoute + typeDentist + typeDashboard, require(apiControllerPath + typeDentist + '/DashboardController'))
