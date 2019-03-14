@@ -14,11 +14,11 @@ var Admin = require('../models/Admin')
 var Dentist = require('../models/Dentist')
 console.log(base_path)
 /* Api Routes Start */
-router.use(apiRoute + typeDentist + typeAuth, require(apiControllerPath + typeDentist + '/AuthController'))
-router.use(apiRoute + typeDentist + typeDashboard, require(apiControllerPath + typeDentist + '/DashboardController'))
-router.use(apiRoute + typeAdmin + typeAuth, require(apiControllerPath + typeAdmin + '/AuthController'))
-router.use(apiRoute + typePatient + typeAuth, require(apiControllerPath + typePatient + '/AuthController'))
-router.use(apiRoute + typeSetup, require(apiControllerPath + typeSetup + '/SetupController'))
+// router.use(apiRoute + typeDentist + typeAuth, require(apiControllerPath + typeDentist + '/AuthController'))
+// router.use(apiRoute + typeDentist + typeDashboard, require(apiControllerPath + typeDentist + '/DashboardController'))
+// router.use(apiRoute + typeAdmin + typeAuth, require(apiControllerPath + typeAdmin + '/AuthController'))
+// router.use(apiRoute + typePatient + typeAuth, require(apiControllerPath + typePatient + '/AuthController'))
+// router.use(apiRoute + typeSetup, require(apiControllerPath + typeSetup + '/SetupController'))
 /* Api Routes End */
 
 admin_middleware = function (req, res, _callback) {
