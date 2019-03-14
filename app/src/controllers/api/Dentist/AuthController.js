@@ -12,6 +12,7 @@ var Admin = require(base_path + '/app/src/models/Admin')
 var PendingDentist = require(base_path + '/app/src/models/PendingDentist')
 var Package = require(base_path + '/app/src/models/Package')
 var stripe = require(base_path + '/app/config/stripe')
+const v2 = '/v2'
 
 /* File Consts */
 var controller_name = 'auth';
@@ -152,7 +153,7 @@ router.post('/login', (req, res) => {
                 return
             } else {
                 dentist = dentists[0]
-                const match = bcrypt.compare(post_data.pwd, dentist.pwd);
+                const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
                 //console.log(match)
                 //Hashed check here #TODO
                 if (match) {
@@ -484,6 +485,144 @@ router.post('/add-admins', (req, res) => {
     })
 })
 
+router.post(v2 + '/register', (req, res) => {
+
+    common_middleware(req, res, (err) => {
+
+        if (!err) {
+
+            fields_required = [
+                'name',
+                'address',
+                'unit',
+                'zip',
+                'email',
+                'phone',
+                'package'
+            ]
+            post_data = req.body
+
+            // TODO : PACKAGE ID VALIDATION FOR MONGOOSE 
+
+            if (!helper.validateFieldAuto(res, post_data, fields_required))
+                return
+
+            Dentist.findOne({ 'email': post_data.email }, (err, dentist) => {
+                // console.log(dentist)
+                if (!helper.postQueryErrorOnly(err, res)) {
+                    if (dentist != null) {
+                        helper.sendError(res, "An account with this email already exists.")
+                        return
+                    } else {
+                        Package.findById(post_data.package, (err, package) => {
+                            if (!helper.postQueryErrorOnly(err, res)) {
+                                if (package == null) {
+                                    helper.sendError(res, "No such package found")
+                                    return
+                                } else {
+
+                                    unhashed_pwd = helper.generateRandomString(8)
+                                    pwd = bcrypt.hashSync(unhashed_pwd, 10)
+
+                                    dentist = new Dentist({
+                                        'email': post_data.email,
+                                        'address': post_data.address,
+                                        'unit': post_data.unit,
+                                        'zip': post_data.zip,
+                                        'name': post_data.name,
+                                        'phone': post_data.phone,
+                                        'package': post_data.package,
+                                        'first_ready': true,
+                                        'pwd': pwd
+
+                                    })
+
+                                    dentist.save((err) => {
+                                        if (!helper.postQueryErrorOnly(err, null)) {
+                                            helper.sendSuccess(res, "Object saved. Email dispatched in an independent thread")
+                                        }
+                                    })
+                                    email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', 'email : ' + dentist.email + ' password : ' + unhashed_pwd, (err, info) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                    })
+                                    return
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+        }
+    })
+
+})
+
+router.post(v2 + '/pay-init', (req, res) => {
+
+    common_middleware(req, res, (err) => {
+
+        if (!err) {
+            fields_required = [
+                'card_number',
+                'card_expiry_year',
+                'card_expiry_month',
+                'card_cvc',
+                'email'
+            ]
+
+            post_data = req.body
+            Dentist.findOne({ 'email': post_data.email }, (err, dentist) => {
+                if (!helper.postQueryErrorOnly(err, res)) {
+                    if (dentist == null) {
+                        helper.sendErrorWCode(res, "Email not found", 440)
+                        return
+                    } else {
+                        if (dentist.init_payment) {
+                            helper.sendError(res, "Your initial payment has been already made. If renewing your monthy package then this is the wrong endpoint")
+                            return
+                        }
+                        Package.findById(dentist.package, (err, package) => {
+                            if (!helper.postQueryErrorOnly(err, res)) {
+                                if (package == null) {
+                                    helper.sendError(res, "The selected package doesn't exist in the system anymore. Please update you package to continue.")
+                                    return
+                                } else {
+                                    stripe.generateToken(post_data.card_number, post_data.card_expiry_month, post_data.card_expiry_year, post_data.cvc, (err, token) => {
+                                        if (!helper.postQueryErrorOnly(err, res, "Unsuccessful payment - STRIPE: " + err)) {
+                                            //console.log(token)
+                                            stripe.createCharge(token.id, package.price * 100, 'Registeration Payment for ' + dentist.email + ' and package ' + package.name, (err, charge) => {
+                                                if (!helper.postQueryErrorOnly(err, res, "Unsuccessful payment - STRIPE: " + err)) {
+                                                    //console.log(charge)
+                                                    dentist.init_payment = true
+                                                    dentist.save((err) => {
+                                                        if (!helper.postQueryErrorOnly(err, null)) {
+                                                            helper.sendSuccess(res, "Successfull Payment! An email is also dispatched in an independent thread")
+                                                        }
+
+                                                    })
+                                                    email.sendDefaultEmail(dentist.email, 'Your payment is successfull', (err, info) => {
+                                                        if (err) {
+                                                            console.log(err)
+                                                        }
+                                                    })
+
+                                                    return
+                                                }
+                                            })
+
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+        }
+    })
+})
 
 
 module.exports = router

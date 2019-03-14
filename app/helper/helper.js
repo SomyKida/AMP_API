@@ -50,6 +50,23 @@ module.exports = {
             return true;
         }
     },
+    validateFieldAuto: function (res, post_data, fields) {
+
+        for (let i = 0; i < fields.length; i++) {
+            if (!post_data.hasOwnProperty(fields[i]) || post_data[fields[i]] == '') {
+                this.sendError(res, fields[i] + ' field missing or empty or unprocessable- required')
+                return false
+            } else {
+                if (fields[i] == 'email') {
+                    if (!this.validateEmail(post_data.email)) {
+                        this.sendError(res, 'Email (email) field incorrect- required')
+                        return false
+                    }
+                }
+            }
+        }
+        return true
+    },
     validateFieldWOError: function (post_data, field) {
         if (!post_data.hasOwnProperty(field) || post_data[field] == '')
             return false
