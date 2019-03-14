@@ -539,7 +539,7 @@ router.post(v2 + '/register', (req, res) => {
 
                                     dentist.save((err) => {
                                         if (!helper.postQueryErrorOnly(err, null)) {
-                                            helper.sendSuccess(res, "Object saved. Email dispatched in an independent thread")
+                                            helper.sendSuccess(res, dentist)
                                         }
                                     })
                                     email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', 'email : ' + dentist.email + ' password : ' + unhashed_pwd, (err, info) => {
