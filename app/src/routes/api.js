@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var apiRoute = '';
-var apiControllerPath = base_path + '/src/controllers/api';
+var apiControllerPath = '../controllers/api';
 var typeAuth = '/auth'
 var typeDashboard = '/dashboard'
 var typeSetup = '/system'
