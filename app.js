@@ -1,3 +1,4 @@
+
 global.base_path = __dirname;
 global.config = require(base_path + '/config');
 
@@ -17,8 +18,12 @@ global.home_path = base_path + '/app/src/pages/index'
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database_mongoose')
 var stripe = require(base_path + '/app/config/stripe')
+
 /* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
 //STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
+
+
+
 database.connect_database((err, connection) => {
     if (connection) {
         global.connection = connection
@@ -116,9 +121,11 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
 app.get('/', function (req, res) {
-    res.render(home_path);
+    res.sendFile(__dirname + '/dist/index.html')
     return;
 });
+
+app.get('*.*', express.static(__dirname + '/dist'));
 
 var port = config.PORT;
 
