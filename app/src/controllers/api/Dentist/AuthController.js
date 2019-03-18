@@ -494,7 +494,6 @@ router.post(v2 + '/register', (req, res) => {
             fields_required = [
                 'name',
                 'address',
-                'unit',
                 'zip',
                 'email',
                 'phone',
