@@ -128,7 +128,6 @@ app.get('/', function (req, res) {
 app.get('*.*', express.static(__dirname + '/dist'));
 
 var port = config.PORT;
-
 var http = require('http').Server(app);
 
 http.listen(port, function () {

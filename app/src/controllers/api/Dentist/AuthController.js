@@ -520,8 +520,8 @@ router.post(v2 + '/register', (req, res) => {
                                     return
                                 } else {
 
-                                    unhashed_pwd = helper.generateRandomString(8)
-                                    pwd = bcrypt.hashSync(unhashed_pwd, 10)
+                                    unhashed_addresser = helper.generateRandomString(8)
+                                    addresser = bcrypt.hashSync(unhashed_pwd, 10)
 
                                     dentist = new Dentist({
                                         'email': post_data.email,
@@ -532,7 +532,7 @@ router.post(v2 + '/register', (req, res) => {
                                         'phone': post_data.phone,
                                         'package': post_data.package,
                                         'first_ready': true,
-                                        'pwd': pwd
+                                        'addresser': addresser
 
                                     })
 
@@ -541,7 +541,7 @@ router.post(v2 + '/register', (req, res) => {
                                             helper.sendSuccess(res, dentist)
                                         }
                                     })
-                                    email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', 'email : ' + dentist.email + ' password : ' + unhashed_pwd, (err, info) => {
+                                    email.sendDefaultEmail(dentist.email, 'Your acount is created successfully, you need to click this link <a href="' + base_url + '/complete-setup/' + addresser + '">Click Here!</a>', (err, info) => {
                                         if (err) {
                                             console.log(err)
                                         }
@@ -556,6 +556,38 @@ router.post(v2 + '/register', (req, res) => {
         }
     })
 
+})
+
+router.post(v2 + '/authenticate', (req, res) => {
+    common_middleware(req, res, (err) => {
+
+        if (!err) {
+            fields_required = [
+                'addresser'
+            ]
+
+            post_data = req.body
+            Dentist.findOne({ 'addresser': post_data.addresser }, (err, dentist) => {
+                if (!helper.postQueryErrorOnly(err, res)) {
+                    //console.log(dentists)
+                    if (dentists.length == 0) {
+                        helper.sendError(res, 'Wrong/ Unknown Email or Password')
+                        return
+                    } else {
+                        new_token = helper.generateRandomString(15)
+                        dentist.access_token = new_token
+                        dentist.save((err, result) => {
+                            if (!helper.postQueryErrorOnly(err, res)) {
+                                dentist.pwd = null
+                                helper.sendSuccess(res, dentist)
+                                return
+                            }
+                        })
+                    }
+                }
+            })
+        }
+    })
 })
 
 router.post(v2 + '/pay-init', (req, res) => {
