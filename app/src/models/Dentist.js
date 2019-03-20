@@ -18,7 +18,8 @@ let DentistSchema = new Schema({
 	package: { type: Schema.Types.ObjectId, ref: 'Package' },
 	admins: [{ type: Schema.Types.ObjectId, ref: 'Admin' }],
 	template: { type: String, default: 'default' },
-	init_payment: { type: Boolean, default: false }
+	init_payment: { type: Boolean, default: false },
+	addresser: { type: String, required: false }
 }, { collection: 'dentists' });
 
 // Export the model
