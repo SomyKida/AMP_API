@@ -4,8 +4,8 @@ const assert = require('assert');
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
-var fs = require('fs');
 var passport = require('passport')
+const fs = require('fs-extra')
 
 /* Custom Imports */
 var consts = require(base_path + '/app/config/constants')
@@ -13,6 +13,7 @@ var Dentist = require(base_path + '/app/src/models/Dentist')
 var Admin = require(base_path + '/app/src/models/Admin')
 var PendingDentist = require(base_path + '/app/src/models/PendingDentist')
 var Package = require(base_path + '/app/src/models/Package')
+var Theme = require(base_path + '/app/src/models/Theme')
 var stripe = require(base_path + '/app/config/stripe')
 var messages = require(base_path + '/app/config/messages')
 var system = 'system'
@@ -452,9 +453,44 @@ router.post('/add-admins', (req, res) => {
 })
 
 
-router.post(v2 + '/login', (req, res) => {
+router.post('/login', (req, res) => {
+    var post_data = req.body
+    if (!helper.validateField(res, post_data, 'email', 'Email')) {
+        return
+    } if (!helper.validateField(res, post_data, 'pwd', 'Password')) {
+        return
+    }
 
+    Dentist.find({ 'email': post_data['email'] }, (err, dentists) => {
+        if (!helper.postQueryErrorOnly(err, res)) {
+            //console.log(dentists)
+            if (dentists.length == 0) {
+                helper.sendError(res, 'Wrong/ Unknown Email or Password')
+                return
+            } else {
+                dentist = dentists[0]
+                const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
+                //console.log(match)
+                //Hashed check here #TODO
+                if (match) {
+                    new_token = helper.generateRandomString(15)
+                    dentist.access_token = new_token
+                    dentist.save((err, result) => {
+                        if (!helper.postQueryErrorOnly(err, res)) {
+                            dentist.pwd = null
+                            helper.sendSuccess(res, dentist)
+                            return
+                        }
+                    })
+                } else {
+                    helper.sendError(res, 'Wrong/ Unknown Email or Password')
+                    return;
+                }
+            }
+        }
+    })
 })
+
 
 router.post(v2 + '/register', (req, res) => {
 
@@ -607,7 +643,8 @@ router.post(v2 + '/setup', (req, res) => {
         'address',
         'office_hours',
         'doctor_names',
-        'npi'
+        'npi',
+        'url'
     ]
     post_data = req.body
 
@@ -618,42 +655,99 @@ router.post(v2 + '/setup', (req, res) => {
 
     dentist_middlewareware(req, res, (err, dentist) => {
         if (!err) {
-            Theme.findById(post_data.theme_id, (err, theme) => {
-                if (!helper.postQueryErrorOnly(err, res)) {
-                    if (theme == null) {
-                        helper.sendError(res, "No such theme found")
-                        return
-                    } else {
+            if (dentist.first_setup != true) {
+                Theme.findById(post_data.theme_id, (err, theme) => {
+                    if (!helper.postQueryErrorOnly(err, res)) {
+                        if (theme == null) {
+                            helper.sendError(res, "No such theme found")
+                            return
+                        } else {
 
-                        dentist.selected_theme = post_data.theme_id
-                        dentist.office_hours = JSON.stringify(post_data.office_hours)
-                        dentist.practice_name = post_data.practice_name
-                        dentist.practice_email = post_data.practice_email
-                        dentist.practice_phone = post_data.practice_phone
-                        dentist.practice_address = post_data.practice_address
-                        dentist.npi = post_data.npi
-                        dentist.doctor_names = JSON.stringify(post_data.doctor_names)
-
-                        dentist.save((err) => {
-                            if (!helper.postQueryErrorOnly(err, null)) {
-                                dentist.pwd = null
-                                helper.sendSuccess(res, dentist)
-                                return
-                            }
-                        })
+                            Dentist.findOne({ 'url': post_data.url }, (err, url) => {
+                                if (!helper.postQueryErrorOnly(err, res)) {
+                                    if (url != null) {
+                                        helper.sendError(res, "This URL is already taken. Please select something different.")
+                                        return
+                                    } else {
+                                        dentist.selected_theme = post_data.theme_id
+                                        dentist.office_hours = JSON.stringify(post_data.office_hours)
+                                        dentist.practice_name = post_data.practice_name
+                                        dentist.practice_email = post_data.practice_email
+                                        dentist.practice_phone = post_data.practice_phone
+                                        dentist.practice_address = post_data.practice_address
+                                        dentist.npi = post_data.npi
+                                        dentist.url = post_data.url
+                                        dentist.doctor_names = JSON.stringify(post_data.doctor_names)
+                                        dentist.first_setup = true
+                                        dentist.save((err) => {
+                                            if (!helper.postQueryErrorOnly(err, null)) {
+                                                dentist.pwd = null
+                                                helper.sendSuccess(res, dentist)
+                                                return
+                                            }
+                                        })
+                                    }
+                                }
+                            })
+                        }
                     }
-                }
-            })
+                })
+            } else {
+                helper.sendError(res, "Your setup is already completed. Use PATCH endpoint to update information.")
+                return
+            }
 
-        } else {
-            helper.sendError(res, err)
-            return
         }
     })
 
 
 })
 
+router.post(v2 + '/set-theme', (req, res) => {
+
+    fields_required = [
+        'logo',
+        'banner'
+    ]
+    post_data = req.files
+
+    // TODO : PACKAGE ID VALIDATION FOR MONGOOSE 
+
+    if (!helper.validateFieldAuto(res, post_data, fields_required))
+        return
+
+    dentist_middlewareware(req, res, (err, dentist) => {
+        if (!err) {
+            fs.remove(base_path + '/domains/' + dentist.id, err => {
+                if (err) return console.error(err)
+                //add theme selection logic here
+                fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/assets')
+                fs.copy(base_path + '/dist', base_path + '/domains/' + dentist.id + '/app')
+                    .then(() => {
+                        req.files.logo.mv(base_path + '/domains/' + dentist.id + '/assets/logo.png', (err) => {
+                            if (err) {
+                                console.log(err)
+                                helper.sendError(res, err)
+                                return
+                            } else {
+                                req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
+                                    if (err) {
+                                        console.log(err)
+                                        helper.sendError(res, err)
+                                        return
+                                    }
+                                })
+                            }
+                        })
+                        console.log('success!')
+                        helper.sendSuccess(res, "Information received. Building.")
+                        return
+                    })
+                    .catch(err => console.error(err))
+            })
+        }
+    })
+})
 
 
 module.exports = router

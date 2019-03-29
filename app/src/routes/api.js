@@ -68,11 +68,13 @@ common_middleware = function (req, res, _callback) {
 }
 
 dentist_middlewareware = function (req, res, _callback) {
-    if (!req.headers.hasOwnProperty('content-type') || req.headers['content-type'] != 'application/json') {
-        helper.sendErrorWCode(res, "Unsupported Content Type. Please update request headers to application/json", 403)
-        _callback(401, null)
-        return
-    }
+    // if (!req.headers.hasOwnProperty('content-type') || req.headers['content-type'] != 'application/json') {
+    //     if (req.headers['content-type'] != 'multipart/form-data') {
+    //         helper.sendErrorWCode(res, "Unsupported Content Type. Please update request headers to application/json", 403)
+    //         _callback(401, null)
+    //         return
+    //     }
+    // }
     if (!req.headers.hasOwnProperty('authorization') || req.headers.authorization == '') {
         helper.sendErrorWCode(res, "No authorization found", 401)
         _callback(401, null)

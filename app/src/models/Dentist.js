@@ -21,6 +21,8 @@ let DentistSchema = new Schema({
 	template: { type: String, default: 'default' },
 	init_payment: { type: Boolean, default: false },
 	addresser: { type: String, required: false },
+	first_setup: { type: Boolean, default: false },
+	url: { type: String },
 	selected_theme: { type: Schema.Types.ObjectId, ref: 'Themes' }
 }, { collection: 'dentists' });
 
