@@ -131,7 +131,7 @@ app.get('/', function (req, res) {
     return;
 });
 
-app.get('/:url', function (req, res) {
+app.get('/:url/domain', function (req, res) {
     Dentist.findOne({ 'url': req.params.url }, (err, dentist) => {
         if (err || dentist == null) {
             res.send("not found")
@@ -142,7 +142,7 @@ app.get('/:url', function (req, res) {
     })
 })
 app.get('*.*', express.static(__dirname + '/dist'));
-
+app.get('*.*', express.static(__dirname + '/domains'));
 var port = config.PORT;
 var http = require('http').Server(app);
 
