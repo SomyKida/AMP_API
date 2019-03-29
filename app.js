@@ -84,8 +84,7 @@ var helper = require(helper_path + '/helper');
 global.helper = helper;
 var email = require(helper_path + '/email');
 global.email = email;
-var busboy = require('connect-busboy');
-app.use(busboy());
+
 // default options
 app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
