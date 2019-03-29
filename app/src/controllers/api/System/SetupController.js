@@ -8,11 +8,19 @@ var bcrypt = require('bcrypt');
 var fs = require('fs');
 
 /* Custom Imports */
-var Package = require('../../../models/Package')
+var Package = require(base_path + '/app/src/models/Package')
+var Theme = require(base_path + '/app/src/models/Theme')
 
 /* File Consts */
 var controller_name = 'setup';
 
+router.get('/json', (req, res) => {
+    if (req.query.msg == undefined) {
+        req.query.msg = ''
+    }
+
+    helper.sendError(res, req.query.msg)
+})
 router.get('/setup-db', (req, res) => {
 
     Package.deleteMany({}, (err) => {
@@ -20,7 +28,6 @@ router.get('/setup-db', (req, res) => {
     })
 
 })
-
 router.get('/get-packages', (req, res) => {
 
     Package.find({}, (err, result) => {
@@ -28,7 +35,6 @@ router.get('/get-packages', (req, res) => {
     })
 
 })
-
 router.post('/add-package', (req, res) => {
 
     var post_data = req.body
@@ -50,7 +56,28 @@ router.post('/add-package', (req, res) => {
     })
 
 })
+router.post('/add-theme', (req, res) => {
+    var post_data = req.body
 
+    if (!helper.validateField(res, post_data, 'name', 'Name'))
+        return
+
+    theme = new Theme({
+        'name': post_data.name,
+    })
+
+    theme.save((err, result) => {
+        helper.postQueryDefault(err, res, 'Theme inserted.')
+        return
+    })
+})
+router.get('/get-themes', (req, res) => {
+
+    Theme.find({}, (err, result) => {
+        helper.postQueryDefault(err, res, result)
+    })
+
+})
 
 
 module.exports = router

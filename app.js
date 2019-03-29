@@ -18,7 +18,9 @@ global.home_path = base_path + '/app/src/pages/index'
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database_mongoose')
 var stripe = require(base_path + '/app/config/stripe')
-
+var passport = require('passport')
+var strategies = require('./app/passports/strategies')
+var serializations = require('./app/passports/serializations')
 /* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
 //STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
 
@@ -87,6 +89,11 @@ app.use(fileUpload());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(require('serve-static')(__dirname + '/../../public'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');

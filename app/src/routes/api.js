@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var apiRoute = '';
 var apiControllerPath = base_path + '/app/src/controllers/api';
 var typeAuth = '/auth'
@@ -20,6 +19,10 @@ router.use(apiRoute + typeAdmin + typeAuth, require(apiControllerPath + typeAdmi
 router.use(apiRoute + typePatient + typeAuth, require(apiControllerPath + typePatient + '/AuthController'))
 router.use(apiRoute + typeSetup, require(apiControllerPath + typeSetup + '/SetupController'))
 /* Api Routes End */
+
+
+
+
 
 admin_middleware = function (req, res, _callback) {
     if (!req.headers.hasOwnProperty('content-type') || req.headers['content-type'] != 'application/json') {
