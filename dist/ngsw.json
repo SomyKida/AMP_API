@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1553627497205,
+  "timestamp": 1553900765492,
   "index": "./index.html",
   "assetGroups": [
     {
@@ -9,14 +9,17 @@
       "updateMode": "prefetch",
       "urls": [
         "./5.f7b9a384524e3eda0ca5.js",
+        "./6.5568202d0754b0a9c309.js",
+        "./7.bd7d2c93e6ccbd97af02.js",
+        "./8.9eabb7c97421e6fe6bfe.js",
         "./es2015-polyfills.c5dd28b362270c767b34.js",
         "./favicon.ico",
         "./index.html",
-        "./main.26950b061c86d272cf07.js",
+        "./main.0b544ef5adbecd8e8fee.js",
         "./polyfills.8bbb231b43165d65d357.js",
-        "./runtime.a36b18a268009d44fd94.js",
+        "./runtime.c57d2a3aecefb9dfe044.js",
         "./scripts.03e042f1f102bf0e2ed8.js",
-        "./styles.b3afbc62b24fdadb2729.css"
+        "./styles.a48c9140e09bcc6983bf.css"
       ],
       "patterns": []
     },
@@ -37,6 +40,8 @@
         "./assets/icons/icon-512x512.png",
         "./assets/icons/icon-72x72.png",
         "./assets/icons/icon-96x96.png",
+        "./assets/img/alita.png",
+        "./assets/img/alitaLogo.png",
         "./assets/img/back.png",
         "./assets/img/chat.png",
         "./assets/img/cross.png",
@@ -44,6 +49,7 @@
         "./assets/img/info.png",
         "./assets/img/logo.png",
         "./assets/img/marketing.png",
+        "./assets/img/multiply.png",
         "./assets/img/popular.png",
         "./assets/img/rating.png",
         "./assets/img/refer.png",
@@ -59,6 +65,9 @@
   "dataGroups": [],
   "hashTable": {
     "./5.f7b9a384524e3eda0ca5.js": "f667c5d92074f043a4e7518849ad040b96b4d551",
+    "./6.5568202d0754b0a9c309.js": "f4a15f631c88aa27f6ce09be89d5e7e3027ffc32",
+    "./7.bd7d2c93e6ccbd97af02.js": "33251f23ddc2556990040eafb73f2c680c079509",
+    "./8.9eabb7c97421e6fe6bfe.js": "9162c12b26c815eeca6dce40478c23632d94bb07",
     "./assets/fonts/ProximaNova-Regular.eot": "8669f4a518ed73695a575b20f1be682b86b97d87",
     "./assets/fonts/ProximaNova-Regular.svg": "0cbfd9811e820d5f89d01615472e0c2fbcf4da4c",
     "./assets/fonts/ProximaNova-Regular.ttf": "b39be6d1b45b0bc0ad73c5048cf2fb66424ddcc1",
@@ -71,6 +80,8 @@
     "./assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "./assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "./assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "./assets/img/alita.png": "111d705459173240596563c8ab3a3820ea113295",
+    "./assets/img/alitaLogo.png": "1e2b3d1a6d190f9f36cb01cb4aeb1457a04966c2",
     "./assets/img/back.png": "7e5a22a8f582c05fdc3b89d88aad5832eb0ea82f",
     "./assets/img/chat.png": "c2e0de31618243a912657a6de176d6a5f6f73c0d",
     "./assets/img/cross.png": "206d61f7085dded7e097f4cbb80e348fb83d3ce5",
@@ -78,6 +89,7 @@
     "./assets/img/info.png": "eb01264eaadcfdc4b3bac6db90a398760803fc52",
     "./assets/img/logo.png": "5b6e19f167890e37f86810a7efc5d14c773bed62",
     "./assets/img/marketing.png": "72b8fc49a786dfe47ac6fee5e875b90bfbf7c12a",
+    "./assets/img/multiply.png": "ffdce806d312b2a07aead8ae8631732a70d404a1",
     "./assets/img/popular.png": "b2de17af097d7c2dc512865c23df722e7360503a",
     "./assets/img/rating.png": "8192ba946925a7a4d3d1faf3ceba79d899dca409",
     "./assets/img/refer.png": "c5528f7eaf7d839a7385627f1fc42f8c7fd7d11f",
@@ -88,12 +100,12 @@
     "./assets/img/tick.png": "ddf3c18895b7c8468b8c71f5cdcc1939c76ecd69",
     "./es2015-polyfills.c5dd28b362270c767b34.js": "b7a81c61d32b0b12737f0c13f45973ba391cd7f9",
     "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "./index.html": "f0856f5d2c77f8de55e3b48a8d8a8e4395179074",
-    "./main.26950b061c86d272cf07.js": "dbc047cb872264902509bc59a1053e10eea45166",
+    "./index.html": "5961be5665d1c3ed71671aab01fb403bac67cdf8",
+    "./main.0b544ef5adbecd8e8fee.js": "7b017d59c7c822baebc88f50aef362f2f124d13a",
     "./polyfills.8bbb231b43165d65d357.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
-    "./runtime.a36b18a268009d44fd94.js": "63a1db617f025d84bf31a5b5997d39270808c053",
+    "./runtime.c57d2a3aecefb9dfe044.js": "f6a8d305115c4166e12be60a972fd4753fdb1289",
     "./scripts.03e042f1f102bf0e2ed8.js": "ba281a9af413e5f1a813cfd2d8b99dc9a0245b32",
-    "./styles.b3afbc62b24fdadb2729.css": "074a9035cce3dcff17d531e01bbab729c83114ca"
+    "./styles.a48c9140e09bcc6983bf.css": "3e530c9e406b6e4d347184f56cf4dbf149f8f241"
   },
   "navigationUrls": [
     {
