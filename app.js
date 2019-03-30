@@ -18,11 +18,13 @@ global.home_path = base_path + '/app/src/pages/index'
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database_mongoose')
 var stripe = require(base_path + '/app/config/stripe')
-
+var passport = require('passport')
+var strategies = require('./app/passports/strategies')
+var serializations = require('./app/passports/serializations')
 /* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
 //STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
 
-
+var Dentist = require('./app/src/models/Dentist')
 
 database.connect_database((err, connection) => {
     if (connection) {
@@ -82,15 +84,19 @@ var helper = require(helper_path + '/helper');
 global.helper = helper;
 var email = require(helper_path + '/email');
 global.email = email;
+
 // default options
 app.use(fileUpload());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(require('serve-static')(__dirname + '/../../public'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
 /* Define global values for views */
 app.locals.assets_url = assets_url;
 app.locals.base_url = base_url;
@@ -125,8 +131,18 @@ app.get('/', function (req, res) {
     return;
 });
 
+app.get('/:url/domain', function (req, res) {
+    Dentist.findOne({ 'url': req.params.url }, (err, dentist) => {
+        if (err || dentist == null) {
+            res.send("not found")
+        } else {
+            res.sendFile(__dirname + '/domains/' + dentist.id + '/app/index.html')
+            return
+        }
+    })
+})
 app.get('*.*', express.static(__dirname + '/dist'));
-
+app.get('*.*', express.static(__dirname + '/domains'));
 var port = config.PORT;
 var http = require('http').Server(app);
 
