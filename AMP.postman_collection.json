@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "59319dff-1958-4c43-a563-9f14dc3e0fc7",
+		"name": "AMP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "{{url}}/api/setup/setup-db",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/setup/setup-db",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"setup",
+								"setup-db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/setup/get-packages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/system/get-packages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"get-packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/setup/add-package",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"TestPackage4\",\n\t\"price\": \"50\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/setup/add-package",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"setup",
+								"add-package"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/system/add-theme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Theme1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/system/add-theme",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"add-theme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/system/get-themes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/system/get-themes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"get-themes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dentists",
+			"item": [
+				{
+					"name": "{{url}}/api/auth/dentist/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"enigcreator@gmail.com\",\n\t\"package\":\"5c7d84289757a441a5b38677\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/pre-register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"pre-register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/pay/5c7ec6a496eadb6e58d44565",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"card_number\"\t\t: \"4242424242424242\",\n\t\"card_expiry_month\" : \"12\",\n\t\"card_expiry_year\"\t: \"19\",\n\t\"card_cvc\"\t\t\t: \"123\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/pay/5c7ed71a406db1755724c894",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"pay",
+								"5c7ed71a406db1755724c894"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/reset-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"enigcreator@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/reset-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/dashboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "6N6nl6f3ZWFg84o1551816631393",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0c8e06e-eeb4-4c15-8b88-dc43c081e4d5",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"enigcreator@gmail.com\",\n\t\"pwd\"\t: \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/setup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"company_name\" : \"Tesla Inc.\",\n\t\"company_phone\" : \"+11231231223\",\n\t\"office_address\" : \"Street 9, Venus Colony, Jupiter 122, Mars\",\n\t\"hours\" : [\n\t\t{\"Monday\" : \"09:00-12:00\"},\n\t\t{\"Tuesday\" : \"09:00-12:00\"}\n\t\t],\n\t\"pwd\": \"12345678\",\n\t\"conf_pwd\": \"12345678\",\n\t\"rcry_email\" : \"jellyOrange@gmail.com\",\n\t\"other_email\" : \"PurpleCandyBar@gmail.com\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/setup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"setup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/add-admins",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"admins\" : [\n\t\t\t{\n\t\t\t\t\"email\" \t  : \"amp.email.bot@gmail.com\",\n\t\t\t\t\"designation\" : \"PDentist\",\n\t\t\t\t\"first_name\"  : \"The\",\n\t\t\t\t\"last_name\"\t  : \"Runaway Bride\",\n\t\t\t\t\"pwd\"\t\t  : \"12345678\",\n\t\t\t\t\"conf_pwd\"\t  : \"1235678\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"email\" \t  : \"email.amp.bot@gmail.com\",\n\t\t\t\t\"designation\" : \"PDentist\",\n\t\t\t\t\"first_name\"  : \"The\",\n\t\t\t\t\"last_name\"\t  : \"Runaway Bride 2\",\n\t\t\t\t\"pwd\"\t\t  : \"12345678\",\n\t\t\t\t\"conf_pwd\"\t  : \"1235678\"\n\t\t\t}\n\t\t]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/add-admins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"add-admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/v2/pay-init",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"lukeharvardcp1234@gmail.com\",\n\t\"card_number\"\t: \"4242424242424242\",\n\t\"card_expiry_year\" : \"2020\",\n\t\"card_expiry_month\" : \"12\",\n\t\"card_cvc\"\t: \"123\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/v2/pay-init",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"v2",
+								"pay-init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/v2/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Harry Maxwell\",\n\t\"address\" : \"California\",\n\t\"unit\" : \"123\",\n\t\"zip\" : \"123\",\n\t\"email\" : \"lukeharvardcp12354@gmail.com\",\n\t\"phone\" : \"123123123\",\n\t\"package\" : \"5c7d80eacdfe5c4078983c1c\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/v2/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"v2",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/dentist/auth/v2/setup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"theme_id\":\"5c9e753da7953e3028adc5d3\",\n\t\"phone\":\"12345678\",\n\t\"name\":\"Harry - The Nutritionist\",\n\t\"email\":\"harry@maxwell.com\",\n\t\"address\":\"12345678987654321\",\n\t\"office_hours\" : [\n\t\t{\"Monday\" : \"01:00-12:00\"},\n\t\t{\"Tuesday\" : \"09:00-12:00\"}\n\t],\n\t\"doctor_names\": [\"Luke\", \"Brett\", \"Keeano\"],\n\t\"npi\" : \"123\",\n\t\"url\" : \"harry\"\n\t\t\n\t\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/dentist/auth/v2/setup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dentist",
+								"auth",
+								"v2",
+								"setup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "{{url}}/api/admin/auth/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c032b0cb-e4fd-4fbc-8204-e0b3aba0011b",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token_admin\", jsonData.data.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"email.amp.bot@gmail.com\",\n\t\"pwd\"\t: \"AZ0k5Dux1551902603790\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patients",
+			"item": []
+		}
+	]
+}
