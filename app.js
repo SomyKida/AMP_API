@@ -131,6 +131,11 @@ app.get('/', function (req, res) {
     return;
 });
 
+app.get('/open-payment', function (req, res) {
+    res.sendFile(__dirname + '/dist/index.html')
+    return;
+});
+
 app.get('/:url/domain', function (req, res) {
     Dentist.findOne({ 'url': req.params.url }, (err, dentist) => {
         if (err || dentist == null) {

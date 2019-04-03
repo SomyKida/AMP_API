@@ -10,6 +10,9 @@ var fs = require('fs');
 /* Custom Imports */
 var Package = require(base_path + '/app/src/models/Package')
 var Theme = require(base_path + '/app/src/models/Theme')
+var ServiceProvider = require(base_path + '/app/src/models/ServiceProvider')
+var ServiceRequest = require(base_path + '/app/src/models/ServiceRequest')
+
 
 /* File Consts */
 var controller_name = 'setup';
@@ -77,6 +80,46 @@ router.get('/get-themes', (req, res) => {
         helper.postQueryDefault(err, res, result)
     })
 
+})
+router.post('/add-service', (req, res) => {
+    var post_data = req.body
+
+    if (!helper.validateField(res, post_data, 'name', 'Name'))
+        return
+
+    service = new ServiceProvider({
+        'name': post_data.name,
+    })
+
+    service.save((err, result) => {
+        helper.postQueryDefault(err, res, 'Service Provider inserted.')
+        return
+    })
+})
+router.get('/get-services', (req, res) => {
+
+    ServiceProvider.find({}, (err, result) => {
+        helper.postQueryDefault(err, res, result)
+    })
+
+})
+router.post('/add-service-request', (req, res) => {
+    var post_data = req.body
+
+    if (!helper.validateField(res, post_data, 'name', 'Name'))
+        return
+    if (!helper.validateField(res, post_data, 'email', 'Email'))
+        return
+
+    service = new ServiceRequest({
+        'name': post_data.name,
+        'email': post_data.email,
+    })
+
+    service.save((err, result) => {
+        helper.postQueryDefault(err, res, 'Feedback Saved.')
+        return
+    })
 })
 
 

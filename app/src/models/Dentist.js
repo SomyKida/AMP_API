@@ -16,13 +16,17 @@ let DentistSchema = new Schema({
 	npi: { type: Number, required: false, default: 0 },
 	access_token: { type: String, required: false, max: 30 },
 	first_ready: { type: Boolean, required: true, default: false },
-	package: { type: Schema.Types.ObjectId, ref: 'Package' },
+	//package: { type: Schema.Types.ObjectId, ref: 'Package' },
+	service_provider: { type: Schema.Types.ObjectId, ref: 'ServiceProvider' },
+	package: { type: String, enum: ['PRO', 'LITE'], required: true },
 	admins: [{ type: Schema.Types.ObjectId, ref: 'Admin' }],
 	template: { type: String, default: 'default' },
 	init_payment: { type: Boolean, default: false },
 	addresser: { type: String, required: false },
 	first_setup: { type: Boolean, default: false },
 	url: { type: String },
+	email_verified: { type: Boolean, default: false },
+	temp_token: { type: String, max: 100 },
 	selected_theme: { type: Schema.Types.ObjectId, ref: 'Themes' }
 }, { collection: 'dentists' });
 

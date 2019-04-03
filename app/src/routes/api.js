@@ -88,14 +88,7 @@ dentist_middlewareware = function (req, res, _callback) {
                 _callback(440, null)
                 return
             } else {
-                if (dentist.first_ready == false) {
-                    helper.sendError(res, "Account already set up. Please use /update endpoint.")
-                    _callback('Already set up', null)
-                    return
-                } else {
-                    _callback(null, dentist)
-                    return
-                }
+                _callback(null, dentist)
             }
         }
     })
