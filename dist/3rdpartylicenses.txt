@@ -90,7 +90,13 @@ THE SOFTWARE.
 
 @angular/material/button
 
+@angular/material/core
+
 @angular/material/dialog
+
+@angular/material/list
+
+@angular/material/progress-spinner
 
 @angular/material/tabs
 
