@@ -228,6 +228,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "[DANGER] Remove a Dentist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"1234@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/system/remove-dentist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"remove-dentist"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "1234@gmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
