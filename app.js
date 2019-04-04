@@ -126,12 +126,12 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 /* Set static links to use uploads */
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
-app.get('/', function (req, res) {
+app.get('/#/plan/:token', function (req, res) {
     res.sendFile(__dirname + '/dist/index.html')
     return;
 });
 
-app.get('/open-payment', function (req, res) {
+app.get('/pay/:token', function (req, res) {
     res.sendFile(__dirname + '/dist/index.html')
     return;
 });
