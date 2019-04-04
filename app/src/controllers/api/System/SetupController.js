@@ -9,6 +9,7 @@ var fs = require('fs');
 
 /* Custom Imports */
 var Package = require(base_path + '/app/src/models/Package')
+var Dentist = require(base_path + '/app/src/models/Dentist')
 var Theme = require(base_path + '/app/src/models/Theme')
 var ServiceProvider = require(base_path + '/app/src/models/ServiceProvider')
 var ServiceRequest = require(base_path + '/app/src/models/ServiceRequest')
@@ -121,6 +122,20 @@ router.post('/add-service-request', (req, res) => {
         return
     })
 })
+router.post('/remove-dentist', (req, res) => {
+    var post_data = req.body
 
+    if (!helper.validateField(res, post_data, 'email', 'Email'))
+        return
+
+    Dentist.remove({ 'email': post_data.email }, (err) => {
+        if (err)
+            console.log(err)
+        else {
+            helper.sendError(res, "If email existed before, it doesn't now")
+            return
+        }
+    })
+})
 
 module.exports = router
