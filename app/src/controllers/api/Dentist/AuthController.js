@@ -824,7 +824,7 @@ router.post(v3 + '/register', (req, res) => {
                                             helper.sendSuccess(res, dentist)
                                         }
                                     })
-                                    email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/open-payment?token=' + token, (err, info) => {
+                                    email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan?token=' + token, (err, info) => {
                                         if (err) {
                                             console.log(err)
                                         }
