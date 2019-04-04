@@ -131,7 +131,7 @@ app.get('/#/plan/:token', function (req, res) {
     return;
 });
 
-app.get('/pay/:token', function (req, res) {
+app.get('/', function (req, res) {
     res.sendFile(__dirname + '/dist/index.html')
     return;
 });
