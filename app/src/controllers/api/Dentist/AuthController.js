@@ -803,7 +803,7 @@ router.post(v3 + '/register', (req, res) => {
                                 } else {
                                     pwd = bcrypt.hashSync(post_data.pwd, 10)
                                     token = helper.generateRandomString(5)
-                                    token = bcrypt.hashSync(token, 10)
+
                                     dentist = new Dentist({
                                         'email': post_data.email,
                                         'address': post_data.address,
