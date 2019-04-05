@@ -797,13 +797,13 @@ router.post(v3 + '/register', (req, res) => {
 
                         ServiceProvider.findById(post_data.service_provider, (err, service_provider) => {
                             if (!helper.postQueryErrorOnly(err, res)) {
-                                if (service_provider == null) {
+                                if (service_provider == null && post_data.package == "PRO") {
                                     helper.sendError(res, "No such service provider found")
                                     return
                                 } else {
                                     pwd = bcrypt.hashSync(post_data.pwd, 10)
                                     token = helper.generateRandomString(5)
-
+                                    access_token = helper.generateRandomString(15)
                                     dentist = new Dentist({
                                         'email': post_data.email,
                                         'address': post_data.address,
@@ -815,7 +815,8 @@ router.post(v3 + '/register', (req, res) => {
                                         'first_ready': false,
                                         'pwd': pwd,
                                         'service_provider': post_data.service_provider,
-                                        'temp_token': token
+                                        'access_token': access_token,
+                                        'email_verified': true
 
                                     })
 
@@ -824,11 +825,11 @@ router.post(v3 + '/register', (req, res) => {
                                             helper.sendSuccess(res, dentist)
                                         }
                                     })
-                                    email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan/' + token, (err, info) => {
-                                        if (err) {
-                                            console.log(err)
-                                        }
-                                    })
+                                    // email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan/' + token, (err, info) => {
+                                    //     if (err) {
+                                    //         console.log(err)
+                                    //     }
+                                    // })
                                     return
                                 }
                             }
