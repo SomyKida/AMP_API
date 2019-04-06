@@ -1,6 +1,6 @@
 {
-  "name": "apm",
-  "short_name": "apm",
+  "name": "amp",
+  "short_name": "amp",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
