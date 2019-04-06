@@ -37,6 +37,7 @@
   </button>
   <button class="options" (click)="goTo('login')" mat-button>
     <img src="assets/img/refer.png" alt="">
-    <p [ngClass]="{'highlighted': currentPage == '/login'}">Login</p>
+    <p [ngClass]="{'highlighted': currentPage == '/login'}" *ngIf="token == null">Login</p>
+    <p *ngIf="token != null">Logout</p>
   </button>
 </div>

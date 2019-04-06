@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public botOrManual: boolean = true;
-  constructor() { }
+  public user;
+  constructor() {
+    this.user = localStorage.getItem('token');
+  }
 
   ngOnInit() {
   }

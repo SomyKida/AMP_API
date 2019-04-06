@@ -57,30 +57,30 @@ export class PlanComponent implements OnInit {
     public router: Router) { }
 
   ngOnInit() {
-    this.userFromUrl = this.extractor.snapshot.paramMap.get('token');
-    if (this.userFromUrl) {
-      this.wait = true;
-      var params = {
-        token: this.userFromUrl
-      }
-      this.auth.authenticateToken(params).subscribe((success) => {
-        localStorage.setItem('token', success.data.access_token);
-        this.wait = false;
-        this.user = success.data;
-        this.selectedPlan = {
-          plan: {
-            name: success.data.package
-          },
-          message: 'User has already signed up, So no need to worry for plan'
-        }
-        this.hasSignedUp = true;
-        this.selectedTab = 1;
-      }, (error) => {
-        this.wait = false;
-        this.aux.errorResponse(error);
-      })
+    // this.userFromUrl = this.extractor.snapshot.paramMap.get('token');
+    // if (this.userFromUrl) {
+    //   this.wait = true;
+    //   var params = {
+    //     token: this.userFromUrl
+    //   }
+    //   this.auth.authenticateToken(params).subscribe((success) => {
+    //     localStorage.setItem('token', success.data.access_token);
+    //     this.wait = false;
+    //     this.user = success.data;
+    //     this.selectedPlan = {
+    //       plan: {
+    //         name: success.data.package
+    //       },
+    //       message: 'User has already signed up, So no need to worry for plan'
+    //     }
+    //     this.hasSignedUp = true;
+    //     this.selectedTab = 1;
+    //   }, (error) => {
+    //     this.wait = false;
+    //     this.aux.errorResponse(error);
+    //   })
 
-    }
+    // }
   }
 
   register(plan) {
@@ -189,9 +189,15 @@ export class PlanComponent implements OnInit {
       pwd: this.user.pass,
       conf_pwd: this.user.conPass
     }
-    params['service_provider'] = this.selectedPlan.provider._id;
-    this.auth.signUp(params).subscribe((user) => {
-      this.aux.showAlert("Please check your email for completing furthur steps.", "Successfully Registered!!")
+    if (this.selectedPlan.provider)
+      params['service_provider'] = this.selectedPlan.provider._id;
+    this.auth.signUp(params).subscribe((success) => {
+      // this.aux.showAlert("Please check your email for completing furthur steps.", "Successfully Registered!!")
+      localStorage.setItem('token', success.data.access_token);
+      localStorage.setItem('user', JSON.stringify(success.data));
+      this.user = success.data;
+      this.hasSignedUp = true;
+      this.selectedTab = 1;
     }, (error) => {
       this.aux.errorResponse(error);
     })

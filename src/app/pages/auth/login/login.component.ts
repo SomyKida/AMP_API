@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
       pwd: this.user.password
     }
     this.auth.login(params).subscribe((success) => {
+      localStorage.setItem('user', JSON.stringify(success.data));
       this.router.navigate(['/home'])
     }, (error) => {
       this.aux.errorResponse(error);

@@ -17,7 +17,7 @@
           <div class="form-row">
             <div class="form-one-col">
               <label>Phone</label>
-              <input type="number" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+              <input type="text" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
           </div>
           <div class="form-row">
@@ -68,7 +68,7 @@
           <div class="form-row">
             <div class="form-two-col">
               <label>NPI</label>
-              <input type="number" [(ngModel)]="stepTwo.npi" name="npi" (ngModelChange)="changeInFields('address')" />
+              <input type="text" [(ngModel)]="stepTwo.npi" name="npi" (ngModelChange)="changeInFields('address')" />
             </div>
             <div class="form-two-col">
               <label>Authorization Credentials</label>
@@ -81,7 +81,8 @@
               <input type="text" name="token" [(ngModel)]="stepTwo.token" (ngModelChange)="changeInFields('email')" />
             </div>
           </div>
-          <button class="blue-btn" (click)="update()" mat-raised-button>Done</button>
+          <button class="add-doc" (click)="selectTheme()" mat-raised-button>Select Theme</button>
+          <button class="blue-btn" (click)="update()" mat-raised-button>NEXT</button>
         </ng-container>
         <!-- <ng-container *ngIf="selectedTab == 2">
           <div class="form-row">

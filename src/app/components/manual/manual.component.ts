@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AuxService } from 'src/app/auxilaries/aux.service';
+import { MatDialog } from '@angular/material';
+import { ThemesComponent } from '../modals/themes/themes.component';
 
 @Component({
   selector: 'app-manual',
@@ -40,7 +42,7 @@ export class ManualComponent implements OnInit {
         closeTime: ''
       },
       {
-        day: 'Firday',
+        day: 'Friday',
         openTime: '',
         lunchTime: '',
         closeTime: ''
@@ -75,6 +77,7 @@ export class ManualComponent implements OnInit {
 
   constructor(public loc: Location,
     public aux: AuxService,
+    public dialog: MatDialog,
     public auth: AuthService) { }
 
   ngOnInit() {
@@ -82,6 +85,10 @@ export class ManualComponent implements OnInit {
 
   toStep(which) {
     this.selectedTab = which;
+  }
+
+  selectTheme() {
+    const dialogRef = this.dialog.open(ThemesComponent, {});
   }
 
   previous() {

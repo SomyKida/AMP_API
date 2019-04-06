@@ -9,7 +9,10 @@ import { Location } from '@angular/common';
 })
 export class SideBarComponent implements OnInit {
   public currentPage = '';
-  constructor(public router: Router, public loc: Location) { }
+  public token;
+  constructor(public router: Router, public loc: Location) {
+    this.token = localStorage.getItem('token');
+  }
 
   ngOnInit() {
     this.currentPage = this.loc.path();

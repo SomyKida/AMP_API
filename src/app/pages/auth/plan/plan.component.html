@@ -37,37 +37,37 @@
             <div class="form-row">
               <div class="form-one-col">
                 <label>NAME</label>
-                <input type="text" [(ngModel)]="user.name" (ngModelChange)="changeInFields('name')" name="name" [ngClass]="{'active': user.name != '', 'error':userFldsVlds.name == true}" />
+                <input type="text" [(ngModel)]="user.name" autocomplete="off" (ngModelChange)="changeInFields('name')" name="name" [ngClass]="{'active': user.name != '', 'error':userFldsVlds.name == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>ADDRESS</label>
-                <input type="text" [(ngModel)]="user.address" name="address" (ngModelChange)="changeInFields('address')" [ngClass]="{'active': user.address != '','error':userFldsVlds.address == true}" />
+                <input type="text" [(ngModel)]="user.address" autocomplete="off" name="address" (ngModelChange)="changeInFields('address')" [ngClass]="{'active': user.address != '','error':userFldsVlds.address == true}" />
               </div>
               <div class="form-two-col">
                 <label>ZIPCODE</label>
-                <input type="text" [(ngModel)]="user.zipcode" name="zip" (ngModelChange)="changeInFields('zipcode')" [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
+                <input type="text" [(ngModel)]="user.zipcode" autocomplete="off" name="zip" (ngModelChange)="changeInFields('zipcode')" [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>EMAIL</label>
-                <input type="text" name="email" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" [ngClass]="{'active': user.email != '','error':userFldsVlds.email == true}" />
+                <input type="text" name="email" [(ngModel)]="user.email" autocomplete="off" (ngModelChange)="changeInFields('email')" [ngClass]="{'active': user.email != '','error':userFldsVlds.email == true}" />
               </div>
               <div class="form-two-col">
                 <label>PHONE #</label>
-                <input type="number" [(ngModel)]="user.phoneNo" name="phone" (ngModelChange)="changeInFields('phoneNo')" [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
+                <input type="number" [(ngModel)]="user.phoneNo" autocomplete="off" name="phone" (ngModelChange)="changeInFields('phoneNo')" [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>PASSWORD</label>
-                <input type="password" name="email" [(ngModel)]="user.pass" (ngModelChange)="changeInFields('pass')" [ngClass]="{'active': user.pass != '','error':userFldsVlds.pass == true}" />
+                <input type="password" name="email" [(ngModel)]="user.pass" autocomplete="off" (ngModelChange)="changeInFields('pass')" [ngClass]="{'active': user.pass != '','error':userFldsVlds.pass == true}" />
               </div>
               <div class="form-two-col">
                 <label>CONFIRM PASSWORD</label>
-                <input type="password" [(ngModel)]="user.conPass" name="phone" (ngModelChange)="changeInFields('conPass')" [ngClass]="{'active': (user.conPass != '' && user.conPass != null),'error':userFldsVlds.conPass == true}" />
+                <input type="password" [(ngModel)]="user.conPass" name="phone" autocomplete="off" (ngModelChange)="changeInFields('conPass')" [ngClass]="{'active': (user.conPass != '' && user.conPass != null),'error':userFldsVlds.conPass == true}" />
               </div>
             </div>
             <button class="blue-btn" mat-raised-button (click)="signUp()">NEXT</button>
@@ -76,23 +76,23 @@
             <div class="form-row">
               <div class="form-one-col">
                 <label>NAME ON CARD</label>
-                <input type="text" [(ngModel)]="billing.name" (ngModelChange)="changeInFields('cardname')" name="name" [ngClass]="{'active': billing.name != '','error':billfldsVld.name == true}" />
+                <input type="text" [(ngModel)]="billing.name" autocomplete="off" (ngModelChange)="changeInFields('cardname')" name="name" [ngClass]="{'active': billing.name != '','error':billfldsVld.name == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-one-col">
                 <label>Card Number</label>
-                <input type="number" max="16" [(ngModel)]="billing.number" (ngModelChange)="changeInFields('cardnumber')" name="unit" [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
+                <input type="text" maxlength="16" [(ngModel)]="billing.number" autocomplete="off" (ngModelChange)="changeInFields('cardnumber')" name="unit" [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>Expiration Date</label>
-                <input type="month" [(ngModel)]="billing.expiry" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}" />
+                <input type="month" [(ngModel)]="billing.expiry" autocomplete="off" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}" />
               </div>
               <div class="form-two-col">
                 <label>CVC</label>
-                <input type="number" name="cvc" maxlength="4" [(ngModel)]="billing.cvc" (ngModelChange)="changeInFields('cardcvc')" [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null),'error':billfldsVld.cvc == true}" />
+                <input type="text" name="cvc" maxlength="4" autocomplete="off" [(ngModel)]="billing.cvc" (ngModelChange)="changeInFields('cardcvc')" [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null),'error':billfldsVld.cvc == true}" />
               </div>
             </div>
             <button class="blue-btn" mat-raised-button (click)="billMe()">NEXT</button>
