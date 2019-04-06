@@ -27,11 +27,11 @@ var serializations = require('./app/passports/serializations')
 var Dentist = require('./app/src/models/Dentist')
 
 database.connect_database((err, connection) => {
-    if (connection) {
-        global.connection = connection
-    } else {
-        global.connection = null
-    }
+  if (connection) {
+    global.connection = connection
+  } else {
+    global.connection = null
+  }
 });
 
 global.httpRequest = require('request');
@@ -54,11 +54,11 @@ global.publicIp = require('public-ip');
 app.use(require('cookie-parser')());
 var session = require('express-session');
 app.use(session({
-    secret: 'codingPixel12345',
-    saveUninitialized: false, resave: false
-    // cookie: {
-    // 	maxAge : 1000*60*60*24*365
-    // }
+  secret: 'codingPixel12345',
+  saveUninitialized: false, resave: false
+  // cookie: {
+  // 	maxAge : 1000*60*60*24*365
+  // }
 }));
 
 /* TO FETCH BROWSER INFORMATION * /
@@ -66,14 +66,14 @@ global.useragent = require('express-useragent');
 
 /* Get Request Url Middleware - start */
 app.use(function (req, res, next) {
-    var current_url = req.protocol + '://' + req.get('host');
-    base_url = current_url;
-    /* Define global values for views */
-    app.locals.assets_url = base_url + '/assets';
-    app.locals.base_url = base_url;
-    // app.locals.session	  = req.session;
+  var current_url = req.protocol + '://' + req.get('host');
+  base_url = current_url;
+  /* Define global values for views */
+  app.locals.assets_url = base_url + '/assets';
+  app.locals.base_url = base_url;
+  // app.locals.session	  = req.session;
 
-    next();
+  next();
 });
 /* Get Request Url Middleware - end */
 
@@ -103,9 +103,9 @@ app.locals.base_url = base_url;
 
 /* Allow Cross Origin Requests */
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 /* INCLUDE MODELS AFTER THIS */
@@ -126,25 +126,20 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 /* Set static links to use uploads */
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
-app.get('/#/plan/:token', function (req, res) {
-    res.sendFile(__dirname + '/dist/index.html')
-    return;
-});
-
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/dist/index.html')
-    return;
+  res.sendFile(__dirname + '/dist/amp/index.html')
+  return;
 });
 
 app.get('/:url/domain', function (req, res) {
-    Dentist.findOne({ 'url': req.params.url }, (err, dentist) => {
-        if (err || dentist == null) {
-            res.send("not found")
-        } else {
-            res.sendFile(__dirname + '/domains/' + dentist.id + '/app/index.html')
-            return
-        }
-    })
+  Dentist.findOne({ 'url': req.params.url }, (err, dentist) => {
+    if (err || dentist == null) {
+      res.send("not found")
+    } else {
+      res.sendFile(__dirname + '/domains/' + dentist.id + '/app/index.html')
+      return
+    }
+  })
 })
 app.get('*.*', express.static(__dirname + '/dist'));
 app.get('*.*', express.static(__dirname + '/domains'));
@@ -152,5 +147,5 @@ var port = config.PORT;
 var http = require('http').Server(app);
 
 http.listen(port, function () {
-    console.log('Server Started listening on port: ' + port);
+  console.log('Server Started listening on port: ' + port);
 });

@@ -1,9 +1,10 @@
 {
-  "name": "AMP",
+  "name": "amp",
   "version": "0.0.1",
+  "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
