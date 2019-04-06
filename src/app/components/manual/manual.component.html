@@ -81,7 +81,7 @@
               <input type="text" name="token" [(ngModel)]="stepTwo.token" (ngModelChange)="changeInFields('email')" />
             </div>
           </div>
-          <button class="add-doc" (click)="selectTheme()" mat-raised-button>Select Theme</button>
+          <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
           <button class="blue-btn" (click)="update()" mat-raised-button>NEXT</button>
         </ng-container>
         <!-- <ng-container *ngIf="selectedTab == 2">

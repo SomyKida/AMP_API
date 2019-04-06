@@ -141,7 +141,7 @@ app.get('/:url/domain', function (req, res) {
     }
   })
 })
-app.get('*.*', express.static(__dirname + '/dist'));
+app.get('*.*', express.static(__dirname + '/dist/amp'));
 app.get('*.*', express.static(__dirname + '/domains'));
 var port = config.PORT;
 var http = require('http').Server(app);

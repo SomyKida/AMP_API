@@ -74,6 +74,7 @@ export class ManualComponent implements OnInit {
     token: ''
   }
   selectedTab: number = 0;
+  public selectedTheme = 'Select Theme';
 
   constructor(public loc: Location,
     public aux: AuxService,
@@ -89,6 +90,14 @@ export class ManualComponent implements OnInit {
 
   selectTheme() {
     const dialogRef = this.dialog.open(ThemesComponent, {});
+    dialogRef.afterClosed().subscribe((theme) => {
+      if (theme == 1)
+        this.selectedTheme = "Theme 1";
+      if (theme == 2)
+        this.selectedTheme = "Theme 2";
+      if (theme == 3)
+        this.selectedTheme = "Theme 3";
+    })
   }
 
   previous() {

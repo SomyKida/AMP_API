@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
   public botOrManual: boolean = true;
   public user;
   constructor() {
-    this.user = localStorage.getItem('token');
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit() {

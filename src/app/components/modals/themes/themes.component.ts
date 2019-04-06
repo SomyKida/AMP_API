@@ -12,7 +12,7 @@ export class ThemesComponent implements OnInit {
 
   ngOnInit() {
   }
-  thisIs(provider) {
-    this.dialogRef.close();
+  thisIs(which) {
+    this.dialogRef.close(which);
   }
 }
