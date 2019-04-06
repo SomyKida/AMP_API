@@ -643,7 +643,7 @@ router.post(v2 + '/setup', (req, res) => {
         'office_hours',
         'doctor_names',
         'npi',
-        'url'
+        // 'url'
     ]
     post_data = req.body
 
@@ -664,7 +664,7 @@ router.post(v2 + '/setup', (req, res) => {
 
                             Dentist.findOne({ 'url': post_data.url }, (err, url) => {
                                 if (!helper.postQueryErrorOnly(err, res)) {
-                                    if (url != null) {
+                                    if (url != null && 1 > 3) {
                                         helper.sendError(res, "This URL is already taken. Please select something different.")
                                         return
                                     } else {
