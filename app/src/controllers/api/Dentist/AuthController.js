@@ -635,7 +635,7 @@ router.post(v2 + '/pay-init', (req, res) => {
 
 router.post(v2 + '/setup', (req, res) => {
     fields_required = [
-        'theme_id',
+        // 'theme_id',
         'phone',
         'name',
         'email',
@@ -657,7 +657,7 @@ router.post(v2 + '/setup', (req, res) => {
             if (dentist.first_setup != true) {
                 Theme.findById(post_data.theme_id, (err, theme) => {
                     if (!helper.postQueryErrorOnly(err, res)) {
-                        if (theme == null) {
+                        if (theme == null && 1 > 3) {
                             helper.sendError(res, "No such theme found")
                             return
                         } else {
