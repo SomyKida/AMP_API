@@ -10,17 +10,20 @@
         </span>
       </div>
       <div class="form-area">
-        <h3>Login to your dashboard!</h3>
+        <div class="logoWithHeading">
+          <span class="logo"></span>
+          <h3>Login to your dashboard!</h3>
+        </div>
         <form>
           <div class="form-row">
             <div class="form-two-col">
               <div class="cus-inp-row">
                 <label>Email</label>
-                <input type="text" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
+                <input type="text" autocomplete="off" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
               </div>
               <div class="cus-inp-row">
                 <label>Password</label>
-                <input type="password" [(ngModel)]="user.password" (ngModelChange)="changeInFields('pass')" name="unit" [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
+                <input type="password" autocomplete="off" [(ngModel)]="user.password" (ngModelChange)="changeInFields('pass')" name="unit" [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
               </div>
               <div class="cus-check-row">
                 <input type="checkbox" id="cus-check" />

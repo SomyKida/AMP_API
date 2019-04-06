@@ -50,8 +50,8 @@
 
                 h1 {
                     margin: 0;
-                    font-size: 50px;
-                    color: #000;
+                    font-size: 52px;
+                    font-family: 'ProximaNova-Bold';
 
                     @media (max-width: 1100px) {
                         font-size: 30px;
@@ -60,8 +60,9 @@
 
                 h2 {
                     margin: 0;
-                    font-size: 30px;
-                    color: rgb(74, 74, 74);
+                    font-size: 24px;
+                    font-family: 'ProximaNova-Light';
+                    color: $headingNormColor;
 
                     @media (max-width: 1100px) {
                         font-size: 22px;

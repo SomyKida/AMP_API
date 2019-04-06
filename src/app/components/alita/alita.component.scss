@@ -26,17 +26,17 @@
             border-right: 2px solid #ececec;
 
             .face {
-                width: 120px;
-                height: 120px;
+                width: 253px;
+                height: 253px;
                 border-radius: 80px;
                 overflow: hidden;
                 text-align: center;
-                background: #ffffff;
-                box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
-                background-image: url(../../../assets/img/alitaLogo.png);
+                background: transparent;
+                // box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+                background-image: url(../../../assets/img/alita.png);
                 background-position: center;
                 background-repeat: no-repeat;
-                background-size: 60px;
+                background-size: cover;
             }
 
             .content {
@@ -65,8 +65,12 @@
 
                 button {
                     width: 50%;
-                    background: $blueTheme;
+                    background: $darkBlue;
                     color: #ffffff;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    font-family: 'ProximaNova-Regular';
+                    padding: 1%;
                 }
             }
 
@@ -142,16 +146,27 @@
                 input {
                     background: $chatInput;
                     display: inline-block;
+                    vertical-align: middle;
                     width: 75%;
                     border: none;
                     padding: 10px;
                     font-size: 14px;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
                 }
 
                 button {
+                    display: inline-block;
+                    vertical-align: middle;
                     width: 20%;
-                    background: $blueTheme;
+                    background: $darkBlue;
+                    padding: 2px;
                     color: #ffffff;
+                    font-size: 16px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                    border-radius: 10px;
+                    font-family: 'ProximaNova-Regular';
                 }
             }
         }

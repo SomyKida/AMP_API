@@ -3,11 +3,11 @@
     <img src="assets/img/logo.png" alt="">
   </button>
   <button class="options" (click)="goTo('dashboard')" mat-button>
-    <img src="assets/img/settings.png" alt="">
+    <img src="assets/img/dash.png" alt="">
     <p [ngClass]="{'highlighted': currentPage == '/home'}">Dashboard</p>
   </button>
   <button class="options" mat-button>
-    <img src="assets/img/scheduling.png" alt="">
+    <img class="schedule" src="assets/img/scheduling.png" alt="">
     <p>Scheduling</p>
   </button>
   <button class="options" (click)="goTo('chat')" mat-button>
@@ -16,7 +16,7 @@
     <p [ngClass]="{'highlighted': currentPage == '/chat'}">Chat</p>
   </button>
   <button class="options" mat-button>
-    <img src="assets/img/social.png" alt="">
+    <img src="assets/img/rating.png" alt="">
     <p>Social</p>
   </button>
   <button class="options" mat-button>
@@ -24,7 +24,7 @@
     <p>Forms</p>
   </button>
   <button class="options" mat-button>
-    <img src="assets/img/marketing.png" alt="">
+    <img class="mkt" src="assets/img/marketing.png" alt="">
     <p>Marketing</p>
   </button>
   <button class="options" mat-button>
@@ -35,9 +35,12 @@
     <img src="assets/img/support.png" alt="">
     <p>Support</p>
   </button>
-  <button class="options" (click)="goTo('login')" mat-button>
-    <img src="assets/img/refer.png" alt="">
-    <p [ngClass]="{'highlighted': currentPage == '/login'}" *ngIf="token == null">Login</p>
-    <p *ngIf="token != null">Logout</p>
+  <button class="options" (click)="goTo('login')" *ngIf="isLoggedIn == false" mat-button>
+    <img src="assets/img/login.png" alt="">
+    <p [ngClass]="{'highlighted': currentPage == '/login'}">Login</p>
+  </button>
+  <button class="options" (click)="logout()" *ngIf="isLoggedIn == true" mat-button>
+    <img src="assets/img/login.png" alt="">
+    <p>Logout</p>
   </button>
 </div>

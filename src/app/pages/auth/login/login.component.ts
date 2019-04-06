@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { AuxService } from 'src/app/auxilaries/aux.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { CredentialService } from 'src/app/services/credentials/credential.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
   constructor(public auth: AuthService,
     public router: Router,
+    public credential: CredentialService,
     public location: Location,
     public aux: AuxService) { }
 
@@ -57,7 +59,7 @@ export class LoginComponent implements OnInit {
       pwd: this.user.password
     }
     this.auth.login(params).subscribe((success) => {
-      localStorage.setItem('user', JSON.stringify(success.data));
+      this.credential.setUser(success.data);
       this.router.navigate(['/home'])
     }, (error) => {
       this.aux.errorResponse(error);

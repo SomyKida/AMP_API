@@ -11,12 +11,12 @@
         .plans-row {
             display: flex;
             text-align: center;
-            border-bottom: 1px solid rgba(190, 190, 190, 0.77);
+            border-bottom: 1px solid $border;
 
             .plans-col {
                 width: 30%;
-                padding: 10px 15px;
-                color: rgb(155, 155, 155);
+                padding: 10px 20px;
+                color: $back;
 
                 &:first-child {
                     width: 40%;
@@ -24,8 +24,8 @@
                 }
 
                 &:nth-child(2) {
-                    border-left: 2px solid rgba(190, 190, 190, 0.77);
-                    border-right: 2px solid rgba(190, 190, 190, 0.77);
+                    border-left: 1px solid $border;
+                    border-right: 1px solid $border;
                 }
 
                 img {
@@ -33,9 +33,10 @@
                 }
 
                 .blue-btn {
-                    background: rgb(57, 212, 255);
-                    padding: 15px 50px;
-                    font-size: 18px;
+                    background: $darkBlue;
+                    padding: 10px 50px;
+                    font-size: 16px;
+                    letter-spacing: 1.75px;
                     display: inline-block;
                     color: #fff;
                     border-radius: 5px;
@@ -48,39 +49,43 @@
                 border: none;
 
                 .plans-col {
-                    padding: 25px;
+                    padding: 20px;
                     color: rgb(74, 74, 74);
-                    border-bottom: 2px solid rgba(190, 190, 190, 0.77);
+                    border-bottom: 1px solid $border;
 
                     h3 {
                         margin: 10px 0;
+                        font-size: 22px;
+                        font-family: 'ProximaNova-Semibold';
+                        letter-spacing: 1.0;
+                    }
+
+                    .feature {
+                        font-size: 24px;
+                        font-family: 'ProximaNova-Semibold';
+                        color: $headingNormColor;
+                        margin: 0;
+                    }
+
+                    .big-heading {
+                        font-size: 64px;
+                        display: block;
+                        font-family: 'ProximaNova-Extrabld';
+                    }
+
+                    .small-heading {
+                        font-size: 18px;
+                        display: block;
+                        letter-spacing: 0.25;
                     }
 
                     &:nth-child(2) {
-                        background: $blueTheme;
-                        border-top-left-radius: 15px;
-                        color: #fff;
-                        border: none;
-                        position: relative;
-
-                        .big-heading {
-                            font-size: 52px;
-                            display: block;
-                        }
-
-                        .small-heading {
-                            font-size: 18px;
-                            display: block;
-                        }
-                    }
-
-                    &:nth-child(3) {
-                        position: relative;
                         background: $darkBlue;
-                        border-top-left-radius: 15px;
-                        border-top-right-radius: 15px;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
                         color: #fff;
                         border: none;
+                        position: relative;
                         margin-top: -25px;
 
                         h3 {
@@ -93,25 +98,28 @@
                             position: absolute;
                             width: 125px;
                             height: 100px;
-                            right: -5px;
+                            right: -9px;
                             top: -10px;
+                            z-index: 999;
                         }
+                    }
 
-                        .big-heading {
-                            font-size: 52px;
-                            display: block;
-                        }
-
-                        .small-heading {
-                            font-size: 18px;
-                            display: block;
-                        }
+                    &:nth-child(3) {
+                        position: relative;
+                        background: $blueTheme;
+                        border-top-right-radius: 10px;
+                        color: #fff;
+                        border: none;
                     }
                 }
             }
 
             &.plans-foot-row {
                 border: none;
+
+                .plans-col {
+                    padding: 35px 20px;
+                }
             }
         }
     }

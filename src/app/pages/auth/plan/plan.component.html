@@ -8,7 +8,8 @@
             <h2>Customize your Package Now</h2>
           </ng-container>
           <ng-container *ngIf="selectedPlan != null">
-            <h1>Complete Payment Details</h1>
+            <h1 *ngIf="selectedPlan != null && hasSignedUp == false">Complete Billing Information</h1>
+            <h1 *ngIf="hasSignedUp == true">Complete Payment Details</h1>
             <h2>You have selected the {{selectedPlan.plan.name}} Package</h2>
           </ng-container>
         </div>
@@ -30,7 +31,7 @@
         </span>
       </div>
       <div class="form-area">
-        <h3 *ngIf="selectedPlan != null && hasSignedUp == false">Complete Billing Information</h3>
+        <h3 *ngIf="selectedPlan != null && hasSignedUp == false">Billing Information</h3>
         <h3 *ngIf="hasSignedUp == true">Payment Information</h3>
         <form>
           <ng-container *ngIf="selectedPlan != null && hasSignedUp == false">

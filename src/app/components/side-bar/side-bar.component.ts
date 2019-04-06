@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { CredentialService } from 'src/app/services/credentials/credential.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,9 +10,10 @@ import { Location } from '@angular/common';
 })
 export class SideBarComponent implements OnInit {
   public currentPage = '';
-  public token;
-  constructor(public router: Router, public loc: Location) {
-    this.token = localStorage.getItem('token');
+  public isLoggedIn: boolean = false;
+  constructor(public router: Router, public loc: Location, public credentials: CredentialService) {
+    if (this.credentials.user != null)
+      this.isLoggedIn = true;
   }
 
   ngOnInit() {
@@ -29,6 +31,11 @@ export class SideBarComponent implements OnInit {
       this.currentPage = '/home';
       this.router.navigate(["/home"]);
     }
+  }
+
+  logout() {
+    this.credentials.logout();
+    this.router.navigate(['/plan']);
   }
 
 }

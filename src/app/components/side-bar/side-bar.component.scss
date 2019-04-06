@@ -2,11 +2,12 @@
 
 .container {
     display: inline-block;
-    width: 90px;
+    width: 97px;
     height: auto;
     background: $primary;
     overflow: hidden;
     box-shadow: 0px 0px 10px 0px $shadow;
+    z-index: 9999;
 
     .logo {
         height: 12vh;
@@ -26,17 +27,21 @@
 
     .options {
         @extend .logo;
-        height: 10vh;
+        // height: 10vh;
         line-height: 3vh;
 
         img {
-            width: 3vh;
+            width: 34px;
+        }
+
+        .mkt {
+            width: 45px;
         }
 
         p {
             margin: 2px 0 0 0;
             color: $back;
-            font-size: 1.5vh;
+            font-size: 11px;
         }
 
         .highlighted {

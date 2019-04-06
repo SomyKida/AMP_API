@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/material/material.module';
 import { AuxService } from './auxilaries/aux.service';
+import { SessGuardService } from './services/guards/sess-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuxService } from './auxilaries/aux.service';
     CredentialService,
     AuthService,
     AuxService,
+    SessGuardService,
     {
       provide: Http,
       useFactory: HttpFactory,
