@@ -1,0 +1,118 @@
+@import '../../../theme/variables';
+
+.plan-slide {
+    background: $primary;
+
+    .plan-sections {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        margin-top: 25px;
+
+        .plans-row {
+            display: flex;
+            text-align: center;
+            border-bottom: 1px solid rgba(190, 190, 190, 0.77);
+
+            .plans-col {
+                width: 30%;
+                padding: 10px 15px;
+                color: rgb(155, 155, 155);
+
+                &:first-child {
+                    width: 40%;
+                    text-align: left;
+                }
+
+                &:nth-child(2) {
+                    border-left: 2px solid rgba(190, 190, 190, 0.77);
+                    border-right: 2px solid rgba(190, 190, 190, 0.77);
+                }
+
+                img {
+                    width: 17px;
+                }
+
+                .blue-btn {
+                    background: rgb(57, 212, 255);
+                    padding: 15px 50px;
+                    font-size: 18px;
+                    display: inline-block;
+                    color: #fff;
+                    border-radius: 5px;
+                    text-transform: uppercase;
+                }
+            }
+
+            &.plans-head-row {
+                align-items: flex-end; // height: 215px;
+                border: none;
+
+                .plans-col {
+                    padding: 25px;
+                    color: rgb(74, 74, 74);
+                    border-bottom: 2px solid rgba(190, 190, 190, 0.77);
+
+                    h3 {
+                        margin: 10px 0;
+                    }
+
+                    &:nth-child(2) {
+                        background: $blueTheme;
+                        border-top-left-radius: 15px;
+                        color: #fff;
+                        border: none;
+                        position: relative;
+
+                        .big-heading {
+                            font-size: 52px;
+                            display: block;
+                        }
+
+                        .small-heading {
+                            font-size: 18px;
+                            display: block;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        position: relative;
+                        background: $darkBlue;
+                        border-top-left-radius: 15px;
+                        border-top-right-radius: 15px;
+                        color: #fff;
+                        border: none;
+                        margin-top: -25px;
+
+                        h3 {
+                            margin: 20px 0 25px;
+                        }
+
+                        &::before {
+                            content: "";
+                            background: url(../../../assets/img/popular.png) no-repeat 0 0/contain;
+                            position: absolute;
+                            width: 125px;
+                            height: 100px;
+                            right: -5px;
+                            top: -13px;
+                        }
+
+                        .big-heading {
+                            font-size: 52px;
+                            display: block;
+                        }
+
+                        .small-heading {
+                            font-size: 18px;
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            &.plans-foot-row {
+                border: none;
+            }
+        }
+    }
+}

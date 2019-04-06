@@ -1,0 +1,46 @@
+@import "../../../theme/variables";
+
+.container {
+    display: inline-block;
+    width: 90px;
+    height: auto;
+    background: $primary;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px $shadow;
+
+    .logo {
+        height: 12vh;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid $border;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid $border;
+
+        img {
+            width: 6vh;
+        }
+    }
+
+    .options {
+        @extend .logo;
+        height: 10vh;
+        line-height: 3vh;
+
+        img {
+            width: 3vh;
+        }
+
+        p {
+            margin: 2px 0 0 0;
+            color: $back;
+            font-size: 1.5vh;
+        }
+
+        .highlighted {
+            color: $blueTheme;
+        }
+    }
+}

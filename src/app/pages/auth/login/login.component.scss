@@ -1,0 +1,121 @@
+@import '../../../../theme/variables';
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 120px);
+    height: 100%;
+
+    .form-area {
+
+        h3 {
+            color: rgb(74, 74, 74);
+            text-align: center;
+        }
+
+        form {
+            .form-row {
+                display: flex;
+                justify-content: space-between;
+                margin: 25px 0;
+
+                @media (max-width: 1100px) {
+                    flex-wrap: wrap;
+                }
+
+                .form-two-col {
+                    flex: 1;
+
+                    &:first-child {
+                        padding-right: 25px;
+                        border-right: 1px solid #dbdbdb;
+
+                        @media (max-width: 1100px) {
+                            padding: 0;
+                        }
+                    }
+
+                    &:last-child {
+                        padding-left: 25px;
+                        padding-top: 20px;
+
+                        @media (max-width: 1100px) {
+                            padding: 0;
+                        }
+                    }
+
+                    @media (max-width: 1100px) {
+                        width: 100%;
+                        border: none;
+                    }
+
+                    .cus-inp-row {
+                        margin-bottom: 25px;
+
+                        label {
+                            height: 20px;
+                        }
+                    }
+
+                    .cus-check-row {
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 50px;
+
+                        label {
+                            span {
+                                border: 3px solid rgb(24, 193, 240);
+                                border-radius: 50%;
+                                width: 20px;
+                                height: 20px;
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin-right: 10px;
+                            }
+                        }
+
+                        input {
+                            display: none;
+
+                            &:checked~label {
+                                span {
+                                    background: rgb(24, 193, 240);
+                                }
+                            }
+                        }
+                    }
+
+                    .cus-btn {
+                        width: -webkit-fill-available;
+                        text-align: center;
+                        display: block;
+                        border-radius: 5px;
+                        text-transform: uppercase;
+                        margin-bottom: 25px;
+                        padding: 5px 10px;
+                        color: #fff;
+
+                        &.fb-btn {
+                            background: rgb(73, 99, 153)
+                        }
+
+                        &.google-btn {
+                            background: rgb(70, 134, 241)
+                        }
+
+                        &.inp-btn {
+                            background: rgb(56, 95, 188)
+                        }
+                    }
+                }
+            }
+        }
+
+        .forgot-text {
+            color: #39d4ff;
+            display: block;
+            text-align: center;
+            font-size: 15px;
+        }
+    }
+}

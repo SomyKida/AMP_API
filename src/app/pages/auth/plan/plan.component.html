@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="GlobalFormWrapper wrapper">
+    <div class="plan-header">
+      <div class="plan-head-row">
+        <div class="plan-head-col">
+          <ng-container *ngIf="selectedPlan == null">
+            <h1>Order Your Future</h1>
+            <h2>Customize your Package Now</h2>
+          </ng-container>
+          <ng-container *ngIf="selectedPlan != null">
+            <h1>Complete Payment Details</h1>
+            <h2>You have selected the {{selectedPlan.plan.name}} Package</h2>
+          </ng-container>
+        </div>
+        <div class="plan-head-col">
+          <span [ngClass]="{'active': selectedPlan == null}">1</span>
+          <span [ngClass]="{'active': selectedPlan != null && hasSignedUp == false}">2</span>
+          <span [ngClass]="{'active': hasSignedUp == true}">3</span>
+        </div>
+      </div>
+    </div>
+    <app-offers *ngIf="selectedPlan == null" (plan)="register($event)"></app-offers>
+    <div class="form-slide" *ngIf="selectedPlan != null">
+      <div class="form-head-row">
+        <span class="back" (click)="previous()" *ngIf="userFromUrl == null" mat-button>
+          <img src="assets/img/back.png" alt="icon" />
+          <span>
+            Back
+          </span>
+        </span>
+      </div>
+      <div class="form-area">
+        <h3 *ngIf="selectedPlan != null && hasSignedUp == false">Complete Billing Information</h3>
+        <h3 *ngIf="hasSignedUp == true">Payment Information</h3>
+        <form>
+          <ng-container *ngIf="selectedPlan != null && hasSignedUp == false">
+            <div class="form-row">
+              <div class="form-one-col">
+                <label>NAME</label>
+                <input type="text" [(ngModel)]="user.name" (ngModelChange)="changeInFields('name')" name="name" [ngClass]="{'active': user.name != '', 'error':userFldsVlds.name == true}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>ADDRESS</label>
+                <input type="text" [(ngModel)]="user.address" name="address" (ngModelChange)="changeInFields('address')" [ngClass]="{'active': user.address != '','error':userFldsVlds.address == true}" />
+              </div>
+              <div class="form-two-col">
+                <label>ZIPCODE</label>
+                <input type="text" [(ngModel)]="user.zipcode" name="zip" (ngModelChange)="changeInFields('zipcode')" [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>EMAIL</label>
+                <input type="text" name="email" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" [ngClass]="{'active': user.email != '','error':userFldsVlds.email == true}" />
+              </div>
+              <div class="form-two-col">
+                <label>PHONE #</label>
+                <input type="number" [(ngModel)]="user.phoneNo" name="phone" (ngModelChange)="changeInFields('phoneNo')" [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>PASSWORD</label>
+                <input type="password" name="email" [(ngModel)]="user.pass" (ngModelChange)="changeInFields('pass')" [ngClass]="{'active': user.pass != '','error':userFldsVlds.pass == true}" />
+              </div>
+              <div class="form-two-col">
+                <label>CONFIRM PASSWORD</label>
+                <input type="password" [(ngModel)]="user.conPass" name="phone" (ngModelChange)="changeInFields('conPass')" [ngClass]="{'active': (user.conPass != '' && user.conPass != null),'error':userFldsVlds.conPass == true}" />
+              </div>
+            </div>
+            <button class="blue-btn" mat-raised-button (click)="signUp()">NEXT</button>
+          </ng-container>
+          <ng-container *ngIf="hasSignedUp == true">
+            <div class="form-row">
+              <div class="form-one-col">
+                <label>NAME ON CARD</label>
+                <input type="text" [(ngModel)]="billing.name" (ngModelChange)="changeInFields('cardname')" name="name" [ngClass]="{'active': billing.name != '','error':billfldsVld.name == true}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-one-col">
+                <label>Card Number</label>
+                <input type="number" max="16" [(ngModel)]="billing.number" (ngModelChange)="changeInFields('cardnumber')" name="unit" [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>Expiration Date</label>
+                <input type="month" [(ngModel)]="billing.expiry" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}" />
+              </div>
+              <div class="form-two-col">
+                <label>CVC</label>
+                <input type="number" name="cvc" maxlength="4" [(ngModel)]="billing.cvc" (ngModelChange)="changeInFields('cardcvc')" [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null),'error':billfldsVld.cvc == true}" />
+              </div>
+            </div>
+            <button class="blue-btn" mat-raised-button (click)="billMe()">NEXT</button>
+          </ng-container>
+          <mat-tab-group headerPosition="below" [selectedIndex]="selectedTab">
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+          </mat-tab-group>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

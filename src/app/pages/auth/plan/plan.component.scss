@@ -1,0 +1,135 @@
+@import '../../../../theme/variables';
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 120px);
+    height: 100%;
+
+    @media (max-width: 767px) {
+        // width: calc(100% - 94px);
+        width: 100%;
+    }
+
+    .wrapper {
+        width: 1700px;
+        margin: 15px auto;
+
+        @media (max-width: 1900px) {
+            width: 1375px;
+        }
+
+        @media (max-width: 1500px) {
+            width: 975px;
+        }
+
+        @media (max-width: 1100px) {
+            width: 100%;
+        }
+
+        .plan-head-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+
+            @media (max-width: 1100px) {
+                flex-wrap: wrap;
+                margin-top: 15px;
+            }
+
+            .plan-head-col {
+                @media (max-width: 1100px) {
+                    width: 100%;
+                    margin: 15px 0;
+
+                    &:nth-child(2) {
+                        text-align: right;
+                    }
+                }
+
+                h1 {
+                    margin: 0;
+                    font-size: 50px;
+                    color: #000;
+
+                    @media (max-width: 1100px) {
+                        font-size: 30px;
+                    }
+                }
+
+                h2 {
+                    margin: 0;
+                    font-size: 30px;
+                    color: rgb(74, 74, 74);
+
+                    @media (max-width: 1100px) {
+                        font-size: 22px;
+                    }
+                }
+
+                span {
+                    background: #d8d8d8;
+                    color: #fff;
+                    padding: 10px;
+                    margin: 0px 20px;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    text-align: center;
+
+                    &.active {
+                        background: rgb(24, 193, 240);
+                    }
+
+                    @media (max-width: 767px) {
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+
+        .form-slide {
+            .form-area {
+                form {
+                    .blue-bars {
+                        display: block;
+                        text-align: center;
+
+                        a {
+                            width: 120px;
+                            height: 3px;
+                            background: $greyTheme;
+                            display: inline-block;
+                            margin: 0 5px;
+
+                            &.active {
+                                background: rgb(96, 185, 251)
+                            }
+                        }
+                    }
+
+                    .mat-tab-group {
+                        align-items: center;
+                    }
+
+                    .mat-tab-label {
+                        height: 5px;
+                        background: $greyTheme;
+                        margin-right: 5px;
+                    }
+
+                    .mat-tab-header {
+                        border-top: none;
+                    }
+
+                    .mat-ink-bar {
+                        background: $blueTheme;
+                        height: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
