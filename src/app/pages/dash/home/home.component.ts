@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { CredentialService } from '../../../services/credentials/credential.service'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,8 +9,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class HomeComponent implements OnInit {
   public botOrManual: boolean = true;
   public user;
-  constructor() {
+  constructor(private credentials: CredentialService) {
     this.user = JSON.parse(localStorage.getItem('user'));
+
+    this.credentials.tempUser.subscribe(value => {
+      this.user = value
+    })
   }
 
   ngOnInit() {

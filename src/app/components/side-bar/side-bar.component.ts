@@ -10,10 +10,13 @@ import { CredentialService } from 'src/app/services/credentials/credential.servi
 })
 export class SideBarComponent implements OnInit {
   public currentPage = '';
-  public isLoggedIn: boolean = false;
+  public isLoggedIn: boolean = false
   constructor(public router: Router, public loc: Location, public credentials: CredentialService) {
     if (this.credentials.user != null)
-      this.isLoggedIn = true;
+      this.isLoggedIn = true
+    this.credentials.isLoggedIn.subscribe(value => {
+      this.isLoggedIn = value
+    })
   }
 
   ngOnInit() {

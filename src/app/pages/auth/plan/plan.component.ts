@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuxService } from 'src/app/auxilaries/aux.service';
 import { MatDialog } from '@angular/material';
 import { ProDetailsComponent } from 'src/app/components/modals/pro-details/pro-details.component';
-
+import { CredentialService } from '../../../services/credentials/credential.service'
 @Component({
   selector: 'app-plan',
   templateUrl: './plan.component.html',
@@ -54,7 +54,8 @@ export class PlanComponent implements OnInit {
   constructor(public auth: AuthService,
     public aux: AuxService,
     public extractor: ActivatedRoute,
-    public router: Router) { }
+    public router: Router,
+    public credentials: CredentialService) { }
 
   ngOnInit() {
     // this.userFromUrl = this.extractor.snapshot.paramMap.get('token');
@@ -195,6 +196,8 @@ export class PlanComponent implements OnInit {
       // this.aux.showAlert("Please check your email for completing furthur steps.", "Successfully Registered!!")
       localStorage.setItem('token', success.data.access_token);
       localStorage.setItem('user', JSON.stringify(success.data));
+      this.credentials.setUser(success.data)
+      console.log(success)
       this.user = success.data;
       this.hasSignedUp = true;
       this.selectedTab = 1;
@@ -246,8 +249,9 @@ export class PlanComponent implements OnInit {
       card_cvc: this.billing.cvc
     }
     this.auth.pay(params).subscribe((success) => {
-      this.aux.showAlert('Payment recieved, Please check your email.', "Successful Transaction!");
       this.router.navigate(['/home'])
+      this.aux.showAlert('Payment recieved, Please check your email.', "Successful Transaction!");
+
     }, (error) => {
       this.aux.errorResponse(error);
     })

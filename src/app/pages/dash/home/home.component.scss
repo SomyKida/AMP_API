@@ -74,13 +74,15 @@
                     height: 50%;
 
                     img {
-                        width: 50px;
+                        width: 100px;
                     }
 
                     p {
+                        position: fixed;
                         color: #c7c7c7;
                         font-weight: bold;
-                        font-size: 16px;
+                        font-size: 20px;
+                        font-family: 'ProximaNova-Semibold'
                     }
                 }
 
@@ -100,6 +102,7 @@
                         width: 80%;
                         font-size: 14px;
                         color: $headingNormColor;
+
 
                     }
                 }

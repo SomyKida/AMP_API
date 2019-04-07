@@ -648,8 +648,6 @@ router.post(v2 + '/setup', (req, res) => {
   post_data = req.body
 
   // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
-  helper.sendSuccess(res, "")
-
   if (!helper.validateFieldAuto(res, post_data, fields_required))
     return
 
@@ -693,7 +691,7 @@ router.post(v2 + '/setup', (req, res) => {
           }
         })
       } else {
-        helper.sendSuccess(res, "Your setup is already completed. Use PATCH endpoint to update information.")
+        helper.sendSuccess(res, dentist)
         return
       }
 
