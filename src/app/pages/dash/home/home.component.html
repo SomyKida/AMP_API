@@ -1,9 +1,9 @@
-<div class="container" *ngIf="user == null || (user != null && user.first_setup == false)">
+<!-- <div class="container" *ngIf="user == null || (user != null && user.first_setup == false)">
   <app-alita *ngIf="botOrManual == true" (switch)="switchToManual($event)"></app-alita>
-  <app-manual *ngIf="botOrManual == false"></app-manual>
+  <app-manual *ngIf="botOrManual == false" (switch)="switchToAuto($event)"></app-manual>
   <app-fab></app-fab>
-</div>
-<div class="GlobalContainer" *ngIf="user != null && user.first_setup == true">
+</div> *ngIf="user != null && user.first_setup == true"-->
+<div class="GlobalContainer">
   <div class="wrapper">
     <div class="heading">
       <h1>Your Dashboard</h1>
@@ -14,7 +14,7 @@
       <ul>
         <li matRipple>
           <div class="elements">
-            <img src="assets/img/dashboard/notifications.png" alt="">
+            <img style="width:80px" src="assets/img/dashboard/notifications.png" alt="">
             <p>Notifications</p>
           </div>
         </li>
@@ -32,7 +32,7 @@
         </li>
         <li (click)="category('fourth')" matRipple>
           <div class="elements">
-            <img src="assets/img/marketing.png" alt="">
+            <img style="width:70px" src="assets/img/marketing.png" alt="">
             <p>Marketing</p>
           </div>
         </li>

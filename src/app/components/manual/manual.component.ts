@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AuxService } from 'src/app/auxilaries/aux.service';
@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { ThemesComponent } from '../modals/themes/themes.component';
 import { Router } from '@angular/router';
 import { CredentialService } from '../../services/credentials/credential.service';
+
 @Component({
   selector: 'app-manual',
   templateUrl: './manual.component.html',
@@ -75,6 +76,7 @@ export class ManualComponent implements OnInit {
     token: ''
   }
   selectedTab: number = 0;
+  @Output('switch') proceed = new EventEmitter<any>();
 
   constructor(public loc: Location,
     public aux: AuxService,
@@ -98,7 +100,7 @@ export class ManualComponent implements OnInit {
     if (this.selectedTab > 0) {
       this.selectedTab--;
     } else {
-      this.loc.back()
+      this.proceed.emit('auto');
     }
   }
 

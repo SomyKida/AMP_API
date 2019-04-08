@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
     this.botOrManual = false;
   }
 
+  switchToAuto(event) {
+    this.botOrManual = true;
+  }
+
 }
