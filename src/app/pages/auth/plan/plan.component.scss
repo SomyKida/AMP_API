@@ -69,7 +69,7 @@
                     }
                 }
 
-                span {
+                .rounds {
                     background: #d8d8d8;
                     color: #fff;
                     padding: 10px;
@@ -79,6 +79,13 @@
                     height: 20px;
                     display: inline-block;
                     text-align: center;
+
+                    .num {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 1px;
+                    }
 
                     &.active {
                         background: rgb(24, 193, 240);

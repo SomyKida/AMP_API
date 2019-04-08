@@ -14,9 +14,15 @@
           </ng-container>
         </div>
         <div class="plan-head-col">
-          <span [ngClass]="{'active': selectedPlan == null}">1</span>
-          <span [ngClass]="{'active': selectedPlan != null && hasSignedUp == false}">2</span>
-          <span [ngClass]="{'active': hasSignedUp == true}">3</span>
+          <span class="rounds" [ngClass]="{'active': selectedPlan == null}">
+            <span class="num">1</span>
+          </span>
+          <span class="rounds" [ngClass]="{'active': selectedPlan != null && hasSignedUp == false}">
+            <span class="num">2</span>
+          </span>
+          <span class="rounds" [ngClass]="{'active': hasSignedUp == true}">
+            <span class="num">3</span>
+          </span>
         </div>
       </div>
     </div>
