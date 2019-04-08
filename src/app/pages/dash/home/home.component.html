@@ -1,16 +1,15 @@
-<!-- <div class="container" *ngIf="user == null || (user != null && user.first_setup == false)">
+<div class="container" *ngIf="user == null || (user != null && user.first_setup == false)">
   <app-alita *ngIf="botOrManual == true" (switch)="switchToManual($event)"></app-alita>
   <app-manual *ngIf="botOrManual == false" (switch)="switchToAuto($event)"></app-manual>
   <app-fab></app-fab>
-</div> *ngIf="user != null && user.first_setup == true"-->
-<div class="GlobalContainer">
+</div>
+<div class="GlobalContainer" *ngIf="user != null && user.first_setup == true">
   <div class="wrapper">
     <div class="heading">
       <h1>Your Dashboard</h1>
       <span></span>
     </div>
     <div class="content">
-
       <ul>
         <li matRipple>
           <div class="elements">
