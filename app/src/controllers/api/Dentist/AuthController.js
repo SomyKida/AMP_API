@@ -753,7 +753,10 @@ router.post(v3 + '/register', (req, res) => {
     if (!err) {
 
       fields_required = [
-        'name',
+        'first_name',
+        'last_name',
+        'city',
+        'state',
         'address',
         'zip',
         'email',
@@ -808,7 +811,10 @@ router.post(v3 + '/register', (req, res) => {
                     'address': post_data.address,
                     'unit': post_data.unit,
                     'zip': post_data.zip,
-                    'name': post_data.name,
+                    'first_name': post_data.first_name,
+                    'last_name': post_data.last_name,
+                    'city': post_data.city,
+                    'state': post_data.state,
                     'phone': post_data.phone,
                     'package': post_data.package,
                     'first_ready': false,
