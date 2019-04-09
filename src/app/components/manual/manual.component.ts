@@ -65,7 +65,8 @@ export class ManualComponent implements OnInit {
     docNames: [
       {
         id: Math.random(),
-        name: ''
+        fname: '',
+        lname: ''
       }
     ]
   }
@@ -111,7 +112,8 @@ export class ManualComponent implements OnInit {
   addDoc() {
     this.stepOne.docNames.push({
       id: Math.random(),
-      name: ''
+      fname: '',
+      lname: ''
     })
   }
 

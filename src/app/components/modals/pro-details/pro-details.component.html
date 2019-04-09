@@ -1,24 +1,22 @@
-<h2 mat-dialog-title>Which Software are you currently using?</h2>
+<!-- <h2 mat-dialog-title>Which Software are you currently using?</h2> -->
 
 <mat-dialog-content>
   <div class="spinner" *ngIf="wait">
     <mat-progress-spinner [diameter]="30" mode="indeterminate"></mat-progress-spinner>
   </div>
   <mat-list *ngIf="wait == false && listed == true">
-    <mat-list-item *ngFor="let provider of providers" (click)="thisIs(provider)" matRipple> {{provider.name}} </mat-list-item>
+    <mat-list-item class="item" *ngFor="let provider of providers" (click)="thisIs(provider)" matRipple> {{provider.name}} </mat-list-item>
   </mat-list>
   <p class="desc" *ngIf="listed == false">
-    As your service provider is not currently supported by us, so you cannot proceed with
-    AMP "PRO" at the moment. You will be forwarded with AMP "LITE" package. Please enter the
-    name of your service provider below so that we can get it on board.
+    Unfortunately we are not integrated with your Software at this time, we are diligently working to be fully integrated with your software provider.. Please accept our apologies, we will notify you as soon as the integration is complete. In the meantime, Please order “LITE PACKAGE” at a substantial discount. (50%) off sign-up) and we will contact you as soon as we are fully integrated with your patient software
   </p>
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <div class="field" *ngIf="listed == false">
-    <input [(ngModel)]="provider.newProvider" name="provider" type="text" placeholder="Name of software in use">
+    <input [(ngModel)]="provider.newProvider" name="provider" type="text" placeholder="Name of software you are currently using">
     <input [(ngModel)]="provider.email" name="provider" type="email" placeholder="Enter you email">
-    <button mat-button class="dimiss" (click)="add()">Save</button>
+    <button mat-button class="dimiss" (click)="add()">SUBMIT</button>
   </div>
   <button mat-button class="dimiss" (click)="notListed()" *ngIf="listed == true">Not in the list?</button>
 </mat-dialog-actions>

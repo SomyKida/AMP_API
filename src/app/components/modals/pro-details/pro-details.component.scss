@@ -7,6 +7,7 @@
 
 .mat-dialog-content {
     font-size: 14px;
+    max-width: 40vw;
 }
 
 .mat-dialog-actions {
@@ -16,6 +17,26 @@
 .dimiss {
     background: $blueTheme;
     width: 100%;
+    color: #fff;
+    padding: 10px 50px;
+    font-size: 16px;
+    letter-spacing: 1.75px;
+    text-transform: uppercase;
+    font-family: 'ProximaNova-Semibold';
+}
+
+.item {
+    font-family: 'ProximaNova-Semibold';
+    letter-spacing: 1.0;
+    padding-left: 5px !important;
+
+    .mat-list-item-content {
+        font-size: 20px !important;
+    }
+
+    &:hover {
+        background: $greyTheme;
+    }
 }
 
 .mat-progress-spinner circle,
@@ -38,9 +59,10 @@
 }
 
 .desc {
-    max-width: 30vw;
-    font-size: 15px;
+    max-width: 35vw;
+    font-size: 18px;
     text-align: left;
+    font-weight: bold;
 }
 
 .field {
@@ -52,7 +74,8 @@
         background: rgb(241, 244, 244);
         padding: 15px 10px;
         border-radius: 7px;
+        font-size: 16px;
         outline: none;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 }

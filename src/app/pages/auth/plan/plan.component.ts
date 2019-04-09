@@ -18,25 +18,32 @@ export class PlanComponent implements OnInit {
   public userFromUrl = null;
   public user:
     {
-      name: string, address: string, zipcode: string,
-      email: string, phoneNo: string, pass: string, conPass: string
+      fname: string, lname: string, address: string, zipcode: string,
+      email: string, phoneNo: string, pass: string, conPass: string,
+      city: string, state: string
     } = {
-      name: '',
+      fname: '',
+      lname: '',
       address: '',
       zipcode: '',
       email: '',
       phoneNo: '',
       pass: '',
-      conPass: ''
+      conPass: '',
+      city: '',
+      state: ''
     }
   public userFldsVlds = {
-    name: false,
+    fname: false,
+    lname: false,
     address: false,
     zipcode: false,
     email: false,
     phoneNo: false,
     pass: false,
-    conPass: false
+    conPass: false,
+    city: false,
+    state: false
   }
   public wait: boolean = false;
   public billing: { name: string, number: string, cvc: string, expiry: any } = {
@@ -89,8 +96,10 @@ export class PlanComponent implements OnInit {
   }
 
   changeInFields(field) {
-    if (field == 'name')
-      this.userFldsVlds.name = false;
+    if (field == 'fname')
+      this.userFldsVlds.fname = false;
+    else if (field == 'lname')
+      this.userFldsVlds.lname = false;
     else if (field == 'address')
       this.userFldsVlds.address = false;
     else if (field == 'email')
@@ -103,6 +112,10 @@ export class PlanComponent implements OnInit {
       this.userFldsVlds.pass = false;
     else if (field == 'conPass')
       this.userFldsVlds.conPass = false;
+    else if (field == 'city')
+      this.userFldsVlds.city = false;
+    else if (field == 'state')
+      this.userFldsVlds.state = false;
     else if (field == 'cardname')
       this.billfldsVld.name = false;
     else if (field == 'cardnumber')
@@ -125,8 +138,12 @@ export class PlanComponent implements OnInit {
 
   signUp() {
     var check = false;
-    if (this.user.name == '') {
-      this.userFldsVlds.name = true;
+    if (this.user.fname == '') {
+      this.userFldsVlds.fname = true;
+      check = true;
+    }
+    if (this.user.lname == '') {
+      this.userFldsVlds.lname = true;
       check = true;
     }
     if (this.user.address == '') {
@@ -146,6 +163,16 @@ export class PlanComponent implements OnInit {
     }
     if (this.user.zipcode == '' || this.user.zipcode == null) {
       this.userFldsVlds.zipcode = true;
+      if (!check)
+        check = true;
+    }
+    if (this.user.city == '') {
+      this.userFldsVlds.city = true;
+      if (!check)
+        check = true;
+    }
+    if (this.user.state == '') {
+      this.userFldsVlds.state = true;
       if (!check)
         check = true;
     }
@@ -181,9 +208,12 @@ export class PlanComponent implements OnInit {
       return;
     }
     var params = {
-      name: this.user.name,
+      first_name: this.user.fname,
+      last_name: this.user.lname,
       address: this.user.address,
       zip: this.user.zipcode,
+      city: this.user.city,
+      state: this.user.state,
       email: this.user.email,
       phone: this.user.phoneNo,
       package: this.selectedPlan.plan.name,

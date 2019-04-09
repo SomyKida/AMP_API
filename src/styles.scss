@@ -172,6 +172,34 @@ $font-path: "/assets/fonts";
                     }
                 }
 
+                .cus-check-row {
+                    display: flex;
+                    align-items: center;
+                    padding-bottom: 50px;
+
+                    label {
+                        span {
+                            border: 3px solid $darkBlue;
+                            border-radius: 50%;
+                            width: 20px;
+                            height: 20px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    input {
+                        display: none;
+
+                        &:checked~label {
+                            span {
+                                background: $darkBlue;
+                            }
+                        }
+                    }
+                }
+
                 .blue-btn {
                     background: #39d4ff;
                     padding: 15px 50px;

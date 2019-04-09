@@ -9,7 +9,7 @@
       </span>
     </div>
     <div class="form-area">
-      <h3 *ngIf="selectedTab == 0">Contact Info</h3>
+      <h3 *ngIf="selectedTab == 0">Practice Information</h3>
       <h3 *ngIf="selectedTab == 1">EMR/Software</h3>
       <h3 *ngIf="selectedTab == 2">Social</h3>
       <form>
@@ -17,25 +17,28 @@
           <div class="form-row">
             <div class="form-one-col">
               <label>Phone</label>
-              <input type="text" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+              <input type="text" placeholder="# patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Email</label>
-              <input type="email" [(ngModel)]="stepOne.email" name="address"
-                (ngModelChange)="changeInFields('address')" />
+              <input type="email" [(ngModel)]="stepOne.email" name="address" placeholder="Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
             <div class="form-two-col">
               <label>Address</label>
-              <input type="text" [(ngModel)]="stepOne.address" name="zip" (ngModelChange)="changeInFields('zipcode')" />
+              <input type="text" placeholder="Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip" (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
-          <h3>Doctor Names</h3>
+          <h3>Doctors Names</h3>
           <div class="form-row" *ngFor="let doctor of stepOne.docNames">
-            <div class="form-one-col">
-              <label>Name</label>
-              <input type="text" [(ngModel)]="doctor.name" [ngModelOptions]="{standalone: true}" />
+            <div class="form-two-col">
+              <label>First Name</label>
+              <input type="text" [(ngModel)]="doctor.fname" [ngModelOptions]="{standalone: true}" />
+            </div>
+            <div class="form-two-col">
+              <label>Last Name</label>
+              <input type="text" [(ngModel)]="doctor.lname" [ngModelOptions]="{standalone: true}" />
             </div>
           </div>
           <button class="add-doc" (click)="addDoc()" mat-raised-button>Add Another Doctor</button>
@@ -49,13 +52,11 @@
               </div>
               <div class="form-three-col">
                 <label>Lunch Time</label>
-                <input type="time" [(ngModel)]="din.lunchTime" name="lunch"
-                  (ngModelChange)="changeInFields('phoneNo')" />
+                <input type="time" [(ngModel)]="din.lunchTime" name="lunch" (ngModelChange)="changeInFields('phoneNo')" />
               </div>
               <div class="form-three-col">
                 <label>Closing Time</label>
-                <input type="time" [(ngModel)]="din.closeTime" name="close"
-                  (ngModelChange)="changeInFields('phoneNo')" />
+                <input type="time" [(ngModel)]="din.closeTime" name="close" (ngModelChange)="changeInFields('phoneNo')" />
               </div>
             </div>
           </ng-container>
