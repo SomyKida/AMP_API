@@ -50,7 +50,7 @@ export class ProDetailsComponent implements OnInit {
         email: this.provider.email
       }
       this.auth.requestProvider(params).subscribe(() => {
-        this.dialogRef.close(null);
+        this.dialogRef.close({ listed: false });
       }, (error) => {
         this.aux.errorResponse(error);
       })
