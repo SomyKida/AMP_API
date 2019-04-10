@@ -26,7 +26,6 @@ export class CredentialService {
     this.user = user;
     this.isLoggedIn.next(true);
     this.tempUser.next(this.user)
-    console.log(this.isLoggedIn)
 
   }
 
@@ -39,7 +38,6 @@ export class CredentialService {
   }
 
   loggedIn() {
-    console.log(this.loggedIn, this.user)
     if (this.token && this.user) {
       return true;
     } else {

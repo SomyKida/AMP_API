@@ -15,6 +15,10 @@ export class PlanComponent implements OnInit {
   selectedPlan: any = null;
   hasSignedUp: boolean = false;
   selectedTab: number = 0;
+  public steps = {
+    loginInfo: false,
+    billingInfo: false,
+  }
   public userFromUrl = null;
   public user:
     {
@@ -46,12 +50,17 @@ export class PlanComponent implements OnInit {
     state: false
   }
   public wait: boolean = false;
-  public billing: { name: string, number: string, cvc: string, expiry: any } = {
-    name: '',
-    number: '',
-    cvc: '',
-    expiry: ''
-  }
+  public billing: {
+    name: string, number: string, cvc: string, expiry: any,
+    monthly: boolean, todays: boolean
+  } = {
+      name: '',
+      number: '',
+      cvc: '',
+      expiry: '',
+      monthly: false,
+      todays: false
+    }
   public billfldsVld: { name: boolean, number: boolean, cvc: boolean, expiry: boolean } = {
     name: false,
     number: false,
@@ -92,7 +101,22 @@ export class PlanComponent implements OnInit {
   }
 
   register(plan) {
+    console.log(plan);
     this.selectedPlan = plan;
+  }
+
+  loginCreated(output: { email: string, password: string, conPass: string }) {
+    this.user.email = output.email;
+    this.user.pass = output.password;
+    this.user.conPass = output.conPass;
+    this.steps.loginInfo = true;
+  }
+
+  agree(whom) {
+    if (whom == 'today')
+      this.billing.todays = !this.billing.todays;
+    else if (whom == 'monthly')
+      this.billing.monthly = !this.billing.monthly;
   }
 
   changeInFields(field) {
@@ -127,13 +151,23 @@ export class PlanComponent implements OnInit {
   }
 
   previous() {
-    if (this.hasSignedUp == true) {
-      this.selectedTab = 0;
-      this.hasSignedUp = false;
-    } else if (this.selectedPlan != null) {
-      this.selectedTab = 0;
-      this.selectedPlan = null;
-    }
+    if (this.selectedPlan != null)
+      if (this.steps.loginInfo == false) {
+        this.selectedPlan = null;
+      } else if (this.steps.loginInfo == true && this.steps.billingInfo == false) {
+        this.steps.loginInfo = false;
+      } else if (this.steps.billingInfo == true) {
+        this.selectedTab = 0;
+        this.steps.billingInfo = false;
+      }
+
+    // if (this.hasSignedUp == true) {
+    //   this.selectedTab = 0;
+    //   this.hasSignedUp = false;
+    // } else if (this.selectedPlan != null) {
+    //   this.selectedTab = 0;
+    //   this.selectedPlan = null;
+    // }
   }
 
   signUp() {
@@ -218,18 +252,15 @@ export class PlanComponent implements OnInit {
       phone: this.user.phoneNo,
       package: this.selectedPlan.plan.name,
       pwd: this.user.pass,
-      conf_pwd: this.user.conPass
+      conf_pwd: this.user.conPass,
+      is_discount: this.selectedPlan.discount == true ? true : false
     }
     if (this.selectedPlan.provider)
       params['service_provider'] = this.selectedPlan.provider._id;
     this.auth.signUp(params).subscribe((success) => {
-      // this.aux.showAlert("Please check your email for completing furthur steps.", "Successfully Registered!!")
-      localStorage.setItem('token', success.data.access_token);
-      localStorage.setItem('user', JSON.stringify(success.data));
       this.credentials.setUser(success.data)
-      console.log(success)
       this.user = success.data;
-      this.hasSignedUp = true;
+      this.steps.billingInfo = true;
       this.selectedTab = 1;
     }, (error) => {
       this.aux.errorResponse(error);
@@ -265,6 +296,10 @@ export class PlanComponent implements OnInit {
     if (this.billing.cvc.toString().length < 3 || this.billing.cvc.toString().length > 4) {
       this.billfldsVld.cvc = true;
       this.aux.showAlert("Incorrect CVC", "ERROR");
+      return;
+    }
+    if (this.billing.todays == false || this.billing.monthly == false) {
+      this.aux.showAlert("Please accept both terms in order to submit.", "ERROR");
       return;
     }
     if (check) {

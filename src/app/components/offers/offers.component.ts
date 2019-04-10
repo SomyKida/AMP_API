@@ -40,8 +40,8 @@ export class OffersComponent implements OnInit {
     dialogRef.afterClosed().subscribe((provider) => {
       if (provider && provider.listed == null)
         this.selectedPlan.emit({ plan: this.packages[1], provider: provider });
-      else if (provider.listed == false)
-        this.selectedPlan.emit({ plan: this.packages[0], provider: null });
+      else if (provider && provider.listed == false)
+        this.selectedPlan.emit({ plan: this.packages[0], provider: null, discount: true });
     })
   }
 

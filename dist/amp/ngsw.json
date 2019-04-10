@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1554842193857,
+  "timestamp": 1554933648809,
   "index": "./index.html",
   "assetGroups": [
     {
@@ -8,19 +8,19 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "./6.3058b2e72db8e63eb198.js",
-        "./7.32b32a636e8da7b51bc5.js",
-        "./8.14634dc334628ea81c75.js",
-        "./9.d31b01c52f75f269a72b.js",
+        "./6.47783dac3e9a4285a475.js",
+        "./7.f51d4e39e3b524375eb5.js",
+        "./8.87f34ad5fee3af5b147b.js",
+        "./9.54e4288e2f961d601014.js",
         "./common.362f6ffbb918f38c3384.js",
         "./es2015-polyfills.01deec5b2033b45aed7c.js",
         "./favicon.ico",
         "./index.html",
-        "./main.f1fa35a579516e011f18.js",
+        "./main.423517ed6ecfd0708540.js",
         "./polyfills.481858ef51fe27531859.js",
-        "./runtime.a1488db34fbdb3ac90c5.js",
+        "./runtime.f20ae0e4348059b46f37.js",
         "./scripts.03e042f1f102bf0e2ed8.js",
-        "./styles.4a27e0cc6a5e1541f472.css"
+        "./styles.5e4cd16f136b910ccb63.css"
       ],
       "patterns": []
     },
@@ -71,7 +71,9 @@
         "./assets/img/dashboard/notifications.png",
         "./assets/img/dashboard/scheduling.png",
         "./assets/img/dashboard/settings.png",
+        "./assets/img/fb.png",
         "./assets/img/forms.png",
+        "./assets/img/googlePlus.png",
         "./assets/img/login.png",
         "./assets/img/logo.png",
         "./assets/img/marketing.png",
@@ -88,10 +90,10 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "./6.3058b2e72db8e63eb198.js": "1e229ccff19941a3a0272042a797298a4772093b",
-    "./7.32b32a636e8da7b51bc5.js": "e6aa2ce54f5eaf312d7f6bebb594c85ce575b481",
-    "./8.14634dc334628ea81c75.js": "441924ac5e96db43a6ea732ef7b20bdeca064d9a",
-    "./9.d31b01c52f75f269a72b.js": "e343d0bc076527cb3f7e86cb5f86f3a5e33bf747",
+    "./6.47783dac3e9a4285a475.js": "6f2640c1dcd69a2cd9b1cf390e2883aa095c3711",
+    "./7.f51d4e39e3b524375eb5.js": "08c36a92e2e0c70b978f7caaccc44c3f6891a9df",
+    "./8.87f34ad5fee3af5b147b.js": "9ff3eb0326ec5ac4aba6fdf26b6e850950ce1e21",
+    "./9.54e4288e2f961d601014.js": "3c2985bde78ef1ec87f4ed40098b780cf259e2e2",
     "./assets/fonts/ProximaNova-Bold.eot": "7667653ff627fb0b719cef6a1856796644d91bc5",
     "./assets/fonts/ProximaNova-Bold.svg": "40e2702dc198af5d1f9fef73e88728ef313a6a9c",
     "./assets/fonts/ProximaNova-Bold.ttf": "58913e0d42627d34a840a94c294f60bce053d2b8",
@@ -134,7 +136,9 @@
     "./assets/img/dashboard/notifications.png": "6c82408ef612134a05e51a22c42ca53e311bd841",
     "./assets/img/dashboard/scheduling.png": "c2ac884ee704ccadc00c487ede4b6da52834f7e9",
     "./assets/img/dashboard/settings.png": "7c243d1f4165b39f39eaa7c10ca4a1c1aa7fbc58",
+    "./assets/img/fb.png": "4034791c9f97c73df45200ffdc32598a507b9287",
     "./assets/img/forms.png": "a1abaac4683c0fcea600393f3f1f3a408a13cbbc",
+    "./assets/img/googlePlus.png": "dce5532259d1d6f0c8ef29770ffb320bdf1fdc34",
     "./assets/img/login.png": "591209f708cef8386fb0e66f2db0d1fcc71eb404",
     "./assets/img/logo.png": "5b6e19f167890e37f86810a7efc5d14c773bed62",
     "./assets/img/marketing.png": "72b8fc49a786dfe47ac6fee5e875b90bfbf7c12a",
@@ -148,12 +152,12 @@
     "./common.362f6ffbb918f38c3384.js": "6cfabd288855a7a791d8e01e1c22ca259bdfba11",
     "./es2015-polyfills.01deec5b2033b45aed7c.js": "ddc4884f07efd3b0454e560ff8808c45a7fd49d0",
     "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "./index.html": "65d512566ac921912814ac4f85cea18038743018",
-    "./main.f1fa35a579516e011f18.js": "a8edf6d94b6b7548a2aad1fcc9e756e09914684e",
+    "./index.html": "17177ec1e3d653e281aa38c7013215b4d711f1c6",
+    "./main.423517ed6ecfd0708540.js": "99bd80b94350e70d6c2a31d0e0d114f86f68ff7d",
     "./polyfills.481858ef51fe27531859.js": "ef448ddee57ecea8f1f0157e9e684b2c871e2e39",
-    "./runtime.a1488db34fbdb3ac90c5.js": "ee45b785cd2fafb77bf0a1c15b5ba3930db5ce54",
+    "./runtime.f20ae0e4348059b46f37.js": "c849f3cd7db968b5456d2bda68c97633910dc718",
     "./scripts.03e042f1f102bf0e2ed8.js": "ba281a9af413e5f1a813cfd2d8b99dc9a0245b32",
-    "./styles.4a27e0cc6a5e1541f472.css": "d1abe5b737d1976e7296c21629f8df0356660162"
+    "./styles.5e4cd16f136b910ccb63.css": "d66bf43e4bc4985cc5052e6e8a9e8a20fc48f2e7"
   },
   "navigationUrls": [
     {

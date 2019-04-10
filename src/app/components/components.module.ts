@@ -10,6 +10,7 @@ import { ManualComponent } from './manual/manual.component';
 import { FormsModule } from '@angular/forms';
 import { ProDetailsComponent } from './modals/pro-details/pro-details.component';
 import { ThemesComponent } from './modals/themes/themes.component';
+import { LoggedComponent } from './logged/logged.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ThemesComponent } from './modals/themes/themes.component';
     AlitaComponent,
     ManualComponent,
     ProDetailsComponent,
-    ThemesComponent
+    ThemesComponent,
+    LoggedComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { ThemesComponent } from './modals/themes/themes.component';
     FabComponent,
     AlitaComponent,
     ManualComponent,
-    ProDetailsComponent
+    ProDetailsComponent,
+    LoggedComponent
   ],
   entryComponents: [
     AlertComponent,

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="GlobalFormWrapper">
+    <div class="form-slide">
+      <div class="form-head-row">
+        <span class="back" (click)="goBack()">
+          <img src="assets/img/back.png" alt="icon" />
+          <span>
+            Back
+          </span>
+        </span>
+      </div>
+      <div class="form-area">
+        <div class="logoWithHeading">
+          <span class="logo"></span>
+          <h3>Create User Login</h3>
+        </div>
+        <form>
+          <div class="form-row">
+            <div class="form-two-col">
+              <div class="cus-inp-row">
+                <label>Email</label>
+                <input type="text" autocomplete="off" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
+              </div>
+              <div class="cus-inp-row">
+                <label>Password</label>
+                <input type="password" autocomplete="off" [(ngModel)]="user.password" (ngModelChange)="changeInFields('pass')" name="password" [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
+              </div>
+              <div class="cus-inp-row">
+                <label>Verify Password</label>
+                <input type="password" autocomplete="off" [(ngModel)]="user.conPass" (ngModelChange)="changeInFields('con')" name="conf" [ngClass]="{'active': user.conPass != '','error':usrVld.conPass == true}" />
+              </div>
+
+            </div>
+            <div class="form-two-col">
+              <div>
+                <label class="socialLabel">OR USE SOCIAL LOGIN</label>
+                <button (click)="fbLogin()" class="cus-btn fb-btn" mat-raised-button>
+                  FACEBOOK LOGIN
+                </button>
+                <button (click)="gpLogin()" class="cus-btn google-btn" mat-raised-button>
+                  GOOGLE LOGIN
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="blue-btn" (click)="createUser()" mat-raised-button>NEXT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

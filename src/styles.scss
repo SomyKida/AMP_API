@@ -97,6 +97,7 @@ $font-path: "/assets/fonts";
                     text-transform: uppercase;
                     font-size: 22px;
                     letter-spacing: 3px;
+                    font-family: 'ProximaNova-Light'
                 }
             }
         }
@@ -148,6 +149,7 @@ $font-path: "/assets/fonts";
                         margin-bottom: 10px;
                         font-size: 16px;
                         letter-spacing: 1.5px;
+                        font-family: 'ProximaNova-Light';
                     }
 
                     input {
@@ -175,14 +177,13 @@ $font-path: "/assets/fonts";
                 .cus-check-row {
                     display: flex;
                     align-items: center;
-                    padding-bottom: 50px;
 
                     label {
                         span {
                             border: 3px solid $darkBlue;
                             border-radius: 50%;
-                            width: 20px;
-                            height: 20px;
+                            width: 15px;
+                            height: 15px;
                             display: inline-block;
                             vertical-align: middle;
                             margin-right: 10px;
@@ -198,6 +199,19 @@ $font-path: "/assets/fonts";
                             }
                         }
                     }
+
+                    .box {
+                        display: block;
+                    }
+
+                    .statement {
+                        font-size: 14px;
+                        letter-spacing: 0.20px;
+                        line-height: 1;
+                        font-family: 'ProximaNova-Light';
+                        color: $back;
+                    }
+
                 }
 
                 .blue-btn {

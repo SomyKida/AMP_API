@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/material/material.module';
 import { AuxService } from './auxilaries/aux.service';
 import { SessGuardService } from './services/guards/sess-guard.service';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { provideConfig } from './services/social/social';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { SessGuardService } from './services/guards/sess-guard.service';
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
+    SocialLoginModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
@@ -38,6 +41,10 @@ import { SessGuardService } from './services/guards/sess-guard.service';
       provide: Http,
       useFactory: HttpFactory,
       deps: [XHRBackend, RequestOptions]
+    },
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
     }
   ],
   bootstrap: [AppComponent]
