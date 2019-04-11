@@ -495,7 +495,7 @@ router.post('/login', (req, res) => {
     }
   })
 })
-router.post('fb/login', (req, res) => {
+router.post('/fb/login', (req, res) => {
   var post_data = req.body
   if (!helper.validateField(res, post_data, 'email', 'Email')) {
     return
@@ -525,7 +525,7 @@ router.post('fb/login', (req, res) => {
     }
   })
 })
-router.post('google/login', (req, res) => {
+router.post('/google/login', (req, res) => {
   var post_data = req.body
   if (!helper.validateField(res, post_data, 'email', 'Email')) {
     return
