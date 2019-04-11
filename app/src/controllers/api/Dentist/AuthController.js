@@ -762,8 +762,7 @@ router.post(v3 + '/register', (req, res) => {
         'email',
         'phone',
         'package',
-        'pwd',
-        'conf_pwd'
+        'auth_type'
       ]
       post_data = req.body
 
@@ -778,15 +777,39 @@ router.post(v3 + '/register', (req, res) => {
           return
       }
 
-      if (post_data.pwd.length < 8) {
-        helper.sendError(res, "Passwords needs to be at least 8 characters long.")
-        return
+      if (post_data.auth_type == 'DESKTOP') {
+        if (post_data.auth_type == 'DESKTOP') {
+
+          fields_required = [
+            'pwd',
+            'conf_pwd'
+          ]
+
+          if (!helper.validateFieldAuto(res, post_data, fields_required))
+            return
+
+          if (post_data.pwd.length < 8) {
+            helper.sendError(res, "Passwords needs to be at least 8 characters long.")
+            return
+          }
+
+          if (post_data.pwd != post_data.conf_pwd) {
+            helper.sendError(res, "Passwords do not match.")
+            return
+          }
+
+        }
+      } else if (post_data.auth_type == 'FB') {
+        if (!helper.validateField(res, post_data, 'fb_id', 'Facebook ID'))
+          return
+      } else if (post_data.auth_type == 'GOOGLE') {
+        if (!helper.validateField(res, post_data, 'g_id', 'Google ID'))
+          return
       }
 
-      if (post_data.pwd != post_data.conf_pwd) {
-        helper.sendError(res, "Passwords do not match.")
-        return
-      }
+
+
+
 
 
       Dentist.findOne({ 'email': post_data.email }, (err, dentist) => {
@@ -803,7 +826,9 @@ router.post(v3 + '/register', (req, res) => {
                   helper.sendError(res, "No such service provider found")
                   return
                 } else {
-                  pwd = bcrypt.hashSync(post_data.pwd, 10)
+
+
+
                   token = helper.generateRandomString(5)
                   access_token = helper.generateRandomString(15)
                   dentist = new Dentist({
@@ -818,12 +843,21 @@ router.post(v3 + '/register', (req, res) => {
                     'phone': post_data.phone,
                     'package': post_data.package,
                     'first_ready': false,
-                    'pwd': pwd,
+                    'auth_type': post_data.auth_type,
                     'service_provider': post_data.service_provider,
                     'access_token': access_token,
                     'email_verified': true
 
                   })
+
+                  if (post_data.auth_type == 'DESKTOP') {
+                    pwd = bcrypt.hashSync(post_data.pwd, 10)
+                    dentist.pwd = pwd
+                  } else if (post_data.auth_type == 'FB') {
+                    dentist.fb_id = post_data.fb_id
+                  } else if (post_data.auth_type == 'GOOGLE') {
+                    dentist.g_id = post_data.g_id
+                  }
 
                   dentist.save((err) => {
                     if (!helper.postQueryErrorOnly(err, null)) {
