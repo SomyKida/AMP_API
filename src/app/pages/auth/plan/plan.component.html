@@ -106,26 +106,32 @@
               </div>
             </div>
             <div class="cus-check-row">
-              <div class="box">
-                <input type="checkbox" [(ngModel)]="billing.todays" id="cussed" name="today" />
-                <label for="cussed"><span></span></label>
-              </div>
-              <div class="statement" (click)="agree('today')">
-                <!-- By clicking this you agree to our terms and conditions. Moreover you also agree to pay $399 / $199 per month according to the plan you choose. -->
-                <ng-container *ngIf="selectedPlan.discount == null">
-                  Click here to approve todays charge of $399 (or $199)
-                </ng-container>
-                <ng-container *ngIf="selectedPlan.discount == true">
-                  Click here to approve todays charge of $99 (After discount)
-                </ng-container>
+              <div class="item-check">
+                <div class="box">
+                  <input type="checkbox" [(ngModel)]="billing.todays" id="cussed" name="today" />
+                  <label for="cussed"><span></span></label>
+                </div>
+                <div class="statement" (click)="agree('today')">
+                  <!-- By clicking this you agree to our terms and conditions. Moreover you also agree to pay $399 / $199 per month according to the plan you choose. -->
+                  <ng-container *ngIf="selectedPlan.discount == null">
+                    <ng-container *ngIf="selectedPlan.plan.name == 'PRO'">Click here to approve todays charge of $399</ng-container>
+                    <ng-container *ngIf="selectedPlan.plan.name == 'LITE'">Click here to approve todays charge of $199</ng-container>
+                  </ng-container>
+                  <ng-container *ngIf="selectedPlan.discount == true">
+                    Click here to approve todays charge of $99 (After discount)
+                  </ng-container>
 
+                </div>
               </div>
-              <div class="box">
-                <input type="checkbox" [(ngModel)]="billing.monthly" name="monthly" id="cus-check" />
-                <label for="cus-check"><span></span></label>
-              </div>
-              <div class="statement" (click)="agree('monthly')">
-                Click Here to approve monthly charge of $399 (or $199)
+              <div class="item-check">
+                <div class="box">
+                  <input type="checkbox" [(ngModel)]="billing.monthly" name="monthly" id="cus-check" />
+                  <label for="cus-check"><span></span></label>
+                </div>
+                <div class="statement" (click)="agree('monthly')">
+                  <ng-container *ngIf="selectedPlan.plan.name == 'PRO'">Click Here to approve monthly charge of $399</ng-container>
+                  <ng-container *ngIf="selectedPlan.plan.name == 'LITE'">Click Here to approve monthly charge of $199</ng-container>
+                </div>
               </div>
             </div>
             <button class="blue-btn" mat-raised-button (click)="billMe()">NEXT</button>

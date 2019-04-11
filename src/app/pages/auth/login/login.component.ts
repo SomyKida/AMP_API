@@ -4,6 +4,8 @@ import { AuxService } from 'src/app/auxilaries/aux.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CredentialService } from 'src/app/services/credentials/credential.service';
+import { AuthService as SocialAuth } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
     public router: Router,
     public credential: CredentialService,
     public location: Location,
+    public socialService: SocialAuth,
     public aux: AuxService) { }
 
   ngOnInit() {
@@ -63,6 +66,36 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/home'])
     }, (error) => {
       this.aux.errorResponse(error);
+    })
+  }
+
+  fbLogin() {
+    this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID).then((result) => {
+      var params = {
+        email: result.email,
+        fb_id: result.id
+      }
+      this.auth.fbLogin(params).subscribe((success) => {
+        this.credential.setUser(success.data);
+        this.router.navigate(['/home'])
+      }, (error) => {
+        this.aux.errorResponse(error);
+      })
+    });
+  }
+
+  gpLogin() {
+    this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((result) => {
+      var params = {
+        email: result.email,
+        g_id: result.id
+      }
+      this.auth.fbLogin(params).subscribe((success) => {
+        this.credential.setUser(success.data);
+        this.router.navigate(['/home'])
+      }, (error) => {
+        this.aux.errorResponse(error);
+      })
     })
   }
 

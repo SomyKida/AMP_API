@@ -105,6 +105,7 @@ export class PlanComponent implements OnInit {
 
   register(plan) {
     this.selectedPlan = plan;
+    console.log(this.selectedPlan);
   }
 
   loginCreated(output) {
@@ -227,28 +228,28 @@ export class PlanComponent implements OnInit {
       if (!check)
         check = true;
     }
-    if (this.user.pass == '') {
-      this.userFldsVlds.pass = true;
-      if (!check)
-        check = true;
-    }
-    if (this.user.conPass == '') {
-      this.userFldsVlds.conPass = true;
-      if (!check)
-        check = true;
-    }
-    if (this.user.pass != this.user.conPass) {
-      this.userFldsVlds.pass = true;
-      this.userFldsVlds.conPass = true;
-      this.aux.showAlert("Passwords don't match.", "ERROR");
-      return;
-    }
-    if (this.user.pass.length < 8 || this.user.conPass.length < 8) {
-      this.userFldsVlds.pass = true;
-      this.userFldsVlds.conPass = true;
-      this.aux.showAlert("Password must be atleast 8 characters long.", "ERROR");
-      return;
-    }
+    // if (this.user.pass == '' && this.user.authType == 'DESKTOP') {
+    //   this.userFldsVlds.pass = true;
+    //   if (!check)
+    //     check = true;
+    // }
+    // if (this.user.conPass == '' && this.user.authType == 'DESKTOP') {
+    //   this.userFldsVlds.conPass = true;
+    //   if (!check)
+    //     check = true;
+    // }
+    // if (this.user.pass != this.user.conPass && this.user.authType == 'DESKTOP') {
+    //   this.userFldsVlds.pass = true;
+    //   this.userFldsVlds.conPass = true;
+    //   this.aux.showAlert("Passwords don't match.", "ERROR");
+    //   return;
+    // }
+    // if ((this.user.pass.length < 8 || this.user.conPass.length < 8) && this.user.authType == 'DESKTOP') {
+    //   this.userFldsVlds.pass = true;
+    //   this.userFldsVlds.conPass = true;
+    //   this.aux.showAlert("Password must be atleast 8 characters long.", "ERROR");
+    //   return;
+    // }
     if (!this.aux.validate_email(this.user.email)) {
       this.userFldsVlds.email = true;
       this.aux.showAlert("Please enter a valid email address.", "ERROR");
@@ -270,7 +271,10 @@ export class PlanComponent implements OnInit {
       package: this.selectedPlan.plan.name,
       pwd: this.user.pass,
       conf_pwd: this.user.conPass,
-      is_discount: this.selectedPlan.discount == true ? true : false
+      is_discount: this.selectedPlan.discount == true ? true : false,
+      auth_type: this.user.authType,
+      g_id: this.user.g_id,
+      fb_id: this.user.fb_id
     }
     if (this.selectedPlan.provider)
       params['service_provider'] = this.selectedPlan.provider._id;

@@ -177,6 +177,7 @@ $font-path: "/assets/fonts";
                 .cus-check-row {
                     display: flex;
                     align-items: center;
+                    justify-content: space-evenly;
 
                     label {
                         span {
@@ -200,16 +201,24 @@ $font-path: "/assets/fonts";
                         }
                     }
 
+                    .item-check {
+                        display: inline-block;
+                    }
+
                     .box {
-                        display: block;
+                        display: inline-block;
+                        vertical-align: middle;
                     }
 
                     .statement {
+                        display: inline-block;
                         font-size: 14px;
                         letter-spacing: 0.20px;
                         line-height: 1;
                         font-family: 'ProximaNova-Light';
                         color: $back;
+                        width: 80%;
+                        vertical-align: middle;
                     }
 
                 }
