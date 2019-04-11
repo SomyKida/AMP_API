@@ -495,6 +495,66 @@ router.post('/login', (req, res) => {
     }
   })
 })
+router.post('fb/login', (req, res) => {
+  var post_data = req.body
+  if (!helper.validateField(res, post_data, 'email', 'Email')) {
+    return
+  } if (!helper.validateField(res, post_data, 'fb_id', 'Facebook Id')) {
+    return
+  }
+
+  Dentist.find({ 'email': post_data['email'], 'fb_id': post_data['fb_id'] }, (err, dentists) => {
+    if (!helper.postQueryErrorOnly(err, res)) {
+      //console.log(dentists)
+      if (dentists.length == 0) {
+        helper.sendError(res, 'Wrong/ Unknown Email or Facebook ID')
+        return
+      } else {
+        dentist = dentists[0]
+        new_token = helper.generateRandomString(15)
+        dentist.access_token = new_token
+        dentist.save((err, result) => {
+          if (!helper.postQueryErrorOnly(err, res)) {
+            dentist.pwd = null
+            helper.sendSuccess(res, dentist)
+            return
+          }
+        })
+
+      }
+    }
+  })
+})
+router.post('google/login', (req, res) => {
+  var post_data = req.body
+  if (!helper.validateField(res, post_data, 'email', 'Email')) {
+    return
+  } if (!helper.validateField(res, post_data, 'g_id', 'Google Id')) {
+    return
+  }
+
+  Dentist.find({ 'email': post_data['email'], 'g_id': post_data['g_id'] }, (err, dentists) => {
+    if (!helper.postQueryErrorOnly(err, res)) {
+      //console.log(dentists)
+      if (dentists.length == 0) {
+        helper.sendError(res, 'Wrong/ Unknown Email or Google ID')
+        return
+      } else {
+        dentist = dentists[0]
+        new_token = helper.generateRandomString(15)
+        dentist.access_token = new_token
+        dentist.save((err, result) => {
+          if (!helper.postQueryErrorOnly(err, res)) {
+            dentist.pwd = null
+            helper.sendSuccess(res, dentist)
+            return
+          }
+        })
+
+      }
+    }
+  })
+})
 
 router.post(v2 + '/register', (req, res) => {
 
