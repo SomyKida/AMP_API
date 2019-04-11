@@ -17,17 +17,20 @@
           <div class="form-row">
             <div class="form-one-col">
               <label>Phone</label>
-              <input type="text" placeholder="# patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+              <input type="text" placeholder="#Patients use to call office" [(ngModel)]="stepOne.phone"
+                (ngModelChange)="changeInFields('name')" name="name" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Email</label>
-              <input type="email" [(ngModel)]="stepOne.email" name="address" placeholder="Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
+              <input type="email" [(ngModel)]="stepOne.email" name="address"
+                placeholder="#Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
             <div class="form-two-col">
               <label>Address</label>
-              <input type="text" placeholder="Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip" (ngModelChange)="changeInFields('zipcode')" />
+              <input type="text" placeholder="#Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip"
+                (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <h3>Doctors Names</h3>
@@ -48,22 +51,26 @@
             <div class="form-row">
               <div class="form-four-col">
                 <label>Opening Time</label>
-                <input class="picker" [ngxTimepicker]="q" name="open" [(ngModel)]="din.openTime" (ngModelChange)="changeInFields('email')" />
+                <input class="picker" [ngxTimepicker]="q" name="open" [(ngModel)]="din.openTime"
+                  (ngModelChange)="changeInFields('email')" />
                 <ngx-material-timepicker #q></ngx-material-timepicker>
               </div>
               <div class="form-four-col">
                 <label>Lunch Start Time</label>
-                <input class="picker" [ngxTimepicker]="w" [(ngModel)]="din.lunchStart" name="lunch" (ngModelChange)="changeInFields('phoneNo')" />
+                <input class="picker" [ngxTimepicker]="w" [(ngModel)]="din.lunchStart" name="lunch"
+                  (ngModelChange)="changeInFields('phoneNo')" />
                 <ngx-material-timepicker #w></ngx-material-timepicker>
               </div>
               <div class="form-four-col">
                 <label>Lunch End Time</label>
-                <input class="picker" [ngxTimepicker]="e" [(ngModel)]="din.lunchEnd" name="luncend" (ngModelChange)="changeInFields('phoneNo')" />
+                <input class="picker" [ngxTimepicker]="e" [(ngModel)]="din.lunchEnd" name="luncend"
+                  (ngModelChange)="changeInFields('phoneNo')" />
                 <ngx-material-timepicker #e></ngx-material-timepicker>
               </div>
               <div class="form-four-col">
                 <label>Closing Time</label>
-                <input class="picker" [ngxTimepicker]="r" [(ngModel)]="din.closeTime" name="close" (ngModelChange)="changeInFields('phoneNo')" />
+                <input class="picker" [ngxTimepicker]="r" [(ngModel)]="din.closeTime" name="close"
+                  (ngModelChange)="changeInFields('phoneNo')" />
                 <ngx-material-timepicker #r></ngx-material-timepicker>
               </div>
             </div>

@@ -23,7 +23,7 @@ let DentistSchema = new Schema({
   package: { type: String, enum: ['PRO', 'LITE'], required: true },
   auth_type: { type: String, enum: ['FB', 'GOOGLE', 'DESKTOP'], required: true },
   fb_id: { type: String, required: false },
-  g_ig: { type: String, required: false },
+  g_id: { type: String, required: false },
   admins: [{ type: Schema.Types.ObjectId, ref: 'Admin' }],
   template: { type: String, default: 'default' },
   init_payment: { type: Boolean, default: false },
