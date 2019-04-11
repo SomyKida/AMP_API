@@ -13,18 +13,18 @@ import { CredentialService } from '../../../services/credentials/credential.serv
 })
 export class PlanComponent implements OnInit {
   selectedPlan: any = null;
-  hasSignedUp: boolean = false;
   selectedTab: number = 0;
   public steps = {
     loginInfo: false,
     billingInfo: false,
+
   }
   public userFromUrl = null;
   public user:
     {
       fname: string, lname: string, address: string, zipcode: string,
       email: string, phoneNo: string, pass: string, conPass: string,
-      city: string, state: string
+      city: string, state: string, authType: string, fb_id: string, g_id: string
     } = {
       fname: '',
       lname: '',
@@ -35,7 +35,10 @@ export class PlanComponent implements OnInit {
       pass: '',
       conPass: '',
       city: '',
-      state: ''
+      state: '',
+      authType: 'DESKTOP',
+      fb_id: '',
+      g_id: ''
     }
   public userFldsVlds = {
     fname: false,
@@ -101,14 +104,28 @@ export class PlanComponent implements OnInit {
   }
 
   register(plan) {
-    console.log(plan);
     this.selectedPlan = plan;
   }
 
-  loginCreated(output: { email: string, password: string, conPass: string }) {
-    this.user.email = output.email;
-    this.user.pass = output.password;
-    this.user.conPass = output.conPass;
+  loginCreated(output) {
+    if (output.authType == 'DESKTOP') {
+      this.user.email = output.user.email;
+      this.user.pass = output.user.password;
+      this.user.conPass = output.user.conPass;
+      this.user.authType = output.authType;
+    } else if (output.authType == 'FB') {
+      this.user.email = output.user.email;
+      this.user.fname = output.user.firstName;
+      this.user.lname = output.user.lastName;
+      this.user.authType = output.authType;
+      this.user.fb_id = output.user.id;
+    } else if (output.authType == 'GOOGLE') {
+      this.user.email = output.user.email;
+      this.user.fname = output.user.firstName;
+      this.user.lname = output.user.lastName;
+      this.user.authType = output.authType;
+      this.user.g_id = output.user.id;
+    }
     this.steps.loginInfo = true;
   }
 

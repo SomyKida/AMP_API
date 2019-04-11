@@ -22,43 +22,50 @@ export class ManualComponent implements OnInit {
       {
         day: 'Monday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
       {
         day: 'Tuesday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
       {
         day: 'Wednesday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
       {
         day: 'Thursday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
       {
         day: 'Friday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
       {
         day: 'Saturday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
       {
         day: 'Sunday',
         openTime: '',
-        lunchTime: '',
+        lunchStart: '',
+        lunchEnd: '',
         closeTime: ''
       },
     ],

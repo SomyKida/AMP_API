@@ -43,20 +43,28 @@
           </div>
           <button class="add-doc" (click)="addDoc()" mat-raised-button>Add Another Doctor</button>
           <h3>Office Hours</h3>
-          <ng-container *ngFor="let din of stepOne.officeHours">
+          <ng-container *ngFor="let din of stepOne.officeHours;let i = index;">
             <h4>{{din.day}}</h4>
             <div class="form-row">
-              <div class="form-three-col">
+              <div class="form-four-col">
                 <label>Opening Time</label>
-                <input type="time" name="open" [(ngModel)]="din.openTime" (ngModelChange)="changeInFields('email')" />
+                <input class="picker" [ngxTimepicker]="q" name="open" [(ngModel)]="din.openTime" (ngModelChange)="changeInFields('email')" />
+                <ngx-material-timepicker #q></ngx-material-timepicker>
               </div>
-              <div class="form-three-col">
-                <label>Lunch Time</label>
-                <input type="time" [(ngModel)]="din.lunchTime" name="lunch" (ngModelChange)="changeInFields('phoneNo')" />
+              <div class="form-four-col">
+                <label>Lunch Start Time</label>
+                <input class="picker" [ngxTimepicker]="w" [(ngModel)]="din.lunchStart" name="lunch" (ngModelChange)="changeInFields('phoneNo')" />
+                <ngx-material-timepicker #w></ngx-material-timepicker>
               </div>
-              <div class="form-three-col">
+              <div class="form-four-col">
+                <label>Lunch End Time</label>
+                <input class="picker" [ngxTimepicker]="e" [(ngModel)]="din.lunchEnd" name="luncend" (ngModelChange)="changeInFields('phoneNo')" />
+                <ngx-material-timepicker #e></ngx-material-timepicker>
+              </div>
+              <div class="form-four-col">
                 <label>Closing Time</label>
-                <input type="time" [(ngModel)]="din.closeTime" name="close" (ngModelChange)="changeInFields('phoneNo')" />
+                <input class="picker" [ngxTimepicker]="r" [(ngModel)]="din.closeTime" name="close" (ngModelChange)="changeInFields('phoneNo')" />
+                <ngx-material-timepicker #r></ngx-material-timepicker>
               </div>
             </div>
           </ng-container>

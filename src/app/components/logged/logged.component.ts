@@ -75,17 +75,21 @@ export class LoggedComponent implements OnInit {
       this.aux.showAlert("Please don't leave any field blank", "ERROR!");
       return;
     }
-    this.out.emit(this.user);
+    this.out.emit({ user: this.user, authType: 'DESKTOP' });
   }
 
   fbLogin() {
     this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID).then((result) => {
       console.log(result);
+      this.out.emit({ user: result, authType: 'FB' });
     });
   }
 
   gpLogin() {
-    this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((result) => {
+      console.log(result);
+      this.out.emit({ user: result, authType: 'GOOGLE' });
+    })
   }
 
   goBack() {

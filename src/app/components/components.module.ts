@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ProDetailsComponent } from './modals/pro-details/pro-details.component';
 import { ThemesComponent } from './modals/themes/themes.component';
 import { LoggedComponent } from './logged/logged.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { Picker } from './pipes/pipes.pipe';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { LoggedComponent } from './logged/logged.component';
     ManualComponent,
     ProDetailsComponent,
     ThemesComponent,
-    LoggedComponent
+    LoggedComponent,
+    Picker,
   ],
   imports: [
+    NgxMaterialTimepickerModule,
     CommonModule,
     FormsModule,
     MaterialModule
@@ -37,7 +41,8 @@ import { LoggedComponent } from './logged/logged.component';
     AlitaComponent,
     ManualComponent,
     ProDetailsComponent,
-    LoggedComponent
+    LoggedComponent,
+    Picker
   ],
   entryComponents: [
     AlertComponent,

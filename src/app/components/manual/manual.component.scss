@@ -81,6 +81,15 @@
                         outline: none;
                     }
 
+                    .form-four-col {
+                        width: 22%;
+                    }
+
+
+                    .timepicker-dial__control {
+                        width: 60px !important;
+                    }
+
                     input {
                         &.active {
                             background: #fff;
