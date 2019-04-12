@@ -17,17 +17,17 @@
           <div class="form-row">
             <div class="form-one-col">
               <label>Phone</label>
-              <input type="text" placeholder="# patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+              <input type="text" placeholder="#Patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Email</label>
-              <input type="email" [(ngModel)]="stepOne.email" name="address" placeholder="Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
+              <input type="email" [(ngModel)]="stepOne.email" name="address" placeholder="#Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
             <div class="form-two-col">
               <label>Address</label>
-              <input type="text" placeholder="Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip" (ngModelChange)="changeInFields('zipcode')" />
+              <input type="text" placeholder="#Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip" (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <h3>Doctors Names</h3>
