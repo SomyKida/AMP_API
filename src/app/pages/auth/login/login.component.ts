@@ -85,7 +85,6 @@ export class LoginComponent implements OnInit {
   }
 
   gpLogin() {
-
     this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((result) => {
       var params = {
         email: result.email,
@@ -97,6 +96,8 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         this.aux.errorResponse(error);
       })
+    }).catch((error) => {
+      console.log(error);
     })
   }
 
