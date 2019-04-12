@@ -36,6 +36,11 @@
                 color: $headingNormColor;
             }
 
+            h4 {
+                display: inline-block;
+                margin-right: 15px;
+            }
+
             form {
                 .form-row {
                     display: flex;
@@ -100,6 +105,10 @@
                         &.error {
                             background: $validation
                         }
+                    }
+
+                    .disabling {
+                        background: $validation;
                     }
                 }
 

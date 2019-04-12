@@ -24,49 +24,56 @@ export class ManualComponent implements OnInit {
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
       {
         day: 'Tuesday',
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
       {
         day: 'Wednesday',
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
       {
         day: 'Thursday',
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
       {
         day: 'Friday',
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
       {
         day: 'Saturday',
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
       {
         day: 'Sunday',
         openTime: '',
         lunchStart: '',
         lunchEnd: '',
-        closeTime: ''
+        closeTime: '',
+        off: false
       },
     ],
     docNames: [
@@ -94,6 +101,10 @@ export class ManualComponent implements OnInit {
     public credentials: CredentialService) { }
 
   ngOnInit() {
+  }
+
+  markAsOff(day) {
+    day.off = !day.off;
   }
 
   toStep(which) {
