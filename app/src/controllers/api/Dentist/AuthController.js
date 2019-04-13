@@ -507,7 +507,7 @@ router.post('/fb/login', (req, res) => {
     if (!helper.postQueryErrorOnly(err, res)) {
       //console.log(dentists)
       if (dentists.length == 0) {
-        helper.sendError(res, 'Wrong/ Unknown Email or Facebook ID')
+        helper.sendError(res, 'Please Sign Up first using Facebook')
         return
       } else {
         dentist = dentists[0]
@@ -537,7 +537,7 @@ router.post('/google/login', (req, res) => {
     if (!helper.postQueryErrorOnly(err, res)) {
       //console.log(dentists)
       if (dentists.length == 0) {
-        helper.sendError(res, 'Wrong/ Unknown Email or Google ID')
+        helper.sendError(res, 'Please Sign Up first using Google')
         return
       } else {
         dentist = dentists[0]
