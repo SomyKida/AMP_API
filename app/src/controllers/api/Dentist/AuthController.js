@@ -822,7 +822,8 @@ router.post(v3 + '/register', (req, res) => {
         'email',
         'phone',
         'package',
-        'auth_type'
+        'auth_type',
+
       ]
       post_data = req.body
 
@@ -834,6 +835,8 @@ router.post(v3 + '/register', (req, res) => {
 
       if (post_data.package == 'PRO') {
         if (!helper.validateField(res, post_data, 'service_provider', 'Service Provider'))
+          return
+        if (!helper.validateField(res, post_data, 'software', 'Software'))
           return
       }
 
@@ -917,6 +920,10 @@ router.post(v3 + '/register', (req, res) => {
                     dentist.fb_id = post_data.fb_id
                   } else if (post_data.auth_type == 'GOOGLE') {
                     dentist.g_id = post_data.g_id
+                  }
+
+                  if (post_data.package == "PRO") {
+                    dentist.software = post_data.software;
                   }
 
                   dentist.save((err) => {

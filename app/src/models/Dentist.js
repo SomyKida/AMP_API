@@ -32,6 +32,7 @@ let DentistSchema = new Schema({
   url: { type: String },
   email_verified: { type: Boolean, default: false },
   temp_token: { type: String, max: 100 },
+  software: { type: String, max: 100, default: null },
   selected_theme: { type: Schema.Types.ObjectId, ref: 'Themes' }
 }, { collection: 'dentists' });
 
