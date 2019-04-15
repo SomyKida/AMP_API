@@ -90,6 +90,7 @@ export class ManualComponent implements OnInit {
     auth: '',
     token: ''
   }
+  public user;
   selectedTab: number = 0;
   @Output('switch') proceed = new EventEmitter<any>();
 
@@ -98,7 +99,9 @@ export class ManualComponent implements OnInit {
     public dialog: MatDialog,
     public auth: AuthService,
     public router: Router,
-    public credentials: CredentialService) { }
+    public credentials: CredentialService) {
+    this.user = credentials.user;
+  }
 
   ngOnInit() {
   }
