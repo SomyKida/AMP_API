@@ -101,6 +101,7 @@ export class ManualComponent implements OnInit {
     public router: Router,
     public credentials: CredentialService) {
     this.user = credentials.user;
+    this.stepTwo.software = this.user.software;
   }
 
   ngOnInit() {

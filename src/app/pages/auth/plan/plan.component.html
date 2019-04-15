@@ -77,7 +77,7 @@
               </div>
               <div class="form-two-col">
                 <label>PHONE #</label>
-                <input type="number" [(ngModel)]="user.phoneNo" autocomplete="off" name="phone" (ngModelChange)="changeInFields('phoneNo')" [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
+                <input type="tel" mask="(000) 000-0000" [(ngModel)]="user.phoneNo" autocomplete="off" name="phone" (ngModelChange)="changeInFields('phoneNo')" [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
               </div>
             </div>
             <button class="blue-btn" mat-raised-button (click)="signUp()">NEXT</button>
@@ -92,13 +92,13 @@
             <div class="form-row">
               <div class="form-one-col">
                 <label>Card Number</label>
-                <input type="text" maxlength="16" [(ngModel)]="billing.number" autocomplete="off" (ngModelChange)="changeInFields('cardnumber')" name="unit" [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
+                <input type="text" mask="0000 0000 0000 0000" [(ngModel)]="billing.number" autocomplete="off" (ngModelChange)="changeInFields('cardnumber')" name="unit" [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>Expiration Date</label>
-                <input type="month" [(ngModel)]="billing.expiry" autocomplete="off" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}" />
+                <input mask="M0-0000" placeholder="09-2021" [(ngModel)]="billing.expiry" autocomplete="off" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}" />
               </div>
               <div class="form-two-col">
                 <label>CVC</label>
