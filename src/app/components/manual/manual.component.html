@@ -98,7 +98,7 @@
         </ng-container>
         <ng-container *ngIf="selectedTab == 1">
           <div class="form-row">
-            <div class="form-one-col">
+            <div class="form-one-col" *ngIf="user.package != 'LITE'">
               <label>Which Software are you using?</label>
               <input type="text" [(ngModel)]="stepTwo.software" (ngModelChange)="changeInFields('name')" name="soft" />
             </div>

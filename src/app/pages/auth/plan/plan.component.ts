@@ -274,7 +274,8 @@ export class PlanComponent implements OnInit {
       is_discount: this.selectedPlan.discount == true ? true : false,
       auth_type: this.user.authType,
       g_id: this.user.g_id,
-      fb_id: this.user.fb_id
+      fb_id: this.user.fb_id,
+      software: this.selectedPlan.provider != null ? this.selectedPlan.provider.name : ''
     }
     if (this.selectedPlan.provider)
       params['service_provider'] = this.selectedPlan.provider._id;
@@ -330,8 +331,10 @@ export class PlanComponent implements OnInit {
     var params = {
       email: this.user.email,
       card_number: this.billing.number,
-      card_expiry_year: this.billing.expiry.split('-')[0],
-      card_expiry_month: this.billing.expiry.split('-')[1],
+      // card_expiry_year: this.billing.expiry.split('-')[0],
+      // card_expiry_month: this.billing.expiry.split('-')[1],
+      card_expiry_year: this.billing.expiry.substring(0, 2),
+      card_expiry_month: this.billing.expiry.substring(2, this.billing.expiry.length),
       card_cvc: this.billing.cvc
     }
     this.auth.pay(params).subscribe((success) => {

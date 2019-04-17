@@ -16,6 +16,7 @@ import { AuxService } from './auxilaries/aux.service';
 import { SessGuardService } from './services/guards/sess-guard.service';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { provideConfig } from './services/social/social';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { provideConfig } from './services/social/social';
     HttpModule,
     FormsModule,
     SocialLoginModule,
+    NgxMaskModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

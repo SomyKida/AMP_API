@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
         email: result.email,
         g_id: result.id
       }
-      this.auth.fbLogin(params).subscribe((success) => {
+      this.auth.gpLogin(params).subscribe((success) => {
         this.credential.setUser(success.data);
         this.router.navigate(['/home'])
       }, (error) => {
