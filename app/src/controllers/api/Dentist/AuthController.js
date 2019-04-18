@@ -474,6 +474,7 @@ router.post('/login', (req, res) => {
         return
       } else {
         dentist = dentists[0]
+        console.log(dentist)
         const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
         //console.log(match)
         //Hashed check here #TODO
@@ -929,6 +930,11 @@ router.post(v3 + '/register', (req, res) => {
                   dentist.save((err) => {
                     if (!helper.postQueryErrorOnly(err, null)) {
                       helper.sendSuccess(res, dentist)
+                    }
+                  })
+                  email.sendWelcomeEmail(dentist.email, (err) => {
+                    if (err) {
+                      console.log(err);
                     }
                   })
                   // email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan/' + token, (err, info) => {
