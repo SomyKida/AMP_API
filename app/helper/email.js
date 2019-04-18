@@ -44,17 +44,21 @@ module.exports = {
     });
   },
   sendWelcomeEmail: function (recipients, _callback) {
-
-    html = `<html><div class="wrapper">
-    <head><style>
+    base_url1 = 'https://mongodb-multi-instance-test.herokuapp.com'
+    html = `<html>
+    <head>
+    <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Email</title>
+            <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"><style>
     @font-face {
         font-family: 'leagueSpartan';
-        src: url(`+ base_url + `/assets/emails/leagueSpartan-bold.ttf);
+        src: url(`+ base_url1 + `/assets/emails/leagueSpartan-bold.ttf);
     }
 
     @font-face {
         font-family: 'algreya';
-        src: url(`+ base_url + `/assets/emails/AlegreyaSC-Regular.ttf);
+        src: url(`+ base_url1 + `/assets/emails/AlegreyaSC-Regular.ttf);
     }
 
     .wrapper {
@@ -68,7 +72,6 @@ module.exports = {
     .banner {
         width: 100%;
         height: 30%;
-        background: url(`+ base_url + `/assets/emails/back.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -133,7 +136,8 @@ module.exports = {
         text-decoration: none;
     }
 </style></head>
-<body>
+<body  style="margin: 0; padding: 0">
+<div class="wrapper">
     <div class="banner"></div>
     <div class="content">
         <p class="heading">
