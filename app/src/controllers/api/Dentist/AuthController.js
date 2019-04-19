@@ -677,7 +677,7 @@ router.post(v2 + '/pay-init', (req, res) => {
                       }
 
                     })
-                    email.sendWelcomeEmail(dentist.email, dentist.email, dentist.pwd, dentist.auth_type, (err) => {
+                    email.sendWelcomeEmail(dentist.email, dentist.email, 'Please IGNORE this error, will fix', dentist.auth_type, (err) => {
                       if (err) {
                         console.log(err);
                       }
