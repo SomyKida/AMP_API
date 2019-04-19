@@ -333,8 +333,8 @@ export class PlanComponent implements OnInit {
       card_number: this.billing.number,
       // card_expiry_year: this.billing.expiry.split('-')[0],
       // card_expiry_month: this.billing.expiry.split('-')[1],
-      card_expiry_year: this.billing.expiry.substring(0, 2),
-      card_expiry_month: this.billing.expiry.substring(2, this.billing.expiry.length),
+      card_expiry_month: this.billing.expiry.substring(0, 2),
+      card_expiry_year: this.billing.expiry.substring(2, this.billing.expiry.length),
       card_cvc: this.billing.cvc
     }
     this.auth.pay(params).subscribe((success) => {

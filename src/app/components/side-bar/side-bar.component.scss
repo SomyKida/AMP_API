@@ -48,4 +48,32 @@
             color: $blueTheme;
         }
     }
+
+    .optionsDisabled {
+      @extend .logo;
+      // height: 10vh;
+      opacity: 0.35;
+      background: #eee;
+      color: #444;
+      line-height: 3vh;
+
+      img {
+
+          width: 34px;
+      }
+
+      .mkt {
+          width: 45px;
+      }
+
+      p {
+          margin: 2px 0 0 0;
+          color: $back;
+          font-size: 11px;
+      }
+
+      .highlighted {
+          color: $blueTheme;
+      }
+  }
 }

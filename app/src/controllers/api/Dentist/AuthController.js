@@ -474,7 +474,10 @@ router.post('/login', (req, res) => {
         return
       } else {
         dentist = dentists[0]
-        console.log(dentist)
+        if (dentist.pwd == undefined || dentist.pwd == null || dentist.pwd == '') {
+          helper.sendError(res, "Please sign up using Social buttons.")
+          return;
+        }
         const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
         //console.log(match)
         //Hashed check here #TODO
@@ -915,7 +918,7 @@ router.post(v3 + '/register', (req, res) => {
                   })
                   temp_pwd = ''
                   if (post_data.auth_type == 'DESKTOP') {
-                    temp_pwd = pwd
+                    temp_pwd = post_data.pwd
                     pwd = bcrypt.hashSync(post_data.pwd, 10)
                     dentist.pwd = pwd
                   } else if (post_data.auth_type == 'FB') {

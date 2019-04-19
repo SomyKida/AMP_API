@@ -72,17 +72,17 @@ module.exports = {
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Email Content</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- <link rel="stylesheet" href=`+ base_url + `"/assets/emails/leagueSpartan-bold.ttf">
-        <link rel="stylesheet" href=`+ base_url + `"assets/emails/AlegreyaSC-Regular.ttf"> -->
+        <!-- <link rel="stylesheet" href="`+ base_url1 + `/assets/emails/leagueSpartan-bold.ttf">
+        <link rel="stylesheet" href="`+ base_url1 + `assets/emails/AlegreyaSC-Regular.ttf"> -->
         <style>
             @font-face {
                 font-family: 'leagueSpartan';
-                src: url(`+ base_url + `/assets/emails/LeagueSpartan-Bold.woff) format('woff')
+                src: url(`+ base_url1 + `/assets/emails/LeagueSpartan-Bold.woff) format('woff')
             }
 
             @font-face {
                 font-family: 'algreya';
-                src: url(`+ base_url + `/assets/emails/AlegreyaSC-Regular.woff) format('woff')
+                src: url(`+ base_url1 + `/assets/emails/AlegreyaSC-Regular.woff) format('woff')
             }
         </style>
     </head>
@@ -91,7 +91,7 @@ module.exports = {
         <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
             <tr>
                 <td align="center">
-                <img src=`+ base_url + `"/assets/emails/back.png" alt="App My Practice" width="100%" height="100%" style="display: block;" />
+                <img src="`+ base_url1 + `/assets/emails/back.png" alt="App My Practice" width="100%" height="100%" style="display: block;" />
                 </td>
             </tr>
             <tr>
@@ -118,7 +118,7 @@ module.exports = {
                     <div style="margin-top: 15px;
                     width: 100%;
                     text-align: center;">
-                        <a href="`+ base_url + `/#/login">
+                        <a href="`+ base_url1 + `/#/login">
                         <button style="width: 30%;
                         background: #38b6ff;
                         color: white;
