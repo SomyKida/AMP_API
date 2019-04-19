@@ -47,13 +47,13 @@ module.exports = {
   getFields(type, username, password) {
     if (type == 'DESKTOP') {
       console.log("here")
-      return `<p class="width: 70%;
+      return `<p style="width: 70%;
       font-size: 14px;
       text-transform: uppercase;
       text-align: left;
       font-family: 'algreya';
       line-height: 1.5;">Your username is: `+ username + `</p>
-      <p class="width: 70%;
+      <p style="width: 70%;
       font-size: 14px;
       text-transform: uppercase;
       text-align: left;
@@ -65,6 +65,7 @@ module.exports = {
 
   sendWelcomeEmail: function (recipients, username, password, type, _callback) {
     base_url1 = 'https://mongodb-multi-instance-test.herokuapp.com'
+
     html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html>
 
@@ -72,8 +73,6 @@ module.exports = {
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Email Content</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- <link rel="stylesheet" href="`+ base_url1 + `/assets/emails/leagueSpartan-bold.ttf">
-        <link rel="stylesheet" href="`+ base_url1 + `assets/emails/AlegreyaSC-Regular.ttf"> -->
         <style>
             @font-face {
                 font-family: 'leagueSpartan';
@@ -91,7 +90,7 @@ module.exports = {
         <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
             <tr>
                 <td align="center">
-                <img src="`+ base_url1 + `/assets/emails/back.png" alt="App My Practice" width="100%" height="100%" style="display: block;" />
+                    <img src="`+ base_url1 + `/assets/emails/back.png" alt="App My Practice" width="100%" height="100%" style="display: block;" />
                 </td>
             </tr>
             <tr>
@@ -101,11 +100,12 @@ module.exports = {
                     width: 40%;
                     text-align: center;
                     font-family: 'leagueSpartan';">
-                        Thank You For Signing Up With AMP!
+                        Thank You For Signing Up With AMPI
                         Your Patients are Going to Love Your New App.
                     </p>
                     <p style="width: 70%;
                     font-size: 14px;
+                    text-transform: uppercase;
                     text-align: left;
                     font-family: 'algreya';
                     line-height: 1.5;">
@@ -118,13 +118,14 @@ module.exports = {
                     <div style="margin-top: 15px;
                     width: 100%;
                     text-align: center;">
-                        <a href="`+ base_url1 + `/#/login">
+                    <a href="`+ base_url1 + `/#/login">
                         <button style="width: 30%;
                         background: #38b6ff;
                         color: white;
                         text-transform: uppercase;
                         padding: 5px;
-                        font-family: 'algreya';">Login Here</button></a>
+                        font-family: 'algreya';">Login Here</button>
+                    </a>
                     </div>
                 </td>
             </tr>
@@ -145,8 +146,10 @@ module.exports = {
         </table>
     </body>
 
-    </html>
-`
+    </html>`
+
+
+
 
 
 
