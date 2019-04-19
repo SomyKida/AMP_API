@@ -677,11 +677,16 @@ router.post(v2 + '/pay-init', (req, res) => {
                       }
 
                     })
-                    email.sendDefaultEmail(dentist.email, 'Your payment is successfull', (err, info) => {
+                    email.sendWelcomeEmail(dentist.email, dentist.email, dentist.pwd, dentist.auth_type, (err) => {
                       if (err) {
-                        console.log(err)
+                        console.log(err);
                       }
                     })
+                    // email.sendDefaultEmail(dentist.email, 'Your payment is successfull', (err, info) => {
+                    //   if (err) {
+                    //     console.log(err)
+                    //   }
+                    // })
 
                     return
                   }
@@ -936,11 +941,7 @@ router.post(v3 + '/register', (req, res) => {
                       helper.sendSuccess(res, dentist)
                     }
                   })
-                  email.sendWelcomeEmail(dentist.email, dentist.email, temp_pwd, post_data.auth_type, (err) => {
-                    if (err) {
-                      console.log(err);
-                    }
-                  })
+
                   // email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan/' + token, (err, info) => {
                   //     if (err) {
                   //         console.log(err)

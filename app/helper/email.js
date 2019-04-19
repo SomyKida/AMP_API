@@ -88,7 +88,7 @@ module.exports = {
         <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
             <tr>
                 <td align="center">
-                    <img src="`+ base_url1 + `/assets/emails/back.png" alt="App My Practice" width="100%" height="100%" style="display: block;" />
+                    <img src="`+ base_url1 + `/assets/emails/back.png" alt="App My Practice" width="400" height="100%" style="display: block;" />
                 </td>
             </tr>
             <tr>
