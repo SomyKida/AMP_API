@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CredentialService } from 'src/app/services/credentials/credential.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,12 +11,11 @@ import { CredentialService } from 'src/app/services/credentials/credential.servi
 })
 export class SideBarComponent implements OnInit {
   public currentPage = '';
-  public isLoggedIn: boolean = false
+  public user: User;
   constructor(public router: Router, public loc: Location, public credentials: CredentialService) {
-    if (this.credentials.user != null)
-      this.isLoggedIn = true
-    this.credentials.isLoggedIn.subscribe(value => {
-      this.isLoggedIn = value
+    this.user = this.credentials.user;
+    this.credentials.sessionStatus.subscribe(value => {
+      this.user = value
     })
   }
 
@@ -27,12 +27,14 @@ export class SideBarComponent implements OnInit {
     if (page == 'login') {
       this.currentPage = '/login';
       this.router.navigate(["/login"]);
-    } else if (page == 'chat') {
-      this.currentPage = '/chat';
-      this.router.navigate(["/chat"]);
-    } else if (page == 'dashboard') {
-      this.currentPage = '/home';
-      this.router.navigate(["/home"]);
+    } else if (this.user != null && this.user.init_payment == true) {
+      if (page == 'chat') {
+        this.currentPage = '/chat';
+        this.router.navigate(["/chat"]);
+      } else if (page == 'dashboard') {
+        this.currentPage = '/home';
+        this.router.navigate(["/home"]);
+      }
     }
   }
 

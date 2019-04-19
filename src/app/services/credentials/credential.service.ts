@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { User } from 'src/app/models/user';
 @Injectable({
   providedIn: 'root'
 })
 export class CredentialService {
   public token;
-  public user;
-  public isLoggedIn = new Subject<boolean>();
-  public tempUser = new Subject<any>();
+  public user: User;
+  public sessionStatus = new Subject<any>();
   constructor() {
     this.token = localStorage.getItem('token');
     var temp = localStorage.getItem('user');
     if (temp) {
       this.user = JSON.parse(temp);
-      this.tempUser.next(this.user)
-      this.isLoggedIn.next(true)
     }
 
   }
@@ -24,22 +22,22 @@ export class CredentialService {
     localStorage.setItem('token', user.access_token);
     this.token = user.access_token;
     this.user = user;
-    this.isLoggedIn.next(true);
-    this.tempUser.next(this.user)
-
+    this.sessionStatus.next(this.user);
   }
 
   logout() {
     localStorage.clear();
     this.user = null;
     this.token = null;
-    this.tempUser.next(this.user)
-    this.isLoggedIn.next(false)
+    this.sessionStatus.next(null)
   }
 
   loggedIn() {
     if (this.token && this.user) {
-      return true;
+      if (this.user.init_payment == true)
+        return true;
+      else
+        return false;
     } else {
       return false;
     }

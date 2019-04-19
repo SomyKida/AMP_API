@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuxService } from 'src/app/auxilaries/aux.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDatepicker } from '@angular/material';
 import { ProDetailsComponent } from 'src/app/components/modals/pro-details/pro-details.component';
 import { CredentialService } from '../../../services/credentials/credential.service'
 @Component({
@@ -77,35 +77,25 @@ export class PlanComponent implements OnInit {
     public credentials: CredentialService) { }
 
   ngOnInit() {
-    // this.userFromUrl = this.extractor.snapshot.paramMap.get('token');
-    // if (this.userFromUrl) {
-    //   this.wait = true;
-    //   var params = {
-    //     token: this.userFromUrl
-    //   }
-    //   this.auth.authenticateToken(params).subscribe((success) => {
-    //     localStorage.setItem('token', success.data.access_token);
-    //     this.wait = false;
-    //     this.user = success.data;
-    //     this.selectedPlan = {
-    //       plan: {
-    //         name: success.data.package
-    //       },
-    //       message: 'User has already signed up, So no need to worry for plan'
-    //     }
-    //     this.hasSignedUp = true;
-    //     this.selectedTab = 1;
-    //   }, (error) => {
-    //     this.wait = false;
-    //     this.aux.errorResponse(error);
-    //   })
-
-    // }
+    if (this.credentials.user != null) {
+      this.user.email = this.credentials.user.email;
+      this.selectedPlan = {
+        plan: {
+          name: this.credentials.user.package
+        }
+      }
+      this.steps.loginInfo = true;
+      this.steps.billingInfo = true;
+      this.selectedTab = 1;
+      this.credentials.sessionStatus.subscribe(value => {
+        this.user = value
+        location.reload();
+      })
+    }
   }
 
   register(plan) {
     this.selectedPlan = plan;
-    console.log(this.selectedPlan);
   }
 
   loginCreated(output) {
@@ -289,6 +279,11 @@ export class PlanComponent implements OnInit {
     })
   }
 
+  monthSelection(month: Date, datepicker) {
+    this.billing.expiry = month;
+    datepicker.close();
+  }
+
   billMe() {
     var check: boolean = false;
     if (this.billing.name == '') {
@@ -331,14 +326,15 @@ export class PlanComponent implements OnInit {
     var params = {
       email: this.user.email,
       card_number: this.billing.number,
-      // card_expiry_year: this.billing.expiry.split('-')[0],
-      // card_expiry_month: this.billing.expiry.split('-')[1],
-      card_expiry_month: this.billing.expiry.substring(0, 2),
-      card_expiry_year: this.billing.expiry.substring(2, this.billing.expiry.length),
+      card_expiry_year: this.billing.expiry.year(),
+      card_expiry_month: this.aux.getMonth(this.billing.expiry.month()),
       card_cvc: this.billing.cvc
     }
     this.auth.pay(params).subscribe((success) => {
       this.router.navigate(['/home'])
+      var user = this.credentials.user;
+      user.init_payment = true;
+      this.credentials.setUser(user);
       this.aux.showAlert('Payment recieved, Please check your email.', "Successful Transaction!");
 
     }, (error) => {

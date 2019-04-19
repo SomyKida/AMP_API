@@ -46,16 +46,15 @@ module.exports = {
 
   getFields(type, username, password) {
     if (type == 'DESKTOP') {
-      console.log("here")
       return `<p style="width: 70%;
       font-size: 14px;
       text-align: left;
-      font-family: 'algreya';
+      font-family: 'Product Sans';
       line-height: 1.5;">Your username is: `+ username + `</p>
       <p style="width: 70%;
       font-size: 14px;
       text-align: left;
-      font-family: 'algreya';
+      font-family: 'Product Sans';
       line-height: 1.5;">Your password is: `+ password + `</p>`
 
     } else return ``;
@@ -73,13 +72,11 @@ module.exports = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
             @font-face {
-                font-family: 'leagueSpartan';
-                src: url(`+ base_url1 + `/assets/emails/LeagueSpartan-Bold.woff) format('woff')
-            }
-
-            @font-face {
-                font-family: 'algreya';
-                src: url(`+ base_url1 + `/assets/emails/AlegreyaSC-Regular.woff) format('woff')
+              font-family: 'Product Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Product Sans'), local('ProductSans-Regular'), url(https://fonts.gstatic.com/s/productsans/v10/pxiDypQkot1TnFhsFMOfGShVF9eOYktMqg.woff2) format('woff2');
+              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
             }
         </style>
     </head>
@@ -97,14 +94,14 @@ module.exports = {
                     font-size: 16px;
                     width: 40%;
                     text-align: center;
-                    font-family: 'leagueSpartan';">
+                    font-family: 'Product Sans';">
                         Thank You For Signing Up With AMP!
                         Your Patients are Going to Love Your New App.
                     </p>
                     <p style="width: 70%;
                     font-size: 14px;
                     text-align: left;
-                    font-family: 'algreya';
+                    font-family: 'Product Sans';
                     line-height: 1.5;">
                         While we spin up your mobile app to work on both IOS and Android, we would like to
                         invite you to familiarize yourself with AMP Dashboard and complete your on-boarding
@@ -116,12 +113,19 @@ module.exports = {
                     width: 100%;
                     text-align: center;">
                     <a href="`+ base_url1 + `/#/login">
-                        <button style="width: 30%;
+                        <button style="
                         background: #38b6ff;
-                        color: white;
+                        padding: 10px 30px;
+                        font-size: 18px;
+                        color: #fff;
+                        border-radius: 5px;
                         text-transform: uppercase;
-                        padding: 5px;
-                        font-family: 'algreya';">Login Here</button>
+                        width: 250px;
+                        text-align: center;
+                        display: block;
+                        font-family: 'Product Sans';
+                        margin: 50px auto 25px;
+                        letter-spacing: 1.5px;">Login Here</button>
                     </a>
                     </div>
                 </td>
@@ -129,13 +133,13 @@ module.exports = {
             <tr>
                 <td align="center">
                     <p style="font-size: 10px;
-                    font-family: 'algreya';
+                    font-family: 'Product Sans';
                     color: #a6a6a6;
                     margin: 0;
                     margin-top: 20px;
                     margin-bottom: 5px;">Copyright 2019, App My Practice. All Rights Reserved</p>
                     <p style="font-size: 8px;
-                    font-family: 'algreya';
+                    font-family: 'Product Sans';
                     color: #a6a6a6;
                     margin: 0;">The email was sent to `+ recipients + ` if you no longer wish to receive these emails, <a style="color: #38b6ff;text-decoration: none;" href="#">Unsubscribe</a> at any time</p>
                 </td>

@@ -11,8 +11,7 @@ export class HomeComponent implements OnInit {
   public user;
   constructor(private credentials: CredentialService) {
     this.user = JSON.parse(localStorage.getItem('user'));
-
-    this.credentials.tempUser.subscribe(value => {
+    this.credentials.sessionStatus.subscribe(value => {
       this.user = value
     })
   }

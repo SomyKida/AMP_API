@@ -24,4 +24,11 @@ export class AuxService {
     var format = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
     return (email.match(format));
   }
+
+  getMonth(month) {
+    if (month < 10)
+      return '0' + month;
+    else
+      return month;
+  }
 }
