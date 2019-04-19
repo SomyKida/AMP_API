@@ -43,122 +43,109 @@ module.exports = {
       }
     });
   },
-  sendWelcomeEmail: function (recipients, _callback) {
+
+  getFields(type, username, password) {
+    if (type == 'DESKTOP') {
+      console.log("here")
+      return `<p class="width: 70%;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: left;
+      font-family: 'algreya';
+      line-height: 1.5;">Your username is: `+ username + `</p>
+      <p class="width: 70%;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: left;
+      font-family: 'algreya';
+      line-height: 1.5;">Your password is: `+ password + `</p>`
+
+    } else return ``;
+  },
+
+  sendWelcomeEmail: function (recipients, username, password, type, _callback) {
     base_url1 = 'https://mongodb-multi-instance-test.herokuapp.com'
-    html = `<html>
+    html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html>
+
     <head>
-    <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Email</title>
-            <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"><style>
-    @font-face {
-        font-family: 'leagueSpartan';
-        src: url(`+ base_url1 + `/assets/emails/leagueSpartan-bold.ttf);
-    }
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Email Content</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- <link rel="stylesheet" href=`+ base_url + `"/assets/emails/leagueSpartan-bold.ttf">
+        <link rel="stylesheet" href=`+ base_url + `"assets/emails/AlegreyaSC-Regular.ttf"> -->
+        <style>
+            @font-face {
+                font-family: 'leagueSpartan';
+                src: url(`+ base_url + `/assets/emails/LeagueSpartan-Bold.woff) format('woff')
+            }
 
-    @font-face {
-        font-family: 'algreya';
-        src: url(`+ base_url1 + `/assets/emails/AlegreyaSC-Regular.ttf);
-    }
+            @font-face {
+                font-family: 'algreya';
+                src: url(`+ base_url + `/assets/emails/AlegreyaSC-Regular.woff) format('woff')
+            }
+        </style>
+    </head>
 
-    .wrapper {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
+    <body class="wrapper">
+        <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+            <tr>
+                <td align="center">
+                <img src=`+ base_url + `"/assets/emails/back.png" alt="App My Practice" width="100%" height="100%" style="display: block;" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <p style="font-weight: bold;
+                    font-size: 16px;
+                    width: 40%;
+                    text-align: center;
+                    font-family: 'leagueSpartan';">
+                        Thank You For Signing Up With AMP!
+                        Your Patients are Going to Love Your New App.
+                    </p>
+                    <p style="width: 70%;
+                    font-size: 14px;
+                    text-align: left;
+                    font-family: 'algreya';
+                    line-height: 1.5;">
+                        While we spin up your mobile app to work on both IOS and Android, we would like to
+                        invite you to familiarize yourself with AMP Dashboard and complete your on-boarding
+                        process if you have not done so already. When your app is complete, We will notify you
+                        with detailed instructions.
+                    </p>
+                    `+ this.getFields(type, username, password) + `
+                    <div style="margin-top: 15px;
+                    width: 100%;
+                    text-align: center;">
+                        <a href="`+ base_url + `/#/login">
+                        <button style="width: 30%;
+                        background: #38b6ff;
+                        color: white;
+                        text-transform: uppercase;
+                        padding: 5px;
+                        font-family: 'algreya';">Login Here</button></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <p style="font-size: 10px;
+                    font-family: 'algreya';
+                    color: #a6a6a6;
+                    margin: 0;
+                    margin-top: 20px;
+                    margin-bottom: 5px;">Copyright 2019, App My Practice. All Rights Reserved</p>
+                    <p style="font-size: 8px;
+                    font-family: 'algreya';
+                    color: #a6a6a6;
+                    margin: 0;">The email was sent to `+ recipients + ` if you no longer wish to receive these emails, <a style="color: #38b6ff;text-decoration: none;" href="#">Unsubscribe</a> at any time</p>
+                </td>
+            </tr>
+        </table>
+    </body>
 
-    .banner {
-        width: 100%;
-        height: 30%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-
-    .content {
-        width: 60%;
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-    }
-
-    .heading {
-        font-weight: bold;
-        font-size: 16px;
-        width: 40%;
-        text-align: center;
-        font-family: 'leagueSpartan';
-    }
-
-    .intro {
-        width: 70%;
-        font-size: 14px;
-        text-align: left;
-        font-family: 'algreya';
-        line-height: 1.5;
-    }
-
-    .btn {
-        margin-top: 15px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .subs {
-        width: 30%;
-        background: #38b6ff;
-        color: white;
-        text-transform: uppercase;
-        padding: 5px;
-        font-family: 'leagueSpartan'
-    }
-
-    .copy {
-        font-size: 10px;
-        font-family: 'algreya';
-        color: #a6a6a6;
-        margin: 0;
-        margin-top: 20px;
-        margin-bottom: 5px;
-    }
-
-    .subscribe {
-        font-size: 8px;
-        font-family: 'algreya';
-        color: #a6a6a6;
-        margin: 0;
-    }
-
-    .unsub {
-        color: #38b6ff;
-        text-decoration: none;
-    }
-</style></head>
-<body  style="margin: 0; padding: 0">
-<div class="wrapper">
-    <div class="banner"></div>
-    <div class="content">
-        <p class="heading">
-            Thank You For Signing Up With AMP!
-            Your Patients are Going to Love Your New App.
-        </p>
-        <p class="intro">
-            While we spin up your mobile app to work on both IOS and Android, we would like to
-            invite you to familiarize yourself with AMP Dashboard and complete your on-boarding
-            process. When your app is complete, We will notify you
-            with detailed instructions.
-        </p>
-
-        <div class="btn">
-            <button class="subs">Login Here</button>
-        </div>
-        <p class="copy">Copyright 2019, App My Practice. All Rights Reserved</p>
-        <p class="subscribe">The email was sent to `+ recipients + ` if you no longer wish to receive these emails, <a class="unsub" href="#">Unsubscribe</a> at any time</p>
-    </div>
-</div>
-</body></html>
+    </html>
 `
 
 
@@ -183,5 +170,7 @@ module.exports = {
         return
       }
     });
+
+
   }
 }

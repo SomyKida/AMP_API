@@ -913,8 +913,9 @@ router.post(v3 + '/register', (req, res) => {
                     'email_verified': true
 
                   })
-
+                  temp_pwd = ''
                   if (post_data.auth_type == 'DESKTOP') {
+                    temp_pwd = pwd
                     pwd = bcrypt.hashSync(post_data.pwd, 10)
                     dentist.pwd = pwd
                   } else if (post_data.auth_type == 'FB') {
@@ -932,7 +933,7 @@ router.post(v3 + '/register', (req, res) => {
                       helper.sendSuccess(res, dentist)
                     }
                   })
-                  email.sendWelcomeEmail(dentist.email, (err) => {
+                  email.sendWelcomeEmail(dentist.email, dentist.email, temp_pwd, post_data.auth_type, (err) => {
                     if (err) {
                       console.log(err);
                     }
