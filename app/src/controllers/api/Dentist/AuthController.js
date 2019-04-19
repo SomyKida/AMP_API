@@ -705,7 +705,7 @@ router.post(v2 + '/pay-init', (req, res) => {
 router.post(v2 + '/setup', (req, res) => {
   fields_required = [
     // 'theme_id',
-    'phone',
+    //'phone',
     'name',
     'email',
     'address',
