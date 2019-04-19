@@ -49,13 +49,11 @@ module.exports = {
       console.log("here")
       return `<p style="width: 70%;
       font-size: 14px;
-      text-transform: uppercase;
       text-align: left;
       font-family: 'algreya';
       line-height: 1.5;">Your username is: `+ username + `</p>
       <p style="width: 70%;
       font-size: 14px;
-      text-transform: uppercase;
       text-align: left;
       font-family: 'algreya';
       line-height: 1.5;">Your password is: `+ password + `</p>`
@@ -100,12 +98,11 @@ module.exports = {
                     width: 40%;
                     text-align: center;
                     font-family: 'leagueSpartan';">
-                        Thank You For Signing Up With AMPI
+                        Thank You For Signing Up With AMP!
                         Your Patients are Going to Love Your New App.
                     </p>
                     <p style="width: 70%;
                     font-size: 14px;
-                    text-transform: uppercase;
                     text-align: left;
                     font-family: 'algreya';
                     line-height: 1.5;">
