@@ -40,7 +40,7 @@ export class SideBarComponent implements OnInit {
 
   logout() {
     this.credentials.logout();
-    this.router.navigate(['/plan']);
+    this.router.navigate(['/login']);
   }
 
 }

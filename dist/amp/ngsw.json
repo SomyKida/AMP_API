@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1555793406488,
+  "timestamp": 1555967495477,
   "index": "./index.html",
   "assetGroups": [
     {
@@ -11,16 +11,16 @@
         "./6.61e46ae10190ed341d7b.js",
         "./7.9d3a90c489cb6883123a.js",
         "./8.7b527b95c0a3e2b3fffd.js",
-        "./9.46d83ac954ef1a13d3ef.js",
+        "./9.5052b897ac686447c7de.js",
         "./common.92559fe09cdcc6877756.js",
         "./es2015-polyfills.01deec5b2033b45aed7c.js",
         "./favicon.ico",
         "./index.html",
-        "./main.801f0ee75d06b8f8c18b.js",
+        "./main.7c7c140847c32302cd45.js",
         "./polyfills.481858ef51fe27531859.js",
-        "./runtime.e9f8dcfe8b2230aa6822.js",
+        "./runtime.7c9056fb8a0864f35c21.js",
         "./scripts.03e042f1f102bf0e2ed8.js",
-        "./styles.eaa32dc4cd84912fd890.css"
+        "./styles.a0f6feb907dda3b3b195.css"
       ],
       "patterns": []
     },
@@ -79,6 +79,7 @@
         "./assets/img/logo.png",
         "./assets/img/marketing.png",
         "./assets/img/multiply.png",
+        "./assets/img/offDay.png",
         "./assets/img/popular.png",
         "./assets/img/rating.png",
         "./assets/img/scheduling.png",
@@ -94,7 +95,7 @@
     "./6.61e46ae10190ed341d7b.js": "d1f4696d3bdaa41adda012249823a7cf7830e5ba",
     "./7.9d3a90c489cb6883123a.js": "c7bbee84e40e4d96b7ae181167f6af4b42cd3628",
     "./8.7b527b95c0a3e2b3fffd.js": "76c99e70f09c6fe4ef3c27663300c5601a73118f",
-    "./9.46d83ac954ef1a13d3ef.js": "1147fd26129926f1f8c772395f7a5d5b5f35f6af",
+    "./9.5052b897ac686447c7de.js": "a0fc24714841fcff7e15933daa159b64bad0ea6a",
     "./assets/fonts/ProximaNova-Bold.eot": "7667653ff627fb0b719cef6a1856796644d91bc5",
     "./assets/fonts/ProximaNova-Bold.svg": "40e2702dc198af5d1f9fef73e88728ef313a6a9c",
     "./assets/fonts/ProximaNova-Bold.ttf": "58913e0d42627d34a840a94c294f60bce053d2b8",
@@ -127,7 +128,7 @@
     "./assets/img/GLogo.png": "23a442d32ca533a56cef1b4bd2665838cc21adbc",
     "./assets/img/alita.png": "137faf16ef813f965ea2e8ef79ff04e5d7f292f7",
     "./assets/img/alitaLogo.png": "1e2b3d1a6d190f9f36cb01cb4aeb1457a04966c2",
-    "./assets/img/back.png": "7e5a22a8f582c05fdc3b89d88aad5832eb0ea82f",
+    "./assets/img/back.png": "c3ac408b8467d325519c43b8169a49779cc6c72f",
     "./assets/img/chat.png": "c2e0de31618243a912657a6de176d6a5f6f73c0d",
     "./assets/img/chatSelected.png": "f1534ca46badc1704fef3e8a25173d356d62b99b",
     "./assets/img/cross.png": "206d61f7085dded7e097f4cbb80e348fb83d3ce5",
@@ -145,6 +146,7 @@
     "./assets/img/logo.png": "7ff53b54e59ff482f56ec14ab5077337bd64b361",
     "./assets/img/marketing.png": "72b8fc49a786dfe47ac6fee5e875b90bfbf7c12a",
     "./assets/img/multiply.png": "61ffcee03c86a1cebada3567b626db49bb93535d",
+    "./assets/img/offDay.png": "0ef964109f4d846c54c8f314234296c47c46e1b1",
     "./assets/img/popular.png": "b2de17af097d7c2dc512865c23df722e7360503a",
     "./assets/img/rating.png": "8192ba946925a7a4d3d1faf3ceba79d899dca409",
     "./assets/img/scheduling.png": "c198a74c3097d63906a5aaa9c12f141e184a3826",
@@ -154,12 +156,12 @@
     "./common.92559fe09cdcc6877756.js": "bf162d15634d3ad065584b397879528a33c9c8c1",
     "./es2015-polyfills.01deec5b2033b45aed7c.js": "ddc4884f07efd3b0454e560ff8808c45a7fd49d0",
     "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "./index.html": "41042dd4fe8468f85eb5b1fb2b22ca7074e403cc",
-    "./main.801f0ee75d06b8f8c18b.js": "7bfcd25309e7a37b26a11964324f242a9184f7c5",
+    "./index.html": "cb62301c786501a8720ebffeafe997adcafbc9e5",
+    "./main.7c7c140847c32302cd45.js": "81a0aa6ceaa2dd8b001e0ef8183f9326c01e2321",
     "./polyfills.481858ef51fe27531859.js": "ef448ddee57ecea8f1f0157e9e684b2c871e2e39",
-    "./runtime.e9f8dcfe8b2230aa6822.js": "c0c5d9f36025e106c3fff9ebe8f9fa63480599f5",
+    "./runtime.7c9056fb8a0864f35c21.js": "6a42766a8970b15abf5206686e8a4a21aa2ac9a8",
     "./scripts.03e042f1f102bf0e2ed8.js": "ba281a9af413e5f1a813cfd2d8b99dc9a0245b32",
-    "./styles.eaa32dc4cd84912fd890.css": "ee94712088ba9b1b3c5454f4be0bd0a4759645a7"
+    "./styles.a0f6feb907dda3b3b195.css": "0113c7c1ae20568c62f17d08c07afac9c75fe9a9"
   },
   "navigationUrls": [
     {
