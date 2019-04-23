@@ -10,14 +10,14 @@
     </div>
     <div class="form-area">
       <h3 *ngIf="selectedTab == 0">Practice Information</h3>
-      <h3 *ngIf="selectedTab == 1">EMR/Software</h3>
-      <h3 *ngIf="selectedTab == 2">Social</h3>
+      <!-- <h3 *ngIf="selectedTab == 1">EMR/Software</h3> -->
+      <h3 *ngIf="selectedTab == 2">EMR/Softwar</h3>
       <form>
         <ng-container *ngIf="selectedTab == 0">
           <div class="form-row">
             <div class="form-one-col">
               <label>Phone</label>
-              <input type="text" placeholder="#Patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+              <input mask="(000) 000-0000" type="tel" placeholder="#Patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
           </div>
           <div class="form-row">
@@ -101,7 +101,7 @@
         </ng-container>
         <ng-container *ngIf="selectedTab == 2">
           <div class="form-row">
-            <div class="form-one-col" *ngIf="user.package != 'LITE'">
+            <div class="form-one-col">
               <label>Which Software are you using?</label>
               <input type="text" [(ngModel)]="stepTwo.software" (ngModelChange)="changeInFields('name')" name="soft" />
             </div>
@@ -130,7 +130,7 @@
           </mat-tab>
           <mat-tab [disabled]="true">
           </mat-tab>
-          <mat-tab [disabled]="true">
+          <mat-tab [disabled]="true" *ngIf="user.package != 'LITE'">
           </mat-tab>
           <!-- <mat-tab [disabled]="true">
           </mat-tab> -->

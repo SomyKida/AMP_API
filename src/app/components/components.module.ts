@@ -13,6 +13,7 @@ import { ThemesComponent } from './modals/themes/themes.component';
 import { LoggedComponent } from './logged/logged.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { Picker } from './pipes/pipes.pipe';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { Picker } from './pipes/pipes.pipe';
     NgxMaterialTimepickerModule,
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    NgxMaskModule.forChild(),
   ],
   exports: [
     SideBarComponent,

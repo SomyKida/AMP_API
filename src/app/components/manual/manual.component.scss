@@ -17,9 +17,9 @@
         .form-head-row {
             .back {
                 img {
-    vertical-align: middle;
-    width: 50px;
-}
+                    vertical-align: middle;
+                    width: 50px;
+                }
 
                 span {
                     vertical-align: middle;
@@ -103,6 +103,7 @@
 
                     .timepicker-dial__control {
                         width: 60px !important;
+                        color: $blueTheme;
                     }
 
                     input {

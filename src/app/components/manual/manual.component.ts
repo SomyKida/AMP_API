@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { ThemesComponent } from '../modals/themes/themes.component';
 import { Router } from '@angular/router';
 import { CredentialService } from '../../services/credentials/credential.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-manual',
@@ -90,7 +91,7 @@ export class ManualComponent implements OnInit {
     auth: '',
     token: ''
   }
-  public user;
+  public user: User;
   selectedTab: number = 0;
   @Output('switch') proceed = new EventEmitter<any>();
 
@@ -112,7 +113,13 @@ export class ManualComponent implements OnInit {
   }
 
   toStep(which) {
-    this.selectedTab = which;
+    if (which > 1)
+      if (this.user.package != 'LITE')
+        this.selectedTab = which;
+      else
+        this.update();
+    else
+      this.selectedTab = which;
   }
 
   selectTheme() {
@@ -140,22 +147,25 @@ export class ManualComponent implements OnInit {
   }
 
   update() {
-    if (this.stepOne.email != '' && this.stepOne.phone != '' && this.stepOne.address != ''
-      && this.stepTwo.software != '' && this.stepTwo)
-      var params = {
-        theme_id: '5c9e753da7953e3028adc5d3',
-        phone: this.stepOne.phone,
-        name: 'Harry - The Nutritionist',
-        email: this.stepOne.email,
-        address: this.stepOne.address,
-        office_hours: this.stepOne.officeHours,
-        doctor_names: this.stepOne.docNames,
-        npi: this.stepTwo.npi,
-        software: this.stepTwo.software,
-        auth: this.stepTwo.auth,
-        token: this.stepTwo.token,
-        url: 'harry'
+    if (this.stepOne.email != '' && this.stepOne.phone != '' && this.stepOne.address != '')
+      if (this.user.package != 'LITE' && (this.stepTwo.software == '' || this.stepTwo.auth == '' || this.stepTwo.token == '' || this.stepTwo.npi == '')) {
+        this.aux.showAlert("Please don't leave any field blank", "ERROR!");
+        return;
       }
+    var params = {
+      theme_id: '5c9e753da7953e3028adc5d3',
+      phone: this.stepOne.phone,
+      name: 'Harry - The Nutritionist',
+      email: this.stepOne.email,
+      address: this.stepOne.address,
+      office_hours: this.stepOne.officeHours,
+      doctor_names: this.stepOne.docNames,
+      npi: this.stepTwo.npi,
+      software: this.stepTwo.software,
+      auth: this.stepTwo.auth,
+      token: this.stepTwo.token,
+      url: 'harry'
+    }
     this.auth.setupDentist(params).subscribe((success) => {
       this.credentials.setUser(success.data);
       this.router.navigate(['/home'])

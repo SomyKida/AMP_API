@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuxService } from 'src/app/auxilaries/aux.service';
 import { AuthService } from "angularx-social-login";
+import { AuthService as Logged } from '../../services/auth/auth.service';
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 @Component({
@@ -24,6 +25,7 @@ export class LoggedComponent implements OnInit {
   }
 
   constructor(public aux: AuxService,
+    public auth: Logged,
     public socialService: AuthService) { }
 
   changeInFields(field) {
@@ -75,20 +77,33 @@ export class LoggedComponent implements OnInit {
       this.aux.showAlert("Please don't leave any field blank", "ERROR!");
       return;
     }
-    this.out.emit({ user: this.user, authType: 'DESKTOP' });
+    this.moveToNextStep({ user: this.user, authType: 'DESKTOP' })
+
   }
 
   fbLogin() {
     this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID).then((result) => {
-      console.log(result);
-      this.out.emit({ user: result, authType: 'FB' });
+      this.moveToNextStep({ user: result, authType: 'FB' })
     });
   }
 
   gpLogin() {
     this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((result) => {
-      console.log(result);
-      this.out.emit({ user: result, authType: 'GOOGLE' });
+      this.moveToNextStep({ user: result, authType: 'GOOGLE' })
+    })
+  }
+
+  moveToNextStep(response) {
+    var params = {
+      email: response.user.email
+    }
+    this.auth.emailValidity(params).subscribe((success) => {
+      if (success.data.found == true) {
+        this.aux.showAlert("An account with same email already exists!", "ERROR!");
+      } else
+        this.out.emit(response);
+    }, (error) => {
+      this.aux.errorResponse(error);
     })
   }
 
