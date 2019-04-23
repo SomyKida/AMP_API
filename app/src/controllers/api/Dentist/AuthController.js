@@ -815,7 +815,25 @@ router.post(v2 + '/set-theme', (req, res) => {
     }
   })
 })
+router.post('/email-validity', (req, res) => {
 
+  var post_data = req.body
+  if (!helper.validateField(res, post_data, 'email', 'Email')) {
+    return
+  }
+
+  Dentist.find({ 'email': post_data['email'] }, (err, dentists) => {
+    if (!helper.postQueryErrorOnly(err, res)) {
+      if (dentists.length == 0) {
+        helper.sendSuccess(res, { 'found': false })
+        return
+      } else {
+        helper.sendSuccess(res, { 'found': true })
+        return
+      }
+    }
+  })
+})
 router.post(v3 + '/register', (req, res) => {
   common_middleware(req, res, (err) => {
 

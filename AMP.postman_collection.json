@@ -320,7 +320,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"first_name\" : \"Harry\",\n\t\"last_name\"\t: \"Maxwell\",\n\t\"address\" : \"California\",\n\t\"city\" : \"LA\",\n\t\"state\" : \"NEVADA\",\n\t\"unit\" : \"123\",\n\t\"zip\" : \"123\",\n\t\"email\" : \"enigcreator123456@gmail.com\",\n\t\"phone\" : \"123123123\",\n\t\"package\" : \"PRO\",\n\t\"service_provider\" : \"5ca4e8a25ffaf80dfc6248d8\",\n\t\"pwd\" : \"12345678\",\n\t\"conf_pwd\" : \"12345678\",\n\t\"auth_type\" : \"FB\",\n\t\"fb_id\" : \"123\"\n\t\n}"
+									"raw": "{\n\t\"first_name\" : \"Harry\",\n\t\"last_name\"\t: \"Maxwell\",\n\t\"address\" : \"California\",\n\t\"city\" : \"LA\",\n\t\"state\" : \"NEVADA\",\n\t\"unit\" : \"123\",\n\t\"zip\" : \"123\",\n\t\"email\" : \"enigcreator@gmail.com\",\n\t\"phone\" : \"123123123\",\n\t\"package\" : \"PRO\",\n\t\"service_provider\" : \"5ca4e8a25ffaf80dfc6248d8\",\n\t\"pwd\" : \"12345678\",\n\t\"conf_pwd\" : \"12345678\",\n\t\"auth_type\" : \"DESKTOP\",\n\t\"fb_id\" : \"123\",\n\t\"software\" : \"hello\"\n\t\n}"
 								},
 								"url": {
 									"raw": "{{url}}/api/dentist/auth/v3/register",
@@ -466,6 +466,95 @@
 						},
 						{
 							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a0c8e06e-eeb4-4c15-8b88-dc43c081e4d5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"enigcreator@gmail.com\",\n\t\"pwd\"\t: \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Facebook",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a0c8e06e-eeb4-4c15-8b88-dc43c081e4d5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"enigcreator123456@gmail.com\",\n\t\"fb_id\"\t: \"123\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/fb/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"fb",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Google",
 							"event": [
 								{
 									"listen": "test",
@@ -703,7 +792,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"theme_id\":\"5c9e753da7953e3028adc5d3\",\n\t\"phone\":\"12345678\",\n\t\"name\":\"Harry - The Nutritionist\",\n\t\"email\":\"harry@maxwell.com\",\n\t\"address\":\"12345678987654321\",\n\t\"office_hours\" : [\n\t\t{\"Monday\" : \"01:00-12:00\"},\n\t\t{\"Tuesday\" : \"09:00-12:00\"}\n\t],\n\t\"doctor_names\": [\"Luke\", \"Brett\", \"Keeano\"],\n\t\"npi\" : \"123\",\n\t\"url\" : \"harry\"\n\t\t\n\t\n}"
+									"raw": "{\n\t\"theme_id\":\"5c9e753da7953e3028adc5d3\",\n\t\n\t\"name\":\"Harry - The Nutritionist\",\n\t\"email\":\"harry@maxwell.com\",\n\t\"address\":\"12345678987654321\",\n\t\"office_hours\" : [\n\t\t{\"Monday\" : \"01:00-12:00\"},\n\t\t{\"Tuesday\" : \"09:00-12:00\"}\n\t],\n\t\"doctor_names\": [\"Luke\", \"Brett\", \"Keeano\"],\n\t\"npi\" : \"123\",\n\t\"url\" : \"harry\"\n\t\t\n\t\n}"
 								},
 								"url": {
 									"raw": "{{url}}/api/dentist/auth/v2/setup",
@@ -747,6 +836,37 @@
 										"dentist",
 										"auth",
 										"authenticate-token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check existing email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"enigcreator@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/email-validity",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"email-validity"
 									]
 								}
 							},
