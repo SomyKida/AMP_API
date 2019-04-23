@@ -17,8 +17,9 @@
         .form-head-row {
             .back {
                 img {
-                    vertical-align: middle;
-                }
+    vertical-align: middle;
+    width: 50px;
+}
 
                 span {
                     vertical-align: middle;
@@ -29,7 +30,7 @@
         }
 
         .form-area {
-            max-width: 700px;
+            max-width: 750px;
             margin: 25px auto;
 
             h3 {
@@ -87,7 +88,16 @@
                     }
 
                     .form-four-col {
-                        width: 22%;
+                        width: 20%;
+                    }
+
+                    .form-off-col {
+                        width: 10%;
+                        text-align: center;
+
+                        img {
+                            padding: 10%;
+                        }
                     }
 
 
