@@ -20,7 +20,7 @@ import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -711,7 +711,7 @@ router.post(v2 + '/setup', (req, res) => {
     'address',
     'office_hours',
     'doctor_names',
-    'npi',
+    // 'npi',
     // 'url'
   ]
   post_data = req.body

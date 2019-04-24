@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
     }
     this.auth.login(params).subscribe((success) => {
       this.credential.setUser(success.data);
-      this.router.navigate(['/home'])
+      this.router.navigate(['/setup'])
     }, (error) => {
       this.aux.errorResponse(error);
     })

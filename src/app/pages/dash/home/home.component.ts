@@ -7,7 +7,7 @@ import { CredentialService } from '../../../services/credentials/credential.serv
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-  public botOrManual: boolean = true;
+  // public botOrManual: boolean = true;
   public user;
   constructor(private credentials: CredentialService) {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -19,12 +19,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  switchToManual(event) {
-    this.botOrManual = false;
-  }
+  // switchToManual(event) {
+  //   this.botOrManual = false;
+  // }
 
-  switchToAuto(event) {
-    this.botOrManual = true;
-  }
+  // switchToAuto(event) {
+  //   this.botOrManual = true;
+  // }
+
+  category(which) { }
 
 }

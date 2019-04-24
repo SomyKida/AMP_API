@@ -79,6 +79,12 @@
 
         }
 
+        .template {
+            @extend .botIntro;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
         .chatArea {
             flex: 0.6;
             flex-direction: column;

@@ -331,7 +331,7 @@ export class PlanComponent implements OnInit {
       card_cvc: this.billing.cvc
     }
     this.auth.pay(params).subscribe((success) => {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/setup'])
       var user = this.credentials.user;
       user.init_payment = true;
       this.credentials.setUser(user);

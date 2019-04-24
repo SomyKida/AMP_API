@@ -1,6 +1,6 @@
 <div class="alitaWrapper">
   <div class="botArea">
-    <div class="botIntro">
+    <div class="botIntro" *ngIf="user.first_setup == false">
       <div class="face"></div>
       <div class="content">
         <span class="line"></span>
@@ -10,7 +10,9 @@
         </p>
         <button (click)="manual()" mat-raised-button>Self Setup</button>
       </div>
+
     </div>
+    <app-template class="template" *ngIf="user.first_setup == true"></app-template>
     <div class="chatArea">
       <ul>
         <li>

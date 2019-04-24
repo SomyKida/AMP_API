@@ -14,6 +14,7 @@ import { LoggedComponent } from './logged/logged.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { Picker } from './pipes/pipes.pipe';
 import { NgxMaskModule } from 'ngx-mask';
+import { TemplateComponent } from './template/template.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgxMaskModule } from 'ngx-mask';
     ThemesComponent,
     LoggedComponent,
     Picker,
+    TemplateComponent,
   ],
   imports: [
     NgxMaterialTimepickerModule,
@@ -44,7 +46,8 @@ import { NgxMaskModule } from 'ngx-mask';
     ManualComponent,
     ProDetailsComponent,
     LoggedComponent,
-    Picker
+    Picker,
+    TemplateComponent,
   ],
   entryComponents: [
     AlertComponent,

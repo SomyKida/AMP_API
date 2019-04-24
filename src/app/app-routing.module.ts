@@ -25,6 +25,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'setup',
+    loadChildren: './pages/dash/setup/setup.module#SetupModule',
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     redirectTo: 'plan'
   }
