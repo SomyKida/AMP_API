@@ -774,7 +774,9 @@ router.post(v2 + '/set-theme', (req, res) => {
 
   fields_required = [
     'logo',
-    'banner'
+    'banner',
+    'primary_color',
+    'secondary_color'
   ]
   post_data = req.files
 
