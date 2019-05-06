@@ -10,8 +10,9 @@ import { CredentialService } from 'src/app/services/credentials/credential.servi
 export class AlitaComponent implements OnInit {
   @Output('switch') proceed = new EventEmitter<any>();
   public user: User;
-
+  public manualSetup: Boolean;
   constructor(private credentials: CredentialService) {
+    this.manualSetup = true;
     this.user = JSON.parse(localStorage.getItem('user'));
     this.credentials.sessionStatus.subscribe(value => {
       this.user = value

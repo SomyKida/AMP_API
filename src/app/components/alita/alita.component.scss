@@ -180,3 +180,139 @@
         }
     }
 }
+
+
+
+
+
+.app-setup {
+    padding: 40px 50px;
+    > h3 {
+        font-family: 'ProximaNova-Semibold';
+        font-size: 18px;
+        color: $dark;
+        margin: 0px 0px 10px 0px;
+    }    
+}
+.upload-logo-section {
+    display: flex;
+    margin-bottom: 70px;
+    .left-side {
+        width: 57%;
+        p {
+            color: $back;
+            margin-top: 0px;
+            letter-spacing: 0.5px;
+            font-size: 15px;
+            line-height: 21px;
+        }
+    }
+    .right-side {
+        width: 35%;
+        margin-left: auto;
+        button {
+            width: 100%;
+        }
+        .empty-logo-label {
+            font-size: 12px;
+            color: rgb(74,74,74);
+            text-align: right;
+        }
+    }
+}
+.app-color-setting {
+    > h3 {
+        font-family: 'ProximaNova-Semibold';
+        font-size: 18px;
+        color: $dark;
+    }
+}
+.color-section-wrap {
+    display: flex;
+}
+.color-section {
+    background: $primary;
+    box-shadow: 0px 2px 10px 0px rgba(118,126,156,0.38);
+    padding: 17px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    width: 220px;
+    margin-right: 20px;
+    h3 {
+        font-family: 'ProximaNova-Semibold';
+        font-size: 18px;
+        color: $dark;
+        margin: 0px 0px 6px 0px;
+    }
+    .color-info {
+        margin-bottom: 25px;
+        .view-color {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(0,255,125);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -ms-border-radius: 50%;
+            margin-right: 10px;
+        }
+        .color-code {
+            font-family: 'ProximaNova-Regular';
+            font-size: 15px;
+            color: $back;            
+        }
+    }
+    button {
+        width: 100%;
+    }
+}
+.save-setting {
+    display: inline-block;
+    width: 100%;
+    margin-top: 100px;
+    button {
+        float: right;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-blue {
+    display: block;
+    background: #39d4ff;
+    padding: 10px 25px 8px 25px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-family: 'ProximaNova-Semibold';
+}
+.btn-grey {
+    display: block;
+    background: #c7c7c7;
+    padding: 10px 25px 8px 25px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-family: 'ProximaNova-Semibold';
+}

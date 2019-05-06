@@ -1,6 +1,6 @@
 <div class="alitaWrapper">
   <div class="botArea">
-    <div class="botIntro" *ngIf="user.first_setup == false">
+    <div class="botIntro" *ngIf="user.first_setup == false && manualSetup == false">
       <div class="face"></div>
       <div class="content">
         <span class="line"></span>
@@ -12,8 +12,9 @@
       </div>
 
     </div>
+    
     <app-template class="template" *ngIf="user.first_setup == true"></app-template>
-    <div class="chatArea">
+    <div class="chatArea" *ngIf="manualSetup==false">
       <ul>
         <li>
           <div class="someone">
@@ -33,6 +34,51 @@
         <input type="text" placeholder="Type Something">
         <button type="button" mat-raised-button>Send</button>
       </form>
+    </div>
+    <div class="app-setup" *ngIf="manualSetup==true">
+      <h3>Choose Your Logo</h3>
+      <div class="upload-logo-section">
+        <div class="left-side">
+          <p>When uploading your logo try to use a horizontal image as that will be the best fit for your app. See the default and how it fits so nicely! </p>
+        </div> <!-- left side -->
+        
+        <div class="right-side">
+          <button class="choose btn-blue" mat-raised-button>Choose Logo</button>
+          <p class="empty-logo-label">No LOGO Selected</p>
+        </div> <!-- right side -->
+
+      </div> <!-- upload logo section -->
+
+      <div class="app-color-setting">
+
+          <h3>Choose Your Apps Colors</h3>
+
+          <div class="color-section-wrap">
+
+            <div class="color-section">
+                <h3>Primary Color</h3>  
+                <div class="color-info">
+                  <span class="view-color"></span>
+                  <span class="color-code">#00FFAD</span>
+                </div>
+                <button class="choose btn-blue" mat-raised-button>CHOOSE COLOR</button>              
+            </div> <!-- color box -->
+
+            <div class="color-section">
+                <h3>Secondary Color</h3>  
+                <div class="color-info">
+                  <span class="color-code">No Color Selected</span>
+                </div>
+                <button class="choose btn-grey" mat-raised-button>CHOOSE COLOR</button>
+            </div> <!-- color box -->
+          </div> <!-- color box wrap -->
+
+        </div> <!-- app color setting-->
+
+        <div class="save-setting">
+          <button class="choose btn-blue" mat-raised-button>SAVE AND CONTINUE</button>
+        </div>
+
     </div>
   </div>
 </div>
