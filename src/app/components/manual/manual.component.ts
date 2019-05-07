@@ -168,8 +168,7 @@ export class ManualComponent implements OnInit {
     }
     this.auth.setupDentist(params).subscribe((success) => {
       this.credentials.setUser(success.data);
-      this.router.navigate(['/home'])
-      console.log(success)
+      this.router.navigate(['/home']);
     }, (error) => {
       this.aux.errorResponse(error);
     })

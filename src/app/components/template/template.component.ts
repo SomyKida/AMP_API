@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-template',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template.component.scss']
 })
 export class TemplateComponent implements OnInit {
+  @Input('primary') primary: string;
+  @Input('secondary') secondary: string;
 
   constructor() { }
 

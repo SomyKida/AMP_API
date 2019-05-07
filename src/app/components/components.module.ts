@@ -15,6 +15,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { Picker } from './pipes/pipes.pipe';
 import { NgxMaskModule } from 'ngx-mask';
 import { TemplateComponent } from './template/template.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TemplateComponent } from './template/template.component';
     CommonModule,
     FormsModule,
     MaterialModule,
+    ColorPickerModule,
     NgxMaskModule.forChild(),
   ],
   exports: [
