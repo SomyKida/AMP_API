@@ -78,6 +78,7 @@ export class AlitaComponent implements OnInit {
   saveTemplate() {
     if (this.colorTheme.logo == '') {
       this.aux.showAlert("Please chose a logo for your app.", "ERROR!");
+      return;
     }
     var params = new FormData();
     params.append('primary_color', this.colorTheme.primary);
