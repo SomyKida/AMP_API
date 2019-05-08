@@ -35,7 +35,7 @@
       </div>
     </ng-container>
     <ng-container *ngIf="user.first_setup == true">
-      <app-template [primary]="colorTheme.primary" [secondary]="colorTheme.secondary" class="template"></app-template>
+      <app-template [logo]="colorTheme.img" [primary]="colorTheme.primary" [secondary]="colorTheme.secondary" class="template"></app-template>
       <div class="app-setup">
         <h3>Choose Your Logo</h3>
         <div class="upload-logo-section">
@@ -46,7 +46,7 @@
           <div class="right-side">
             <input type="file" accept="image/*" (change)="processFile(file.files)" #file hidden>
             <button (click)="file.click()" class="choose btn-blue" mat-raised-button>Choose Logo</button>
-            <p class="empty-logo-label">No LOGO Selected</p>
+            <p class="empty-logo-label">{{colorTheme.logo == '' ? "No image Selected":colorTheme.logo}}</p>
           </div> <!-- right side -->
 
         </div> <!-- upload logo section -->

@@ -9,7 +9,8 @@
       <div class="header" [style.background]="primary">
         <div class="iphoneX"></div>
         <h1>
-          <img src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
+          <img *ngIf="image == null" src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
+          <img *ngIf="image != null" [src]="image" alt="Anozira Logo" />
           Anozira Dental</h1>
       </div>
       <div class="phoneCont">
@@ -58,7 +59,8 @@
       <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
         <h1>
-          <img src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
+          <img *ngIf="image == null" src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
+          <img *ngIf="image != null" [src]="image" alt="Anozira Logo" />
           Anozira Dental</h1>
       </div>
       <div class="phoneCont">
@@ -215,7 +217,7 @@
 
 <div class="phoneInfo">
   <div class="onCon">
-    <p class="name">Template Name Here</p>
+    <p class="name">{{templates[current].name}}</p>
     <p class="content">Add your logo and choose your colors on the screen to the right to see how your app will look
       with this template</p>
   </div>

@@ -11,13 +11,19 @@ import { CredentialService } from 'src/app/services/credentials/credential.servi
 export class AlitaComponent implements OnInit {
   @Output('switch') proceed = new EventEmitter<any>();
   public user: User;
-  public colorTheme: { which: boolean, primary: string, secondary: string } = {
-    which: true,
-    primary: '#178aff',
-    secondary: '#08ccff'
-  }
-
-  public color = '#39d4ff';
+  public colorTheme: {
+    which: boolean,
+    primary: string,
+    secondary: string,
+    logo: string,
+    img: any
+  } = {
+      which: true,
+      primary: '#178aff',
+      secondary: '#08ccff',
+      logo: '',
+      img: null
+    }
   constructor(private credentials: CredentialService) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.credentials.sessionStatus.subscribe(value => {
@@ -45,6 +51,13 @@ export class AlitaComponent implements OnInit {
 
   processFile(image) {
     console.log(image);
+    this.colorTheme.logo = image[0].name;
+    var reader = new FileReader();
+    reader.onload = (e: any) => {
+      console.log(e);
+      this.colorTheme.img = e.target.result;
+    }
+    reader.readAsDataURL(image[0])
   }
 
   manual() {
