@@ -773,16 +773,32 @@ router.post(v2 + '/setup', (req, res) => {
 router.post(v2 + '/set-theme', (req, res) => {
 
   fields_required = [
-    'logo',
-    'banner',
-    'primary_color',
-    'secondary_color'
+    'logo'
   ]
+
   post_data = req.files
+
+  if (req.files == undefined || req.files == null) {
+    helper.sendError(res, "Invalid payload");
+    return;
+  }
 
   // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
 
   if (!helper.validateFieldAuto(res, post_data, fields_required))
+    return
+
+
+
+  fields_required = [
+    'primary_color',
+    'secondary_color'
+  ]
+
+  post_data_only = req.body
+  // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
+
+  if (!helper.validateFieldAuto(res, post_data_only, fields_required))
     return
 
   dentist_middlewareware(req, res, (err, dentist) => {
@@ -799,18 +815,20 @@ router.post(v2 + '/set-theme', (req, res) => {
                 helper.sendError(res, err)
                 return
               } else {
-                req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
-                  if (err) {
-                    console.log(err)
-                    helper.sendError(res, err)
-                    return
-                  }
-                })
+                console.log('success!')
+                helper.sendSuccess(res, "Information received. Building.")
+                return
               }
+              // else {
+              //   req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
+              //     if (err) {
+              //       console.log(err)
+              //       helper.sendError(res, err)
+              //       return
+              //     }
+              //   })
+              // }
             })
-            console.log('success!')
-            helper.sendSuccess(res, "Information received. Building.")
-            return
           })
           .catch(err => console.error(err))
       })
