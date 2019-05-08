@@ -73,4 +73,12 @@ export class AuthService {
     return response;
   }
 
+  setupTemplate(params) {
+    var url = this.constants.API_ENDPOINT + '/api/dentist/auth/v2/set-theme';
+    var response = this.http.post(url, params, {}).pipe(map(res => res.json()));
+    return response;
+  }
+
+
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-template',
@@ -9,6 +9,7 @@ export class TemplateComponent implements OnInit {
   @Input('primary') primary: string;
   @Input('secondary') secondary: string;
   @Input('logo') image: string;
+  @Output('chosenTemplate') proceed = new EventEmitter<any>();
   public templates = [
     {
       name: 'Ashen',
@@ -26,10 +27,10 @@ export class TemplateComponent implements OnInit {
       name: 'Eon',
       selected: false
     },
-    {
-      name: 'Rouge',
-      selected: false
-    },
+    // {
+    //   name: 'Rouge',
+    //   selected: false
+    // },
 
   ]
   public current = 0;
@@ -37,6 +38,7 @@ export class TemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.proceed.emit(this.templates[this.current]);
   }
 
   forward() {
@@ -45,11 +47,14 @@ export class TemplateComponent implements OnInit {
     } else {
       this.current = 0;
     }
+    this.proceed.emit(this.templates[this.current]);
   }
   backward() {
     if (this.current == 0)
       this.current = (this.templates.length - 1);
     else
       this.current--;
+    this.proceed.emit(this.templates[this.current]);
   }
+
 }

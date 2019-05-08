@@ -44,6 +44,9 @@ export class CredentialService {
   }
 
   selfSetup() {
-
+    if (this.user.first_setup == true && this.user.theme_setup == true) {
+      return true;
+    } else
+      return false;
   }
 }

@@ -17,6 +17,7 @@ export class User {
     software: string;
     state: string;
     template: string;
+    theme_setup: boolean;
     __v: any;
     _id: any;
 }

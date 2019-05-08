@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService as AuthGuard } from './services/guards/auth-guard.service';
 import { SessGuardService } from './services/guards/sess-guard.service';
+import { RouteGuardGuard } from './services/guards/route-guard.guard';
+
 
 const routes: Routes = [
   {
@@ -27,7 +29,7 @@ const routes: Routes = [
   {
     path: 'setup',
     loadChildren: './pages/dash/setup/setup.module#SetupModule',
-    canActivate: [AuthGuard]
+    canActivate: [RouteGuardGuard]
   },
   {
     path: '**',

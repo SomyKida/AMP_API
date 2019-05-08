@@ -1,12 +1,12 @@
 <div class="phone">
   <img class="backward" src="assets/img/backward.png" (click)="backward()" alt="">
-  <div *ngIf="current==1" class="phoneBody">
+  <div class="phoneBody">
     <span class="right-side-btn"></span>
     <span class="left-side-btn-1"></span>
     <span class="left-side-btn-2"></span>
     <span class="left-side-btn-3"></span>
     <div class="actualBody">
-      <div class="header" [style.background]="primary">
+      <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
         <h1>
           <img *ngIf="image == null" src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
@@ -20,16 +20,66 @@
             <p class="schedule">November 23, 2019 <i class="icon-pencil"></i></p>
           </div>
         </div>
-        <div class="lower">
-          <div class="square-menu-double half-cut-left" [style.background]="primary">
+        <div class="lower" *ngIf="current==0">
+          <div class="round-menu" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <img src="assets/img/menu.png" alt="">
+            <div class="round-pic">
+              <img src="assets/img/user.jpeg" alt="pic" />
+            </div>
           </div>
-          <div class="square-menu-double" [style.background]="primary">
+        </div>
+        <div class="lower" *ngIf="current==1">
+          <div class="square-menu-double half-cut-left" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+          </div>
+          <div class="square-menu-double" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <img src="../../../assets/img/info@3x.png" alt="Settings" />
             <span>INFO</span>
           </div>
-          <div class="square-menu-double half-cut-right" [style.background]="primary">
+          <div class="square-menu-double half-cut-right" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
           </div>
 
+        </div>
+        <div class="lower" *ngIf="current == 2">
+          <div class="square-menu" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <img src="../../../assets/img/settings_app_template.png" alt="Settings" />
+            <span>MY ACCOUNT</span>
+          </div>
+          <div class="forward_lower">
+            <img src="../../../assets/img/forward.png" alt="Forward" />
+          </div>
+          <div class="backward_lower">
+            <img src="../../../assets/img/backward.png" alt="Backward" />
+          </div>
+        </div>
+        <div class="lower_new" *ngIf="current == 3">
+          <div class="row_template">
+            <div class="column_template" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/settings_mobile.png" alt="Image" />
+              <span class="inner_span">SETTINGS</span>
+            </div>
+            <div class="column_template" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/social.png" alt="Image" />
+              <span class="inner_span">SOCIAL</span>
+            </div>
+            <div class="column_template" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/chat_mobile.png" alt="Image" />
+              <span class="inner_span">CHAT</span>
+            </div>
+          </div>
+          <div class="row_template">
+            <div class="column_template" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/info.png" alt="Image" />
+              <span class="inner_span">INFO</span>
+            </div>
+            <div class="column_template" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/nounRating.png" alt="Image" />
+              <span class="inner_span">CALL</span>
+            </div>
+            <div class="column_template" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/refer.png" alt="Image" />
+              <span class="inner_span">REFER</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="phoneFooter">
@@ -40,7 +90,7 @@
           <p class="name">View Notifications</p>
         </div>
         <div class="phoneFab">
-          <div class="btn-round" [style.background]="primary">
+          <div class="btn-round" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <span class="top-bar"></span>
             <span class="middle-bar"></span>
             <span class="bottom-bar"></span>
@@ -50,7 +100,7 @@
     </div>
   </div>
 
-  <div *ngIf="current==0" class="phoneBody">
+  <!-- <div *ngIf="current==0" class="phoneBody">
     <span class="right-side-btn"></span>
     <span class="left-side-btn-1"></span>
     <span class="left-side-btn-2"></span>
@@ -85,7 +135,6 @@
           <p class="name">Angelica Santos</p>
         </div>
         <div class="phoneFab">
-          <!-- <div class="btn-round" [style.background]="primary"> -->
           <div class="btn-round" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <span class="top-bar"></span>
             <span class="middle-bar"></span>
@@ -94,16 +143,16 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
-  <div *ngIf="current==2" class="phoneBody">
+  <!-- <div *ngIf="current==2" class="phoneBody">
     <span class="right-side-btn"></span>
     <span class="left-side-btn-1"></span>
     <span class="left-side-btn-2"></span>
     <span class="left-side-btn-3"></span>
     <div class="actualBody">
-      <div class="header" [style.background]="primary">
+      <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
         <h1>
           <img src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
@@ -117,7 +166,7 @@
           </div>
         </div>
         <div class="lower">
-          <div class="square-menu" [style.background]="primary">
+          <div class="square-menu" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <img src="../../../assets/img/settings_app_template.png" alt="Settings" />
             <span>MY ACCOUNT</span>
           </div>
@@ -135,7 +184,7 @@
           <p class="name">Angelica Santos</p>
         </div>
         <div class="phoneFab">
-          <div class="btn-round" [style.background]="primary">
+          <div class="btn-round" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <span class="top-bar"></span>
             <span class="middle-bar"></span>
             <span class="bottom-bar"></span>
@@ -143,15 +192,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div *ngIf="current==3" class="phoneBody">
+  <!-- <div *ngIf="current==3" class="phoneBody">
     <span class="right-side-btn"></span>
     <span class="left-side-btn-1"></span>
     <span class="left-side-btn-2"></span>
     <span class="left-side-btn-3"></span>
     <div class="actualBody">
-      <div class="header" [style.background]="primary">
+      <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
         <h1>
           <img src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
@@ -201,7 +250,7 @@
           <p class="name">Angelica Santos</p>
         </div>
         <div class="phoneFab">
-          <div class="btn-round" [style.background]="primary">
+          <div class="btn-round" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <span class="top-bar"></span>
             <span class="middle-bar"></span>
             <span class="bottom-bar"></span>
@@ -209,7 +258,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <img class="forward" src="assets/img/forward.png" (click)="forward()" alt="">

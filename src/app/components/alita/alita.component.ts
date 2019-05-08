@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { CredentialService } from 'src/app/services/credentials/credential.service';
+import { AuxService } from 'src/app/auxilaries/aux.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alita',
@@ -16,15 +19,21 @@ export class AlitaComponent implements OnInit {
     primary: string,
     secondary: string,
     logo: string,
-    img: any
+    img: any,
+    template: any
   } = {
       which: true,
       primary: '#178aff',
       secondary: '#08ccff',
       logo: '',
-      img: null
+      img: null,
+      template: ''
     }
-  constructor(private credentials: CredentialService) {
+  constructor(
+    private credentials: CredentialService,
+    public auth: AuthService,
+    public router: Router,
+    public aux: AuxService) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.credentials.sessionStatus.subscribe(value => {
       this.user = value
@@ -32,6 +41,10 @@ export class AlitaComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  chosen(template) {
+    this.colorTheme.template = template;
   }
 
   selection(which) {
@@ -50,11 +63,9 @@ export class AlitaComponent implements OnInit {
   }
 
   processFile(image) {
-    console.log(image);
     this.colorTheme.logo = image[0].name;
     var reader = new FileReader();
     reader.onload = (e: any) => {
-      console.log(e);
       this.colorTheme.img = e.target.result;
     }
     reader.readAsDataURL(image[0])
@@ -62,6 +73,23 @@ export class AlitaComponent implements OnInit {
 
   manual() {
     this.proceed.emit('manual');
+  }
+
+  saveTemplate() {
+    if (this.colorTheme.logo == '') {
+      this.aux.showAlert("Please chose a logo for your app.", "ERROR!");
+    }
+    var params = new FormData();
+    params.append('primary_color', this.colorTheme.primary);
+    params.append('secondary_color', this.colorTheme.secondary);
+    params.append('theme', this.colorTheme.template.name);
+    params.append('logo', this.colorTheme.img);
+    this.auth.setupTemplate(params).subscribe((success) => {
+      this.credentials.setUser(success.data);
+      this.router.navigate(['/home']);
+    }, (error) => {
+      this.aux.errorResponse(error);
+    })
   }
 
 }

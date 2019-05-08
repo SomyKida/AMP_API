@@ -72,6 +72,7 @@
                     img {
                         width: 20px;
                         height: auto;
+                        max-height: 25px;
                         float: left;
                         margin-right: 5px;
                         margin-top: -2px;
@@ -162,70 +163,78 @@
                     justify-content: center;
                     position: relative;
 
-                    .forward_lower{
-                      position: absolute;
-                      right: 5px;
-                      width: 35px;
-                      height: 35px;
-                      img{
-                        width: 100%;
-                        display: block;
-                        height: auto;
-                      }
+                    .forward_lower {
+                        position: absolute;
+                        right: 5px;
+                        width: 35px;
+                        height: 35px;
+
+                        img {
+                            width: 100%;
+                            display: block;
+                            height: auto;
+                        }
                     }
-                    .backward_lower{
-                      position: absolute;
-                      left: 5px;
-                      width: 35px;
-                      height: 35px;
-                      img{
-                        width: 100%;
-                        display: block;
-                        height: auto;
-                      }
+
+                    .backward_lower {
+                        position: absolute;
+                        left: 5px;
+                        width: 35px;
+                        height: 35px;
+
+                        img {
+                            width: 100%;
+                            display: block;
+                            height: auto;
+                        }
                     }
 
                 }
             }
 
-            .lower_new{
-              padding: 16px 1px 14px;
-              border-bottom: 2px solid $border;
-              .row_template{
-                display: flex;
-                flex-direction: row;
-                .column_template{
-                  width: 85px;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: flex-end;
-                  align-items: center;
-                  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.1);
-                  margin: 6px 8px 17px;
-                  height: 90px;
-                  border-radius: 3px;
-                  img{
-                    position: relative;
-                    float: left;
-                    width:  42px;
-                    height: 42px;
-                    background-position: 50% 50%;
-                    background-repeat:   no-repeat;
-                    background-size:     cover;
-                    margin-bottom: 16px;
-                  }
-                  span{
-                    width: 50px;
-                    font-family: 'ProximaNova-Semibold';
-                    color: #9B9B9B;
-                    font-size: 7.9pt;
-                    letter-spacing: 0.3pt;
-                    margin-bottom: 9px;
+            .lower_new {
+                padding: 16px 1px 14px;
+                border-bottom: 2px solid $border;
 
-                  }
+                .row_template {
+                    display: flex;
+                    flex-direction: row;
+
+                    .column_template {
+                        width: 85px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                        align-items: center;
+                        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.1);
+                        margin: 6px 8px 17px;
+                        height: 90px;
+                        border-radius: 3px;
+
+                        img {
+                            position: relative;
+                            float: left;
+                            width: 42px;
+                            height: 42px;
+                            background-position: 50% 50%;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            margin-bottom: 16px;
+                        }
+
+                        span {
+                            width: 50px;
+                            font-family: 'ProximaNova-Semibold';
+                            color: #9B9B9B;
+                            font-size: 7.9pt;
+                            letter-spacing: 0.3pt;
+                            margin-bottom: 9px;
+
+                        }
+                    }
                 }
-              }
             }
+
             .phoneFooter {
                 width: 100%;
                 display: flex;
@@ -463,22 +472,22 @@
 
 
 .square-menu {
-  background: -moz-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
-  /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(69, 223, 252, 1)), color-stop(100%, rgba(54, 139, 251, 1)));
-  /* safari4+,chrome */
-  background: -webkit-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
-  /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
-  /* opera 11.10+ */
-  background: -ms-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
-  /* ie10+ */
-  background: linear-gradient(0deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
-  /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#45dffc', endColorstr='#368bfb', GradientType=0);
-  /* ie6-9 */
+    background: -moz-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
+    /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(69, 223, 252, 1)), color-stop(100%, rgba(54, 139, 251, 1)));
+    /* safari4+,chrome */
+    background: -webkit-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
+    /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
+    /* opera 11.10+ */
+    background: -ms-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
+    /* ie10+ */
+    background: linear-gradient(0deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
+    /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#45dffc', endColorstr='#368bfb', GradientType=0);
+    /* ie6-9 */
 
-  width: 185px;
+    width: 185px;
     height: 203px;
 
     margin-top: 3px;
@@ -487,31 +496,32 @@
     margin-right: 10px;
     box-shadow: 0 0px 18px 5px rgba(0, 0, 0, 0.12);
 
-  border-radius: 5%;
-  -webkit-border-radius: 5%;
-  -ms-border-radius: 5%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    border-radius: 5%;
+    -webkit-border-radius: 5%;
+    -ms-border-radius: 5%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 
-  img{
-    width: 50%;
-    height: 50%;
+    img {
+        width: 50%;
+        height: 50%;
 
-  }
-  span{
-    display: block;
-    position: absolute;
-    bottom: 10px;
-    letter-spacing: 1.1px;
-    color: white;
-  }
+    }
+
+    span {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        letter-spacing: 1.1px;
+        color: white;
+    }
 }
 
 
-  .square-menu-double {
+.square-menu-double {
     background: -moz-linear-gradient(90deg, rgba(54, 139, 251, 1) 0%, rgba(69, 223, 252, 1) 100%);
     /* ff3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(69, 223, 252, 1)), color-stop(100%, rgba(54, 139, 251, 1)));
@@ -528,13 +538,13 @@
     /* ie6-9 */
 
     width: 140px;
-      height: 203px;
+    height: 203px;
 
-      margin-top: 3px;
-      margin-bottom: 3px;
-      margin-left: 10px;
-      margin-right: 10px;
-      box-shadow: 0 0px 18px 5px rgba(0, 0, 0, 0.12);
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 0px 18px 5px rgba(0, 0, 0, 0.12);
 
     border-radius: 5%;
     -webkit-border-radius: 5%;
@@ -545,43 +555,45 @@
     justify-content: center;
 
 
-    img{
-      position: relative;
-                    float: left;
-                    width:  60px;
-                    height: 60px;
-                    background-position: 50% 50%;
-                    background-repeat:   no-repeat;
-                    background-size:     cover;
+    img {
+        position: relative;
+        float: left;
+        width: 60px;
+        height: 60px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
 
     }
-    span{
-      display: block;
-      position: absolute;
-      bottom: 10px;
-      letter-spacing: 1.1px;
-      color: white;
+
+    span {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        letter-spacing: 1.1px;
+        color: white;
     }
 
 
 
-  }
+}
 
-  .half-cut-right{
+.half-cut-right {
 
     margin-right: -100px;
     margin-left: 0px;
 
-  }
-  .half-cut-left{
+}
+
+.half-cut-left {
 
     margin-right: 0px;
     margin-left: -100px;
 
-  }
+}
 
 
-  .infor_bottom {
+.infor_bottom {
     width: 130px;
     margin-right: 15px;
     height: 17px;
@@ -597,28 +609,31 @@
     padding: 10px 8px 10px 10px;
     border-radius: 4px;
     justify-content: center;
+
     p {
         font-size: 10px;
         font-family: 'ProximaNova-Semibold';
         color: #9B9B9B
+    }
 
-    }
     .noti_count {
-      background: red;
-      width: 27px;
-      display: flex;
-      /* align-items: center; */
-      border-radius: 50px;
-      margin-right: 5px;
-      flex-direction: column;
-      vertical-align: middle;
-      align-items: center;
+        background: red;
+        width: 27px;
+        display: flex;
+        /* align-items: center; */
+        border-radius: 50px;
+        margin-right: 5px;
+        flex-direction: column;
+        vertical-align: middle;
+        align-items: center;
     }
-    span{
-      color:white;
-      font-size: 14px;
-      font-family: 'ProximaNova-Semibold';
+
+    span {
+        color: white;
+        font-size: 14px;
+        font-family: 'ProximaNova-Semibold';
     }
+
     .no {
         font-size: 11px;
         color: rgba(0, 0, 0, 0.7);

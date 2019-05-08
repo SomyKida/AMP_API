@@ -772,21 +772,21 @@ router.post(v2 + '/setup', (req, res) => {
 
 router.post(v2 + '/set-theme', (req, res) => {
 
-  fields_required = [
-    'logo'
-  ]
+  // fields_required = [
+  //   'logo'
+  // ]
 
-  post_data = req.files
+  // post_data = req.files
 
-  if (req.files == undefined || req.files == null) {
-    helper.sendError(res, "Invalid payload");
-    return;
-  }
+  // if (req.files == undefined || req.files == null) {
+  //   helper.sendError(res, "Invalid payload");
+  //   return;
+  // }
 
   // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
 
-  if (!helper.validateFieldAuto(res, post_data, fields_required))
-    return
+  // if (!helper.validateFieldAuto(res, post_data, fields_required))
+  //   return
 
 
 

@@ -35,7 +35,7 @@
       </div>
     </ng-container>
     <ng-container *ngIf="user.first_setup == true">
-      <app-template [logo]="colorTheme.img" [primary]="colorTheme.primary" [secondary]="colorTheme.secondary" class="template"></app-template>
+      <app-template (chosenTemplate)="chosen($event)" [logo]="colorTheme.img" [primary]="colorTheme.primary" [secondary]="colorTheme.secondary" class="template"></app-template>
       <div class="app-setup">
         <h3>Choose Your Logo</h3>
         <div class="upload-logo-section">
@@ -85,7 +85,7 @@
 
         </div>
         <div class="save-setting">
-          <button class="choose btn-blue" mat-raised-button>SAVE AND CONTINUE</button>
+          <button class="choose btn-blue" (click)="saveTemplate()" mat-raised-button>SAVE AND CONTINUE</button>
         </div>
 
       </div>
