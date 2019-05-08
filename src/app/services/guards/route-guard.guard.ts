@@ -12,7 +12,7 @@ export class RouteGuardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.auth.loggedIn() && this.auth.selfSetup()) {
-      this.router.navigate(['plan']);
+      this.router.navigate(['home']);
       return false;
     }
     return true;
