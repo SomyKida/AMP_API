@@ -33,6 +33,7 @@ let DentistSchema = new Schema({
   email_verified: { type: Boolean, default: false },
   temp_token: { type: String, max: 100 },
   software: { type: String, max: 100, default: null },
+  theme_setup: { type: Boolean, default: false },
   selected_theme: { type: Schema.Types.ObjectId, ref: 'Themes' }
 }, { collection: 'dentists' });
 

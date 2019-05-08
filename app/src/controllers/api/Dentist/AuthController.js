@@ -791,6 +791,7 @@ router.post(v2 + '/set-theme', (req, res) => {
 
 
   fields_required = [
+    'theme',
     'primary_color',
     'secondary_color'
   ]
@@ -802,37 +803,54 @@ router.post(v2 + '/set-theme', (req, res) => {
     return
 
   dentist_middlewareware(req, res, (err, dentist) => {
+
+
     if (!err) {
-      fs.remove(base_path + '/domains/' + dentist.id, err => {
-        if (err) return console.error(err)
-        //add theme selection logic here
-        fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/assets')
-        fs.copy(base_path + '/dist', base_path + '/domains/' + dentist.id + '/app')
-          .then(() => {
-            req.files.logo.mv(base_path + '/domains/' + dentist.id + '/assets/logo.png', (err) => {
-              if (err) {
-                console.log(err)
-                helper.sendError(res, err)
-                return
-              } else {
-                console.log('success!')
-                helper.sendSuccess(res, "Information received. Building.")
-                return
-              }
-              // else {
-              //   req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
-              //     if (err) {
-              //       console.log(err)
-              //       helper.sendError(res, err)
-              //       return
-              //     }
-              //   })
-              // }
-            })
-          })
-          .catch(err => console.error(err))
+      dentist.theme_setup = true;
+      dentist.save((err) => {
+        if (!helper.postQueryErrorOnly(err, null)) {
+          helper.sendSuccess(res, dentist)
+          return
+        }
       })
     }
+
+    // if (!err) {
+    //   fs.remove(base_path + '/domains/' + dentist.id, err => {
+    //     if (err) return console.error(err)
+    //     //add theme selection logic here
+    //     fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/assets')
+    //     fs.copy(base_path + '/dist', base_path + '/domains/' + dentist.id + '/app')
+    //       .then(() => {
+    //         req.files.logo.mv(base_path + '/domains/' + dentist.id + '/assets/logo.png', (err) => {
+    //           if (err) {
+    //             console.log(err)
+    //             helper.sendError(res, err)
+    //             return
+    //           } else {
+    //             console.log('success!')
+    //             dentist.theme_setup = true;
+    //             dentist.save((err) => {
+    //               if (!helper.postQueryErrorOnly(err, null)) {
+    //                 helper.sendSuccess(res, dentist)
+    //                 return
+    //               }
+    //             })
+    //           }
+    //           // else {
+    //           //   req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
+    //           //     if (err) {
+    //           //       console.log(err)
+    //           //       helper.sendError(res, err)
+    //           //       return
+    //           //     }
+    //           //   })
+    //           // }
+    //         })
+    //       })
+    //       .catch(err => console.error(err))
+    //   })
+    // }
   })
 })
 router.post('/email-validity', (req, res) => {
