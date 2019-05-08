@@ -1,19 +1,20 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { CredentialService } from 'src/app/services/credentials/credential.service';
 
 @Component({
   selector: 'app-alita',
   templateUrl: './alita.component.html',
-  styleUrls: ['./alita.component.scss']
+  styleUrls: ['./alita.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AlitaComponent implements OnInit {
   @Output('switch') proceed = new EventEmitter<any>();
   public user: User;
   public colorTheme: { which: boolean, primary: string, secondary: string } = {
     which: true,
-    primary: '#39d4ff',
-    secondary: '#f2f2f2'
+    primary: '#178aff',
+    secondary: '#08ccff'
   }
 
   public color = '#39d4ff';
@@ -34,8 +35,16 @@ export class AlitaComponent implements OnInit {
       this.colorTheme.which = false;
   }
 
-  changeColor() {
-    console.log(this.colorTheme.secondary);
+  changePrimary(which) {
+    this.colorTheme.primary = which.color.hex;
+  }
+
+  changeSecondary(which) {
+    this.colorTheme.secondary = which.color.hex;
+  }
+
+  processFile(image) {
+    console.log(image);
   }
 
   manual() {

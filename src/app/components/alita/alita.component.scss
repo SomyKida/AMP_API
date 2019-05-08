@@ -230,15 +230,13 @@
     .picker {
         margin-top: 5%;
 
-        input {
-            width: 80%;
-            padding: 5px;
-            border-radius: 20px;
-            border: 0;
+        .hue-picker {
+            width: 94% !important;
+            // border: 0;
         }
 
-        input:focus {
-            outline: none;
+        .color-hue {
+            border-radius: 20px !important;
         }
     }
 }

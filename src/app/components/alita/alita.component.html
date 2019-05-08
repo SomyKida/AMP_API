@@ -44,7 +44,8 @@
           </div> <!-- left side -->
 
           <div class="right-side">
-            <button class="choose btn-blue" mat-raised-button>Choose Logo</button>
+            <input type="file" accept="image/*" (change)="processFile(file.files)" #file hidden>
+            <button (click)="file.click()" class="choose btn-blue" mat-raised-button>Choose Logo</button>
             <p class="empty-logo-label">No LOGO Selected</p>
           </div> <!-- right side -->
 
@@ -77,8 +78,11 @@
 
         </div> <!-- app color setting-->
         <div class="picker">
-          <input *ngIf="colorTheme.which == true" [(colorPicker)]="colorTheme.primary" [style.background]="colorTheme.primary" [style.color]="colorTheme.primary" />
-          <input (colorPickerChange)="changeColor()" *ngIf="colorTheme.which == false" [(colorPicker)]="colorTheme.secondary" [style.background]="colorTheme.secondary" [style.color]="colorTheme.secondary" />
+          <color-hue-picker *ngIf="colorTheme.which == true" [color]="colorTheme.primary" (onChangeComplete)="changePrimary($event)"></color-hue-picker>
+          <color-hue-picker *ngIf="colorTheme.which == false" [color]="colorTheme.secondary" (onChangeComplete)="changeSecondary($event)"></color-hue-picker>
+          <!-- <input *ngIf="colorTheme.which == true" [(colorPicker)]="colorTheme.primary" [style.background]="colorTheme.primary" [style.color]="colorTheme.primary" />
+          <input (colorPickerChange)="changeColor()" *ngIf="colorTheme.which == false" [(colorPicker)]="colorTheme.secondary" [style.background]="colorTheme.secondary" [style.color]="colorTheme.secondary" /> -->
+
         </div>
         <div class="save-setting">
           <button class="choose btn-blue" mat-raised-button>SAVE AND CONTINUE</button>

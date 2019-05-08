@@ -6,7 +6,7 @@
     <span class="left-side-btn-2"></span>
     <span class="left-side-btn-3"></span>
     <div class="actualBody">
-      <div class="header" [style.background]="primary">
+      <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
         <h1>
           <img src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
@@ -14,13 +14,13 @@
       </div>
       <div class="phoneCont">
         <div class="upper">
-          <div class="infor" [style.background]="secondary">
+          <div class="infor">
             <p class="no">No Appointments Scheduled</p>
             <p class="schedule">Schedule One Now! <i class="icon-pencil"></i></p>
           </div>
         </div>
         <div class="lower">
-          <div class="round-menu" [style.background]="primary">
+          <div class="round-menu" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <img src="assets/img/menu.png" alt="">
             <div class="round-pic">
               <img src="assets/img/user.jpeg" alt="pic" />
@@ -34,7 +34,8 @@
           <p class="name">Angelica Santos</p>
         </div>
         <div class="phoneFab">
-          <div class="btn-round" [style.background]="primary">
+          <!-- <div class="btn-round" [style.background]="primary"> -->
+          <div class="btn-round" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
             <span class="top-bar"></span>
             <span class="middle-bar"></span>
             <span class="bottom-bar"></span>

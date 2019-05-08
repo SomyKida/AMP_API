@@ -42,6 +42,7 @@
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.16",
+    "ngx-color": "^2.0.7",
     "ngx-color-picker": "^7.5.0",
     "ngx-mask": "^7.9.2",
     "ngx-material-timepicker": "^3.0.2",
