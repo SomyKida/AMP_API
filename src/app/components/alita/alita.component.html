@@ -1,4 +1,4 @@
-<div class="alitaWrapper">
+<div class="alitaWrapper" [ngClass]="{'templateSelection': user.first_setup == true}">
   <div class="botArea">
     <ng-container *ngIf="user.first_setup == false">
       <div class="botIntro">

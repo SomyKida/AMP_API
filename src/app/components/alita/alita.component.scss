@@ -83,6 +83,7 @@
             @extend .botIntro;
             align-items: flex-start;
             justify-content: flex-start;
+            padding-right: 3%;
         }
 
         .chatArea {
@@ -178,6 +179,10 @@
                 }
             }
         }
+    }
+
+    &.templateSelection {
+        padding-left: 3%;
     }
 }
 

@@ -13,7 +13,15 @@ export class AuthGuardService implements CanActivate {
     if (!this.auth.loggedIn()) {
       this.router.navigate(['plan']);
       return false;
+    } else if (this.auth.loggedIn()) {
+      if (this.auth.selfSetup()) {
+        return true;
+      } else {
+        this.router.navigate(['setup']);
+        return false;
+      }
+
     }
-    return true;
+
   }
 }
