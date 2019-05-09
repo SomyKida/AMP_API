@@ -32,6 +32,10 @@ const routes: Routes = [
     canActivate: [RouteGuardGuard]
   },
   {
+    path: 'landing',
+    loadChildren: './pages/auth/landing/landing.module#LandingModule',
+  },
+  {
     path: '**',
     redirectTo: 'plan'
   }

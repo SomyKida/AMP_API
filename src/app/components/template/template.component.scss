@@ -13,13 +13,13 @@
         bottom: 0;
         margin: auto;
         width: 50px;
-        left: 20px;
+        left: 0;
     }
 
     .forward {
         @extend .backward;
         left: auto;
-        right: 20px;
+        right: 0;
     }
 
     .phoneBody {
