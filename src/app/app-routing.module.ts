@@ -34,10 +34,11 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: './pages/auth/landing/landing.module#LandingModule',
+    canActivate: [SessGuardService]
   },
   {
     path: '**',
-    redirectTo: 'plan'
+    redirectTo: 'landing'
   }
 ];
 
