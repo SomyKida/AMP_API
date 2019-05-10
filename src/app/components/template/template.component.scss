@@ -25,7 +25,7 @@
     .phoneBody {
         display: inline-block;
         position: relative;
-
+        height: 520px;
         box-shadow: 0 0px 15px 10px rgba(0, 0, 0, 0.12);
         -webkit-box-shadow: 0 0px 15px 10px rgba(0, 0, 0, 0.12);
         -ms-box-shadow: 0 0px 15px 10px rgba(0, 0, 0, 0.12);
@@ -278,6 +278,226 @@
             }
         }
     }
+
+    .phoneBody_rogue {
+      display: inline-block;
+      position: relative;
+
+      box-shadow: 0 0px 15px 10px rgba(0, 0, 0, 0.12);
+      -webkit-box-shadow: 0 0px 15px 10px rgba(0, 0, 0, 0.12);
+      -ms-box-shadow: 0 0px 15px 10px rgba(0, 0, 0, 0.12);
+
+      max-width: 255px;
+      height:520px;
+      width: 100%;
+      background: $primary;
+      border-radius: 40px;
+      padding: 13px;
+
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+
+
+      .actualBody {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+          border-radius: 25px;
+
+          .header {
+              position: relative;
+              width: 100%;
+              height: 70px;
+              background: $blueTheme;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              box-sizing: border-box;
+              padding-top: 18px;
+
+              h1 {
+                  font-size: 16px;
+                  font-family: 'ProximaNova-Extrabld';
+                  color: $primary;
+                  letter-spacing: 1px;
+                  margin-top: 15px;
+                  text-transform: uppercase;
+                  margin: 0px;
+
+                  img {
+                      width: 20px;
+                      height: auto;
+                      max-height: 25px;
+                      float: left;
+                      margin-right: 5px;
+                      margin-top: -2px;
+                  }
+              }
+          }
+
+          .iphoneX {
+              position: absolute;
+              top: -13px;
+              left: 0;
+              right: 0;
+              margin: auto;
+              width: 57%;
+              height: 30px;
+              z-index: 9999;
+              background: $primary;
+              border-radius: 25px;
+
+              &:before,
+              &:after {
+                  content: '';
+                  position: absolute;
+                  width: 15px;
+                  height: 15px;
+                  border-radius: 50%;
+                  background: #fff;
+              }
+
+              &:before {
+                  bottom: 14px;
+                  left: -4px;
+              }
+
+              &:after {
+                  bottom: 14px;
+                  right: -4px;
+              }
+          }
+
+          .phoneCont {
+              margin: auto;
+              width: 100%;
+
+              .upper{
+                padding: 10px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .infor {
+                  width: 100%;
+                  background: #ffffff;
+                  display: inline-block;
+                  border-radius: 5px;
+                  align-items: center;
+                  display: flex;
+                  flex-direction: column;
+                  p {
+                    margin-top: 5px;
+                    margin-bottom: 13px;
+                    font-size: 19px;
+                    font-family: 'ProximaNova-Regular';
+
+                }
+                .custom_bottom_border {
+                  background: #C7C7C7;
+                  width: 36px;
+                  padding: 1.5px;
+                  border-radius: 5%;
+                  margin-top: 4px;
+                }
+
+                .no {
+                    font-size: 11px;
+                    color: rgba(0, 0, 0, 0.7);
+                    font-family: 'ProximaNova-Semibold';
+                }
+
+                .schedule {
+                    margin-top: 5px;
+                    font-size: 17px;
+                    font-family: 'ProximaNova-Semibold';
+                }
+
+              }
+            }
+
+              .lower{
+                padding: 0px 5px 20px;
+                border-bottom: 2px solid #f5f4f4;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                flex-direction: column;
+                .row{
+                  box-shadow: 0 0px 15px 3px rgba(0, 0, 0, 0.12);
+                  width: 200px;
+                  height: 65px;
+                  border-radius: 5px;
+                  margin-top: 15px;
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+
+                  img{
+                    position: relative;
+                    float: left;
+                    width: 35px;
+                    height: 35px;
+                    background-position: 50% 50%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    margin-bottom: 16px;
+                    margin-left: 15px;
+                    margin-top: 13px;
+                  }
+                  span{
+                    font-family: "ProximaNova-Semibold";
+                    color: #9B9B9B;
+                    margin-left: 16px;
+                    font-size: 14px;
+                    letter-spacing: 0.3pt;
+                  }
+                }
+              }
+          }
+
+      }
+  }
+
+  .btn-round_rogue {
+    width: 38px;
+    height: 38px;
+    background: #18c1f0;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    margin-left: 80px;
+    margin-top: 120px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    padding: 13px 10px;
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+
+    span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: #fff;
+        margin-bottom: 3px;
+
+        &.middle-bar {
+            width: 66%;
+        }
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+  }
 }
 
 .phoneInfo {

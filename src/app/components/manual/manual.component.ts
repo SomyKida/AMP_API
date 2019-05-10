@@ -19,6 +19,7 @@ export class ManualComponent implements OnInit {
     phone: '',
     email: '',
     address: '',
+    practice_name: '',
     officeHours: [
       {
         day: 'Monday',
@@ -147,7 +148,7 @@ export class ManualComponent implements OnInit {
   }
 
   update() {
-    if (this.stepOne.email != '' && this.stepOne.phone != '' && this.stepOne.address != '')
+    if (this.stepOne.email != '' && this.stepOne.phone != '' && this.stepOne.address != '' && this.stepOne.practice_name != '')
       if (this.user.package != 'LITE' && (this.stepTwo.software == '' || this.stepTwo.auth == '' || this.stepTwo.token == '' || this.stepTwo.npi == '')) {
         this.aux.showAlert("Please don't leave any field blank", "ERROR!");
         return;
@@ -155,7 +156,7 @@ export class ManualComponent implements OnInit {
     var params = {
       theme_id: '5c9e753da7953e3028adc5d3',
       phone: this.stepOne.phone,
-      name: 'Harry - The Nutritionist',
+      practice_name: this.stepOne.practice_name,
       email: this.stepOne.email,
       address: this.stepOne.address,
       office_hours: this.stepOne.officeHours,

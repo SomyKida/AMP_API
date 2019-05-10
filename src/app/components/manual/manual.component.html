@@ -15,19 +15,27 @@
       <form>
         <ng-container *ngIf="selectedTab == 0">
           <div class="form-row">
-            <div class="form-one-col">
+            <div class="form-two-col">
+              <label>Practice Name</label>
+              <input type="text" placeholder="# Practice Name" [(ngModel)]="stepOne.practice_name" name="practice_name"
+                (ngModelChange)="changeInFields('practice_name')" />
+            </div>
+            <div class="form-two-col">
               <label>Phone</label>
-              <input mask="(000) 000-0000" type="tel" placeholder="# Patients use to call office" [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+              <input mask="(000) 000-0000" type="tel" placeholder="# Patients use to call office"
+                [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Email</label>
-              <input type="email" [(ngModel)]="stepOne.email" name="address" placeholder="# Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
+              <input type="email" [(ngModel)]="stepOne.email" name="address"
+                placeholder="# Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
             <div class="form-two-col">
               <label>Address</label>
-              <input type="text" placeholder="# Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip" (ngModelChange)="changeInFields('zipcode')" />
+              <input type="text" placeholder="# Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip"
+                (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <h3>Doctors Names</h3>
@@ -72,7 +80,8 @@
               <div class="form-four-col">
                 <label>Lunch End Time</label>
                 <ng-container *ngIf="din.off == false">
-                  <input class="picker" [ngxTimepicker]="e" [(ngModel)]="din.lunchEnd" name="luncend" (ngModelChange)="changeInFields('phoneNo')" />
+                  <input class="picker" [ngxTimepicker]="e" [(ngModel)]="din.lunchEnd" name="luncend"
+                    (ngModelChange)="changeInFields('phoneNo')" />
                   <ngx-material-timepicker #e></ngx-material-timepicker>
                 </ng-container>
                 <ng-container *ngIf="din.off == true">
@@ -82,7 +91,8 @@
               <div class="form-four-col">
                 <label>Closing Time</label>
                 <ng-container *ngIf="din.off == false">
-                  <input class="picker" [ngxTimepicker]="r" [(ngModel)]="din.closeTime" name="close" (ngModelChange)="changeInFields('phoneNo')" />
+                  <input class="picker" [ngxTimepicker]="r" [(ngModel)]="din.closeTime" name="close"
+                    (ngModelChange)="changeInFields('phoneNo')" />
                   <ngx-material-timepicker #r></ngx-material-timepicker>
                 </ng-container>
                 <ng-container *ngIf="din.off == true">

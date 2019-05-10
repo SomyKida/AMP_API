@@ -706,7 +706,8 @@ router.post(v2 + '/setup', (req, res) => {
   fields_required = [
     // 'theme_id',
     //'phone',
-    'name',
+    //'name',
+    'practice_name',
     'email',
     'address',
     'office_hours',

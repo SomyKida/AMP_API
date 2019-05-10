@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { User } from 'src/app/models/user';
+import { CredentialService } from '../../services/credentials/credential.service';
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
@@ -27,15 +28,20 @@ export class TemplateComponent implements OnInit {
       name: 'Eon',
       selected: false
     },
-    // {
-    //   name: 'Rouge',
-    //   selected: false
-    // },
+    {
+      name: 'Rouge',
+      selected: false
+    },
 
   ]
+  public user: User;
   public current = 0;
-  public total_screens = 3;
-  constructor() { }
+  public total_screens = 4;
+  constructor(
+    public credentials: CredentialService
+  ) {
+    this.user = credentials.user;
+  }
 
   ngOnInit() {
     this.proceed.emit(this.templates[this.current]);
