@@ -12,10 +12,13 @@
   <div class="firstQuad">
     <div class="intro">
       <div class="text">
-        <h1>Your Very Own Custom Branded App.</h1>
+        <div class="inline_intro">
+          <h1>Your Very Own Custom Branded App</h1>
+          <span class="last-dot">.</span>
+        </div>
         <p>In our app driven world, AMP bridges the gap between Patients & Doctors
           with a fully integrated solution</p>
-        <button class="orderBtn" mat-raised-button>Order Now</button>
+        <button class="orderBtn" (click)="gotoPackageMenu()" mat-raised-button>Order Now</button>
         <p class="available">Available for <u>iOS and Android</u></p>
       </div>
     </div>
@@ -40,7 +43,7 @@
       <h1>Colorful & Delightful</h1>
       <p>Just how you want your patients to feel</p>
       <p class="note">Patient communication made easy with AMP</p>
-      <button class="orderBtn forThis" mat-raised-button>Order Now</button>
+      <button class="orderBtn forThis" (click)="gotoPackageMenu()" mat-raised-button>Order Now</button>
     </div>
     <span class="acting3"></span>
     <span class="acting4"></span>
@@ -53,7 +56,7 @@
         and stay on the cutting edge. Alita makes extremely complex things
         simple by continuing to learn your habits as a medical expert and
         automatically adjusting the software to fit your needs.</p>
-      <button class="orderBtn forMon" mat-raised-button>Order Now</button>
+      <button class="orderBtn forMon" (click)="gotoPackageMenu()" mat-raised-button>Order Now</button>
     </div>
     <img class="fabing" src="assets/img/fabiano.png" alt="">
   </div>
@@ -72,21 +75,21 @@
       </div>
       <div class="second">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Chat</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
       </div>
       <div class="third">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Forms</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
       </div>
       <div class="fourth">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Automation Reminders</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
@@ -95,28 +98,28 @@
     <div class="row">
       <div class="first">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Scheduling</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
       </div>
       <div class="second">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Social</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
       </div>
       <div class="third">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Marketing</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
       </div>
       <div class="fourth">
         <span></span>
-        <h2>Dashboard</h2>
+        <h2>Branding</h2>
         <p>Your AMP dashboard provides
           convenient access for your front office
           to stay connected to your patients</p>
@@ -141,12 +144,12 @@
     <h1>Get Started with App My Practice</h1>
     <div class="row">
       <div class="frst">
-        <button class="orderBtn forMon" mat-raised-button>Order Now</button>
+        <button class="orderBtn forMon" (click)="gotoPackageMenu()" mat-raised-button>Order Now</button>
         <p>Two feature-rich
           packages available</p>
       </div>
       <div class="frst">
-        <button class="orderBtn forMon" mat-raised-button>Book Free Demo</button>
+        <button class="orderBtn forMon" (click)="gotoPackageMenu()" mat-raised-button>Book Free Demo</button>
         <p>Take your practice from good
           to great. Let’s get in touch.</p>
       </div>
