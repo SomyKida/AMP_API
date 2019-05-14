@@ -45,6 +45,8 @@ const fs = require("fs");
 
 /* Incude the express Module*/
 var express = require("express");
+var useragent = require('express-useragent');
+
 global.app = express();
 global.bcrypt = require("bcryptjs")
 global.iplocation = require("iplocation").default;
@@ -52,6 +54,7 @@ global.publicIp = require('public-ip');
 
 /* Session Initialization*/
 app.use(require('cookie-parser')());
+app.use(useragent.express());
 var session = require('express-session');
 app.use(session({
   secret: 'codingPixel12345',
@@ -127,7 +130,11 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/dist/amp/index.html')
+
+  if (req.useragent.isMobile)
+    res.sendFile(__dirname + '/dist/mobile/theme_1/index.html');
+  else
+    res.sendFile(__dirname + '/dist/amp/index.html')
   return;
 });
 

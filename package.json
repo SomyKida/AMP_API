@@ -35,6 +35,7 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.1.1-alpha.3",
     "express-session": "^1.15.6",
+    "express-useragent": "^1.0.12",
     "fs-extra": "^7.0.1",
     "hammerjs": "^2.0.8",
     "iplocation": "^6.1.0",
