@@ -132,7 +132,7 @@ app.use('/uploads', express.static(__dirname + '/app/uploads'));
 app.get('/', function (req, res) {
 
   if (req.useragent.isMobile)
-    res.sendFile(__dirname + '/dist/mobile/theme_1/index.html');
+    res.sendFile(__dirname + '/dist/mobile/theme_1/dist/index.html');
   else
     res.sendFile(__dirname + '/dist/amp/index.html')
   return;
