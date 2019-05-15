@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
-  public usrVld: { usr: boolean, pass: boolean } = {
+  public usrVld: { 
+    usr: boolean,
+     pass: boolean 
+  } = {
     usr: false,
     pass: false
   }
