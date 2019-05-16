@@ -1,5 +1,5 @@
-<div class="container">
-  <button class="logo" mat-button>
+<div class="container" [ngClass]="{'disp': display == true}">
+  <button class="logo" (click)="hide()" mat-button>
     <img src="assets/img/logo.png" alt="">
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" (click)="goTo('dashboard')" mat-button>

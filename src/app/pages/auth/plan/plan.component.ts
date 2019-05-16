@@ -70,6 +70,7 @@ export class PlanComponent implements OnInit {
     cvc: false,
     expiry: false,
   }
+  public menuForMobs: boolean = false;
   constructor(public auth: AuthService,
     public aux: AuxService,
     public extractor: ActivatedRoute,
@@ -92,6 +93,10 @@ export class PlanComponent implements OnInit {
         location.reload();
       })
     }
+  }
+
+  openMenuForMobile() {
+    this.menuForMobs = !this.menuForMobs;
   }
 
   register(plan) {

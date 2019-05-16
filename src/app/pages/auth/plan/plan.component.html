@@ -1,8 +1,11 @@
-<app-side-bar></app-side-bar>
+<app-side-bar [display]="menuForMobs" (close)="openMenuForMobile()"></app-side-bar>
 <div class="container">
   <div class="GlobalFormWrapper wrapper">
     <div class="plan-header">
       <div class="plan-head-row">
+        <div class="headFab" (click)="openMenuForMobile()" matRipple>
+          <img src="assets/img/phoneFab.png" alt="">
+        </div>
         <div class="plan-head-col">
           <ng-container *ngIf="selectedPlan == null">
             <h1>Order Your Future</h1>
@@ -15,7 +18,7 @@
             <h2 class="package">You have selected the ({{selectedPlan.plan.name}}) Package</h2>
           </ng-container>
         </div>
-        <div class="plan-head-col">
+        <div class="plan-head-col statusBtns">
           <span class="rounds" [ngClass]="{'active': selectedPlan == null}">
             <span class="num">1</span>
           </span>

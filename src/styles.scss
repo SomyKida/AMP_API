@@ -81,8 +81,9 @@ $font-path: "/assets/fonts";
         padding: 50px;
         background: $primary;
 
-        @media (max-width: 767px) {
+        @media (max-width: 750px) {
             padding: 15px;
+            width: 90%;
         }
 
         .form-head-row {

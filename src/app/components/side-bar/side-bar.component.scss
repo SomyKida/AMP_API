@@ -9,6 +9,19 @@
     box-shadow: 0px 0px 10px 0px $shadow;
     z-index: 9999;
 
+    &.disp {
+        display: block;
+    }
+
+    @media (max-width: 750px) {
+        display: none;
+        width: 97px;
+        transition: width 2s;
+        -webkit-transition-delay: 1s;
+        transition-delay: 1s;
+        position: absolute;
+    }
+
     .logo {
         height: 12vh;
         width: 100%;
@@ -50,30 +63,30 @@
     }
 
     .optionsDisabled {
-      @extend .logo;
-      // height: 10vh;
-      opacity: 0.35;
-      background: white;
-      color: #444;
-      line-height: 3vh;
+        @extend .logo;
+        // height: 10vh;
+        opacity: 0.35;
+        background: white;
+        color: #444;
+        line-height: 3vh;
 
-      img {
+        img {
 
-          width: 34px;
-      }
+            width: 34px;
+        }
 
-      .mkt {
-          width: 45px;
-      }
+        .mkt {
+            width: 45px;
+        }
 
-      p {
-          margin: 2px 0 0 0;
-          color: $back;
-          font-size: 11px;
-      }
+        p {
+            margin: 2px 0 0 0;
+            color: $back;
+            font-size: 11px;
+        }
 
-      .highlighted {
-          color: $blueTheme;
-      }
-  }
+        .highlighted {
+            color: $blueTheme;
+        }
+    }
 }
