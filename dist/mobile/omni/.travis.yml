@@ -1,0 +1,28 @@
+sudo: required
+
+language: node_js
+
+node_js:
+  - "8"
+  - "10"
+
+dist: trusty
+
+cache:
+  directories:
+    - "$HOME/.npm"
+
+addons:
+  chrome: stable
+
+script:
+  - npm run test -- --no-watch --browsers=ChromeHeadlessCI
+  - npm run e2e
+
+after_success:
+  - npm run build
+
+deploy:
+  provider: firebase
+  token: $FIREBASE_TOKEN
+  skip_cleanup: true
