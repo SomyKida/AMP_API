@@ -255,9 +255,7 @@
 
 
         img {
-            width: 24%;
-            box-shadow: 0 0px 15px 3px rgba(0, 0, 0, 0.12);
-            border-radius: 50px;
+            width: 25%;
             z-index: 10;
         }
     }
@@ -273,8 +271,8 @@
             position: absolute;
             left: -5%;
             width: 24%;
-            border-radius: 50px;
-            box-shadow: 0 0px 15px 3px rgba(0, 0, 0, 0.12);
+            // border-radius: 50px;
+            // box-shadow: 0 0px 15px 3px rgba(0, 0, 0, 0.12);
         }
 
         .acting1 {
@@ -364,8 +362,6 @@
             position: absolute;
             right: -5%;
             width: 24%;
-            box-shadow: 0 0px 15px 3px rgba(0, 0, 0, 0.12);
-            border-radius: 50px
         }
     }
 
