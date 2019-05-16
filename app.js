@@ -132,7 +132,7 @@ app.use('/uploads', express.static(__dirname + '/app/uploads'));
 app.get('/', function (req, res) {
 
   if (req.useragent.isMobile)
-    res.sendFile(__dirname + '/dist/mobile/theme_1/index.html');
+    res.sendFile(__dirname + '/dist/mobile/omni/dist/my-app/index.html');
   else
     res.sendFile(__dirname + '/dist/amp/index.html')
   return;
@@ -149,6 +149,7 @@ app.get('/:url/domain', function (req, res) {
   })
 })
 app.get('*.*', express.static(__dirname + '/dist/amp'));
+app.get("*.*", express.static(__dirname + '/dist/mobile/omni/dist/my-app'))
 app.get('*.*', express.static(__dirname + '/domains'));
 var port = config.PORT;
 var http = require('http').Server(app);
