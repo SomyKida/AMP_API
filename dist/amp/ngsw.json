@@ -1,10 +1,6 @@
 {
   "configVersion": 1,
-<<<<<<< HEAD
   "timestamp": 1557940114365,
-=======
-  "timestamp": 1557934654323,
->>>>>>> mobile_theme_one
   "index": "./index.html",
   "assetGroups": [
     {
