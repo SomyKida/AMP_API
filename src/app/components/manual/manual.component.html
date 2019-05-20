@@ -18,7 +18,7 @@
             <div class="form-two-col">
               <label>Practice Name</label>
               <input type="text" placeholder="# Practice Name" [(ngModel)]="stepOne.practice_name" name="practice_name"
-                (ngModelChange)="changeInFields('practice_name')" />
+                (ngModelChange)="changeInFields('practice_name')" maxlength="15" />
             </div>
             <div class="form-two-col">
               <label>Phone</label>

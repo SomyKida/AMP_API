@@ -60,24 +60,37 @@
                 box-sizing: border-box;
                 padding-top: 18px;
 
-                h1 {
+                .logo_row{
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-items: center;
+                  width: 100%;
+                  h1 {
                     font-size: 16px;
                     font-family: 'ProximaNova-Extrabld';
-                    color: $primary;
+                    color: #ffffff;
                     letter-spacing: 1px;
                     margin-top: 15px;
                     text-transform: uppercase;
                     margin: 0px;
+                    width: 80%;
+                    padding-left: 5px;
+                    padding-right: 25px;
+                    word-break: break-word;
+                  }
 
                     img {
-                        width: 20px;
-                        height: auto;
-                        max-height: 25px;
-                        float: left;
-                        margin-right: 5px;
-                        margin-top: -2px;
+                      width: 20px;
+                      height: auto;
+                      max-height: 25px;
+                      float: left;
+                      /* margin-right: 5px; */
+                      margin-left: 15px;
+                      margin-top: -2px;
                     }
-                }
+
+              }
             }
 
             .iphoneX {
@@ -91,6 +104,8 @@
                 z-index: 9999;
                 background: $primary;
                 border-radius: 25px;
+
+
 
                 &:before,
                 &:after {
@@ -317,6 +332,9 @@
               justify-content: center;
               box-sizing: border-box;
               padding-top: 18px;
+
+
+
 
               h1 {
                   font-size: 16px;

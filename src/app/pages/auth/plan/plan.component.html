@@ -12,27 +12,30 @@
             <h2>Customize your Package Now</h2>
           </ng-container>
           <ng-container *ngIf="selectedPlan != null">
-            <h1 *ngIf="steps.loginInfo == false">Complete SignUp Information</h1>
-            <h1 *ngIf="steps.loginInfo == true && steps.billingInfo == false">Complete Billing Information</h1>
-            <h1 *ngIf="steps.billingInfo == true">Complete Payment Details</h1>
-            <h2 class="package">You have selected the ({{selectedPlan.plan.name}}) Package</h2>
+            <h1 *ngIf="steps.loginInfo == false">SignUp Information</h1>
+            <h1 *ngIf="steps.loginInfo == true && steps.billingInfo == false">Billing Information</h1>
+            <h1 *ngIf="steps.billingInfo == true">Payment Details</h1>
+            <!-- <h2 class="package">You have selected the ({{selectedPlan.plan.name}}) Package</h2> -->
+            <h2 class="package">Create Your Account</h2>
           </ng-container>
         </div>
         <div class="plan-head-col statusBtns">
           <span class="rounds" [ngClass]="{'active': selectedPlan == null}">
             <span class="num">1</span>
           </span>
-          <span class="rounds" [ngClass]="{'active': selectedPlan != null && steps.loginInfo == false}">
+          <span class="rounds"
+            [ngClass]="{'active': (selectedPlan != null && steps.loginInfo == false) || (steps.billingInfo == false && selectedPlan!= null) }">
             <span class="num">2</span>
           </span>
-          <span class="rounds" [ngClass]="{'active': (steps.loginInfo == true || steps.billingInfo == true)}">
+          <span class="rounds" [ngClass]="{'active': (steps.billingInfo == true)}">
             <span class="num">3</span>
           </span>
         </div>
       </div>
     </div>
     <app-offers *ngIf="selectedPlan == null" (plan)="register($event)"></app-offers>
-    <app-logged [which]="'create'" (backPlan)="previous()" (created)="loginCreated($event)" *ngIf="selectedPlan != null && steps.loginInfo == false"></app-logged>
+    <app-logged [which]="'create'" (backPlan)="previous()" (created)="loginCreated($event)"
+      *ngIf="selectedPlan != null && steps.loginInfo == false"></app-logged>
     <div class="form-slide" *ngIf="steps.loginInfo == true">
       <div class="form-head-row">
         <span class="back" (click)="previous()" *ngIf="credentials.user == null" mat-button>
@@ -50,38 +53,50 @@
             <div class="form-row">
               <div class="form-two-col">
                 <label>FIRST NAME</label>
-                <input type="text" [(ngModel)]="user.fname" autocomplete="off" (ngModelChange)="changeInFields('fname')" name="fname" [ngClass]="{'active': user.fname != '', 'error':userFldsVlds.fname == true}" />
+                <input type="text" [(ngModel)]="user.fname" autocomplete="off" (ngModelChange)="changeInFields('fname')"
+                  name="fname" [ngClass]="{'active': user.fname != '', 'error':userFldsVlds.fname == true}" />
               </div>
               <div class="form-two-col">
                 <label>LAST NAME</label>
-                <input type="text" [(ngModel)]="user.lname" autocomplete="off" (ngModelChange)="changeInFields('lname')" name="lname" [ngClass]="{'active': user.lname != '', 'error':userFldsVlds.lname == true}" />
+                <input type="text" [(ngModel)]="user.lname" autocomplete="off" (ngModelChange)="changeInFields('lname')"
+                  name="lname" [ngClass]="{'active': user.lname != '', 'error':userFldsVlds.lname == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-one-col">
                 <label>ADDRESS</label>
-                <input type="text" [(ngModel)]="user.address" autocomplete="off" name="address" (ngModelChange)="changeInFields('address')" [ngClass]="{'active': user.address != '','error':userFldsVlds.address == true}" />
+                <input type="text" [(ngModel)]="user.address" autocomplete="off" name="address"
+                  (ngModelChange)="changeInFields('address')"
+                  [ngClass]="{'active': user.address != '','error':userFldsVlds.address == true}" />
               </div>
 
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>ZIP CODE</label>
-                <input type="text" [(ngModel)]="user.zipcode" autocomplete="off" name="zip" (ngModelChange)="changeInFields('zipcode')" [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
+                <input type="text" [(ngModel)]="user.zipcode" autocomplete="off" name="zip"
+                  (ngModelChange)="changeInFields('zipcode')"
+                  [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
               </div>
               <div class="form-two-col">
                 <label>CITY</label>
-                <input type="text" [(ngModel)]="user.city" autocomplete="off" name="city" (ngModelChange)="changeInFields('city')" [ngClass]="{'active': user.city != '','error':userFldsVlds.city == true}" />
+                <input type="text" [(ngModel)]="user.city" autocomplete="off" name="city"
+                  (ngModelChange)="changeInFields('city')"
+                  [ngClass]="{'active': user.city != '','error':userFldsVlds.city == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>STATE</label>
-                <input type="text" [(ngModel)]="user.state" autocomplete="off" name="state" (ngModelChange)="changeInFields('state')" [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}" />
+                <input type="text" [(ngModel)]="user.state" autocomplete="off" name="state"
+                  (ngModelChange)="changeInFields('state')"
+                  [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}" />
               </div>
               <div class="form-two-col">
                 <label>PHONE #</label>
-                <input type="tel" mask="(000) 000-0000" [(ngModel)]="user.phoneNo" autocomplete="off" name="phone" (ngModelChange)="changeInFields('phoneNo')" [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
+                <input type="tel" mask="(000) 000-0000" [(ngModel)]="user.phoneNo" autocomplete="off" name="phone"
+                  (ngModelChange)="changeInFields('phoneNo')"
+                  [ngClass]="{'active': (user.phoneNo != '' && user.phoneNo != null),'error':userFldsVlds.phoneNo == true}" />
               </div>
             </div>
             <button class="blue-btn" mat-raised-button (click)="signUp()">NEXT</button>
@@ -90,25 +105,34 @@
             <div class="form-row">
               <div class="form-one-col">
                 <label>NAME ON CARD</label>
-                <input type="text" [(ngModel)]="billing.name" autocomplete="off" (ngModelChange)="changeInFields('cardname')" name="name" [ngClass]="{'active': billing.name != '','error':billfldsVld.name == true}" />
+                <input type="text" [(ngModel)]="billing.name" autocomplete="off"
+                  (ngModelChange)="changeInFields('cardname')" name="name"
+                  [ngClass]="{'active': billing.name != '','error':billfldsVld.name == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-one-col">
                 <label>Card Number</label>
-                <input type="text" mask="0000 0000 0000 0000" [(ngModel)]="billing.number" autocomplete="off" (ngModelChange)="changeInFields('cardnumber')" name="unit" [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
+                <input type="text" mask="0000 0000 0000 0000" [(ngModel)]="billing.number" autocomplete="off"
+                  (ngModelChange)="changeInFields('cardnumber')" name="unit"
+                  [ngClass]="{'active': (billing.number != '' && billing.number != null),'error':billfldsVld.number == true}" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-two-col">
                 <label>Expiration Date</label>
                 <!-- <input mask="00-0000" placeholder="09-2021" [(ngModel)]="billing.expiry" autocomplete="off" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}" /> -->
-                <input [(ngModel)]="billing.expiry" (click)="picker.open()" [matDatepicker]="picker" (ngModelChange)="changeInFields('cardexpiry')" name="zip" [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}">
-                <mat-datepicker #picker startView="multi-year" (monthSelected)="monthSelection($event, picker)"></mat-datepicker>
+                <input [(ngModel)]="billing.expiry" (click)="picker.open()" [matDatepicker]="picker"
+                  (ngModelChange)="changeInFields('cardexpiry')" name="zip"
+                  [ngClass]="{'active': (billing.expiry != '' && billing.expiry != null),'error':billfldsVld.expiry == true}">
+                <mat-datepicker #picker startView="multi-year" (monthSelected)="monthSelection($event, picker)">
+                </mat-datepicker>
               </div>
               <div class="form-two-col">
                 <label>CVC</label>
-                <input type="text" name="cvc" maxlength="4" autocomplete="off" [(ngModel)]="billing.cvc" (ngModelChange)="changeInFields('cardcvc')" [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null),'error':billfldsVld.cvc == true}" />
+                <input type="text" name="cvc" maxlength="4" autocomplete="off" [(ngModel)]="billing.cvc"
+                  (ngModelChange)="changeInFields('cardcvc')"
+                  [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null),'error':billfldsVld.cvc == true}" />
               </div>
             </div>
             <div class="cus-check-row">
@@ -120,8 +144,10 @@
                 <div class="statement" (click)="agree('today')">
                   <!-- By clicking this you agree to our terms and conditions. Moreover you also agree to pay $399 / $199 per month according to the plan you choose. -->
                   <ng-container *ngIf="selectedPlan.discount == null">
-                    <ng-container *ngIf="selectedPlan.plan.name == 'PRO'">Click here to approve todays charge of $399</ng-container>
-                    <ng-container *ngIf="selectedPlan.plan.name == 'LITE'">Click here to approve todays charge of $199</ng-container>
+                    <ng-container *ngIf="selectedPlan.plan.name == 'PRO'">Click here to approve todays charge of $399
+                    </ng-container>
+                    <ng-container *ngIf="selectedPlan.plan.name == 'LITE'">Click here to approve todays charge of $199
+                    </ng-container>
                   </ng-container>
                   <ng-container *ngIf="selectedPlan.discount == true">
                     Click here to approve todays charge of $99 (After discount)
@@ -135,8 +161,10 @@
                   <label for="cus-check"><span></span></label>
                 </div>
                 <div class="statement" (click)="agree('monthly')">
-                  <ng-container *ngIf="selectedPlan.plan.name == 'PRO'">Click Here to approve monthly charge of $399</ng-container>
-                  <ng-container *ngIf="selectedPlan.plan.name == 'LITE'">Click Here to approve monthly charge of $199</ng-container>
+                  <ng-container *ngIf="selectedPlan.plan.name == 'PRO'">Click Here to approve monthly charge of $399
+                  </ng-container>
+                  <ng-container *ngIf="selectedPlan.plan.name == 'LITE'">Click Here to approve monthly charge of $199
+                  </ng-container>
                 </div>
               </div>
             </div>

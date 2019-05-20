@@ -136,7 +136,12 @@
         align-items: center;
         justify-content: center;
         padding: 5%;
-
+        @media (min-width: 1500px)
+            {
+                .intro {
+                    margin-top: -15% !important;
+                }
+            }
         .intro {
             flex: 0.7;
             z-index: 10;
@@ -144,7 +149,7 @@
             text-align: center;
             margin-bottom: 35px;
             margin-left: 50px;
-            margin-top: 8%;
+            margin-top: -3%;
 
             .text {
                 width: 70%;
@@ -755,6 +760,7 @@
 
         img {
             width: 70% !important;
+            height: 415px !important;
         }
 
         .forMobile {
@@ -868,6 +874,7 @@
     .ninthQuard {
         img {
             width: 70% !important;
+            height: 415px !important;
         }
 
         .greenLeft {
