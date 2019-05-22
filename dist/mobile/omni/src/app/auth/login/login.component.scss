@@ -1,0 +1,207 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .upper {
+        display: flex;
+        flex: 0.3;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 75%;
+        }
+
+    }
+
+    .lower {
+        display: flex;
+        flex-direction: column;
+        flex: 0.7;
+        background: #ffffff;
+        border-top-left-radius: 5vw;
+        border-top-right-radius: 5vw;
+        box-shadow: 0 5vw 8vw #000000;
+        overflow: hidden;
+
+        .tabs {
+            display: flex;
+            flex: 0.15;
+            flex-direction: row;
+
+            .btn {
+                flex: 1;
+                font-size: 4vw;
+                font-weight: bold;
+                color: #9b9b9b;
+                background: #ffffff;
+                border: none;
+
+                &.active {
+                    border-bottom: 1vw solid #33cd29;
+                    color: #33cd29;
+                }
+            }
+
+        }
+
+        .fields {
+            flex: 0.85;
+            display: flex;
+            flex-direction: column;
+
+            .fieldSection {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 0.7;
+                padding: 5%;
+
+                .field {
+                    width: 100%;
+                    margin-bottom: 4vw;
+
+                    p {
+                        margin: 0;
+                        font-size: 4vw;
+                        font-weight: bold;
+                        color: #9b9b9b;
+                    }
+
+                    input {
+                        padding: 4% 0;
+                        width: 100%;
+                        font-size: 4vw;
+                        color: #000000;
+                        border: 0;
+                        border-bottom: 1px solid #9b9b9b;
+                    }
+                }
+
+                .birth {
+                    display: inline-block;
+                    width: 100%;
+
+                    p {
+                        margin-bottom: 4vw;
+                        font-size: 4vw;
+                        font-weight: bold;
+                        color: #9b9b9b;
+                    }
+
+                    .shots {
+                        display: inline-block;
+                        width: 35%;
+
+                        input {
+                            width: 65%;
+                            height: 9vw;
+                            padding: 5%;
+                            border: 1px solid #9b9b9b;
+                            box-shadow: 0 1vw 2vw 0 #d3d3d380;
+                            vertical-align: middle;
+                            border-radius: 4vw;
+                        }
+
+                        span {
+                            float: right;
+                            font-size: 10vw;
+                            vertical-align: middle;
+                        }
+                    }
+
+                    .middle {
+                        text-align: center;
+                    }
+
+                    .last {
+                        @extend .shots;
+                        width: calc(100% - 70%);
+
+                        input {
+                            text-align: right;
+                            width: 80%;
+                        }
+                    }
+
+                }
+            }
+
+            .SignfieldSection {
+                @extend .fieldSection;
+                flex: 0.8;
+            }
+
+            .submission {
+                flex: 0.3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                .btn {
+                    width: 90%;
+                    background: #33cd29;
+                    border-radius: 3vw;
+                    padding: 5%;
+                    letter-spacing: 2.3px;
+                    font-size: 4vw;
+                    color: #ffffff;
+                    box-shadow: 0px 5px 15px 5px #afaaaa33;
+                }
+
+
+                .forgot {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    width: 90%;
+                    margin-bottom: 4vw;
+
+                    p {
+                        flex: 1;
+                        margin: 0;
+                        text-align: center;
+                        color: #33cd29;
+                        font-size: 3.5vw;
+                        letter-spacing: 0.59px;
+                    }
+                }
+
+            }
+
+            .signSub {
+                @extend .submission;
+                flex: 0.2;
+            }
+
+            .remember {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                align-items: center;
+                margin-bottom: 4vw;
+
+                p {
+                    margin: 0;
+                    font-size: 4vw;
+                    color: #b7b7b7;
+                }
+
+                span {
+                    width: 5vw;
+                    height: 5vw;
+                    border: 1vw solid #33cd29;
+                    border-radius: 10vw;
+                    margin-right: 3vw;
+                }
+            }
+        }
+
+
+    }
+
+}

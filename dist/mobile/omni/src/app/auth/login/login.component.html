@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="upper">
+    <img src="assets/img/logo.png" alt="logo">
+  </div>
+  <div class="lower">
+    <div class="tabs">
+      <button class="btn" [ngClass]="{'active': whichTab == 'login' }" (click)="changeTab('login')">LOGIN</button>
+      <button class="btn" [ngClass]="{'active': whichTab == 'signup' }" (click)="changeTab('signup')">SIGN UP</button>
+    </div>
+    <ng-container *ngIf="whichTab == 'signup'">
+      <form class="fields">
+        <div class="SignfieldSection">
+          <div class="field">
+            <p>Name</p>
+            <input placeholder="Enter your first name" type="text">
+          </div>
+          <div class="field">
+            <p>Username</p>
+            <input placeholder="Enter your username" type="text">
+          </div>
+          <div class="birth">
+            <p>Birthdate</p>
+            <div class="shots">
+              <input class="space" type="text">
+              <span>/</span>
+            </div>
+            <div class="shots middle">
+              <input class="space" type="text">
+              <span>/</span>
+            </div>
+            <div class="last">
+              <input type="text">
+            </div>
+          </div>
+        </div>
+        <div class="signSub">
+          <button type='button' (click)="login()" class="btn">Sign Up</button>
+        </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="whichTab == 'login'">
+      <form class="fields">
+        <div class="fieldSection">
+          <div class="field">
+            <p>Username</p>
+            <input placeholder="someone" type="text">
+          </div>
+          <div class="field">
+            <p>Password</p>
+            <input placeholder="something secrative" type="password">
+          </div>
+          <div class="remember">
+            <span></span>
+            <p>Remember Me</p>
+          </div>
+          <div class="remember">
+            <span></span>
+            <p>Touch Id</p>
+          </div>
+        </div>
+        <div class="submission">
+          <div class="forgot">
+            <p>Forgot Username</p>
+            <p>Forgot Password</p>
+          </div>
+          <button type='button' (click)="login()" class="btn">LOGIN</button>
+        </div>
+      </form>
+    </ng-container>
+
+
+  </div>
+</div>
