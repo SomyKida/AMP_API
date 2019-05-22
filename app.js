@@ -18,6 +18,7 @@ global.home_path = base_path + '/app/src/pages/index'
 /* GET DATABASE ACCESS */
 var database = require(base_path + '/app/config/database_mongoose')
 var stripe = require(base_path + '/app/config/stripe')
+var cors = require('cors')
 var passport = require('passport')
 var strategies = require('./app/passports/strategies')
 var serializations = require('./app/passports/serializations')
@@ -55,6 +56,7 @@ global.publicIp = require('public-ip');
 /* Session Initialization*/
 app.use(require('cookie-parser')());
 app.use(useragent.express());
+app.use(cors())
 var session = require('express-session');
 app.use(session({
   secret: 'codingPixel12345',
