@@ -132,7 +132,7 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
 app.get('/', function (req, res) {
-
+  console.log(req.useragent)
   // res.sendFile(__dirname + '/dist/amp/index.html')
   if (req.useragent.isMobile)
     res.sendFile(__dirname + '/dist/mobile/omni/dist/my-app/index.html');
