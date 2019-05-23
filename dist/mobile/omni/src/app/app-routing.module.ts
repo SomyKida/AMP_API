@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: 'omni', redirectTo: 'auth', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
 ];

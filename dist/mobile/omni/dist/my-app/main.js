@@ -57,6 +57,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', redirectTo: 'auth', pathMatch: 'full' },
+    { path: 'omni', redirectTo: 'auth', pathMatch: 'full' },
     { path: 'home', loadChildren: './home/home.module#HomeModule' },
     { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
 ];
