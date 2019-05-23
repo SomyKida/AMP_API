@@ -131,18 +131,34 @@ app.use('/assets', express.static(__dirname + '/app/assets'));
 /* Set static links to use uploads */
 app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
+app.get('/omni/', function (res, res) {
+  filename = __dirname + '/dist/mobile/omni/dist/my-app/index.html';
+  console.log(filename)
+  res.sendFile(filename);
+  return
+})
+
+app.get('/test/', function (res, res) {
+  res.send("hello");
+  return
+})
 app.get('/', function (req, res) {
   console.log(req.useragent)
 
   if (req.useragent.isMobile) {
     console.log("yeeyeyeyeyey");
-    res.sendFile(__dirname + '/dist/mobile/omni/dist/my-app/index.html');
+    filename = __dirname + '/dist/mobile/omni/dist/my-app/index.html';
+    console.log(filename)
+
+    res.sendFile(filename);
   }
 
   else {
 
     console.log("NONONONO");
-    res.sendFile(__dirname + '/dist/amp/index.html');
+    filename = __dirname + '/dist/amp/index.html';
+    console.log(filename)
+    res.sendFile(filename);
   }
 
   return;
