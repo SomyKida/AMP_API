@@ -131,11 +131,11 @@ app.use('/uploads', express.static(__dirname + '/app/uploads'));
 
 app.get('/', function (req, res) {
 
-  res.sendFile(__dirname + '/dist/amp/index.html')
-  // if (req.useragent.isMobile)
-  //   res.sendFile(__dirname + '/dist/mobile/omni/dist/my-app/index.html');
-  // else
-  //   res.sendFile(__dirname + '/dist/amp/index.html')
+  // res.sendFile(__dirname + '/dist/amp/index.html')
+  if (req.useragent.isMobile)
+    res.sendFile(__dirname + '/dist/mobile/omni/dist/my-app/index.html');
+  else
+    res.sendFile(__dirname + '/dist/amp/index.html')
   return;
 });
 
