@@ -140,6 +140,7 @@ app.get('/', function (req, res) {
   }
 
   else {
+
     console.log("NONONONO");
     res.sendFile(__dirname + '/dist/amp/index.html');
   }
