@@ -14,8 +14,7 @@ export class DummyComponent implements OnInit {
   }
 
   goTo(which) {
-    if (which == 'login')
-      this.router.navigate(['/auth/login']);
+    this.router.navigate(['/auth/login']);
   }
 
 }

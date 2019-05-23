@@ -104,6 +104,7 @@
 
 .opened-nav {
     box-shadow: 0 0 10px rgba(190, 190, 190, 0.77);
+    background: #33cd29;
     border-radius: 50%;
     opacity: 1;
     -webkit-transition: all .3s ease;
@@ -152,7 +153,8 @@
     width: 12.5em;
     height: 13.5em;
     border-radius: 50%;
-    color: rgb(199, 199, 199);
+    color: white;
+    //color: rgb(199, 199, 199);
     // background: #429a67;
     // background: -webkit-radial-gradient(transparent 35%, #429a67 35%);
     // background: -moz-radial-gradient(transparent 35%, #429a67 35%);
@@ -171,7 +173,7 @@
 }
 
 .cn-wrapper li a span {
-    font-size: 4vw;
+    font-size: 3.5vw;
     font-family: "ProximaNova-Regular";
     text-transform: uppercase;
 }
@@ -250,6 +252,13 @@
         }
     }
 
+}
+
+.for_all_images {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 40% !important;
 }
 
 .opened-nav li:nth-child(3) {
@@ -460,7 +469,7 @@
 
 @media only screen and (max-width: 480px) {
     .cn-wrapper {
-        font-size: .60em;
+        font-size: .80em;
     }
 
     .cn-button {

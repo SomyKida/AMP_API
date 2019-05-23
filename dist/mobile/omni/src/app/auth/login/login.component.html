@@ -1,6 +1,6 @@
 <div class="container">
   <div class="upper">
-    <img src="assets/img/logo.png" alt="logo">
+    <img src="assets/img/logo_mobile.png" alt="logo">
   </div>
   <div class="lower">
     <div class="tabs">
@@ -11,30 +11,37 @@
       <form class="fields">
         <div class="SignfieldSection">
           <div class="field">
-            <p>Name</p>
-            <input placeholder="Enter your first name" type="text">
+            <p>Email</p>
+            <input [(ngModel)]="newUser.email" placeholder="Enter your email" type="email" name="Email">
           </div>
           <div class="field">
-            <p>Username</p>
-            <input placeholder="Enter your username" type="text">
+            <p>Password</p>
+            <input [(ngModel)]="newUser.password" placeholder="Enter your password" type="password" name="Password">
+          </div>
+          <div class="field">
+            <p>Confirm Password</p>
+            <input [(ngModel)]="newUser.conf_password" placeholder="Confirm your password" type="password"
+              name="Confirm Password">
           </div>
           <div class="birth">
             <p>Birthdate</p>
             <div class="shots">
-              <input class="space" type="text">
-              <span>/</span>
+              <input [(ngModel)]="newUser.day" class="space" type="number" name="Day">
+              <span> /</span>
             </div>
             <div class="shots middle">
-              <input class="space" type="text">
-              <span>/</span>
+              <input [(ngModel)]="newUser.month" class="space" type="number" name="Month">
+              <span> /</span>
             </div>
             <div class="last">
-              <input type="text">
+              <input [(ngModel)]="newUser.year" type="number" name="Year">
             </div>
           </div>
         </div>
         <div class="signSub">
-          <button type='button' (click)="login()" class="btn">Sign Up</button>
+          <button [disabled]="authLoader" type='button' (click)="signup()" class="btn">
+            <span>SIGN UP</span>
+          </button>
         </div>
       </form>
     </ng-container>
@@ -42,19 +49,19 @@
       <form class="fields">
         <div class="fieldSection">
           <div class="field">
-            <p>Username</p>
-            <input placeholder="someone" type="text">
+            <p>Email</p>
+            <input [(ngModel)]="authData.email" placeholder="someone@somewhere.com" type="email" name="email">
           </div>
           <div class="field">
             <p>Password</p>
-            <input placeholder="something secrative" type="password">
+            <input [(ngModel)]="authData.password" placeholder="something secrative" type="password" name="password">
           </div>
-          <div class="remember">
-            <span></span>
+          <div (click)="toggle('session')" class="remember">
+            <span [ngClass]="saveSession?'sessionChecked':'sessionUnChecked'"></span>
             <p>Remember Me</p>
           </div>
-          <div class="remember">
-            <span></span>
+          <div (click)="toggle('touch')" class="remember">
+            <span [ngClass]="touchId?'sessionChecked':'sessionUnChecked'"></span>
             <p>Touch Id</p>
           </div>
         </div>
@@ -63,7 +70,9 @@
             <p>Forgot Username</p>
             <p>Forgot Password</p>
           </div>
-          <button type='button' (click)="login()" class="btn">LOGIN</button>
+          <button [disabled]="authLoader" type='button' (click)="login()" class="btn">
+            <span>LOGIN</span>
+          </button>
         </div>
       </form>
     </ng-container>

@@ -3,13 +3,61 @@
 html,
 body {
     height: 100%;
+    font-family: 'ProximaNova-Regular' ;
 }
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'ProximaNova-Regular';
 }
 
 button:focus {
     outline: none;
+}
+
+$font-path: "/assets/fonts";
+
+@font-face {
+    font-family: 'ProximaNova-Regular';
+    src: url("#{$font-path}/ProximaNova-Regular.eot");
+    src: url("#{$font-path}/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
+    // url("#{$font-path}/ProximaNova-Regular.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Regular.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Regular.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Extrabld';
+    src: url("#{$font-path}/ProximaNova-Extrabld.eot");
+    src: url("#{$font-path}/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Extrabld.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Extrabld.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Extrabld.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Bold';
+    src: url("#{$font-path}/ProximaNova-Bold.eot");
+    src: url("#{$font-path}/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Bold.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Bold.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Bold.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Light';
+    src: url("#{$font-path}/ProximaNova-Light.eot");
+    src: url("#{$font-path}/ProximaNova-Light.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Light.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Light.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Light.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Semibold';
+    src: url("#{$font-path}/ProximaNova-Semibold.eot");
+    src: url("#{$font-path}/ProximaNova-Semibold.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Semibold.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Semibold.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Semibold.svg") format("svg");
 }

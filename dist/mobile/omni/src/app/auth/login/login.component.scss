@@ -35,9 +35,11 @@
                 flex: 1;
                 font-size: 4vw;
                 font-weight: bold;
+                letter-spacing: 0.5vw;
                 color: #9b9b9b;
                 background: #ffffff;
                 border: none;
+                font-family: 'ProximaNova-Semibold';
 
                 &.active {
                     border-bottom: 1vw solid #33cd29;
@@ -191,12 +193,20 @@
                     color: #b7b7b7;
                 }
 
-                span {
+                .sessionUnChecked {
                     width: 5vw;
                     height: 5vw;
                     border: 1vw solid #33cd29;
                     border-radius: 10vw;
                     margin-right: 3vw;
+                }
+                .sessionChecked {
+                  width: 5vw;
+                  background-color: #33cd29;
+                  height: 5vw;
+                  border: 1vw solid #33cd29;
+                  border-radius: 10vw;
+                  margin-right: 3vw;
                 }
             }
         }
