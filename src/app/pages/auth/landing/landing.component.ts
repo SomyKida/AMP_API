@@ -16,9 +16,6 @@ export class LandingComponent implements OnInit {
   goToLogin() {
     this.router.navigate(['/login']);
   }
-  gotoPackageMenu() {
-    this.router.navigate(['/plan']);
-  }
   goToSignUp() {
     this.router.navigate(['/plan']);
   }
