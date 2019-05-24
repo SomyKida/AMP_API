@@ -5,6 +5,7 @@ import {
   MatRippleModule, MatListModule, MatProgressSpinnerModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatSelectModule,
   MAT_DATE_FORMATS,
   DateAdapter,
   MAT_DATE_LOCALE,
@@ -27,6 +28,7 @@ export const EXPIRY_FORMAT = {
   declarations: [],
   imports: [
     CommonModule,
+    MatSelectModule,
     MatButtonModule,
     MatTabsModule,
     MatDialogModule,
@@ -42,6 +44,7 @@ export const EXPIRY_FORMAT = {
     MatDialogModule,
     MatRippleModule,
     MatListModule,
+    MatSelectModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatNativeDateModule
