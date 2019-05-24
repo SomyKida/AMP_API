@@ -50,12 +50,18 @@ module.exports = {
       font-size: 14px;
       text-align: left;
       font-family: 'Product Sans';
-      line-height: 1.5;">Your username is: `+ username + `</p>
+      line-height: 1.5;">Your username is: <i style="
+      font-style: normal;
+      font-weight: bold;
+      color: #38b6ff;">`+ username + `</i></p>
       <p style="width: 70%;
       font-size: 14px;
       text-align: left;
       font-family: 'Product Sans';
-      line-height: 1.5;">Your password is: `+ password + `</p>`
+      line-height: 1.5;">Your password is: <i style="
+      font-style: normal;
+      font-weight: bold;
+      color: #38b6ff;">`+ password + `</i></p>`
 
     } else return ``;
   },

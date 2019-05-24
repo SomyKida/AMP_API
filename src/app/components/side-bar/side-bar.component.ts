@@ -26,6 +26,7 @@ export class SideBarComponent implements OnInit {
   }
 
   goTo(page) {
+    console.log(this.loc.path());
     if (page == 'login') {
       this.currentPage = '/login';
       this.router.navigate(["/login"]);
@@ -48,7 +49,7 @@ export class SideBarComponent implements OnInit {
 
   logout() {
     this.credentials.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/landing']);
   }
 
 }
