@@ -145,21 +145,27 @@ app.get('/test/', function (res, res) {
 app.get('/', function (req, res) {
   console.log(req.useragent)
 
-  if (req.useragent.isMobile) {
-    console.log("yeeyeyeyeyey");
-    filename = __dirname + '/dist/mobile/omni/dist/my-app/index.html';
-    console.log(filename)
 
-    res.sendFile(filename);
-  }
+  filename = __dirname + '/dist/amp/index.html';
+  console.log(filename)
+  res.sendFile(filename);
+  return;
 
-  else {
+  // if (req.useragent.isMobile) {
+  //   console.log("yeeyeyeyeyey");
+  //   filename = __dirname + '/dist/mobile/omni/dist/my-app/index.html';
+  //   console.log(filename)
 
-    console.log("NONONONO");
-    filename = __dirname + '/dist/amp/index.html';
-    console.log(filename)
-    res.sendFile(filename);
-  }
+  //   res.sendFile(filename);
+  // }
+
+  // else {
+
+  //   console.log("NONONONO");
+  //   filename = __dirname + '/dist/amp/index.html';
+  //   console.log(filename)
+  //   res.sendFile(filename);
+  // }
 
   return;
 });
