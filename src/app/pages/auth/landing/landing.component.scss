@@ -650,16 +650,16 @@
             justify-content: space-between;
 
             .frst {
-                text-align: center;
-                width: 100%;
-                height: 220px;
-                margin-left: 10%;
-                padding: 0px 250px 0px 0%;
-                flex-direction: column;
-                align-items: center;
-                display: flex;
-                margin-right: 10%;
-                border-right: 1px solid rgb(218, 218, 218);
+              text-align: center;
+              width: 100%;
+              height: 220px;
+              margin-left: 8%;
+              padding: 0px 180px 0px 0%;
+              flex-direction: column;
+              align-items: center;
+              display: flex;
+              margin-right: 10%;
+              border-right: 1px solid #dadada;
 
                 &:last-child {
                     border: none;
@@ -765,7 +765,7 @@
         flex-direction: column !important;
 
         img {
-            width: 70% !important;
+            width: 90% !important;
             height: 415px !important;
         }
 
@@ -879,7 +879,7 @@
 
     .ninthQuard {
         img {
-            width: 70% !important;
+            width: 90% !important;
             height: 415px !important;
         }
 
