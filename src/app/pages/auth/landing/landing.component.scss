@@ -6,10 +6,12 @@
     background: #00a2ff;
     text-transform: uppercase;
     text-align: center;
+    padding: 0px 30px 0px 30px;
     font-family: "ProximaNova-Semibold";
     color: #ffffff;
-    letter-spacing: 2pt;
+    letter-spacing: 1.5pt;
     font-size: 17px;
+    box-shadow: none !important;
 }
 
 .container {
@@ -167,7 +169,7 @@
 
             h1 {
                 font-size: 47px;
-                font-family: 'ProximaNova-bold';
+                font-family: 'ProductSans-bold';
                 line-height: 110%;
                 -webkit-margin-after: 10px;
                 margin-block-end: 10px;
@@ -231,7 +233,7 @@
 
         h1 {
             font-size: 47px;
-            font-family: 'ProximaNova-bold';
+            font-family: 'ProductSans-bold';
             line-height: 125%;
             -webkit-margin-after: 10px;
             margin-block-end: 10px;
@@ -340,7 +342,7 @@
 
             h1 {
                 font-size: 47px;
-                font-family: 'ProximaNova-bold';
+                font-family: 'ProductSans-Bold';
                 color: #260155;
                 letter-spacing: 0.3pt;
             }
@@ -395,7 +397,7 @@
 
             h1 {
                 font-size: 47px;
-                font-family: 'ProximaNova-bold';
+                font-family: 'ProductSans-Bold';
                 line-height: 125%;
                 -webkit-margin-after: 10px;
                 margin-block-end: 10px;
@@ -600,7 +602,9 @@
 
         img {
             margin-top: 3%;
-            width: 30%;
+            width: 25% !important;
+            height: auto !important;
+            overflow: hidden;
         }
 
         .greenLeft {
@@ -765,8 +769,9 @@
         flex-direction: column !important;
 
         img {
-            width: 90% !important;
-            height: 415px !important;
+          width: 80% !important;
+          height: auto !important;
+          overflow: hidden;
         }
 
         .forMobile {
@@ -879,8 +884,9 @@
 
     .ninthQuard {
         img {
-            width: 90% !important;
-            height: 415px !important;
+          width: 80% !important;
+          height: auto !important;
+          overflow: hidden;
         }
 
         .greenLeft {
