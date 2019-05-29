@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1559131879611,
+  "timestamp": 1559133253120,
   "index": "./index.html",
   "assetGroups": [
     {
@@ -213,7 +213,7 @@
     "./assets/img/dashboard/settings.png": "7c243d1f4165b39f39eaa7c10ca4a1c1aa7fbc58",
     "./assets/img/dummy.png": "8a8814fc8918ebafa99c24d348ec442c50cec69f",
     "./assets/img/edit-icon-pencil.png": "3d7d7e7aa47dfbb9a02c8973a6e4dabac39442f0",
-    "./assets/img/fabiano.png": "22fa2ffcd7f449f0c233820ee693565678134442",
+    "./assets/img/fabiano.png": "e2249af1875ea31d8accca23caa6b88b52c40261",
     "./assets/img/fb.png": "4034791c9f97c73df45200ffdc32598a507b9287",
     "./assets/img/footerLogo.png": "bdb9eec8bb5f877a53709a1b4464ff0e673cba3c",
     "./assets/img/formBlue.png": "719637b2148c67bacef4fcb6687a3f8f1c78e57c",
