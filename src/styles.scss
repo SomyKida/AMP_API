@@ -61,15 +61,12 @@ $font-path-productsans: "/assets/fonts/productsans";
 
 
 @font-face {
-  font-family: 'ProductSans-Regular';
-  src: url("#{$font-path-proximanova}/ProductSans-Regular"),
-  url("#{$font-path-proximanova}/ProductSans-Regular.ttf") format("truetype"),
-}
-
-@font-face {
   font-family: 'ProductSans-Bold';
-  src: url("#{$font-path-proximanova}/ProductSans-Bold"),
-  url("#{$font-path-proximanova}/ProductSans-Bold.ttf") format("truetype"),
+  src: url("#{$font-path-productsans}/ProductSans-Bold.eot");
+  src: url("#{$font-path-productsans}/ProductSans-Bold.eot?#iefix") format("embedded-opentype"),
+  url("#{$font-path-productsans}/ProductSans-Bold.woff") format("woff"),
+  url("#{$font-path-productsans}/ProductSans-Bold.ttf") format("truetype"),
+  url("#{$font-path-productsans}/ProductSans-Bold.svg") format("svg");
 }
 
 .GlobalFormWrapper {

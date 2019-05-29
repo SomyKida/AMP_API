@@ -26,7 +26,7 @@
           </div>
           <button class="add-doc" (click)="addDoc()" mat-raised-button>Add Another Doctor</button>
 
-          <h3 class="extra_top" *ngIf="selectedTab == 0">Practice Information</h3>
+          <h3 class="extra_top">Practice Information</h3>
 
           <div class="form-row">
             <div class="form-two-col">
@@ -163,17 +163,24 @@
             </div>
           </div>
           <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
+          <button class="blue-btn" (click)="toStep(3)" mat-raised-button>SAVE & NEXT</button>
+
+          <!-- <button class="blue-btn" (click)="update()" mat-raised-button>SAVE & NEXT</button> -->
+        </ng-container>
+        <ng-container *ngIf="selectedTab == 3">
+
+          <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
           <button class="blue-btn" (click)="update()" mat-raised-button>SAVE & NEXT</button>
         </ng-container>
-        <mat-tab-group headerPosition="below" [selectedIndex]="selectedTab">
+        <mat-tab-group headerPosition="below" [selectedIndex]=0>
           <mat-tab [disabled]="true">
           </mat-tab>
           <mat-tab [disabled]="true">
           </mat-tab>
           <mat-tab [disabled]="true" *ngIf="user.package != 'LITE'">
           </mat-tab>
-          <!-- <mat-tab [disabled]="true">
-          </mat-tab> -->
+          <mat-tab [disabled]="true">
+          </mat-tab>
         </mat-tab-group>
       </form>
     </div>

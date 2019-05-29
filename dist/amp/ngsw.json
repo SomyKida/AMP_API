@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1559133253120,
+  "timestamp": 1559142618698,
   "index": "./index.html",
   "assetGroups": [
     {
@@ -10,7 +10,7 @@
       "urls": [
         "./1.39f5e08264b4a61f6fa4.js",
         "./10.16d2341bd542d4644766.js",
-        "./11.177b0fb4df2d9ce9cc74.js",
+        "./11.fda033a693712b01a54d.js",
         "./6.944ee32e91e921e60a25.js",
         "./7.d6014ac3694feffdb29e.js",
         "./8.167f145eafb01a4b96fa.js",
@@ -18,11 +18,11 @@
         "./es2015-polyfills.01deec5b2033b45aed7c.js",
         "./favicon.ico",
         "./index.html",
-        "./main.f3395b4f5c7d7bc8ee51.js",
+        "./main.5ba9e96946ba53deadb1.js",
         "./polyfills.481858ef51fe27531859.js",
-        "./runtime.ca91fdfa8a303bd2981b.js",
+        "./runtime.15b4994b814367c60549.js",
         "./scripts.03e042f1f102bf0e2ed8.js",
-        "./styles.c5f64b82f0a3c892fbb3.css"
+        "./styles.ba1b7eba4565260b27bb.css"
       ],
       "patterns": []
     },
@@ -32,7 +32,10 @@
       "updateMode": "prefetch",
       "urls": [
         "./assets/fonts/productsans/ProductSans-Bold-Italic.ttf",
+        "./assets/fonts/productsans/ProductSans-Bold.eot",
+        "./assets/fonts/productsans/ProductSans-Bold.svg",
         "./assets/fonts/productsans/ProductSans-Bold.ttf",
+        "./assets/fonts/productsans/ProductSans-Bold.woff",
         "./assets/fonts/productsans/ProductSans-Italic.ttf",
         "./assets/fonts/productsans/ProductSans-Regular.ttf",
         "./assets/fonts/proximanova/ProximaNova-Bold.eot",
@@ -146,13 +149,16 @@
   "hashTable": {
     "./1.39f5e08264b4a61f6fa4.js": "fb9af13537ed9f517abb95f25cc72177d80e358b",
     "./10.16d2341bd542d4644766.js": "7e6fc2b16d729213e104d0030dea28a86613c039",
-    "./11.177b0fb4df2d9ce9cc74.js": "30b60ea13d3dbf7e59230684699568c16ba0b63f",
+    "./11.fda033a693712b01a54d.js": "55687da2635a3f074ddc4a93674d6fe9d3870154",
     "./6.944ee32e91e921e60a25.js": "a8d0bba2e88561079d130d7633268efe2a480d86",
     "./7.d6014ac3694feffdb29e.js": "a5903ccda0e301e239413d7bef532e49b2023d65",
     "./8.167f145eafb01a4b96fa.js": "e570a2cd002eba6013d675637f7754396b1434f5",
     "./9.ca7072be99e7c043c211.js": "919949aed9ab611b35bd9f017d161f30842b7d9d",
     "./assets/fonts/productsans/ProductSans-Bold-Italic.ttf": "dbc80cda84b300870f0e2c9251a07f0f7ae2a118",
+    "./assets/fonts/productsans/ProductSans-Bold.eot": "f7e282eb0dc152534565ff91e24c99f4d3f0da22",
+    "./assets/fonts/productsans/ProductSans-Bold.svg": "fa0f9a74c251e9f824633e33e19556f60f6b900a",
     "./assets/fonts/productsans/ProductSans-Bold.ttf": "e07e7ff0ec27cb309c74e5a8df2fb9ad16288f72",
+    "./assets/fonts/productsans/ProductSans-Bold.woff": "3eb579f2f111ebab5c989d98c3e91ce5ed31be3f",
     "./assets/fonts/productsans/ProductSans-Italic.ttf": "302e08fb112dd10a524f6fc4987b44b80ee6747f",
     "./assets/fonts/productsans/ProductSans-Regular.ttf": "49bdf6c2dc3ca0c772da5bc3d10ff5da23badee3",
     "./assets/fonts/proximanova/ProximaNova-Bold.eot": "7667653ff627fb0b719cef6a1856796644d91bc5",
@@ -260,12 +266,12 @@
     "./assets/img/widgetBottomLeft.png": "6bfcf42619ff7c4c28b759f3279ae3546a67cd55",
     "./es2015-polyfills.01deec5b2033b45aed7c.js": "ddc4884f07efd3b0454e560ff8808c45a7fd49d0",
     "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "./index.html": "c8e03519151e6da308cf15b878b0555dc5a5c4c4",
-    "./main.f3395b4f5c7d7bc8ee51.js": "f69fbfabb5ae3c82a22e298fbaad2fdbea18f5d2",
+    "./index.html": "c23b7e64433b0a87b34266038b7c94b8d8c755dd",
+    "./main.5ba9e96946ba53deadb1.js": "600b99ce4ca6e2c04c6086928f0ec0bd02da485f",
     "./polyfills.481858ef51fe27531859.js": "ef448ddee57ecea8f1f0157e9e684b2c871e2e39",
-    "./runtime.ca91fdfa8a303bd2981b.js": "485a68aa035d68d6237bf0cefc4430995931e3a6",
+    "./runtime.15b4994b814367c60549.js": "31898d0ba4ce3d7994d9b08014c64b2e2129d40d",
     "./scripts.03e042f1f102bf0e2ed8.js": "ba281a9af413e5f1a813cfd2d8b99dc9a0245b32",
-    "./styles.c5f64b82f0a3c892fbb3.css": "5534be112dde551e7c34f865fd1ca1621ce21339"
+    "./styles.ba1b7eba4565260b27bb.css": "0f8b4f9ed3089a911a33a48be51e3c1e09a6de93"
   },
   "navigationUrls": [
     {
