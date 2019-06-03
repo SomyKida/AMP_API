@@ -31,36 +31,36 @@
           <div class="form-row">
             <div class="form-two-col">
               <label>Practice Name</label>
-              <input type="text" placeholder="# Practice Name" [(ngModel)]="stepOne.practice_name" name="practice_name"
+              <input type="text" placeholder="Practice Name" [(ngModel)]="stepOne.practice_name" name="practice_name"
                 (ngModelChange)="changeInFields('practice_name')" maxlength="15" />
             </div>
             <div class="form-two-col">
               <label>Email</label>
               <input type="email" [(ngModel)]="stepOne.email" name="address"
-                placeholder="# Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
+                placeholder="Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Phone</label>
-              <input mask="(000) 000-0000" type="tel" placeholder="# Patients use to call office"
+              <input mask="(000) 000-0000" type="tel" placeholder="Patients use to call office"
                 [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
             <div class="form-two-col">
               <label>Address</label>
-              <input type="text" placeholder="# Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip"
+              <input type="text" placeholder="Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip"
                 (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Suit/Office #</label>
-              <input type="text" placeholder="# Suit Info / Office no." [(ngModel)]="stepOne.suite"
+              <input type="text" placeholder="Suit Info / Office no." [(ngModel)]="stepOne.suite"
                 (ngModelChange)="changeInFields('suite')" name="suit" />
             </div>
             <div class="form-two-col">
               <label>ZIP CODE</label>
-              <input type="text" placeholder="# Zip Code" [(ngModel)]="user.zipcode" autocomplete="off" name="zip"
+              <input type="text" placeholder="Zip Code" [(ngModel)]="user.zipcode" autocomplete="off" name="zip"
                 (ngModelChange)="changeInFields('zipcode')"
                 [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
             </div>
@@ -68,13 +68,13 @@
           <div class="form-row">
             <div class="form-two-col">
               <label>CITY</label>
-              <input type="text" placeholder="# City" [(ngModel)]="user.city" autocomplete="off" name="city"
+              <input type="text" placeholder="City" [(ngModel)]="user.city" autocomplete="off" name="city"
                 (ngModelChange)="changeInFields('city')"
                 [ngClass]="{'active': user.city != '','error':userFldsVlds.city == true}" />
             </div>
             <div class="form-two-col">
               <label>STATE</label>
-              <input type="text" placeholder="# State" [(ngModel)]="user.state" autocomplete="off" name="state"
+              <input type="text" placeholder="State" [(ngModel)]="user.state" autocomplete="off" name="state"
                 (ngModelChange)="changeInFields('state')"
                 [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}" />
             </div>
@@ -137,7 +137,7 @@
               <div></div>
             </div>
           </ng-container>
-          <button class="blue-btn" (click)="toStep(2)" mat-raised-button>SAVE & NEXT</button>
+          <button class="blue-btn" (click)="update" mat-raised-button>SAVE & NEXT</button>
         </ng-container>
         <ng-container *ngIf="selectedTab == 2">
           <div class="form-row">

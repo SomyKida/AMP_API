@@ -235,11 +235,34 @@
     .picker {
         margin-top: 5%;
 
-        .hue-picker {
-            width: 94% !important;
+        .slider-hue {
+            width: 80% !important;
+            height: 20px !important;
             // border: 0;
         }
 
+        .color-hue-slider{
+          width: 22px !important;
+          height: 22px !important;
+          border-radius: 50% !important;
+        }
+
+        .slider-swatches{
+          margin-top:30px !important;
+        }
+
+        .slider-swatch-wrap{
+          width: 16.1% !important;
+        }
+        .slider-swatch {
+          height:20px !important;
+        }
+        .slider-swatch.first{
+          border-radius: 15px 0px 0px 15px !important;
+        }
+        .slider-swatch.last{
+          border-radius: 0px 15px 15px 0px !important;
+        }
         .color-hue {
             border-radius: 20px !important;
         }

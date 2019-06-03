@@ -17,6 +17,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { TemplateComponent } from './template/template.component';
 // import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorHueModule } from 'ngx-color/hue';
+import { ColorSliderModule } from 'ngx-color/slider';
 import { ColorAlphaModule } from 'ngx-color/alpha';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ColorAlphaModule } from 'ngx-color/alpha';
     MaterialModule,
     ColorHueModule,
     ColorAlphaModule,
+    ColorSliderModule,
     // ColorPickerModule,
     NgxMaskModule.forChild(),
   ],

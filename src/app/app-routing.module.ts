@@ -32,6 +32,11 @@ const routes: Routes = [
     canActivate: [RouteGuardGuard]
   },
   {
+    path: 'theme',
+    loadChildren: './pages/dash/theme-setup/theme-setup.module#ThemeSetupModule',
+    canActivate: [RouteGuardGuard]
+  },
+  {
     path: 'landing',
     loadChildren: './pages/auth/landing/landing.module#LandingModule',
     canActivate: [SessGuardService]

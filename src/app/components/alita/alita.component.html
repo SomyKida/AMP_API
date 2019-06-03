@@ -80,10 +80,10 @@
 
         </div> <!-- app color setting-->
         <div class="picker">
-          <color-hue-picker *ngIf="colorTheme.which == true" [color]="colorTheme.primary"
-            (onChangeComplete)="changePrimary($event)"></color-hue-picker>
-          <color-hue-picker *ngIf="colorTheme.which == false" [color]="colorTheme.secondary"
-            (onChangeComplete)="changeSecondary($event)"></color-hue-picker>
+          <color-slider *ngIf="colorTheme.which == true" [color]="colorTheme.primary" width="10"
+            (onChangeComplete)="changePrimary($event)"></color-slider>
+          <color-slider *ngIf="colorTheme.which == false" [color]="colorTheme.secondary"
+            (onChangeComplete)="changeSecondary($event)"></color-slider>
           <!-- <input *ngIf="colorTheme.which == true" [(colorPicker)]="colorTheme.primary" [style.background]="colorTheme.primary" [style.color]="colorTheme.primary" />
           <input (colorPickerChange)="changeColor()" *ngIf="colorTheme.which == false" [(colorPicker)]="colorTheme.secondary" [style.background]="colorTheme.secondary" [style.color]="colorTheme.secondary" /> -->
 
