@@ -114,6 +114,7 @@ export class ManualComponent implements OnInit {
   }
 
   toStep(which) {
+    console.log(this.selectedTab)
     if (which > 1)
       if (this.user.package != 'LITE')
         this.selectedTab = which;
@@ -128,6 +129,7 @@ export class ManualComponent implements OnInit {
   }
 
   previous() {
+    console.log(this.selectedTab)
     if (this.selectedTab > 0) {
       this.selectedTab--;
     } else {

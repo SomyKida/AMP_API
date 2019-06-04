@@ -8,6 +8,10 @@
 .mat-dialog-content {
     font-size: 14px;
     max-width: 40vw;
+
+    @media (max-width: 768px) {
+        max-width: 80vw;
+    }
 }
 
 .mat-dialog-actions {
@@ -23,12 +27,18 @@
     letter-spacing: 1.75px;
     text-transform: uppercase;
     font-family: 'ProximaNova-Semibold';
+
+    @media (max-width: 750px) {
+        white-space: normal;
+        line-height: 20px;
+    }
 }
 
 .item {
     font-family: 'ProximaNova-Semibold';
     letter-spacing: 1.0;
     padding-left: 5px !important;
+    cursor: default;
 
     .mat-list-item-content {
         font-size: 20px !important;
@@ -67,6 +77,10 @@
     font-size: 18px;
     text-align: left;
     font-weight: bold;
+
+    @media (max-width: 750px) {
+        max-width: 80vw;
+    }
 }
 
 .field {

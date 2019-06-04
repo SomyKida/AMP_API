@@ -86,6 +86,7 @@ export class LoginComponent implements OnInit {
 
   gpLogin() {
     this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((result) => {
+      console.log(result);
       var params = {
         email: result.email,
         g_id: result.id

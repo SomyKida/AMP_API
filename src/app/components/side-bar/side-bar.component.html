@@ -1,39 +1,46 @@
-<div class="container">
-  <button class="logo" mat-button>
+<div class="container" [ngClass]="{'disp': display == true}">
+  <button class="logo" (click)="hide()" mat-button>
     <img src="assets/img/logo.png" alt="">
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" (click)="goTo('dashboard')" mat-button>
-    <img src="assets/img/dash.png" alt="">
-    <p [ngClass]="{'highlighted': currentPage == '/home'}">Dashboard</p>
+    <img *ngIf="!(loc.path() == '/home' || loc.path() == '/setup')" src="assets/img/dash.png" alt="">
+    <img *ngIf="(loc.path() == '/home' || loc.path() == '/setup')" src="assets/img/dashBlue.png" alt="">
+    <p [ngClass]="{'highlighted': (loc.path() == '/home' || loc.path() == '/setup')}">Dashboard</p>
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
-    <img class="schedule" src="assets/img/scheduling.png" alt="">
-    <p>Scheduling</p>
+    <img class="schedule" *ngIf="!(loc.path() == '/scheduling')" src="assets/img/scheduling.png" alt="">
+    <img class="schedule" *ngIf="loc.path() == '/scheduling'" src="assets/img/schedulingBlue.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/scheduling'}">Scheduling</p>
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" (click)="goTo('chat')" mat-button>
-    <img *ngIf="currentPage != '/chat'" src="assets/img/chat.png" alt="">
-    <img *ngIf="currentPage == '/chat'" src="assets/img/chatSelected.png" alt="">
-    <p [ngClass]="{'highlighted': currentPage == '/chat'}">Chat</p>
+    <img *ngIf="loc.path() != '/chat'" src="assets/img/chat.png" alt="">
+    <img *ngIf="loc.path() == '/chat'" src="assets/img/chatSelected.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/chat'}">Chat</p>
+  </button>
+  <!-- <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
+    <img *ngIf="!(loc.path() == '/social')" src="assets/img/rating.png" alt="">
+    <img *ngIf="loc.path() == '/social'" src="assets/img/socialBlue.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/social'}">Social</p>
+  </button> -->
+  <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
+    <img *ngIf="loc.path() == '/marketing'" class="mkt" src="assets/img/marketingBlue.png" alt="">
+    <img *ngIf="!(loc.path() == '/marketing')" class="mkt" src="assets/img/marketing.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/marketing'}">Marketing</p>
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
-    <img src="assets/img/rating.png" alt="">
-    <p>Social</p>
+    <img *ngIf="!(loc.path() == '/analytics')" src="assets/img/forms.png" alt="">
+    <img *ngIf="loc.path() == '/analytics'" src="assets/img/formBlue.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/analytics'}">Analytics</p>
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
-    <img src="assets/img/forms.png" alt="">
-    <p>Forms</p>
+    <img *ngIf="!(loc.path() == '/settings')" src="assets/img/settings.png" alt="">
+    <img *ngIf="loc.path() == '/settings'" src="assets/img/automationBlue.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/settings'}">Setting</p>
   </button>
   <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
-    <img class="mkt" src="assets/img/marketing.png" alt="">
-    <p>Marketing</p>
-  </button>
-  <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
-    <img src="assets/img/settings.png" alt="">
-    <p>Setting</p>
-  </button>
-  <button class="options" [ngClass]="{'optionsDisabled': (user == null || (user != null && user.init_payment == false))}" mat-button>
-    <img src="assets/img/support.png" alt="">
-    <p>Support</p>
+    <img *ngIf="loc.path() == '/support'" src="assets/img/support.png" alt="">
+    <img *ngIf="!(loc.path() == '/support')" src="assets/img/support.png" alt="">
+    <p [ngClass]="{'highlighted': loc.path() == '/support'}">Support</p>
   </button>
   <button class="options" (click)="goTo('login')" *ngIf="user == null" mat-button>
     <img src="assets/img/login.png" alt="">
@@ -44,3 +51,4 @@
     <p>Logout</p>
   </button>
 </div>
+<!-- <div class="overlaying"></div> -->

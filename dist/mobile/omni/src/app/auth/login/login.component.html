@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="upper">
+    <img src="assets/img/logo_mobile.png" alt="logo">
+  </div>
+  <div class="lower">
+    <div class="tabs">
+      <button class="btn" [ngClass]="{'active': whichTab == 'login' }" (click)="changeTab('login')">LOGIN</button>
+      <button class="btn" [ngClass]="{'active': whichTab == 'signup' }" (click)="changeTab('signup')">SIGN UP</button>
+    </div>
+    <ng-container *ngIf="whichTab == 'signup'">
+      <form class="fields">
+        <div class="SignfieldSection">
+          <div class="field">
+            <p>Username</p>
+            <input [(ngModel)]="newUser.email" placeholder="Enter your email" type="email" name="Email">
+          </div>
+          <div class="field">
+            <p>Password</p>
+            <input [(ngModel)]="newUser.password" placeholder="Enter your password" type="password" name="Password">
+          </div>
+          <div class="field">
+            <p>Confirm Password</p>
+            <input [(ngModel)]="newUser.conf_password" placeholder="Confirm your password" type="password"
+              name="Confirm Password">
+          </div>
+          <div class="birth">
+            <p>Birthdate</p>
+            <div class="shots">
+              <input [(ngModel)]="newUser.day" class="space" type="number" name="Day">
+              <span> /</span>
+            </div>
+            <div class="shots middle">
+              <input [(ngModel)]="newUser.month" class="space" type="number" name="Month">
+              <span> /</span>
+            </div>
+            <div class="last">
+              <input [(ngModel)]="newUser.year" type="number" name="Year">
+            </div>
+          </div>
+        </div>
+        <div class="signSub">
+          <button [disabled]="authLoader" type='button' (click)="signup()" class="btn">
+            <span>SIGN UP</span>
+          </button>
+        </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="whichTab == 'login'">
+      <form class="fields">
+        <div class="fieldSection">
+          <div class="field">
+            <p>Username</p>
+            <input [(ngModel)]="authData.email" placeholder="" type="email" name="email">
+          </div>
+          <div class="field">
+            <p>Password</p>
+            <input [(ngModel)]="authData.password" placeholder="" type="password" name="password">
+           <!-- <img class="touch_id" src="assets/img/touch_id.png" alt="touch_id"> -->
+          </div>
+          <div (click)="toggle('session')" class="remember">
+            <span [ngClass]="saveSession?'sessionChecked':'sessionUnChecked'"></span>
+            <p>Remember Me</p>
+          </div>
+          <div (click)="toggle('touch')" class="remember">
+            <span [ngClass]="touchId?'sessionChecked':'sessionUnChecked'"></span>
+            <p>Touch Id</p>
+          </div>
+        </div>
+        <div class="submission">
+          <div class="forgot">
+            <p>Forgot Username</p>
+            <p>Forgot Password</p>
+          </div>
+          <button [disabled]="authLoader" type='button' (click)="login()" class="btn">
+            <span>LOGIN</span>
+          </button>
+        </div>
+      </form>
+    </ng-container>
+
+
+  </div>
+</div>

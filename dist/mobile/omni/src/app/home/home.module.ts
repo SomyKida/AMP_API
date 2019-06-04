@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { CircleComponent } from './circle/circle.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { HomeComponent } from './home.component';
     MaterialModule,
     HomeRoutingModule
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent, CircleComponent]
 })
 export class HomeModule { }

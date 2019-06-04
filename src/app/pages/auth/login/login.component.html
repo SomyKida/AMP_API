@@ -3,12 +3,7 @@
   <div class="GlobalFormWrapper">
     <div class="form-slide">
       <div class="form-head-row">
-        <span class="back" (click)="goBack()">
-          <img src="assets/img/back.png" alt="icon" />
-          <span>
-            Back
-          </span>
-        </span>
+
       </div>
       <div class="form-area">
         <div class="logoWithHeading">
@@ -20,11 +15,14 @@
             <div class="form-two-col">
               <div class="cus-inp-row">
                 <label>Email</label>
-                <input type="text" autocomplete="off" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
+                <input type="text" autocomplete="off" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')"
+                  name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
               </div>
               <div class="cus-inp-row">
                 <label>Password</label>
-                <input type="password" autocomplete="off" [(ngModel)]="user.password" (ngModelChange)="changeInFields('pass')" name="unit" [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
+                <input type="password" autocomplete="off" [(ngModel)]="user.password"
+                  (ngModelChange)="changeInFields('pass')" name="unit"
+                  [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
               </div>
               <div class="cus-check-row">
                 <input type="checkbox" id="cus-check" />

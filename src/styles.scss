@@ -11,51 +11,62 @@ body {
     font-family: 'ProximaNova-Regular'
 }
 
-$font-path: "/assets/fonts";
+$font-path-proximanova: "/assets/fonts/proximanova";
+$font-path-productsans: "/assets/fonts/productsans";
 
 @font-face {
     font-family: 'ProximaNova-Regular';
-    src: url("#{$font-path}/ProximaNova-Regular.eot");
-    src: url("#{$font-path}/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
-    // url("#{$font-path}/ProximaNova-Regular.woff") format("woff"),
-    url("#{$font-path}/ProximaNova-Regular.ttf") format("truetype"),
-    url("#{$font-path}/ProximaNova-Regular.svg") format("svg");
+    src: url("#{$font-path-proximanova}/ProximaNova-Regular.eot");
+    src: url("#{$font-path-proximanova}/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
+    // url("#{$font-path-proximanova}/ProximaNova-Regular.woff") format("woff"),
+    url("#{$font-path-proximanova}/ProximaNova-Regular.ttf") format("truetype"),
+    url("#{$font-path-proximanova}/ProximaNova-Regular.svg") format("svg");
 }
 
 @font-face {
     font-family: 'ProximaNova-Extrabld';
-    src: url("#{$font-path}/ProximaNova-Extrabld.eot");
-    src: url("#{$font-path}/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"),
-    url("#{$font-path}/ProximaNova-Extrabld.woff") format("woff"),
-    url("#{$font-path}/ProximaNova-Extrabld.ttf") format("truetype"),
-    url("#{$font-path}/ProximaNova-Extrabld.svg") format("svg");
+    src: url("#{$font-path-proximanova}/ProximaNova-Extrabld.eot");
+    src: url("#{$font-path-proximanova}/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path-proximanova}/ProximaNova-Extrabld.woff") format("woff"),
+    url("#{$font-path-proximanova}/ProximaNova-Extrabld.ttf") format("truetype"),
+    url("#{$font-path-proximanova}/ProximaNova-Extrabld.svg") format("svg");
 }
 
 @font-face {
     font-family: 'ProximaNova-Bold';
-    src: url("#{$font-path}/ProximaNova-Bold.eot");
-    src: url("#{$font-path}/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
-    url("#{$font-path}/ProximaNova-Bold.woff") format("woff"),
-    url("#{$font-path}/ProximaNova-Bold.ttf") format("truetype"),
-    url("#{$font-path}/ProximaNova-Bold.svg") format("svg");
+    src: url("#{$font-path-proximanova}/ProximaNova-Bold.eot");
+    src: url("#{$font-path-proximanova}/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path-proximanova}/ProximaNova-Bold.woff") format("woff"),
+    url("#{$font-path-proximanova}/ProximaNova-Bold.ttf") format("truetype"),
+    url("#{$font-path-proximanova}/ProximaNova-Bold.svg") format("svg");
 }
 
 @font-face {
     font-family: 'ProximaNova-Light';
-    src: url("#{$font-path}/ProximaNova-Light.eot");
-    src: url("#{$font-path}/ProximaNova-Light.eot?#iefix") format("embedded-opentype"),
-    url("#{$font-path}/ProximaNova-Light.woff") format("woff"),
-    url("#{$font-path}/ProximaNova-Light.ttf") format("truetype"),
-    url("#{$font-path}/ProximaNova-Light.svg") format("svg");
+    src: url("#{$font-path-proximanova}/ProximaNova-Light.eot");
+    src: url("#{$font-path-proximanova}/ProximaNova-Light.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path-proximanova}/ProximaNova-Light.woff") format("woff"),
+    url("#{$font-path-proximanova}/ProximaNova-Light.ttf") format("truetype"),
+    url("#{$font-path-proximanova}/ProximaNova-Light.svg") format("svg");
 }
 
 @font-face {
     font-family: 'ProximaNova-Semibold';
-    src: url("#{$font-path}/ProximaNova-Semibold.eot");
-    src: url("#{$font-path}/ProximaNova-Semibold.eot?#iefix") format("embedded-opentype"),
-    url("#{$font-path}/ProximaNova-Semibold.woff") format("woff"),
-    url("#{$font-path}/ProximaNova-Semibold.ttf") format("truetype"),
-    url("#{$font-path}/ProximaNova-Semibold.svg") format("svg");
+    src: url("#{$font-path-proximanova}/ProximaNova-Semibold.eot");
+    src: url("#{$font-path-proximanova}/ProximaNova-Semibold.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path-proximanova}/ProximaNova-Semibold.woff") format("woff"),
+    url("#{$font-path-proximanova}/ProximaNova-Semibold.ttf") format("truetype"),
+    url("#{$font-path-proximanova}/ProximaNova-Semibold.svg") format("svg");
+}
+
+
+@font-face {
+  font-family: 'ProductSans-Bold';
+  src: url("#{$font-path-productsans}/ProductSans-Bold.eot");
+  src: url("#{$font-path-productsans}/ProductSans-Bold.eot?#iefix") format("embedded-opentype"),
+  url("#{$font-path-productsans}/ProductSans-Bold.woff") format("woff"),
+  url("#{$font-path-productsans}/ProductSans-Bold.ttf") format("truetype"),
+  url("#{$font-path-productsans}/ProductSans-Bold.svg") format("svg");
 }
 
 .GlobalFormWrapper {
@@ -81,8 +92,10 @@ $font-path: "/assets/fonts";
         padding: 50px;
         background: $primary;
 
-        @media (max-width: 767px) {
+        @media (max-width: 750px) {
             padding: 15px;
+            width: auto;
+            margin: 0;
         }
 
         .form-head-row {
@@ -120,7 +133,9 @@ $font-path: "/assets/fonts";
                     margin: 25px 0;
 
                     @media (max-width: 767px) {
-                        flex-wrap: wrap
+                        flex-wrap: wrap;
+                        flex-direction: column;
+
                     }
 
                     .form-one-col {
@@ -131,7 +146,8 @@ $font-path: "/assets/fonts";
                         width: 49%;
 
                         @media (max-width: 767px) {
-                            width: 100%
+                            width: 100%;
+                            border-right: none;
                         }
                     }
 
@@ -252,4 +268,8 @@ $font-path: "/assets/fonts";
     vertical-align: top;
     width: calc(100% - 120px);
     height: 100%;
+
+    @media (max-width: 800px) {
+        width: 100% !important;
+    }
 }

@@ -8,10 +8,11 @@
     <div class="actualBody">
       <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
-        <h1>
+        <div class="logo_row">
           <img *ngIf="image == null" src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
           <img *ngIf="image != null" [src]="image" alt="Anozira Logo" />
-          {{user.practice_name}}</h1>
+          <h1>{{user.practice_name}}</h1>
+        </div>
       </div>
       <div class="phoneCont">
         <div class="upper">

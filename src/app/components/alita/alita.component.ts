@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class AlitaComponent implements OnInit {
   @Output('switch') proceed = new EventEmitter<any>();
   public user: User;
+  public messageInput: string = '';
   public colorTheme: {
     which: boolean,
     primary: string,
@@ -75,6 +76,11 @@ export class AlitaComponent implements OnInit {
     this.proceed.emit('manual');
   }
 
+  alitaSend() {
+    if (this.messageInput === 'yes' || this.messageInput === 'Yes' || this.messageInput === 'YES') {
+      this.manual();
+    }
+  }
   saveTemplate() {
     if (this.colorTheme.logo == '') {
       this.aux.showAlert("Please chose a logo for your app.", "ERROR!");

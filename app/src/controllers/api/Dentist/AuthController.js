@@ -475,7 +475,7 @@ router.post('/login', (req, res) => {
       } else {
         dentist = dentists[0]
         if (dentist.pwd == undefined || dentist.pwd == null || dentist.pwd == '') {
-          helper.sendError(res, "Please sign up using Social buttons.")
+          helper.sendError(res, "You have no password set. Log in with the method you signed up with.")
           return;
         }
         const match = bcrypt.compareSync(post_data.pwd, dentist.pwd);
@@ -507,11 +507,14 @@ router.post('/fb/login', (req, res) => {
     return
   }
 
-  Dentist.find({ 'email': post_data['email'], 'fb_id': post_data['fb_id'] }, (err, dentists) => {
+  Dentist.find({ 'email': post_data['email'] }, (err, dentists) => {
     if (!helper.postQueryErrorOnly(err, res)) {
       //console.log(dentists)
       if (dentists.length == 0) {
-        helper.sendError(res, 'Please Sign Up first using Facebook')
+        helper.sendError(res, 'Please Sign Up first.')
+        return
+      } else if (dentists[0]['fb_id'] != post_data['fb_id']) {
+        helper.sendError(res, 'Please connect your Facebook Account in the Settings to enable quick login.')
         return
       } else {
         dentist = dentists[0]
@@ -537,11 +540,14 @@ router.post('/google/login', (req, res) => {
     return
   }
 
-  Dentist.find({ 'email': post_data['email'], 'g_id': post_data['g_id'] }, (err, dentists) => {
+  Dentist.find({ 'email': post_data['email'] }, (err, dentists) => {
     if (!helper.postQueryErrorOnly(err, res)) {
       //console.log(dentists)
       if (dentists.length == 0) {
         helper.sendError(res, 'Please Sign Up first using Google')
+        return
+      } else if (dentists[0]['g_id'] != post_data['g_id']) {
+        helper.sendError(res, 'Please connect your Google Account in the Settings to enable quick login.')
         return
       } else {
         dentist = dentists[0]

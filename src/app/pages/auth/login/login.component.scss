@@ -6,6 +6,10 @@
     width: calc(100% - 120px);
     height: 100%;
 
+    @media (max-width: 800px) {
+        width: 100% !important;
+    }
+
     .form-area {
 
         .logoWithHeading {
@@ -38,10 +42,6 @@
                 justify-content: space-between;
                 margin: 25px 0;
 
-                @media (max-width: 1100px) {
-                    flex-wrap: wrap;
-                }
-
                 .form-two-col {
                     flex: 1;
 
@@ -65,7 +65,7 @@
 
                     @media (max-width: 1100px) {
                         width: 100%;
-                        border: none;
+                        border: none !important;
                     }
 
                     .cus-inp-row {

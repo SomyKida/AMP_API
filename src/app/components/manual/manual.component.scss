@@ -1,10 +1,13 @@
 @import '../../../theme/variables';
 
+.extra_top{
+  margin-top:5%;
+}
 .manualWrapper {
     flex: 1;
     justify-content: center;
     align-items: center;
-    padding: 5%;
+    padding: 2% 5% 5% 5%;
     width: -webkit-fill-available;
 
 
