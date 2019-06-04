@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CredentialService } from 'src/app/services/credentials/credential.service';
-
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-setup',
   templateUrl: './setup.component.html',
@@ -9,7 +9,9 @@ import { CredentialService } from 'src/app/services/credentials/credential.servi
 export class SetupComponent implements OnInit {
   public botOrManual: boolean = true;
   public user;
-  constructor(private credentials: CredentialService) {
+  constructor(
+    private credentials: CredentialService,
+    private router: Router) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.credentials.sessionStatus.subscribe(value => {
       this.user = value
@@ -24,6 +26,7 @@ export class SetupComponent implements OnInit {
   }
 
   switchToAuto(event) {
+    this.router.navigate(['theme/appSelect']);
     this.botOrManual = true;
   }
 

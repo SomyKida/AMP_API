@@ -5,9 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from 'src/app/components/material/material.module';
+import { SettingsComponent } from './settings/settings.component';
+import { DevelopmentComponent } from './development/development.component';
+import { SuportComponent } from './suport/suport.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, SettingsComponent, DevelopmentComponent, SuportComponent],
   imports: [
     ComponentsModule,
     FormsModule,
@@ -15,6 +18,18 @@ import { MaterialModule } from 'src/app/components/material/material.module';
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
+      },
+      {
+        path: 'support',
+        component: SuportComponent
+      },
+      {
+        path: 'development',
+        component: DevelopmentComponent
       }
     ]),
     CommonModule,

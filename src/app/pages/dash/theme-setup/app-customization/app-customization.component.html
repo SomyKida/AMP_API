@@ -1,5 +1,123 @@
 <app-side-bar></app-side-bar>
 <div class="container">
-  <app-alita *ngIf="botOrManual == true" (switch)="switchToManual($event)"></app-alita>
-  <app-fab></app-fab>
+  <div class="alitaWrapper">
+    <div class="botArea">
+      <ng-container>
+        <app-template (chosenTemplate)="chosen($event)" [logo]="colorTheme.img" [primary]="colorTheme.primary"
+          [secondary]="colorTheme.secondary" [logoType]="logo" class="template"></app-template>
+        <div *ngIf="!logoSelected" class="logo-setup">
+          <h3>Choose Your Logo</h3>
+          <div class="upload-logo-section">
+            <div class="left-side">
+              <p>To make sure your logo looks good within the space. Please choose the orientation of your logo below
+              </p>
+            </div> <!-- left side -->
+          </div> <!-- upload logo section -->
+
+          <div class="horizontal_logo">
+
+            <div class="img_spanner">
+              <img src="../../../../../assets/img/logo_horizontal.png" alt="horizontal" />
+            </div>
+            <div class="text-spanner">
+              <h4>My Logo is Horizontal</h4>
+              <div class="box">
+                <input type="checkbox" id="cussed" name="today" />
+                <label for="cussed"><span (click)="logoSet('horizontal')"
+                    [class]="temp_logo=='horizontal'?'fill_span':''"></span></label>
+              </div>
+            </div>
+          </div>
+          <div class="other_logo">
+            <div class="img_spanner">
+              <img src="../../../../../assets/img/logo_square.png" alt="square" />
+              <span class="img_separator">OR</span>
+              <img src="../../../../../assets/img/logo_round.png" alt="round" />
+            </div>
+            <div class="text-spanner">
+              <h4>My Logo is Circular or Square in Shape</h4>
+              <div class="box">
+                <input type="checkbox" id="cussed2" name="today" />
+                <label for="cussed2"><span (click)="logoSet('nhorizontal')"
+                    [class]="temp_logo=='nhorizontal'?'fill_span':''"></span></label>
+              </div>
+            </div>
+
+          </div>
+          <div class="logo_select_btn">
+            <button class="choose btn-blue" (click)="logoSelectedFun()" mat-raised-button>SELECT AND CONTINUE</button>
+          </div>
+        </div>
+        <div *ngIf="logoSelected" class="app-setup">
+          <h3>Choose Your Logo</h3>
+          <div class="upload-logo-section">
+            <div class="left-side">
+              <p>When uploading your logo try to use a horizontal image as that will be the best fit for your app. See
+                the
+                default and how it fits so nicely! </p>
+            </div> <!-- left side -->
+
+            <div class="right-side">
+              <input type="file" accept="image/*" (change)="processFile(file.files)" #file hidden>
+              <button (click)="file.click()" class="choose btn-blue" mat-raised-button>Choose Logo</button>
+              <p class="empty-logo-label">{{colorTheme.logo == '' ? "No image Selected":colorTheme.logo}}</p>
+            </div> <!-- right side -->
+
+          </div> <!-- upload logo section -->
+
+          <div class="app-color-setting">
+
+            <h3>Choose Your Apps Colors</h3>
+
+            <!-- <div class="color-section-wrap">
+
+                <div class="color-section">
+                  <h3>Primary Color</h3>
+                  <div class="color-info">
+                    <span class="view-color" *ngIf="colorTheme.which == true"></span>
+                    <span class="color-code">{{colorTheme.primary}}</span>
+                  </div>
+                  <button class="choose" (click)="selection('primary')"
+                    [ngClass]="{'btn-blue': colorTheme.which == true,'btn-grey': colorTheme.which == false}"
+                    mat-raised-button>CHOOSE COLOR</button>
+                </div>
+
+                <div class="color-section">
+                  <h3>Secondary Color</h3>
+                  <div class="color-info">
+                    <span class="view-color" *ngIf="colorTheme.which == false"></span>
+                    <span class="color-code">{{colorTheme.secondary}}</span>
+                  </div>
+                  <button class="choose" (click)="selection('secondary')"
+                    [ngClass]="{'btn-blue': colorTheme.which == false,'btn-grey': colorTheme.which == true}"
+                    mat-raised-button>CHOOSE COLOR</button>
+                </div>
+              </div>  -->
+
+          </div>
+          <div class="picker">
+            <div [class]="primarySelected == true? 'picker-column' : 'picker-column single'">
+              <div [class]="primarySelected == true? 'for-border single-border' : 'for-border'">
+                <color-chrome [color]="colorTheme.primary" width="10" (onChangeComplete)="changePrimary($event)">
+                </color-chrome>
+                <span [class]="primarySelected == true? 'color-num padd-right' : 'color-num'">1ST COLOR</span>
+              </div>
+              <div *ngIf="!primarySelected" class="center-btn">
+                <button class="choose btn-blue" (click)="selectPrimary()" mat-raised-button>SELECT THIS COLOR</button>
+              </div>
+            </div>
+            <div *ngIf="primarySelected" class="picker-column secondary">
+              <color-chrome class="center" [color]="colorTheme.secondary" width="10"
+                (onChangeComplete)="changeSecondary($event)"></color-chrome>
+              <span class="color-num">2ND COLOR (OPTIONAL)</span>
+              <div class="center-btn">
+                <button class="choose btn-blue" (click)="allDone()" mat-raised-button>SELECT AND CONTINUE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <app-fab></app-fab>
+    </div>
+  </div>
 </div>

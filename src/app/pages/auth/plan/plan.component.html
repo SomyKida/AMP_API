@@ -88,16 +88,14 @@
             <div class="form-row">
               <div class="form-two-col">
                 <label>STATE</label>
-                <!-- <mat-label>Select a state</mat-label>
-                <mat-select [(ngModel)]="user.state" name="state"
-                  [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}">
-                  <mat-option *ngFor=" let state of states" [value]="state.value">
+                <mat-select placeholder="State" name="state">
+                  <mat-option *ngFor=" let state of states" [(value)]="user.state">
                     {{state.name}}
                   </mat-option>
-                </mat-select> -->
-                <input type="text" [(ngModel)]="user.state" autocomplete="off" name="state"
+                </mat-select>
+                <!-- <input type="text" [(ngModel)]="user.state" autocomplete="off" name="state"
                   (ngModelChange)="changeInFields('state')"
-                  [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}" />
+                  [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}" /> -->
               </div>
               <div class="form-two-col">
                 <label>PHONE #</label>

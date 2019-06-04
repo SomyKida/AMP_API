@@ -73,6 +73,13 @@ export class AlitaComponent implements OnInit {
   }
 
   manual() {
+    if (this.user.first_setup) {
+      if (this.user.theme != '' && this.user.theme != null) {
+        this.router.navigate(['theme/appCustomization']);
+      } else {
+        this.router.navigate(['theme/appSelect']);
+      }
+    }
     this.proceed.emit('manual');
   }
 

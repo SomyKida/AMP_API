@@ -2,6 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppSelectComponent } from './app-select/app-select.component';
 import { ThemeSetupComponent } from './theme-setup.component';
+import { EmailDispatchComponent } from './email-dispatch/email-dispatch.component';
 import { AppCustomizationComponent } from './app-customization/app-customization.component';
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'appCustomization',
         component: AppCustomizationComponent
+      },
+      {
+        path: 'theme-email',
+        component: EmailDispatchComponent
       }
     ]
   }

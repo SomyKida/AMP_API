@@ -17,6 +17,11 @@ export class CredentialService {
 
   }
 
+  updateUser(user) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
+    this.sessionStatus.next(this.user);
+  }
   setUser(user) {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', user.access_token);
@@ -43,7 +48,16 @@ export class CredentialService {
     }
   }
 
+  themeSelected() {
+    if (this.user.theme == null || this.user.theme == '') {
+      return false
+    } else {
+      return true
+    }
+  }
+
   selfSetup() {
+    console.log(this.user);
     if (this.user.first_setup == true && this.user.theme_setup == true) {
       return true;
     } else

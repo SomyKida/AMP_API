@@ -1,0 +1,17 @@
+@import '../../../../../theme/variables';
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 120px);
+    height: 100%;
+    .img_holder{
+      margin-top: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img{
+        width: 30%;
+      }
+    }
+}

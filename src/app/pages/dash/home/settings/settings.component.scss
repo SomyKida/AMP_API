@@ -1,0 +1,120 @@
+@import '../../../../../theme/variables';
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 120px);
+    height: 100%;
+}
+
+.mat-app-background {
+    background: #fff;
+}
+
+.wrapper {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+
+    .heading {
+        display: inline-block;
+        width: 100%;
+        height: 20%;
+        text-align: center;
+
+        h1 {
+            font-weight: bold;
+            color: $dark;
+            margin-bottom: 0;
+        }
+
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 5px;
+            background: $darkBlue;
+        }
+
+    }
+
+    .content {
+        display: inline-block;
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        text-align: center;
+        overflow: visible;
+        margin-top: 35px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                width: 30%;
+                height: 35vh;
+                background: #ffffff;
+                margin-right: 20px;
+                margin-bottom: 20px;
+                box-shadow: $shadowFormula;
+                border-radius: 10px;
+                position: relative;
+
+                .elements {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    width: 100%;
+                    height: 50%;
+
+                    img {
+                        width: 60px;
+                    }
+
+                    p {
+                        position: absolute;
+                        bottom: 0;
+                        margin: 0;
+                        left: 0;
+                        right: 0;
+                        color: $blockOpt;
+                        font-weight: bold;
+                        font-size: 28px;
+                        font-family: 'ProximaNova-Semibold'
+                    }
+                }
+
+                .info {
+                    padding: 5%;
+                    text-align: center;
+
+                    h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: $darkBlue;
+                        margin-bottom: 0;
+                    }
+
+                    p {
+                        display: inline-block;
+                        width: 80%;
+                        font-size: 14px;
+                        color: $headingNormColor;
+
+
+                    }
+                }
+            }
+
+            .selected {
+                border: 2px solid $darkBlue;
+            }
+        }
+    }
+}

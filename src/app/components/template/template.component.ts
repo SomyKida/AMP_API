@@ -10,10 +10,11 @@ export class TemplateComponent implements OnInit {
   @Input('primary') primary: string;
   @Input('secondary') secondary: string;
   @Input('logo') image: string;
+  @Input('logoType') logo: string = 'nhorizontal';
   @Output('chosenTemplate') proceed = new EventEmitter<any>();
   public templates = [
     {
-      name: 'Ashen',
+      name: 'OMNI',
       selected: false
     },
     {
@@ -44,6 +45,12 @@ export class TemplateComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.logo == '') {
+      this.logo = 'nhorizontal';
+    }
+    console.log(this.image)
+    console.log(this.logo)
+    this.user.practice_info = JSON.parse(this.user.practice_info)
     this.proceed.emit(this.templates[this.current]);
   }
 

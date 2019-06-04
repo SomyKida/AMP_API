@@ -457,11 +457,12 @@ export class PlanComponent implements OnInit {
       if (!check)
         check = true;
     }
-    if (this.user.state == '') {
-      this.userFldsVlds.state = true;
-      if (!check)
-        check = true;
-    }
+    // if (this.user.state == '') {
+    //   console.log(this.user.state)
+    //   this.userFldsVlds.state = true;
+    //   if (!check)
+    //     check = true;
+    // }
     // if (this.user.pass == '' && this.user.authType == 'DESKTOP') {
     //   this.userFldsVlds.pass = true;
     //   if (!check)

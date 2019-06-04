@@ -22,6 +22,7 @@ var cors = require('cors')
 var passport = require('passport')
 var strategies = require('./app/passports/strategies')
 var serializations = require('./app/passports/serializations')
+const jwt = require('jsonwebtoken')
 /* NEEDED A CALLBACK HERE, SOMEHOW MONGO CONNECTION WAS EXTREMELY ASYNC, EH */
 //STILL TO BE EVEN MORE SAFE, DO AWAIT ASYNC HERE
 

@@ -125,6 +125,8 @@ THE SOFTWARE.
 
 @angular/material/progress-spinner
 
+@angular/material/select
+
 @angular/material/tabs
 
 @angular/platform-browser
@@ -274,7 +276,12 @@ SOFTWARE.
 ngx-color/alpha
 MIT
 
+ngx-color/chrome
+MIT
+
 ngx-color/hue
+
+ngx-color/slider
 
 ngx-mask
 MIT

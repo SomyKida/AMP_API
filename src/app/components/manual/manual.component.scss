@@ -171,3 +171,29 @@
         }
     }
 }
+.img_holder{
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.under{
+  width: 60%;
+}
+
+mat-select{
+  width: -webkit-fill-available;
+  border: 1px solid transparent;
+  background: #f1f4f4;
+  padding: 12px 10px;
+  border-radius: 7px;
+  outline: none;
+  width: 95% !important;
+  span{
+    font-family: "ProximaNova-Regular";
+    font-size: 12px;
+    margin-bottom:2px;
+  }
+}
+
+

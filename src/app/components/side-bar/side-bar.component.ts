@@ -30,13 +30,24 @@ export class SideBarComponent implements OnInit {
     if (page == 'login') {
       this.currentPage = '/login';
       this.router.navigate(["/login"]);
-    } else if (this.user != null && this.user.init_payment == true) {
+    } else if (page == 'plan' && this.user == null) {
+      this.currentPage = '/plan';
+      this.router.navigate(["/plan"]);
+    }
+    else if (this.user != null && this.user.init_payment == true) {
       if (page == 'chat') {
         this.currentPage = '/chat';
         this.router.navigate(["/chat"]);
       } else if (page == 'dashboard') {
         this.currentPage = '/home';
         this.router.navigate(["/home"]);
+      } else if (page == 'settings') {
+        this.currentPage = '/home/settings';
+        this.router.navigate(["home/settings"]);
+      }
+      else if (page == 'support') {
+        this.currentPage = '/home/support';
+        this.router.navigate(["home/support"]);
       }
     }
   }

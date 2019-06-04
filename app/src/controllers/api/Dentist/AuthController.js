@@ -6,7 +6,7 @@ var router = express.Router();
 var bcrypt = require('bcrypt');
 var passport = require('passport')
 const fs = require('fs-extra')
-
+const jwt = require('jsonwebtoken')
 /* Custom Imports */
 var consts = require(base_path + '/app/config/constants')
 var Dentist = require(base_path + '/app/src/models/Dentist')
@@ -18,6 +18,7 @@ var ServiceProvider = require(base_path + '/app/src/models/ServiceProvider')
 var stripe = require(base_path + '/app/config/stripe')
 var messages = require(base_path + '/app/config/messages')
 var system = 'system'
+var jwt_middleware = require(base_path + '/app/passports/jwt')['jwt_middleware']
 
 //legacy
 const v2 = '/v2'
@@ -82,7 +83,6 @@ router.post('/pre-register', (req, res) => {
     }
   })
 })
-
 router.post('/pay/:pId', (req, res) => {
   var post_data = req.body;
 
@@ -125,7 +125,7 @@ router.post('/pay/:pId', (req, res) => {
                       })
 
                       dentist.save((err) => {
-                        if (!helper.postQueryErrorOnly(err, null)) {
+                        if (!helper.postQueryErrorOnly(err, res)) {
                           pDentist.remove()
                           email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', 'email : ' + dentist.email + ' password : ' + unhashed_pwd, (err, info) => {
                             if (!helper.postQueryErrorOnly(err, info)) {
@@ -147,7 +147,6 @@ router.post('/pay/:pId', (req, res) => {
     }
   })
 })
-
 router.post('/reset-password', (req, res) => {
   var post_data = req.body
   if (!helper.validateField(res, post_data, 'email', 'Email')) {
@@ -257,7 +256,6 @@ router.post('/setup', (req, res) => {
     }
   })
 })
-
 router.post('/update', (req, res) => {
   post_data = req.body
   dentist_middlewareware(req, res, (err, dentist) => {
@@ -309,7 +307,6 @@ router.post('/update', (req, res) => {
     }
   })
 })
-
 router.post('/incrementVersion', (req, res) => {
   post_data = req.body
   dentist_middlewareware(req, res, (err, dentist) => {
@@ -329,7 +326,6 @@ router.post('/incrementVersion', (req, res) => {
     }
   })
 })
-
 router.get('/getVersion', (req, res) => {
   post_data = req.body
   dentist_middlewareware(req, res, (err, dentist) => {
@@ -340,7 +336,6 @@ router.get('/getVersion', (req, res) => {
     }
   })
 })
-
 router.post('/change-password', (req, res) => {
   post_data = req.body
   dentist_middlewareware(req, res, (err, dentist) => {
@@ -376,7 +371,6 @@ router.post('/change-password', (req, res) => {
 
   })
 })
-
 router.post('/add-admins', (req, res) => {
   post_data = req.body
   dentist_middlewareware(req, res, (err, dentist) => {
@@ -457,7 +451,6 @@ router.post('/add-admins', (req, res) => {
     }
   })
 })
-
 router.post('/login', (req, res) => {
   var post_data = req.body
   if (!helper.validateField(res, post_data, 'email', 'Email')) {
@@ -482,12 +475,18 @@ router.post('/login', (req, res) => {
         //console.log(match)
         //Hashed check here #TODO
         if (match) {
-          new_token = helper.generateRandomString(15)
-          dentist.access_token = new_token
+          // old tokenization
+          // new_token = helper.generateRandomString(15)
+          // dentist.access_token = new_token
           dentist.save((err, result) => {
             if (!helper.postQueryErrorOnly(err, res)) {
               dentist.pwd = null
-              helper.sendSuccess(res, dentist)
+
+              jwt.sign({ dentist }, 'amp_secret', (err, token) => {
+                dentist.access_token = token
+                helper.sendSuccess(res, dentist)
+              })
+
               return
             }
           })
@@ -518,12 +517,13 @@ router.post('/fb/login', (req, res) => {
         return
       } else {
         dentist = dentists[0]
-        new_token = helper.generateRandomString(15)
-        dentist.access_token = new_token
         dentist.save((err, result) => {
           if (!helper.postQueryErrorOnly(err, res)) {
             dentist.pwd = null
-            helper.sendSuccess(res, dentist)
+            jwt.sign({ dentist }, 'amp_secret', (err, token) => {
+              dentist.access_token = token
+              helper.sendSuccess(res, dentist)
+            })
             return
           }
         })
@@ -551,12 +551,13 @@ router.post('/google/login', (req, res) => {
         return
       } else {
         dentist = dentists[0]
-        new_token = helper.generateRandomString(15)
-        dentist.access_token = new_token
         dentist.save((err, result) => {
           if (!helper.postQueryErrorOnly(err, res)) {
             dentist.pwd = null
-            helper.sendSuccess(res, dentist)
+            jwt.sign({ dentist }, 'amp_secret', (err, token) => {
+              dentist.access_token = token
+              helper.sendSuccess(res, dentist)
+            })
             return
           }
         })
@@ -565,7 +566,6 @@ router.post('/google/login', (req, res) => {
     }
   })
 })
-
 router.post(v2 + '/register', (req, res) => {
 
   common_middleware(req, res, (err) => {
@@ -618,15 +618,13 @@ router.post(v2 + '/register', (req, res) => {
                   })
 
                   dentist.save((err) => {
-                    if (!helper.postQueryErrorOnly(err, null)) {
+                    if (!helper.postQueryErrorOnly(err, res)) {
                       helper.sendSuccess(res, dentist)
                     }
                   })
-                  email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', 'email : ' + dentist.email + ' password : ' + unhashed_pwd, (err, info) => {
-                    if (err) {
-                      console.log(err)
-                    }
-                  })
+
+
+
                   return
                 }
               }
@@ -638,10 +636,9 @@ router.post(v2 + '/register', (req, res) => {
   })
 
 })
+router.post(v2 + '/pay-init', jwt_middleware, (req, res) => {
 
-router.post(v2 + '/pay-init', (req, res) => {
-
-  dentist_middlewareware(req, res, (err, dentist) => {
+  dentist_middlewareware(req.authData.dentist, res, (err, dentist) => {
 
     if (!err) {
       fields_required = [
@@ -678,21 +675,17 @@ router.post(v2 + '/pay-init', (req, res) => {
                     //console.log(charge)
                     dentist.init_payment = true
                     dentist.save((err) => {
-                      if (!helper.postQueryErrorOnly(err, null)) {
-                        helper.sendSuccess(res, "Successfull Payment! An email is also dispatched in an independent thread")
+                      if (!helper.postQueryErrorOnly(err, res)) {
+                        helper.sendSuccess(res, dentist)
                       }
 
                     })
-                    email.sendWelcomeEmail(dentist.email, dentist.email, 'Please IGNORE this error, will fix', dentist.auth_type, (err) => {
+
+                    email.sendDefaultEmail(dentist.email, 'Your payment is successfull', "This is to inform you that we have successfully received your payment.", "This is a no-reply email auto generated by our bot.", (err, info) => {
                       if (err) {
-                        console.log(err);
+                        console.log(err)
                       }
                     })
-                    // email.sendDefaultEmail(dentist.email, 'Your payment is successfull', (err, info) => {
-                    //   if (err) {
-                    //     console.log(err)
-                    //   }
-                    // })
 
                     return
                   }
@@ -707,76 +700,74 @@ router.post(v2 + '/pay-init', (req, res) => {
     }
   })
 })
-
-router.post(v2 + '/setup', (req, res) => {
+router.post(v2 + '/setup', jwt_middleware, (req, res) => {
   fields_required = [
-    // 'theme_id',
-    //'phone',
-    //'name',
-    'practice_name',
-    'email',
-    'address',
-    'office_hours',
-    'doctor_names',
-    // 'npi',
-    // 'url'
+    'updates'
   ]
   post_data = req.body
-
-  // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
   if (!helper.validateFieldAuto(res, post_data, fields_required))
     return
-
-  dentist_middlewareware(req, res, (err, dentist) => {
+  post_data.updates.forEach(element => {
+    if (!helper.validateField(res, post_data, element, element))
+      return
+  });
+  dentist_middlewareware(req.authData.dentist, res, (err, dentist) => {
     if (!err) {
-      if (dentist.first_setup != true) {
-        Theme.findById(post_data.theme_id, (err, theme) => {
+      if (post_data.updates.includes('practice_info') && post_data.practice_info.url != undefined && post_data.practice_info.url != '') {
+        Dentist.find({ 'url': post_data.practice_info.url }, (err, url) => {
           if (!helper.postQueryErrorOnly(err, res)) {
-            if (theme == null && 1 > 3) {
-              helper.sendError(res, "No such theme found")
-              return
+            if (url == null || url.length == 0 || (url.length == 1 && url[0].email == dentist.email)) {
+              dentist.url = post_data.practice_info.url
+              core()
             } else {
-
-              Dentist.findOne({ 'url': post_data.url }, (err, url) => {
-                if (!helper.postQueryErrorOnly(err, res)) {
-                  if (url != null && 1 > 3) {
-                    helper.sendError(res, "This URL is already taken. Please select something different.")
-                    return
-                  } else {
-                    dentist.selected_theme = post_data.theme_id
-                    dentist.office_hours = JSON.stringify(post_data.office_hours)
-                    dentist.practice_name = post_data.practice_name
-                    dentist.practice_email = post_data.practice_email
-                    dentist.practice_phone = post_data.practice_phone
-                    dentist.practice_address = post_data.practice_address
-                    dentist.npi = post_data.npi
-                    dentist.url = post_data.url
-                    dentist.doctor_names = JSON.stringify(post_data.doctor_names)
-                    dentist.first_setup = true
-                    dentist.save((err) => {
-                      if (!helper.postQueryErrorOnly(err, null)) {
-                        dentist.pwd = null
-                        helper.sendSuccess(res, dentist)
-                        return
-                      }
-                    })
-                  }
-                }
-              })
+              helper.sendError(res, "This URL is already taken.")
+              return
             }
           }
         })
       } else {
-        helper.sendSuccess(res, dentist)
+        core()
         return
       }
+    }
+    function core() {
+      post_data.updates.forEach(element => {
+        dentist[element] = JSON.stringify(post_data[element])
+      })
 
+      flag = false
+      if (dentist.practice_info != null && dentist.practice_info != '') {
+        if (dentist.office_hours != null && dentist.office_hours != '') {
+          if (dentist.package == 'PRO') {
+            if (dentist.emr_info != null && dentist.emr_info != '')
+              flag = true
+          } else {
+            flag = true
+          }
+        }
+      }
+      if (flag) {
+        if (dentist.social_info != null && dentist.social_info != '') {
+          if (dentist.scheduling_info != null && dentist.scheduling_info != '') {
+            if (dentist.forms != null && dentist.forms != '') {
+              if (dentist.users != null && dentist.users != '') {
+                dentist.first_setup = true
+              }
+            }
+          }
+        }
+      }
+
+
+      dentist.save((err) => {
+        if (!helper.postQueryErrorOnly(err, res)) {
+          helper.sendSuccess(res, dentist)
+          return
+        }
+      })
     }
   })
-
-
 })
-
 router.post(v2 + '/set-theme', (req, res) => {
 
   // fields_required = [
@@ -815,49 +806,49 @@ router.post(v2 + '/set-theme', (req, res) => {
     if (!err) {
       dentist.theme_setup = true;
       dentist.save((err) => {
-        if (!helper.postQueryErrorOnly(err, null)) {
+        if (!helper.postQueryErrorOnly(err, res)) {
           helper.sendSuccess(res, dentist)
           return
         }
       })
     }
 
-    // if (!err) {
-    //   fs.remove(base_path + '/domains/' + dentist.id, err => {
-    //     if (err) return console.error(err)
-    //     //add theme selection logic here
-    //     fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/assets')
-    //     fs.copy(base_path + '/dist', base_path + '/domains/' + dentist.id + '/app')
-    //       .then(() => {
-    //         req.files.logo.mv(base_path + '/domains/' + dentist.id + '/assets/logo.png', (err) => {
-    //           if (err) {
-    //             console.log(err)
-    //             helper.sendError(res, err)
-    //             return
-    //           } else {
-    //             console.log('success!')
-    //             dentist.theme_setup = true;
-    //             dentist.save((err) => {
-    //               if (!helper.postQueryErrorOnly(err, null)) {
-    //                 helper.sendSuccess(res, dentist)
-    //                 return
-    //               }
-    //             })
-    //           }
-    //           // else {
-    //           //   req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
-    //           //     if (err) {
-    //           //       console.log(err)
-    //           //       helper.sendError(res, err)
-    //           //       return
-    //           //     }
-    //           //   })
-    //           // }
-    //         })
-    //       })
-    //       .catch(err => console.error(err))
-    //   })
-    // }
+    if (!err) {
+      fs.remove(base_path + '/domains/' + dentist.id, err => {
+        if (err) return console.error(err)
+        //add theme selection logic here
+        fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/assets')
+        fs.copy(base_path + '/dist', base_path + '/domains/' + dentist.id + '/app')
+          .then(() => {
+            req.files.logo.mv(base_path + '/domains/' + dentist.id + '/assets/logo.png', (err) => {
+              if (err) {
+                console.log(err)
+                helper.sendError(res, err)
+                return
+              } else {
+                console.log('success!')
+                dentist.theme_setup = true;
+                dentist.save((err) => {
+                  if (!helper.postQueryErrorOnly(err, res)) {
+                    helper.sendSuccess(res, dentist)
+                    return
+                  }
+                })
+              }
+              // else {
+              //   req.files.banner.mv(base_path + '/domains/' + dentist.id + '/assets/banner.png', (err) => {
+              //     if (err) {
+              //       console.log(err)
+              //       helper.sendError(res, err)
+              //       return
+              //     }
+              //   })
+              // }
+            })
+          })
+          .catch(err => console.error(err))
+      })
+    }
   })
 })
 router.post('/email-validity', (req, res) => {
@@ -888,7 +879,6 @@ router.post(v3 + '/register', (req, res) => {
         'first_name',
         'last_name',
         'city',
-        'state',
         'address',
         'zip',
         'email',
@@ -962,10 +952,6 @@ router.post(v3 + '/register', (req, res) => {
                   return
                 } else {
 
-
-
-                  token = helper.generateRandomString(5)
-                  access_token = helper.generateRandomString(15)
                   dentist = new Dentist({
                     'email': post_data.email,
                     'address': post_data.address,
@@ -980,10 +966,10 @@ router.post(v3 + '/register', (req, res) => {
                     'first_ready': false,
                     'auth_type': post_data.auth_type,
                     'service_provider': post_data.service_provider,
-                    'access_token': access_token,
                     'email_verified': true
 
                   })
+
                   temp_pwd = ''
                   if (post_data.auth_type == 'DESKTOP') {
                     temp_pwd = post_data.pwd
@@ -1000,16 +986,24 @@ router.post(v3 + '/register', (req, res) => {
                   }
 
                   dentist.save((err) => {
-                    if (!helper.postQueryErrorOnly(err, null)) {
-                      helper.sendSuccess(res, dentist)
+                    if (!helper.postQueryErrorOnly(err, res)) {
+                      jwt.sign({ dentist }, 'amp_secret', (err, token) => {
+                        dentist.access_token = token
+                        helper.sendSuccess(res, dentist)
+                      })
                     }
                   })
-
-                  // email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan/' + token, (err, info) => {
-                  //     if (err) {
-                  //         console.log(err)
-                  //     }
-                  // })
+                  pwd = '';
+                  if (dentist.auth_type == 'DESKTOP') {
+                    pwd = req.body.pwd;
+                  } else {
+                    pwd = "No password set. Please use Social Logins."
+                  }
+                  email.sendWelcomeEmail(dentist.email, dentist.email, pwd, dentist.auth_type, (err) => {
+                    if (err) {
+                      console.log(err);
+                    }
+                  })
                   return
                 }
               }
@@ -1021,7 +1015,6 @@ router.post(v3 + '/register', (req, res) => {
     }
   })
 })
-
 router.post('/authenticate-token', (req, res) => {
   var post_data = req.body
   if (!helper.validateField(res, post_data, 'token', 'Token')) {
@@ -1051,6 +1044,315 @@ router.post('/authenticate-token', (req, res) => {
   })
 
 })
+router.post('/simple-signup', (req, res) => {
+  common_middleware(req, res, (err) => {
+
+    if (!err) {
+
+      fields_required = [
+        'email',
+        'auth_type',
+        'package'
+      ]
+      post_data = req.body
+
+      // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
+
+      if (!helper.validateFieldAuto(res, post_data, fields_required))
+        return
 
 
-module.exports = router
+      if (post_data.package == 'PRO') {
+        if (!helper.validateField(res, post_data, 'service_provider', 'Service Provider'))
+          return
+        if (!helper.validateField(res, post_data, 'software', 'Software'))
+          return
+      }
+
+      if (post_data.auth_type == 'DESKTOP') {
+        if (post_data.auth_type == 'DESKTOP') {
+
+          fields_required = [
+            'pwd',
+            'conf_pwd'
+          ]
+
+          if (!helper.validateFieldAuto(res, post_data, fields_required))
+            return
+
+          if (post_data.pwd.length < 8) {
+            helper.sendError(res, "Passwords needs to be at least 8 characters long.")
+            return
+          }
+
+          if (post_data.pwd != post_data.conf_pwd) {
+            helper.sendError(res, "Passwords do not match.")
+            return
+          }
+
+        }
+      } else if (post_data.auth_type == 'FB') {
+        if (!helper.validateField(res, post_data, 'fb_id', 'Facebook ID'))
+          return
+      } else if (post_data.auth_type == 'GOOGLE') {
+        if (!helper.validateField(res, post_data, 'g_id', 'Google ID'))
+          return
+      }
+
+      Dentist.findOne({ 'email': post_data.email }, (err, dentist) => {
+
+
+        if (!helper.postQueryErrorOnly(err, res)) {
+          if (dentist != null) {
+            helper.sendError(res, "An account with this email already exists.")
+            return
+          } else {
+            ServiceProvider.findById(post_data.service_provider, (err, service_provider) => {
+              if (!helper.postQueryErrorOnly(err, res)) {
+                if (service_provider == null && post_data.package == "PRO") {
+                  helper.sendError(res, "No such service provider found")
+                  return
+                } else {
+
+                  dentist = new Dentist({
+                    'email': post_data.email,
+                    'auth_type': post_data.auth_type,
+                    'package': post_data.package,
+                    'first_ready': false,
+                    'service_provider': post_data.service_provider,
+                    'email_verified': true
+                  })
+
+                  temp_pwd = ''
+                  if (post_data.auth_type == 'DESKTOP') {
+                    temp_pwd = post_data.pwd
+                    pwd = bcrypt.hashSync(post_data.pwd, 10)
+                    dentist.pwd = pwd
+                  } else if (post_data.auth_type == 'FB') {
+                    dentist.fb_id = post_data.fb_id
+                  } else if (post_data.auth_type == 'GOOGLE') {
+                    dentist.g_id = post_data.g_id
+                  }
+
+                  if (post_data.package == "PRO") {
+                    dentist.software = post_data.software;
+                  }
+
+                  dentist.save((err) => {
+                    if (!helper.postQueryErrorOnly(err, res)) {
+                      jwt.sign({ dentist }, 'amp_secret', (err, token) => {
+                        dentist.access_token = token
+                        helper.sendSuccess(res, dentist)
+                      })
+                    }
+                  })
+                  return
+                }
+              }
+            })
+
+          }
+        }
+      })
+    }
+  })
+})
+router.post('billing-info', (req, res) => {
+  common_middleware(req, res, (err) => {
+
+    if (!err) {
+
+      fields_required = [
+        'first_name',
+        'last_name',
+        'city',
+        'state',
+        'address',
+        'zip',
+        'phone',
+        'package',
+        'auth_type',
+
+      ]
+      post_data = req.body
+
+      // TODO : PACKAGE ID VALIDATION FOR MONGOOSE
+
+      if (!helper.validateFieldAuto(res, post_data, fields_required))
+        return
+
+
+      if (post_data.package == 'PRO') {
+        if (!helper.validateField(res, post_data, 'service_provider', 'Service Provider'))
+          return
+        if (!helper.validateField(res, post_data, 'software', 'Software'))
+          return
+      }
+
+      if (post_data.auth_type == 'DESKTOP') {
+        if (post_data.auth_type == 'DESKTOP') {
+
+          fields_required = [
+            'pwd',
+            'conf_pwd'
+          ]
+
+          if (!helper.validateFieldAuto(res, post_data, fields_required))
+            return
+
+          if (post_data.pwd.length < 8) {
+            helper.sendError(res, "Passwords needs to be at least 8 characters long.")
+            return
+          }
+
+          if (post_data.pwd != post_data.conf_pwd) {
+            helper.sendError(res, "Passwords do not match.")
+            return
+          }
+
+        }
+      } else if (post_data.auth_type == 'FB') {
+        if (!helper.validateField(res, post_data, 'fb_id', 'Facebook ID'))
+          return
+      } else if (post_data.auth_type == 'GOOGLE') {
+        if (!helper.validateField(res, post_data, 'g_id', 'Google ID'))
+          return
+      }
+
+
+
+
+
+
+      Dentist.findOne({ 'email': post_data.email }, (err, dentist) => {
+        // console.log(dentist)
+        if (!helper.postQueryErrorOnly(err, res)) {
+          if (dentist != null) {
+            helper.sendError(res, "An account with this email already exists.")
+            return
+          } else {
+
+            ServiceProvider.findById(post_data.service_provider, (err, service_provider) => {
+              if (!helper.postQueryErrorOnly(err, res)) {
+                if (service_provider == null && post_data.package == "PRO") {
+                  helper.sendError(res, "No such service provider found")
+                  return
+                } else {
+
+                  dentist = new Dentist({
+                    'email': post_data.email,
+                    'address': post_data.address,
+                    'unit': post_data.unit,
+                    'zip': post_data.zip,
+                    'first_name': post_data.first_name,
+                    'last_name': post_data.last_name,
+                    'city': post_data.city,
+                    'state': post_data.state,
+                    'phone': post_data.phone,
+                    'package': post_data.package,
+                    'first_ready': false,
+                    'auth_type': post_data.auth_type,
+                    'service_provider': post_data.service_provider,
+                    'email_verified': true
+
+                  })
+
+                  temp_pwd = ''
+                  if (post_data.auth_type == 'DESKTOP') {
+                    temp_pwd = post_data.pwd
+                    pwd = bcrypt.hashSync(post_data.pwd, 10)
+                    dentist.pwd = pwd
+                  } else if (post_data.auth_type == 'FB') {
+                    dentist.fb_id = post_data.fb_id
+                  } else if (post_data.auth_type == 'GOOGLE') {
+                    dentist.g_id = post_data.g_id
+                  }
+
+                  if (post_data.package == "PRO") {
+                    dentist.software = post_data.software;
+                  }
+
+                  dentist.save((err) => {
+                    if (!helper.postQueryErrorOnly(err, res)) {
+                      jwt.sign({ dentist }, 'amp_secret', (err, token) => {
+                        dentist.access_token = token
+                        helper.sendSuccess(res, dentist)
+                      })
+                    }
+                  })
+
+                  // email.sendDefaultEmail(dentist.email, 'Your acount is created successfully', base_url + '/#/plan/' + token, (err, info) => {
+                  //     if (err) {
+                  //         console.log(err)
+                  //     }
+                  // })
+                  return
+                }
+              }
+            })
+
+          }
+        }
+      })
+    }
+  })
+})
+router.post('/set-theme-data', jwt_middleware, (req, res) => {
+  fields_required = [
+    'theme_info'
+  ]
+  post_data = req.body
+  if (!helper.validateFieldAuto(res, post_data, fields_required))
+    return
+
+  dentist_middlewareware(req.authData.dentist, res, (err, dentist) => {
+    if (!err) {
+      // DO THIS WHEN MOBILE TEMPLATE READY //
+      //*************************************/
+      // obj = req.body.theme_info
+      // obj = JSON.parse(obj)
+      // image = decodeBase64Image(obj.img)
+      // ext = image.type.split('/')[1]
+      // file_name = "logo." + ext
+      // fs.writeFile(file_name, image.data, (err) => {
+      //   if (err) console.log(err);
+      //   console.log("Successfully Written to File.");
+      // });
+
+      dentist.theme_info = req.body.theme_info;
+      dentist.theme_info.img = null;
+      dentist.theme_setup = true;
+      console.log(dentist)
+      console.log(dentist.url)
+      dentist.save((err) => {
+        if (!helper.postQueryErrorOnly(err, res)) {
+          helper.sendSuccess(res, dentist)
+          url = "<a href = 'https://mongodb-multi-instance-test.herokuapp.com/serve-app/" + dentist.url + "'>Click HERE!</a>";
+          email.sendDefaultEmail(dentist.email, 'We are creating your app.', 'URL : ' + url, "You can click this to open your app in PWA view.", (err, info) => {
+            if (err) {
+              console.log(err)
+            }
+          })
+        }
+      })
+
+    }
+  })
+
+})
+
+function decodeBase64Image(dataString) {
+  var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+    response = {};
+
+  if (matches.length !== 3) {
+    return new Error('Invalid input string');
+  }
+
+  response.type = matches[1];
+  response.data = new Buffer(matches[2], 'base64');
+
+  return response;
+}
+
+module.exports = router;

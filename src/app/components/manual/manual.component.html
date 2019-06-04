@@ -10,9 +10,9 @@
     </div>
     <div class="form-area">
       <!-- <h3 *ngIf="selectedTab == 1">EMR/Software</h3> -->
-      <h3 *ngIf="selectedTab == 2">EMR/Software</h3>
+
       <form>
-        <ng-container *ngIf="selectedTab == 0">
+        <ng-container *ngIf="selectedTabD == 0">
           <h3>Doctors Names</h3>
           <div class="form-row" *ngFor="let doctor of stepOne.docNames">
             <div class="form-two-col">
@@ -31,12 +31,12 @@
           <div class="form-row">
             <div class="form-two-col">
               <label>Practice Name</label>
-              <input type="text" placeholder="Practice Name" [(ngModel)]="stepOne.practice_name" name="practice_name"
-                (ngModelChange)="changeInFields('practice_name')" maxlength="15" />
+              <input type="text" placeholder="Practice Name" [(ngModel)]="stepOne.practice_info.practice_name"
+                name="practice_name" (ngModelChange)="changeInFields('practice_name')" maxlength="15" />
             </div>
             <div class="form-two-col">
               <label>Email</label>
-              <input type="email" [(ngModel)]="stepOne.email" name="address"
+              <input type="email" [(ngModel)]="stepOne.practice_info.email" name="address"
                 placeholder="Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
           </div>
@@ -44,47 +44,63 @@
             <div class="form-two-col">
               <label>Phone</label>
               <input mask="(000) 000-0000" type="tel" placeholder="Patients use to call office"
-                [(ngModel)]="stepOne.phone" (ngModelChange)="changeInFields('name')" name="name" />
+                [(ngModel)]="stepOne.practice_info.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
             <div class="form-two-col">
               <label>Address</label>
-              <input type="text" placeholder="Physical Address of Practice" [(ngModel)]="stepOne.address" name="zip"
-                (ngModelChange)="changeInFields('zipcode')" />
+              <input type="text" placeholder="Physical Address of Practice" [(ngModel)]="stepOne.practice_info.address"
+                name="zip" (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>Suit/Office #</label>
-              <input type="text" placeholder="Suit Info / Office no." [(ngModel)]="stepOne.suite"
+              <input type="text" placeholder="Suit Info / Office no." [(ngModel)]="stepOne.practice_info.suite"
                 (ngModelChange)="changeInFields('suite')" name="suit" />
             </div>
             <div class="form-two-col">
               <label>ZIP CODE</label>
-              <input type="text" placeholder="Zip Code" [(ngModel)]="user.zipcode" autocomplete="off" name="zip"
-                (ngModelChange)="changeInFields('zipcode')"
-                [ngClass]="{'active': (user.zipcode != '' && user.zipcode != null),'error':userFldsVlds.zipcode == true}" />
+              <input type="text" placeholder="Zip Code" [(ngModel)]="stepOne.practice_info.zipcode" autocomplete="off"
+                name="zip" (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>CITY</label>
-              <input type="text" placeholder="City" [(ngModel)]="user.city" autocomplete="off" name="city"
-                (ngModelChange)="changeInFields('city')"
-                [ngClass]="{'active': user.city != '','error':userFldsVlds.city == true}" />
+              <input type="text" placeholder="City" [(ngModel)]="stepOne.practice_info.city" autocomplete="off"
+                name="city" (ngModelChange)="changeInFields('city')" />
             </div>
             <div class="form-two-col">
-              <label>STATE</label>
-              <input type="text" placeholder="State" [(ngModel)]="user.state" autocomplete="off" name="state"
-                (ngModelChange)="changeInFields('state')"
-                [ngClass]="{'active': (user.state != '' && user.state != null),'error':userFldsVlds.state == true}" />
+
+
+
+              <label>State</label>
+              <mat-select placeholder="State">
+                <mat-option *ngFor=" let state of states" [(value)]="stepOne.practice_info.state">
+                  {{state.name}}
+                </mat-option>
+              </mat-select>
+
+
+
+              <!-- <label>STATE</label>
+              <input type="text" placeholder="State" [(ngModel)]="stepOne.practice_info.state" autocomplete="off"
+                name="state" (ngModelChange)="changeInFields('state')" /> -->
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-two-col">
+              <label>App URL</label>
+              <input type="text" placeholder="A short only alphabetical name with no spaces" maxlength="8"
+                pattern="[a-zA-Z1-9]8" [(ngModel)]="stepOne.practice_info.url" autocomplete="off" name="url" />
             </div>
           </div>
 
-          <button class="blue-btn" (click)="toStep(1)" mat-raised-button>SAVE & NEXT</button>
+          <button class="blue-btn" (click)="updateStepOne(1)" mat-raised-button>SAVE & NEXT</button>
         </ng-container>
-        <ng-container *ngIf="selectedTab == 1">
+        <ng-container *ngIf="selectedTabD == 1">
           <h3>Office Hours</h3>
-          <ng-container *ngFor="let din of stepOne.officeHours;let i = index;">
+          <ng-container *ngFor="let din of stepTwo.officeHours;let i = index;">
             <h4>{{din.day}}</h4>
             <div class="form-row">
               <div class="form-four-col">
@@ -137,51 +153,93 @@
               <div></div>
             </div>
           </ng-container>
-          <button class="blue-btn" (click)="update" mat-raised-button>SAVE & NEXT</button>
+          <button class="blue-btn" (click)="updateStepTwo(2)" mat-raised-button>SAVE & NEXT</button>
         </ng-container>
-        <ng-container *ngIf="selectedTab == 2">
+        <ng-container *ngIf="selectedTabD == 2">
+          <h3>EMR/Software</h3>
           <div class="form-row">
             <div class="form-one-col">
               <label>Which Software are you using?</label>
-              <input type="text" [(ngModel)]="stepTwo.software" (ngModelChange)="changeInFields('name')" name="soft" />
+              <input type="text" [(ngModel)]="stepThree.emrInfo.software" (ngModelChange)="changeInFields('name')"
+                name="soft" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-two-col">
               <label>NPI</label>
-              <input type="text" [(ngModel)]="stepTwo.npi" name="npi" (ngModelChange)="changeInFields('address')" />
+              <input type="text" [(ngModel)]="stepThree.emrInfo.npi" name="npi"
+                (ngModelChange)="changeInFields('address')" />
             </div>
             <div class="form-two-col">
               <label>Authorization Credentials</label>
-              <input type="text" [(ngModel)]="stepTwo.auth" name="auth" (ngModelChange)="changeInFields('zipcode')" />
+              <input type="text" [(ngModel)]="stepThree.emrInfo.auth" name="auth"
+                (ngModelChange)="changeInFields('zipcode')" />
             </div>
           </div>
           <div class="form-row">
             <div class="form-one-col">
               <label>Token</label>
-              <input type="text" name="token" [(ngModel)]="stepTwo.token" (ngModelChange)="changeInFields('email')" />
+              <input type="text" name="token" [(ngModel)]="stepThree.emrInfo.token"
+                (ngModelChange)="changeInFields('email')" />
             </div>
           </div>
           <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
-          <button class="blue-btn" (click)="toStep(3)" mat-raised-button>SAVE & NEXT</button>
+          <button class="blue-btn" (click)="updateStepThree(3)" mat-raised-button>SAVE & NEXT</button>
 
           <!-- <button class="blue-btn" (click)="update()" mat-raised-button>SAVE & NEXT</button> -->
         </ng-container>
-        <ng-container *ngIf="selectedTab == 3">
-
+        <ng-container *ngIf="selectedTabD == 3">
+          <h3>Social Information</h3>
+          <div class="img_holder">
+            <img class="under" src="../../../assets/img/under_dev.png" alt="Under Development" />
+          </div>
           <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
-          <button class="blue-btn" (click)="update()" mat-raised-button>SAVE & NEXT</button>
+          <button class="blue-btn" (click)="updateStepFour()" mat-raised-button>SAVE & NEXT</button>
         </ng-container>
-        <mat-tab-group headerPosition="below" [selectedIndex]=0>
-          <mat-tab [disabled]="true">
-          </mat-tab>
-          <mat-tab [disabled]="true">
-          </mat-tab>
-          <mat-tab [disabled]="true" *ngIf="user.package != 'LITE'">
-          </mat-tab>
-          <mat-tab [disabled]="true">
-          </mat-tab>
-        </mat-tab-group>
+        <ng-container *ngIf="selectedTabD == 4">
+          <h3>Forms</h3>
+          <div class="img_holder">
+            <img class="under" src="../../../assets/img/under_dev.png" alt="Under Development" />
+          </div>
+          <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
+          <button class="blue-btn" (click)="updateStepFive(4)" mat-raised-button>SAVE & NEXT</button>
+        </ng-container>
+        <ng-container *ngIf="selectedTabD == 5">
+          <h3>Scheduling Information</h3>
+          <div class="img_holder">
+            <img class="under" src="../../../assets/img/under_dev.png" alt="Under Development" />
+          </div>
+          <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
+          <button class="blue-btn" (click)="updateStepSix(5)" mat-raised-button>SAVE & NEXT</button>
+        </ng-container>
+        <ng-container *ngIf="selectedTabD == 6">
+          <h3>Users</h3>
+          <div class="img_holder">
+            <img class="under" src="../../../assets/img/under_dev.png" alt="Under Development" />
+          </div>
+          <button class="add-doc" (click)="selectTheme()" mat-raised-button>{{selectedTheme}}</button>
+          <button class="blue-btn" (click)="updateStepSeven(6)" mat-raised-button>SAVE & NEXT</button>
+        </ng-container>
+        <!-- <div class="h123">
+          <mat-tab-group headerPosition="below" [selectedIndex]="selectedTab">
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true" *ngIf="user.package != 'LITE'">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+          </mat-tab-group>
+        </div> -->
       </form>
     </div>
   </div>

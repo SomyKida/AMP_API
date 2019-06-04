@@ -1,18 +1,27 @@
 <div class="phone">
-  <img class="backward" src="assets/img/backward.png" (click)="backward()" alt="">
+  <!-- <img class="backward" src="assets/img/backward.png" (click)="backward()" alt=""> -->
   <div class="phoneBody" *ngIf="current!=4">
     <span class="right-side-btn"></span>
     <span class="left-side-btn-1"></span>
     <span class="left-side-btn-2"></span>
     <span class="left-side-btn-3"></span>
     <div class="actualBody">
-      <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+      <div *ngIf="logo=='nhorizontal'" class="header"
+        [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
         <div class="iphoneX"></div>
         <div class="logo_row">
           <img *ngIf="image == null" src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
           <img *ngIf="image != null" [src]="image" alt="Anozira Logo" />
-          <h1>{{user.practice_name}}</h1>
+          <h1>{{user.practice_info.practice_name}}</h1>
         </div>
+      </div>
+      <div *ngIf="image == null && logo == 'horizontal'" class="header"
+        [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+        <div class="iphoneX"></div>
+      </div>
+      <div *ngIf="image != null && logo=='horizontal'" class="header" [style.background]="'url(' + image + ')'"
+        [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+        <div class="iphoneX"></div>
       </div>
       <div class="phoneCont">
         <div class="upper">
@@ -51,10 +60,10 @@
             <span>MY ACCOUNT</span>
           </div>
           <div class="forward_lower">
-            <img src="../../../assets/img/forward.png" alt="Forward" />
+            <!-- <img src="../../../assets/img/forward.png" alt="Forward" /> -->
           </div>
           <div class="backward_lower">
-            <img src="../../../assets/img/backward.png" alt="Backward" />
+            <!-- <img src="../../../assets/img/backward.png" alt="Backward" /> -->
           </div>
         </div>
         <div class="lower_new" *ngIf="current == 3">
@@ -176,7 +185,7 @@
     </div>
   </div>
 
-  <img class="forward" src="assets/img/forward.png" (click)="forward()" alt="">
+  <!-- <img class="forward" src="assets/img/forward.png" (click)="forward()" alt=""> -->
 </div>
 
 <div class="phoneInfo">
