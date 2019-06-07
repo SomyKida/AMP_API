@@ -42,7 +42,7 @@ export class AppCustomizationComponent implements OnInit {
   } = {
       which: true,
       primary: '#178aff',
-      secondary: '#08ccff',
+      secondary: '#178aff',
       logo: '',
       img: null,
       template: '',

@@ -79,8 +79,10 @@ export class AlitaComponent implements OnInit {
       } else {
         this.router.navigate(['theme/appSelect']);
       }
+    } else {
+      this.proceed.emit('manual');
     }
-    this.proceed.emit('manual');
+
   }
 
   alitaSend() {

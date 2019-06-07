@@ -283,6 +283,9 @@ ngx-color/hue
 
 ngx-color/slider
 
+ngx-image-cropper
+MIT
+
 ngx-mask
 MIT
 MIT License
