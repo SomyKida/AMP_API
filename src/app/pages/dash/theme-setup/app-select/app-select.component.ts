@@ -27,6 +27,9 @@ export class AppSelectComponent implements OnInit {
   ngOnInit() {
 
   }
+  previous() {
+    this.router.navigate(['setup'])
+  }
 
   selected(id) {
     const params = {

@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   forgot(params) {
-    var url = this.constants.API_ENDPOINT + '/api/dentist/auth/login';
+    var url = this.constants.API_ENDPOINT + '/api/dentist/auth/reset-password';
     var response = this.http.post(url, params, {}).pipe(map(res => res.json()));
     return response;
   }

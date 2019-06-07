@@ -1,10 +1,13 @@
 import { ThemeSetupService } from 'src/app/services/theme-setup/theme-setup.service';
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { CredentialService } from 'src/app/services/credentials/credential.service';
 import { AuxService } from 'src/app/auxilaries/aux.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { CdkStepperPrevious } from '@angular/cdk/stepper';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-app-customization',
@@ -12,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app-customization.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class AppCustomizationComponent implements OnInit {
   primarySelected: boolean = false;
   logoSelected: boolean = false;
@@ -44,7 +48,8 @@ export class AppCustomizationComponent implements OnInit {
       template: '',
       logoType: 'horizontal'
     }
-
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
   constructor(
     private credentials: CredentialService,
     public auth: AuthService,
@@ -56,11 +61,30 @@ export class AppCustomizationComponent implements OnInit {
     })
   }
 
+
   ngOnInit() {
   }
+  fileChangeEvent(event: any, files: any): void {
+    this.imageChangedEvent = event;
+    this.colorTheme.logo = files[0].name;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+    this.colorTheme.img = event.base64;
+    console.log(event)
+  }
+
+
   logoSet(str) {
     this.temp_logo = str;
     this.colorTheme.logoType = str;
+  }
+  previous() {
+    if (this.logoSelected == true) {
+      this.logoSelected = false;
+    } else {
+      this.router.navigate(['/theme/appSelect']);
+    }
   }
   selectPrimary() {
     this.primarySelected = true;
@@ -73,8 +97,6 @@ export class AppCustomizationComponent implements OnInit {
       return;
     }
     else {
-
-
       if (this.colorTheme.logo == '') {
         this.aux.showAlert("Please chose a logo for your app.", "ERROR!");
         return;
@@ -120,33 +142,6 @@ export class AppCustomizationComponent implements OnInit {
   changeSecondary(which) {
     this.colorTheme.secondary = which.color.hex;
 
-  }
-
-  processFile(image) {
-    this.colorTheme.logo = image[0].name;
-    var reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.colorTheme.img = e.target.result;
-    }
-    reader.readAsDataURL(image[0])
-  }
-
-  saveTemplate() {
-    // if (this.colorTheme.logo == '') {
-    //   this.aux.showAlert("Please chose a logo for your app.", "ERROR!");
-    //   return;
-    // }
-    // var params = new FormData();
-    // params.append('primary_color', this.colorTheme.primary);
-    // params.append('secondary_color', this.colorTheme.secondary);
-    // params.append('theme', this.colorTheme.template.name);
-    // params.append('logo', this.colorTheme.img);
-    // this.auth.setupTemplate(params).subscribe((success) => {
-    //   this.credentials.setUser(success.data);
-    //   this.router.navigate(['/home']);
-    // }, (error) => {
-    //   this.aux.errorResponse(error);
-    // })
   }
 
 }

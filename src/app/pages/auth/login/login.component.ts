@@ -34,7 +34,28 @@ export class LoginComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-
+  forgot() {
+    if (this.user.email == '' || this.user.email == null) {
+      this.aux.showAlert("Please enter your email.", "ERROR!");
+      return;
+    } else {
+      const params = {
+        'email': this.user.email
+      };
+      this.auth.forgot(params).subscribe((data) => {
+        if (!data.status) {
+          console.log("here");
+          this.aux.showAlert(data.errorMessage, "ERROR!");
+          return;
+        } else {
+          this.aux.showAlert("Your password has been reset and sent to your email", "Success!");
+          return;
+        }
+      }, (error) => {
+        this.aux.errorResponse(error);
+      })
+    }
+  }
   changeInFields(field) {
     if (field == 'email')
       this.usrVld.usr = false;

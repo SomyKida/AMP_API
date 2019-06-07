@@ -9,6 +9,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { MaterialModule } from '../../../components/material/material.module';
 import { AppCustomizationComponent } from './app-customization/app-customization.component';
 import { EmailDispatchComponent } from './email-dispatch/email-dispatch.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [AppSelectComponent, ThemeSetupComponent, AppCustomizationComponent, EmailDispatchComponent],
   imports: [
@@ -17,7 +18,9 @@ import { EmailDispatchComponent } from './email-dispatch/email-dispatch.componen
     ThemeSetupRoutingModule,
     MaterialModule,
     ColorChromeModule,
-    ColorSliderModule
+    ColorSliderModule,
+    ImageCropperModule
   ]
 })
+
 export class ThemeSetupModule { }

@@ -10,18 +10,19 @@
           <span class="logo"></span>
           <h3>Login to your dashboard!</h3>
         </div>
-        <form>
+        <div class="form-class">
           <div class="form-row">
             <div class="form-two-col">
               <div class="cus-inp-row">
                 <label>Email</label>
-                <input type="text" autocomplete="off" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')"
-                  name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
+                <input type="email" autocomplete="off" tabindex="1" [(ngModel)]="user.email"
+                  (ngModelChange)="changeInFields('email')" name="address" (keyup.enter)="login()"
+                  [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
               </div>
               <div class="cus-inp-row">
                 <label>Password</label>
-                <input type="password" autocomplete="off" [(ngModel)]="user.password"
-                  (ngModelChange)="changeInFields('pass')" name="unit"
+                <input type="password" autocomplete="off" tabindex="2" [(ngModel)]="user.password"
+                  (ngModelChange)="changeInFields('pass')" name="unit" (keyup.enter)="login()"
                   [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
               </div>
               <div class="cus-check-row">
@@ -31,10 +32,10 @@
             </div>
             <div class="form-two-col">
               <div class="">
-                <button (click)="fbLogin()" class="cus-btn fb-btn" mat-raised-button>
+                <button (click)="fbLogin()" tabindex="4" class="cus-btn fb-btn" mat-raised-button>
                   FACEBOOK LOGIN
                 </button>
-                <button (click)="gpLogin()" class="cus-btn google-btn" mat-raised-button>
+                <button (click)="gpLogin()" tabindex="5" class="cus-btn google-btn" mat-raised-button>
                   GOOGLE LOGIN
                 </button>
                 <!-- <div class="cus-btn inp-btn">
@@ -43,9 +44,10 @@
               </div>
             </div>
           </div>
-          <button class="blue-btn" (click)="login()" mat-raised-button>NEXT</button>
-          <p class="forgot-text">Forgot Your Password</p>
-        </form>
+
+          <button type="submit" tabindex="3" class="blue-btn" (click)="login()" mat-raised-button>NEXT</button>
+          <p (click)="forgot()" class="forgot-text">Forgot Your Password</p>
+        </div>
       </div>
     </div>
   </div>

@@ -126,7 +126,7 @@ $font-path-productsans: "/assets/fonts/productsans";
                 font-family: 'ProximaNova-Light';
             }
 
-            form {
+            form, .form-class {
                 .form-row {
                     display: flex;
                     justify-content: space-between;
