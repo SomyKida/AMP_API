@@ -102,6 +102,7 @@ export class AppCustomizationComponent implements OnInit {
         return;
       }
       var params = new FormData();
+      this.colorTheme.img = "123";
       params.append('theme_info', JSON.stringify(this.colorTheme));
       // params.append('logo', this.colorTheme.img);
       this.auth.setupTemplate(params).subscribe((success) => {

@@ -401,7 +401,7 @@ export class ManualComponent implements OnInit {
 
   updateStepOne(which) {
     var docs = [];
-
+    console.log(this.stepOne.practice_info)
     for (let i = 0; i < Object.keys(this.stepOne.practice_info).length; i++) {
       if (this.stepOne.practice_info[Object.keys(this.stepOne.practice_info)[i]] == '' || this.stepOne.practice_info[Object.keys(this.stepOne.practice_info)[i]] == null) {
         this.aux.showAlert('Please don\'t leave any field blank', 'ERROR!');

@@ -40,10 +40,11 @@
                 placeholder="Email patients use to contact office" (ngModelChange)="changeInFields('address')" />
             </div>
           </div>
+
           <div class="form-row">
             <div class="form-two-col">
               <label>Phone</label>
-              <input mask="(000) 000-0000" type="tel" placeholder="Patients use to call office"
+              <input mask="(000) 000-0000" type="tel" placeholder="# Patients use to call office"
                 [(ngModel)]="stepOne.practice_info.phone" (ngModelChange)="changeInFields('name')" name="name" />
             </div>
             <div class="form-two-col">

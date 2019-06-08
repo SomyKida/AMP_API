@@ -361,3 +361,14 @@
     letter-spacing: 1.5px;
     font-family: 'ProximaNova-Semibold';
 }
+
+@media (max-width: 800px){
+  .chatArea{
+    display: none !important;
+  }
+  .botIntro{
+    border-right: none !important;
+    width: 100% !important;
+    margin-left: 25% !important;
+  }
+}

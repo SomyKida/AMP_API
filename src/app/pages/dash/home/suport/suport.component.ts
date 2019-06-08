@@ -7,12 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./suport.component.scss']
 })
 export class SuportComponent implements OnInit {
+  public menuForMobs: boolean = false;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+  }
+
+  openMenuForMobile() {
+    this.menuForMobs = !this.menuForMobs;
   }
 
   category(abc) {

@@ -38,6 +38,21 @@
             height: 5px;
             background: $darkBlue;
         }
+        .headFab {
+          display: none;
+          width: 15%;
+
+          @media (max-width: 800px) {
+            display: inline;
+            position: absolute;
+            left: 15px;
+            top: 20px;
+          }
+
+          img {
+              width: 100%;
+          }
+      }
 
     }
 
@@ -117,4 +132,20 @@
             }
         }
     }
+}
+
+@media (max-width: 800px){
+  .GlobalContainer{
+    display: contents !important;
+  }
+  .container{
+    width: 95% !important;
+  }
+  li{
+    width: 85% !important;
+    height: 35vh !important;
+    background: #ffffff !important;
+    margin-right: -5px !important;
+    margin-bottom: 20px !important;
+  }
 }

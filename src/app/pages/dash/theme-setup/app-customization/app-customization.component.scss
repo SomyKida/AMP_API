@@ -257,6 +257,16 @@
 
         .left-side {
             width: 57%;
+            button {
+              width: 55%;
+          }
+
+          .empty-logo-label {
+              font-size: 12px;
+              color: rgb(74, 74, 74);
+              text-align: left;
+              margin-top: 1%;
+          }
 
             p {
                 color: $back;
@@ -270,16 +280,6 @@
         .right-side {
             width: 35%;
             margin-left: auto;
-
-            button {
-                width: 100%;
-            }
-
-            .empty-logo-label {
-                font-size: 12px;
-                color: rgb(74, 74, 74);
-                text-align: right;
-            }
 
         }
     }
@@ -622,3 +622,82 @@
 }
 
 
+@media (max-width: 800px){
+  .container{
+    width: 100% !important;
+  }
+  .hide-media{
+    display: none !important;
+  }
+  .logo-setup{
+    padding: 15px 25px !important;
+  }
+  .botArea{
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  >h3{
+    font-size: 22pt !important;
+  }
+  .left-side{
+    width: 100% !important;
+  }
+  .horizontal_logo, .other_logo, .logo-setup{
+    flex-direction: column !important;
+    text-align: left !important;
+    .img_spanner{
+      width: 70% !important;
+    }
+    .text-spanner{
+      text-align: center !important;
+      padding-left: 0px !important;
+      margin-top: 5% !important;
+      width: 70% !important;
+    }
+  }
+  .logo_select_btn{
+    margin-left: 14% !important;
+  }
+
+  .template{
+    border-right: none !important;
+    padding-right: 0% !important;
+  }
+
+  .phoneInfo{
+    border-bottom: 2px solid #ececec;
+    padding-bottom: 0px !important;
+  }
+
+  .app-setup{
+    margin-top: 15% !important;
+    padding: 40px 25px !important;
+    >h3{
+      font-size: 22pt !important;
+    }
+  }
+  .upload-logo-section{
+    flex-direction: column;
+    .right-side{
+      width: 100% !important;
+    }
+  }
+  .app-color-setting{
+    >h3{
+      font-size: 22pt !important;
+    }
+  }
+  .picker{
+    margin-top: 15% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    .picker-column{
+      margin-left: 0px !important;
+    }
+    .single-border{
+      padding-right: 0px !important;
+      border-right: none !important;
+      margin-bottom: 5%;
+    }
+  }
+}

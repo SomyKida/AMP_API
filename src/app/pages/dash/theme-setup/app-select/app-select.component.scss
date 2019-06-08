@@ -31,7 +31,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-left: 21%;
+      margin-left: 32%;
       h1{
         font-family: "ProximaNova-Bold";
         font-size: 32pt;
@@ -126,3 +126,26 @@
   }
 }
 
+@media (max-width: 800px){
+  .column{
+    margin-top: 15% !important;
+  }
+  .blue-btn{
+    margin: 6% 0px 0px 0px !important;
+  }
+  .content{
+    align-items: center !important;
+  }
+  h1{
+    font-size: 22pt !important;
+  }
+  row{
+    flex-direction: column !important;
+  }
+  .header-column{
+    margin-left: 13% !important;
+  }
+  .container{
+    width: 100% !important;
+  }
+}

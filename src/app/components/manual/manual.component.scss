@@ -197,3 +197,37 @@ mat-select{
 }
 
 
+@media (max-width: 800px){
+  .container{
+    width: 100% !important;
+  }
+  .form-row{
+    margin: 0px 0px !important;
+    label{
+      margin-bottom: 10px;
+    }
+  }
+  .extra_top{
+    margin-top: 10% !important;
+  }
+  .form-two-col{
+    margin-top: 5% !important;
+  }
+  .add-doc{
+    margin-top: 25px !important;
+  }
+
+  .form-four-col{
+    label{
+      font-size: 14px !important;
+      font-family: "ProximaNova-Light" !important;
+      height: 50px !important;
+    }
+  }
+  .form-off-col{
+    margin-top: 18% !important;
+    label{
+      display: none !important;
+    }
+  }
+}

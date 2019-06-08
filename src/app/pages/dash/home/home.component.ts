@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   // public botOrManual: boolean = true;
   public user;
+  public menuForMobs: boolean = false;
   constructor(private credentials: CredentialService,
     private router: Router) {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -20,7 +21,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  openMenuForMobile() {
+    this.menuForMobs = !this.menuForMobs;
+  }
   // switchToManual(event) {
   //   this.botOrManual = false;
   // }

@@ -1321,12 +1321,32 @@ router.post('/set-theme-data', jwt_middleware, (req, res) => {
       //   console.log("Successfully Written to File.");
       // });
 
+      req.body.theme_info.img = null;
       dentist.theme_info = req.body.theme_info;
       dentist.theme_info.img = null;
       dentist.theme_setup = true;
       dentist.save((err) => {
         if (!helper.postQueryErrorOnly(err, res)) {
           helper.sendSuccess(res, dentist)
+          fs.remove(base_path + '/domains/' + dentist.id, err => {
+            if (err) return console.error(err)
+            //add theme selection logic here
+            fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/')
+            fs.copy(base_path + '/dist/mobile/omni', base_path + '/domains/' + dentist.id + '/app')
+              .then(() => {
+                obj = req.body.theme_info
+                obj = JSON.parse(obj)
+                image = decodeBase64Image(obj.img)
+                ext = image.type.split('/')[1]
+                file_name = "logo." + ext
+                fs.writeFile(base_path + '/domains/' + dentist.id + '/logo.png', image.data, (err) => {
+                  if (err) console.log(err);
+                  console.log("Successfully Written to File.");
+                });
+              })
+              .catch(err => console.error(err))
+          })
+
           url = "<a href = 'https://mongodb-multi-instance-test.herokuapp.com/serve-app/" + dentist.url + "'>Click HERE!</a>";
           email.sendDefaultEmail(dentist.email, 'We are creating your app.', 'URL : ' + url, "You can click this to open your app in PWA view.", (err, info) => {
             if (err) {
@@ -1335,7 +1355,6 @@ router.post('/set-theme-data', jwt_middleware, (req, res) => {
           })
         }
       })
-
     }
   })
 

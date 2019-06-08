@@ -12,7 +12,8 @@
     <div class="botArea">
       <ng-container>
         <app-template (chosenTemplate)="chosen($event)" [logo]="colorTheme.img" [primary]="colorTheme.primary"
-          [secondary]="colorTheme.secondary" [logoType]="logo" class="template"></app-template>
+          [secondary]="colorTheme.secondary" [logoType]="logo"
+          [class]="logoSelected==true?'template':'template hide-media'"></app-template>
         <div *ngIf="!logoSelected" class="logo-setup">
           <h3>Choose Your Logo</h3>
           <div class="upload-logo-section">
@@ -63,6 +64,8 @@
               <p>When uploading your logo try to use a horizontal image as that will be the best fit for your app. See
                 the
                 default and how it fits so nicely! </p>
+              <button (click)="file.click()" class="choose btn-blue" mat-raised-button>Choose Logo</button>
+              <p class="empty-logo-label">{{colorTheme.logo == '' ? "No image Selected":colorTheme.logo}}</p>
             </div> <!-- left side -->
 
             <div class="right-side">
@@ -77,8 +80,7 @@
                 format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
                 (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
               </image-cropper>
-              <button (click)="file.click()" class="choose btn-blue" mat-raised-button>Choose Logo</button>
-              <p class="empty-logo-label">{{colorTheme.logo == '' ? "No image Selected":colorTheme.logo}}</p>
+
             </div> <!-- right side -->
 
           </div> <!-- upload logo section -->

@@ -15,3 +15,28 @@
       }
     }
 }
+.form-head-row {
+  padding: 2% 2% 0% 2%;
+  .back {
+      img {
+          vertical-align: middle;
+          width: 50px;
+      }
+
+      span {
+          vertical-align: middle;
+          color: $back;
+          text-transform: uppercase;
+      }
+  }
+}
+
+@media (max-width: 800px){
+  .img_holder{
+    margin-top: 70% !important;
+    margin-left:40% !important;
+    img{
+      width: 120% !important;
+    }
+  }
+}

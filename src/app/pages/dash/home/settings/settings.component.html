@@ -1,7 +1,10 @@
-<app-side-bar></app-side-bar>
+<app-side-bar [display]="menuForMobs" (close)="openMenuForMobile()"></app-side-bar>
 <div class="GlobalContainer">
   <div class="wrapper">
     <div class="heading">
+      <div class="headFab" (click)="openMenuForMobile()" matRipple>
+        <img src="assets/img/phoneFab.png" alt="">
+      </div>
       <h1>Your Settings</h1>
       <span></span>
     </div>

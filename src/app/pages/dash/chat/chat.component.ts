@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  public menuForMobs: boolean = false;
+
   public categories = {
     first: false,
     second: false,
@@ -18,6 +20,10 @@ export class ChatComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openMenuForMobile() {
+    this.menuForMobs = !this.menuForMobs;
   }
 
   category(which) {
