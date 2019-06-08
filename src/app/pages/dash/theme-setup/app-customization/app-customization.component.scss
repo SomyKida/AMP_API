@@ -670,11 +670,14 @@
   }
 
   .app-setup{
-    margin-top: 15% !important;
     padding: 40px 25px !important;
     >h3{
       font-size: 22pt !important;
     }
+
+  }
+  .padd-top{
+    margin-top: 10%;
   }
   .upload-logo-section{
     flex-direction: column;

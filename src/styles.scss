@@ -133,6 +133,7 @@ $font-path-productsans: "/assets/fonts/productsans";
                     margin: 25px 0;
 
                     @media (max-width: 767px) {
+                        margin: 0px !important;
                         flex-wrap: wrap;
                         flex-direction: column;
 
@@ -167,6 +168,10 @@ $font-path-productsans: "/assets/fonts/productsans";
                         font-size: 16px;
                         letter-spacing: 1.5px;
                         font-family: 'ProximaNova-Light';
+
+                        @media (max-width: 767px) {
+                          margin-top: 10px;
+                        }
                     }
 
                     input {
@@ -195,6 +200,9 @@ $font-path-productsans: "/assets/fonts/productsans";
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
+                    @media (max-width: 767px){
+                      margin-top: 10%;
+                    }
 
                     label {
                         span {
@@ -205,6 +213,9 @@ $font-path-productsans: "/assets/fonts/productsans";
                             display: inline-block;
                             vertical-align: middle;
                             margin-right: 10px;
+                            @media (max-width: 767px){
+                              margin-right: 4px !important;
+                            }
                         }
                     }
 
@@ -225,6 +236,9 @@ $font-path-productsans: "/assets/fonts/productsans";
                     .box {
                         display: inline-block;
                         vertical-align: middle;
+                        @media (max-width: 767px){
+                          display: inline !important;
+                        }
                     }
 
                     .statement {
@@ -235,7 +249,14 @@ $font-path-productsans: "/assets/fonts/productsans";
                         font-family: 'ProximaNova-Light';
                         color: $back;
                         vertical-align: middle;
+
+                        @media (max-width: 767px){
+                          vertical-align: text-bottom !important;
+                          display: inline !important;
+                        }
                     }
+
+
 
                 }
 
