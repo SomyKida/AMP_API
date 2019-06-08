@@ -1,0 +1,340 @@
+@import '../../../theme/variables';
+
+.alitaWrapper {
+
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+
+    .botArea {
+        display: flex;
+        flex-direction: row;
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+
+        .botIntro {
+            flex: 0.4;
+            display: flex;
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-right: 2px solid #ececec;
+
+            .face {
+                width: 253px;
+                height: 253px;
+                border-radius: 80px;
+                overflow: hidden;
+                text-align: center;
+                background: transparent;
+                // box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+                background-image: url(../../../assets/img/alita.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .content {
+                margin-top: 20px;
+                text-align: center;
+
+                .line {
+                    display: inline-block;
+                    width: 50px;
+                    height: 2px;
+                    background: $darkBlue;
+                }
+
+                h2 {
+                    color: $dark;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                p {
+                    display: inline-block;
+                    width: 70%;
+                    font-size: 16px;
+                    color: $headingNormColor;
+                }
+
+                button {
+                    width: 50%;
+                    background: $darkBlue;
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    font-family: 'ProximaNova-Regular';
+                    padding: 3%;
+                    white-space: normal;
+                    line-height: 1;
+                }
+            }
+
+
+        }
+
+        .template {
+            @extend .botIntro;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-right: 3%;
+        }
+
+        .chatArea {
+            flex: 0.6;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 0 5%;
+
+            ul {
+                width: 100%;
+                height: 90%;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                li {
+                    margin-bottom: 10px;
+
+                    .someone {
+                        text-align: right;
+
+                        img {
+                            display: inline-block;
+                            width: 10%;
+                            border-radius: 50px;
+                            vertical-align: middle;
+                        }
+
+                        p {
+                            display: inline-block;
+                            padding: 3%;
+                            font-size: 14px;
+                            background: $chatGreen;
+                            margin: 0;
+                            vertical-align: middle;
+                            margin-right: 5px;
+                            border-radius: 5px;
+                            color: #ffffff;
+                            max-width: 80%;
+                        }
+                    }
+
+                    .myself {
+                        @extend .someone;
+                        text-align: left;
+
+                        img {
+                            margin-right: 3px;
+                        }
+
+                        p {
+                            background: $darkBlue;
+                            color: #ffffff;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            .form-class {
+                width: 100%;
+                height: 10%;
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+
+                input {
+                    background: $chatInput;
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 75%;
+                    border: none;
+                    padding: 10px;
+                    font-size: 14px;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                }
+
+                button {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 20%;
+                    background: $darkBlue;
+                    padding: 2px;
+                    color: #ffffff;
+                    font-size: 16px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                    border-radius: 10px;
+                    font-family: 'ProximaNova-Regular';
+                }
+            }
+        }
+    }
+
+    &.templateSelection {
+        padding-left: 3%;
+    }
+}
+
+
+.app-setup {
+    flex: 0.6;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px 50px;
+
+    >h3 {
+        font-family: 'ProximaNova-Semibold';
+        font-size: 18px;
+        color: $dark;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .upload-logo-section {
+        display: flex;
+        margin-bottom: 70px;
+
+        .left-side {
+            width: 57%;
+
+            p {
+                color: $back;
+                margin-top: 0px;
+                letter-spacing: 0.5px;
+                font-size: 15px;
+                line-height: 21px;
+            }
+        }
+
+        .right-side {
+            width: 35%;
+            margin-left: auto;
+
+            button {
+                width: 100%;
+            }
+
+            .empty-logo-label {
+                font-size: 12px;
+                color: rgb(74, 74, 74);
+                text-align: right;
+            }
+        }
+    }
+
+    .picker {
+        margin-top: 5%;
+
+        .hue-picker {
+            width: 94% !important;
+            // border: 0;
+        }
+
+        .color-hue {
+            border-radius: 20px !important;
+        }
+    }
+}
+
+.app-color-setting {
+    >h3 {
+        font-family: 'ProximaNova-Semibold';
+        font-size: 18px;
+        color: $dark;
+    }
+}
+
+.color-section-wrap {
+    display: flex;
+}
+
+.color-section {
+    background: $primary;
+    box-shadow: 0px 2px 10px 0px rgba(118, 126, 156, 0.38);
+    padding: 17px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    width: 220px;
+    margin-right: 20px;
+
+    h3 {
+        font-family: 'ProximaNova-Semibold';
+        font-size: 18px;
+        color: $dark;
+        margin: 0px 0px 6px 0px;
+    }
+
+    .color-info {
+        margin-bottom: 25px;
+
+        .view-color {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(0, 255, 125);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -ms-border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .color-code {
+            font-family: 'ProximaNova-Regular';
+            font-size: 15px;
+            color: $back;
+        }
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+.save-setting {
+    display: inline-block;
+    width: 100%;
+    margin-top: 100px;
+
+    button {
+        float: right;
+    }
+}
+
+
+
+.btn-blue {
+    display: block;
+    background: #39d4ff;
+    padding: 10px 25px 8px 25px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-family: 'ProximaNova-Semibold';
+}
+
+.btn-grey {
+    display: block;
+    background: #c7c7c7;
+    padding: 10px 25px 8px 25px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-family: 'ProximaNova-Semibold';
+}

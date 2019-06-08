@@ -10,6 +10,8 @@ module.exports = {
 
         mongoose.connect(url, { useNewUrlParser: true });
 
+        mongoose.set('useCreateIndex', true);
+
         mongoose.connection.on('connected', function () {
             console.log("Mongoose default connection is open to ", url);
         });

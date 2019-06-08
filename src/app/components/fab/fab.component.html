@@ -1,0 +1,29 @@
+<div class="dialog" *ngIf="showDialog == true">
+  <div class="fabDialogWrapper">
+    <ul>
+      <li>
+        <div class="someone">
+          <p>I want some help Alita!</p>
+          <span></span>
+        </div>
+      </li>
+
+      <li>
+        <div class="myself">
+          <span></span>
+          <p>Hey John, No problem! What is it I can help you with?</p>
+        </div>
+      </li>
+    </ul>
+    <form>
+      <input type="text" placeholder="Type Something">
+      <button mat-button>Send Message</button>
+    </form>
+  </div>
+</div>
+<div class="fab">
+  <div class="fabWrapper">
+    <button mat-fab (click)="openDialog()" [ngClass]="{'cross': showDialog}"></button>
+    <p class="botName">ALITA</p>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-side-bar></app-side-bar>
+<div class="GlobalContainer">
+  <div class="wrapper">
+    <div class="heading">
+      <h1>Your Dashboard</h1>
+      <span></span>
+    </div>
+    <div class="content">
+      <ul>
+        <li matRipple>
+          <div class="elements">
+            <img style="width:80px" src="assets/img/dashboard/notifications.png" alt="">
+            <p>Notifications</p>
+          </div>
+        </li>
+        <li (click)="category('second')" matRipple>
+          <div class="elements">
+            <img src="assets/img/scheduling.png" alt="">
+            <p>Scheduling</p>
+          </div>
+        </li>
+        <li (click)="category('third')" matRipple>
+          <div class="elements">
+            <img src="assets/img/chat.png" alt="">
+            <p>Chat</p>
+          </div>
+        </li>
+        <li (click)="category('fourth')" matRipple>
+          <div class="elements">
+            <img style="width:70px" src="assets/img/marketing.png" alt="">
+            <p>Marketing</p>
+          </div>
+        </li>
+        <li (click)="category('fifth')" matRipple>
+          <div class="elements">
+            <img src="assets/img/forms.png" alt="">
+            <p>Forms</p>
+          </div>
+        </li>
+        <li (click)="category('sixth')" matRipple>
+          <div class="elements">
+            <img src="assets/img/settings.png" alt="">
+            <p>Admin</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

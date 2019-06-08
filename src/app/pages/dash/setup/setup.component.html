@@ -1,0 +1,6 @@
+<app-side-bar></app-side-bar>
+<div class="container">
+  <app-alita *ngIf="botOrManual == true" (switch)="switchToManual($event)"></app-alita>
+  <app-manual *ngIf="botOrManual == false" (switch)="switchToAuto($event)"></app-manual>
+  <app-fab></app-fab>
+</div>

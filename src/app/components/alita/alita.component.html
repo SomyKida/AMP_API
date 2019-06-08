@@ -1,0 +1,100 @@
+<div class="alitaWrapper" [ngClass]="{'templateSelection': user.first_setup == true}">
+  <div class="botArea">
+    <ng-container *ngIf="user.first_setup == false">
+      <div class="botIntro">
+        <div class="face"></div>
+        <div class="content">
+          <span class="line"></span>
+          <h2>Meet Alita!</h2>
+          <p>
+            She will help you get everything set up with your new account!
+          </p>
+          <button (click)="manual()" mat-raised-button>Self Setup</button>
+        </div>
+      </div>
+      <div class="chatArea">
+        <ul>
+          <li>
+            <div class="myself">
+              <img src="assets/img/alita.png" alt="">
+              <p>Welcome to your App Dashboard, My name is Alita and i will be assisting you through the set-up process.
+                It will be quick and easy, I will ask you questions and all you need to do is answer them! If you need
+                to pause the on-boarding setup at anytime, just press “Pause” or type “Pause” in the chat window and you
+                can pick up right where we left off. Are you Ready to get started?</p>
+            </div>
+          </li>
+        </ul>
+        <div class="form-class">
+          <input type="text" [(ngModel)]="messageInput" placeholder="Type Something">
+          <button type=" button" (click)="alitaSend()" mat-raised-button>Send</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="user.first_setup == true">
+      <app-template (chosenTemplate)="chosen($event)" [logo]="colorTheme.img" [primary]="colorTheme.primary"
+        [secondary]="colorTheme.secondary" class="template"></app-template>
+      <div class="app-setup">
+        <h3>Choose Your Logo</h3>
+        <div class="upload-logo-section">
+          <div class="left-side">
+            <p>When uploading your logo try to use a horizontal image as that will be the best fit for your app. See the
+              default and how it fits so nicely! </p>
+          </div> <!-- left side -->
+
+          <div class="right-side">
+            <input type="file" accept="image/*" (change)="processFile(file.files)" #file hidden>
+            <button (click)="file.click()" class="choose btn-blue" mat-raised-button>Choose Logo</button>
+            <p class="empty-logo-label">{{colorTheme.logo == '' ? "No image Selected":colorTheme.logo}}</p>
+          </div> <!-- right side -->
+
+        </div> <!-- upload logo section -->
+
+        <div class="app-color-setting">
+
+          <h3>Choose Your Apps Colors</h3>
+
+          <div class="color-section-wrap">
+
+            <div class="color-section">
+              <h3>Primary Color</h3>
+              <div class="color-info">
+                <span class="view-color" *ngIf="colorTheme.which == true"></span>
+                <span class="color-code">{{colorTheme.primary}}</span>
+              </div>
+              <button class="choose" (click)="selection('primary')"
+                [ngClass]="{'btn-blue': colorTheme.which == true,'btn-grey': colorTheme.which == false}"
+                mat-raised-button>CHOOSE COLOR</button>
+            </div> <!-- color box -->
+
+            <div class="color-section">
+              <h3>Secondary Color</h3>
+              <div class="color-info">
+                <span class="view-color" *ngIf="colorTheme.which == false"></span>
+                <span class="color-code">{{colorTheme.secondary}}</span>
+              </div>
+              <button class="choose" (click)="selection('secondary')"
+                [ngClass]="{'btn-blue': colorTheme.which == false,'btn-grey': colorTheme.which == true}"
+                mat-raised-button>CHOOSE COLOR</button>
+            </div> <!-- color box -->
+          </div> <!-- color box wrap -->
+
+        </div> <!-- app color setting-->
+        <div class="picker">
+          <color-hue-picker *ngIf="colorTheme.which == true" [color]="colorTheme.primary"
+            (onChangeComplete)="changePrimary($event)"></color-hue-picker>
+          <color-hue-picker *ngIf="colorTheme.which == false" [color]="colorTheme.secondary"
+            (onChangeComplete)="changeSecondary($event)"></color-hue-picker>
+          <!-- <input *ngIf="colorTheme.which == true" [(colorPicker)]="colorTheme.primary" [style.background]="colorTheme.primary" [style.color]="colorTheme.primary" />
+          <input (colorPickerChange)="changeColor()" *ngIf="colorTheme.which == false" [(colorPicker)]="colorTheme.secondary" [style.background]="colorTheme.secondary" [style.color]="colorTheme.secondary" /> -->
+
+        </div>
+        <div class="save-setting">
+          <button class="choose btn-blue" (click)="saveTemplate()" mat-raised-button>SAVE AND CONTINUE</button>
+        </div>
+
+      </div>
+    </ng-container>
+
+
+  </div>
+</div>

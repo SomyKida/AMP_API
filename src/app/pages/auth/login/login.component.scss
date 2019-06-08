@@ -1,0 +1,153 @@
+@import '../../../../theme/variables';
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 120px);
+    height: 100%;
+
+    @media (max-width: 800px) {
+        width: 100% !important;
+    }
+
+    .form-area {
+
+        .logoWithHeading {
+            text-align: center;
+
+            span.logo {
+                display: inline-block;
+                vertical-align: middle;
+                width: 28px;
+                height: 28px;
+                background: url(../../../../assets/img/GLogo.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            h3 {
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 10px;
+                font-size: 30px;
+                color: $headingNormColor;
+                font-family: 'ProximaNova-Light';
+            }
+        }
+
+        form {
+            .form-row {
+                display: flex;
+                justify-content: space-between;
+                margin: 25px 0;
+
+                .form-two-col {
+                    flex: 1;
+
+                    &:first-child {
+                        padding-right: 25px;
+                        border-right: 1px solid $border;
+
+                        @media (max-width: 1100px) {
+                            padding: 0;
+                        }
+                    }
+
+                    &:last-child {
+                        padding-left: 25px;
+                        padding-top: 30px;
+
+                        @media (max-width: 1100px) {
+                            padding: 0;
+                        }
+                    }
+
+                    @media (max-width: 1100px) {
+                        width: 100%;
+                        border: none !important;
+                    }
+
+                    .cus-inp-row {
+                        margin-bottom: 25px;
+
+                        label {
+                            height: 20px;
+                        }
+                    }
+
+                    .cus-check-row {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding-bottom: 50px;
+
+                        label {
+                            span {
+                                border: 3px solid $darkBlue;
+                                border-radius: 50%;
+                                width: 20px;
+                                height: 20px;
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin-right: 10px;
+                            }
+                        }
+
+                        input {
+                            display: none;
+
+                            &:checked~label {
+                                span {
+                                    background: $darkBlue;
+                                }
+                            }
+                        }
+                    }
+
+                    .cus-btn {
+                        width: -webkit-fill-available;
+                        text-align: left;
+                        display: block;
+                        border-radius: 5px;
+                        text-transform: uppercase;
+                        margin-bottom: 25px;
+                        padding: 5px 10px;
+                        color: #fff;
+                        padding-left: 55px;
+
+                        &.fb-btn {
+                            background: #496399;
+                            background-image: url(../../../../assets/img/fb.png);
+                            background-position: left;
+                            background-position-x: 20px;
+                            background-size: 10px;
+                            background-repeat: no-repeat;
+                        }
+
+                        &.google-btn {
+                            background: #4686f1;
+                            background-image: url(../../../../assets/img/googlePlus.png);
+                            background-position: left;
+                            background-position-x: 20px;
+                            background-size: 15px;
+                            background-repeat: no-repeat;
+                        }
+
+                        &.inp-btn {
+                            background: rgb(56, 95, 188)
+                        }
+                    }
+                }
+            }
+        }
+
+        .forgot-text {
+            color: $darkBlue;
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+        }
+    }
+}

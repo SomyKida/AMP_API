@@ -1,0 +1,18 @@
+@import '../../../../theme/variables';
+.mat-dialog-container {
+    background: $theme;
+    text-align: center;
+}
+
+.mat-dialog-content {
+    font-size: 14px;
+}
+
+.mat-dialog-actions {
+    justify-content: center;
+}
+
+.dimiss {
+    background: $blueTheme;
+    width: 100%;
+}

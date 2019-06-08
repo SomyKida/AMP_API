@@ -1,0 +1,264 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './theme/variables';
+//importing For Angular material
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    background: $theme;
+    padding: 0;
+    margin: 0;
+    font-family: 'ProximaNova-Regular'
+}
+
+$font-path: "/assets/fonts";
+
+@font-face {
+    font-family: 'ProximaNova-Regular';
+    src: url("#{$font-path}/ProximaNova-Regular.eot");
+    src: url("#{$font-path}/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
+    // url("#{$font-path}/ProximaNova-Regular.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Regular.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Regular.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Extrabld';
+    src: url("#{$font-path}/ProximaNova-Extrabld.eot");
+    src: url("#{$font-path}/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Extrabld.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Extrabld.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Extrabld.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Bold';
+    src: url("#{$font-path}/ProximaNova-Bold.eot");
+    src: url("#{$font-path}/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Bold.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Bold.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Bold.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Light';
+    src: url("#{$font-path}/ProximaNova-Light.eot");
+    src: url("#{$font-path}/ProximaNova-Light.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Light.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Light.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Light.svg") format("svg");
+}
+
+@font-face {
+    font-family: 'ProximaNova-Semibold';
+    src: url("#{$font-path}/ProximaNova-Semibold.eot");
+    src: url("#{$font-path}/ProximaNova-Semibold.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/ProximaNova-Semibold.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Semibold.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Semibold.svg") format("svg");
+}
+
+.GlobalFormWrapper {
+    width: 1700px;
+    margin: 15px auto;
+
+    @media (max-width: 1900px) {
+        width: 1375px;
+    }
+
+    @media (max-width: 1500px) {
+        width: 975px;
+    }
+
+    @media (max-width: 1100px) {
+        width: 100%;
+    }
+
+    .form-slide {
+        box-shadow: 0 0 10px rgba(190, 190, 190, 0.77);
+        border-radius: 10px;
+        margin-top: 25px;
+        padding: 50px;
+        background: $primary;
+
+        @media (max-width: 750px) {
+            padding: 15px;
+            width: auto;
+            margin: 0;
+        }
+
+        .form-head-row {
+            .back {
+                img {
+                    vertical-align: middle;
+                    width: 50px;
+                }
+
+                span {
+                    vertical-align: middle;
+                    color: $back;
+                    text-transform: uppercase;
+                    font-size: 22px;
+                    letter-spacing: 3px;
+                    font-family: 'ProximaNova-Light'
+                }
+            }
+        }
+
+        .form-area {
+            max-width: 700px;
+            margin: 25px auto;
+
+            h3 {
+                font-size: 30px;
+                color: $headingNormColor;
+                font-family: 'ProximaNova-Light';
+            }
+
+            form {
+                .form-row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 25px 0;
+
+                    @media (max-width: 767px) {
+                        flex-wrap: wrap;
+                        flex-direction: column;
+
+                    }
+
+                    .form-one-col {
+                        width: 100%;
+                    }
+
+                    .form-two-col {
+                        width: 49%;
+
+                        @media (max-width: 767px) {
+                            width: 100%;
+                            border-right: none;
+                        }
+                    }
+
+                    .form-three-col {
+                        width: 32%;
+
+                        @media (max-width: 767px) {
+                            width: 100%
+                        }
+                    }
+
+                    label {
+                        display: block;
+                        color: $back;
+                        text-transform: uppercase;
+                        margin-bottom: 10px;
+                        font-size: 16px;
+                        letter-spacing: 1.5px;
+                        font-family: 'ProximaNova-Light';
+                    }
+
+                    input {
+                        width: -webkit-fill-available;
+                        border: 1px solid transparent;
+                        background: rgb(241, 244, 244);
+                        padding: 15px 10px;
+                        border-radius: 7px;
+                        outline: none;
+                    }
+
+                    input {
+                        &.active {
+                            background: #fff !important;
+                            border: 1px solid rgb(238, 238, 238);
+                            box-shadow: 0 3px 10px rgba(192, 192, 192, 0.5);
+                        }
+
+                        &.error {
+                            background: $validation
+                        }
+                    }
+                }
+
+                .cus-check-row {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    label {
+                        span {
+                            border: 3px solid $darkBlue;
+                            border-radius: 50%;
+                            width: 15px;
+                            height: 15px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    input {
+                        display: none;
+
+                        &:checked~label {
+                            span {
+                                background: $darkBlue;
+                            }
+                        }
+                    }
+
+                    .item-check {
+                        flex: 1;
+                    }
+
+                    .box {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    .statement {
+                        display: inline-block;
+                        font-size: 14px;
+                        letter-spacing: 0.20px;
+                        line-height: 1;
+                        font-family: 'ProximaNova-Light';
+                        color: $back;
+                        vertical-align: middle;
+                    }
+
+                }
+
+                .blue-btn {
+                    background: #39d4ff;
+                    padding: 15px 50px;
+                    font-size: 18px;
+                    color: #fff;
+                    border-radius: 5px;
+                    text-transform: uppercase;
+                    width: 250px;
+                    text-align: center;
+                    display: block;
+                    margin: 50px auto 25px;
+                    letter-spacing: 1.5px;
+                    font-family: 'ProximaNova-Semibold';
+
+                    @media (max-width: 767px) {
+                        width: auto;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.GlobalContainer {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 120px);
+    height: 100%;
+
+    @media (max-width: 800px) {
+        width: 100% !important;
+    }
+}

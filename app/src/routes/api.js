@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-
 var apiRoute = '';
 var apiControllerPath = base_path + '/app/src/controllers/api';
 var typeAuth = '/auth'
-var typeDashboard = '/dashboard'
-var typeSetup = '/system'
-var typeDentist = '/dentist'
-var typePatient = '/patient'
-var typeAdmin = '/admin'
+var typeDashboard = '/Dashboard'
+var typeSetup = '/System'
+var typeDentist = '/Dentist'
+var typePatient = '/Patient'
+var typeAdmin = '/Admin'
 
 var Admin = require('../models/Admin')
 var Dentist = require('../models/Dentist')
@@ -20,6 +19,10 @@ router.use(apiRoute + typeAdmin + typeAuth, require(apiControllerPath + typeAdmi
 router.use(apiRoute + typePatient + typeAuth, require(apiControllerPath + typePatient + '/AuthController'))
 router.use(apiRoute + typeSetup, require(apiControllerPath + typeSetup + '/SetupController'))
 /* Api Routes End */
+
+
+
+
 
 admin_middleware = function (req, res, _callback) {
     if (!req.headers.hasOwnProperty('content-type') || req.headers['content-type'] != 'application/json') {
@@ -54,12 +57,24 @@ admin_middleware = function (req, res, _callback) {
     })
 }
 
-dentist_middlewareware = function (req, res, _callback) {
+common_middleware = function (req, res, _callback) {
     if (!req.headers.hasOwnProperty('content-type') || req.headers['content-type'] != 'application/json') {
         helper.sendErrorWCode(res, "Unsupported Content Type. Please update request headers to application/json", 403)
         _callback(401, null)
         return
+    } else {
+        _callback(null, true)
     }
+}
+
+dentist_middlewareware = function (req, res, _callback) {
+    // if (!req.headers.hasOwnProperty('content-type') || req.headers['content-type'] != 'application/json') {
+    //     if (req.headers['content-type'] != 'multipart/form-data') {
+    //         helper.sendErrorWCode(res, "Unsupported Content Type. Please update request headers to application/json", 403)
+    //         _callback(401, null)
+    //         return
+    //     }
+    // }
     if (!req.headers.hasOwnProperty('authorization') || req.headers.authorization == '') {
         helper.sendErrorWCode(res, "No authorization found", 401)
         _callback(401, null)
@@ -73,14 +88,7 @@ dentist_middlewareware = function (req, res, _callback) {
                 _callback(440, null)
                 return
             } else {
-                if (dentist.first_ready == false) {
-                    helper.sendError(res, "Account already set up. Please use /update endpoint.")
-                    _callback('Already set up', null)
-                    return
-                } else {
-                    _callback(null, dentist)
-                    return
-                }
+                _callback(null, dentist)
             }
         }
     })

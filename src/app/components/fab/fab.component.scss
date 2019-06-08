@@ -1,0 +1,154 @@
+@import '../../../theme/variables';
+
+.fab {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 80px;
+    height: 60px;
+
+
+    .fabWrapper {
+        text-align: center;
+
+        button {
+            background-color: #ffffff;
+            width: 70px;
+            height: 70px;
+            background-image: url(../../../assets/img/alita.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            &.cross {
+                background-image: url(../../../assets/img/multiply.png);
+                background-color: $darkBlue;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 20px;
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .mat-fab:not([class*=mat-elevation-z]),
+        .mat-mini-fab:not([class*=mat-elevation-z]) {
+            box-shadow: none;
+        }
+
+        .botName {
+            font-size: 16px;
+            color: $headingNormColor;
+            letter-spacing: 1.75px;
+        }
+    }
+}
+
+.dialog {
+    position: fixed;
+    right: 50px;
+    bottom: 130px;
+    width: 250px;
+    height: 300px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px $shadow;
+
+    .fabDialogWrapper {
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        padding-top: 0;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+
+        ul {
+            display: flex;
+            flex: 0.97;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex-direction: column;
+            overflow: scroll;
+
+            li {
+                margin-bottom: 15px;
+
+                .someone {
+                    text-align: right;
+
+                    span {
+                        display: inline-block;
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50px;
+                        vertical-align: middle;
+                        background: url(../../../assets/img/alita.png);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: center;
+                    }
+
+                    p {
+                        width: 65%;
+                        display: inline-block;
+                        padding: 10px;
+                        font-size: 14px;
+                        background: $chatGreen;
+                        margin: 0;
+                        vertical-align: middle;
+                        margin-right: 5px;
+                        border-radius: 5px;
+                        letter-spacing: 0.25px;
+                        color: #ffffff;
+                        border-radius: 10px;
+                    }
+                }
+
+                .myself {
+                    @extend .someone;
+                    text-align: left;
+
+                    img {
+                        margin-right: 3px;
+                    }
+
+                    p {
+                        background: $darkBlue;
+                        color: #ffffff;
+                        margin: 0;
+                        margin-left: 7px;
+                    }
+                }
+            }
+        }
+
+        form {
+            flex: 0.03;
+            flex-direction: column;
+            align-items: flex-end;
+
+
+            input {
+                width: -webkit-fill-available;
+                padding: 5%;
+                border: 1px solid $border;
+                margin-bottom: 5%;
+                font-size: 14px;
+                border-radius: 5px;
+            }
+
+            button {
+                width: 100%;
+                background: $darkBlue;
+                color: #ffffff;
+                letter-spacing: 1.75px;
+                text-transform: uppercase;
+                font-size: 16px;
+                padding: 10px;
+                font-family: 'ProximaNova-Semibold';
+            }
+        }
+    }
+
+}

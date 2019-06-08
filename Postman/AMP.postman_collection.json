@@ -1,0 +1,785 @@
+{
+	"info": {
+		"_postman_id": "59319dff-1958-4c43-a563-9f14dc3e0fc7",
+		"name": "AMP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "Intial Seed (Please don't use it unless you are asked to)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/setup/setup-db",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"setup",
+								"setup-db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Packages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/system/get-packages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"get-packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Package",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"LITE\",\n\t\"price\": \"199.0\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/system/add-package",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"add-package"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Theme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Theme1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/system/add-theme",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"add-theme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Themes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/system/get-themes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"get-themes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a Service Provider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Heart Software\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/system/add-service",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"add-service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Service Providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/system/get-services",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"get-services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request a New Service Provider (Not Listed Case)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Kidney Software\",\n\t\"email\" : \"abc@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/system/add-service-request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"add-service-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[DANGER] Remove a Dentist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"1234@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/system/remove-dentist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"remove-dentist"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "1234@gmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dentists",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register (Current)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\" : \"Harry Maxwell\",\n\t\"address\" : \"California\",\n\t\"unit\" : \"123\",\n\t\"zip\" : \"123\",\n\t\"email\" : \"enigcreator@gmail.com\",\n\t\"phone\" : \"123123123\",\n\t\"package\" : \"PRO\",\n\t\"service_provider\" : \"5ca4e8a25ffaf80dfc6248d8\",\n\t\"pwd\" : \"12345678\",\n\t\"conf_pwd\" : \"12345678\"\n\t\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/v3/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"v3",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register (Legacy)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"enigcreator@gmail.com\",\n\t\"package\":\"5c7d84289757a441a5b38677\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/pre-register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"pre-register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dynamic Pay Endpoint",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"card_number\"\t\t: \"4242424242424242\",\n\t\"card_expiry_month\" : \"12\",\n\t\"card_expiry_year\"\t: \"19\",\n\t\"card_cvc\"\t\t\t: \"123\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/pay/5c7ed71a406db1755724c894",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"pay",
+										"5c7ed71a406db1755724c894"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"enigcreator@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a0c8e06e-eeb4-4c15-8b88-dc43c081e4d5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"enigcreator@gmail.com\",\n\t\"pwd\"\t: \"12345678\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Setup (Legacy)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"company_name\" : \"Tesla Inc.\",\n\t\"company_phone\" : \"+11231231223\",\n\t\"office_address\" : \"Street 9, Venus Colony, Jupiter 122, Mars\",\n\t\"hours\" : [\n\t\t{\"Monday\" : \"09:00-12:00\"},\n\t\t{\"Tuesday\" : \"09:00-12:00\"}\n\t\t],\n\t\"pwd\": \"12345678\",\n\t\"conf_pwd\": \"12345678\",\n\t\"rcry_email\" : \"jellyOrange@gmail.com\",\n\t\"other_email\" : \"PurpleCandyBar@gmail.com\"\n\t\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/setup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"setup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Admins",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"admins\" : [\n\t\t\t{\n\t\t\t\t\"email\" \t  : \"amp.email.bot@gmail.com\",\n\t\t\t\t\"designation\" : \"PDentist\",\n\t\t\t\t\"first_name\"  : \"The\",\n\t\t\t\t\"last_name\"\t  : \"Runaway Bride\",\n\t\t\t\t\"pwd\"\t\t  : \"12345678\",\n\t\t\t\t\"conf_pwd\"\t  : \"1235678\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"email\" \t  : \"email.amp.bot@gmail.com\",\n\t\t\t\t\"designation\" : \"PDentist\",\n\t\t\t\t\"first_name\"  : \"The\",\n\t\t\t\t\"last_name\"\t  : \"Runaway Bride 2\",\n\t\t\t\t\"pwd\"\t\t  : \"12345678\",\n\t\t\t\t\"conf_pwd\"\t  : \"1235678\"\n\t\t\t}\n\t\t]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/add-admins",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"add-admins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initial Payment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"card_number\"\t: \"4242424242424242\",\n\t\"card_expiry_year\" : \"2020\",\n\t\"card_expiry_month\" : \"12\",\n\t\"card_cvc\"\t: \"123\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/v2/pay-init",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"v2",
+										"pay-init"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register (Legacy)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\" : \"Harry Maxwell\",\n\t\"address\" : \"California\",\n\t\"unit\" : \"123\",\n\t\"zip\" : \"123\",\n\t\"email\" : \"lukeharvardcp12354@gmail.com\",\n\t\"phone\" : \"123123123\",\n\t\"package\" : \"5c7d80eacdfe5c4078983c1c\"\n\t\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/v2/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"v2",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Setup (Current)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"theme_id\":\"5c9e753da7953e3028adc5d3\",\n\t\"phone\":\"12345678\",\n\t\"name\":\"Harry - The Nutritionist\",\n\t\"email\":\"harry@maxwell.com\",\n\t\"address\":\"12345678987654321\",\n\t\"office_hours\" : [\n\t\t{\"Monday\" : \"01:00-12:00\"},\n\t\t{\"Tuesday\" : \"09:00-12:00\"}\n\t],\n\t\"doctor_names\": [\"Luke\", \"Brett\", \"Keeano\"],\n\t\"npi\" : \"123\",\n\t\"url\" : \"harry\"\n\t\t\n\t\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/v2/setup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"v2",
+										"setup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Authenticate with Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"token\" : \"123\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/auth/authenticate-token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"auth",
+										"authenticate-token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Dashboard",
+					"item": [
+						{
+							"name": "Get Dashboard",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "6N6nl6f3ZWFg84o1551816631393",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/dentist/dashboard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"dentist",
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "{{url}}/api/admin/auth/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c032b0cb-e4fd-4fbc-8204-e0b3aba0011b",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token_admin\", jsonData.data.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"email.amp.bot@gmail.com\",\n\t\"pwd\"\t: \"AZ0k5Dux1551902603790\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patients",
+			"item": []
+		}
+	]
+}

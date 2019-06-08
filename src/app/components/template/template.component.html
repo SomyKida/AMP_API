@@ -1,0 +1,189 @@
+<div class="phone">
+  <img class="backward" src="assets/img/backward.png" (click)="backward()" alt="">
+  <div class="phoneBody" *ngIf="current!=4">
+    <span class="right-side-btn"></span>
+    <span class="left-side-btn-1"></span>
+    <span class="left-side-btn-2"></span>
+    <span class="left-side-btn-3"></span>
+    <div class="actualBody">
+      <div class="header" [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+        <div class="iphoneX"></div>
+        <div class="logo_row">
+          <img *ngIf="image == null" src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
+          <img *ngIf="image != null" [src]="image" alt="Anozira Logo" />
+          <h1>{{user.practice_name}}</h1>
+        </div>
+      </div>
+      <div class="phoneCont">
+        <div class="upper">
+          <div class="infor">
+            <p class="no">Next Appointment</p>
+            <p class="schedule">November 23, 2019 <i class="icon-pencil"></i></p>
+          </div>
+        </div>
+        <div class="lower" *ngIf="current==0">
+          <div class="round-menu"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <img src="assets/img/menu.png" alt="">
+            <div class="round-pic">
+              <img src="assets/img/user.jpeg" alt="pic" />
+            </div>
+          </div>
+        </div>
+        <div class="lower" *ngIf="current==1">
+          <div class="square-menu-double half-cut-left"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+          </div>
+          <div class="square-menu-double"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <img src="../../../assets/img/info@3x.png" alt="Settings" />
+            <span>INFO</span>
+          </div>
+          <div class="square-menu-double half-cut-right"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+          </div>
+
+        </div>
+        <div class="lower" *ngIf="current == 2">
+          <div class="square-menu"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <img src="../../../assets/img/settings_app_template.png" alt="Settings" />
+            <span>MY ACCOUNT</span>
+          </div>
+          <div class="forward_lower">
+            <img src="../../../assets/img/forward.png" alt="Forward" />
+          </div>
+          <div class="backward_lower">
+            <img src="../../../assets/img/backward.png" alt="Backward" />
+          </div>
+        </div>
+        <div class="lower_new" *ngIf="current == 3">
+          <div class="row_template">
+            <div class="column_template"
+              [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/settings_mobile.png" alt="Image" />
+              <span class="inner_span">SETTINGS</span>
+            </div>
+            <div class="column_template"
+              [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/social.png" alt="Image" />
+              <span class="inner_span">SOCIAL</span>
+            </div>
+            <div class="column_template"
+              [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/chat_mobile.png" alt="Image" />
+              <span class="inner_span">CHAT</span>
+            </div>
+          </div>
+          <div class="row_template">
+            <div class="column_template"
+              [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/info.png" alt="Image" />
+              <span class="inner_span">INFO</span>
+            </div>
+            <div class="column_template"
+              [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/nounRating.png" alt="Image" />
+              <span class="inner_span">CALL</span>
+            </div>
+            <div class="column_template"
+              [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+              <img src="../../../assets/img/refer.png" alt="Image" />
+              <span class="inner_span">REFER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phoneFooter">
+        <div class="infor_bottom">
+          <div class="noti_count">
+            <span>2</span>
+          </div>
+          <p class="name">View Notifications</p>
+        </div>
+        <div class="phoneFab">
+          <div class="btn-round"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phoneBody_rogue" *ngIf="current==4">
+    <span class="right-side-btn"></span>
+    <span class="left-side-btn-1"></span>
+    <span class="left-side-btn-2"></span>
+    <span class="left-side-btn-3"></span>
+    <div class="actualBody">
+      <div class="header" [style.background]="primary">
+        <div class="iphoneX"></div>
+        <h1>
+          <img src="../../../assets/img/anozira_logo.png" alt="Anozira Logo" />
+          {{user.practice_name}}</h1>
+      </div>
+      <div class="phoneCont">
+        <div class="upper">
+          <div class="infor">
+            <p class="schedule">Your Dashboard</p>
+            <div class="custom_bottom_border"></div>
+          </div>
+        </div>
+        <div class="lower">
+
+          <div class="row">
+            <img src="../../../assets/img/scheduling.png" alt="scheduling" />
+            <span>View Schedule</span>
+
+          </div>
+          <div class="row">
+            <img src="../../../assets/img/marketing.png" alt="marketing" />
+            <span>Marketing</span>
+
+          </div>
+          <div class="row">
+            <img src="../../../assets/img/chat.png" alt="chat" />
+            <span>Chat</span>
+
+          </div>
+          <div class="row">
+            <img src="../../../assets/img/forms.png" alt="forms" />
+            <span>Forms</span>
+
+          </div>
+          <div class="row">
+            <img src="../../../assets/img/support.png" alt="support" />
+            <span>Support</span>
+
+          </div>
+
+
+          <div class="btn-round_rogue"
+            [ngStyle]="{'background': 'linear-gradient(0deg,'+ primary+' 0%,'+ secondary+' 100%)'}">
+            <span class="top-bar"></span>
+            <span class="middle-bar"></span>
+            <span class="bottom-bar"></span>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <img class="forward" src="assets/img/forward.png" (click)="forward()" alt="">
+</div>
+
+<div class="phoneInfo">
+  <div class="onCon">
+    <p class="name">{{templates[current].name}}</p>
+    <p class="content">Add your logo and choose your colors on the screen to the right to see how your app will look
+      with this template</p>
+  </div>
+  <!-- <button class="choose" mat-raised-button>Choose different template</button> -->
+</div>

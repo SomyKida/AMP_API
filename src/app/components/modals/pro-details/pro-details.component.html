@@ -1,0 +1,22 @@
+<!-- <h2 mat-dialog-title>Which Software are you currently using?</h2> -->
+
+<mat-dialog-content>
+  <div class="spinner" *ngIf="wait">
+    <mat-progress-spinner [diameter]="30" mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <mat-list *ngIf="wait == false && listed == true">
+    <mat-list-item class="item" *ngFor="let provider of providers" (click)="thisIs(provider)" matRipple> {{provider.name}} </mat-list-item>
+  </mat-list>
+  <p class="desc" *ngIf="listed == false">
+    Unfortunately, AMP is not integrated with your EMR Software at this time. We are diligently working towards FULL integration with your provider. Please accept our apologies, we will notify you as soon as the integration is complete. In the meantime, please provide the name of your practice software and your email below. Press Submit and you will receive ½ off our “LITE” package. AMP will notify when Integration is complete.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="field" *ngIf="listed == false">
+    <input [(ngModel)]="provider.newProvider" name="provider" type="text" placeholder="Name of software you are currently using">
+    <input [(ngModel)]="provider.email" name="provider" type="email" placeholder="Enter you email">
+    <button mat-button class="dimiss" (click)="add()">SUBMIT</button>
+  </div>
+  <button mat-button class="dimiss" (click)="notListed()" *ngIf="listed == true">Software Not Listed</button>
+</mat-dialog-actions>
