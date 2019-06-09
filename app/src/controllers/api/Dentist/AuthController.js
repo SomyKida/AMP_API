@@ -1320,26 +1320,40 @@ router.post('/set-theme-data', jwt_middleware, (req, res) => {
       //   if (err) console.log(err);
       //   console.log("Successfully Written to File.");
       // });
+      obj = req.body.theme_info
+      obj = JSON.parse(obj)
+      image = decodeBase64Image(obj.img)
+      ext = image.type.split('/')[1]
+      file_name = "logo." + ext
 
-      req.body.theme_info.img = null;
-      dentist.theme_info = req.body.theme_info;
+
+
+      theme_info = req.body.theme_info
+      theme_info = JSON.parse(theme_info)
+      theme_info.img = "NULL"
+      theme_info = JSON.stringify(theme_info)
+
+      dentist.theme_info = theme_info
       dentist.theme_info.img = null;
       dentist.theme_setup = true;
+      practice_info = JSON.parse(dentist.practice_info)
+      final_folder = dentist.url;
+      final_folder = final_folder.replace(' ', '-')
       dentist.save((err) => {
         if (!helper.postQueryErrorOnly(err, res)) {
           helper.sendSuccess(res, dentist)
-          fs.remove(base_path + '/domains/' + dentist.id, err => {
+          fs.remove(base_path + '/domains/' + final_folder, err => {
             if (err) return console.error(err)
             //add theme selection logic here
-            fs.ensureDirSync(base_path + '/domains/' + dentist.id + '/')
-            fs.copy(base_path + '/dist/mobile/omni', base_path + '/domains/' + dentist.id + '/app')
+            fs.ensureDirSync(base_path + '/domains/' + final_folder + '/')
+            fs.copy(base_path + '/dist/mobile/omni', base_path + '/domains/' + final_folder + '/app')
               .then(() => {
-                obj = req.body.theme_info
-                obj = JSON.parse(obj)
-                image = decodeBase64Image(obj.img)
-                ext = image.type.split('/')[1]
-                file_name = "logo." + ext
-                fs.writeFile(base_path + '/domains/' + dentist.id + '/logo.png', image.data, (err) => {
+
+                fs.writeFile(base_path + '/domains/' + final_folder + '/app/logo.png', image.data, (err) => {
+                  if (err) console.log(err);
+                  console.log("Successfully Written to File.");
+                });
+                fs.writeFile(base_path + '/domains/' + final_folder + '/app/theme-config.json', dentist.theme_info, (err) => {
                   if (err) console.log(err);
                   console.log("Successfully Written to File.");
                 });
@@ -1347,7 +1361,7 @@ router.post('/set-theme-data', jwt_middleware, (req, res) => {
               .catch(err => console.error(err))
           })
 
-          url = "<a href = 'https://mongodb-multi-instance-test.herokuapp.com/serve-app/" + dentist.url + "'>Click HERE!</a>";
+          url = "<a href = 'https://mongodb-multi-instance-test.herokuapp.com/" + dentist.url + "/domain'>Click HERE!</a>";
           email.sendDefaultEmail(dentist.email, 'We are creating your app.', 'URL : ' + url, "You can click this to open your app in PWA view.", (err, info) => {
             if (err) {
               console.log(err)

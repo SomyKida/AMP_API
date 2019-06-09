@@ -172,11 +172,12 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:url/domain', function (req, res) {
+  console.log("here")
   Dentist.findOne({ 'url': req.params.url }, (err, dentist) => {
     if (err || dentist == null) {
-      res.send("not found")
+      res.send("Sorry, we are working on your app and it will be ready shortly.")
     } else {
-      res.sendFile(__dirname + '/domains/' + dentist.id + '/app/index.html')
+      res.sendFile(__dirname + '/domains/' + dentist.url + '/app/dist/my-app/index.html')
       return
     }
   })
